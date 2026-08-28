@@ -32,6 +32,7 @@ lib/
     entities/          provider- and Flutter-independent domain records
     value_objects/     validated domain primitives
     ports/             small contracts for external capabilities
+    services/          deterministic business-rule contracts/implementations
   features/<feature>/
     application/       use cases and state orchestration (when needed)
     data/              repositories, DTOs, adapters (when needed)
@@ -96,4 +97,3 @@ must not expose stack traces or secrets.
 - Authorization is enforced server-side with membership and row-level policies.
 - Camera images and OCR text have explicit retention rules before upload.
 - Destructive operations and data migrations require review under `AGENTS.md`.
-

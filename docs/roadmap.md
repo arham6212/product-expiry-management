@@ -7,6 +7,8 @@ behavior, tests, and documentation together.
 
 - Project conventions, architecture, agent workflow, logging, errors, and
   environment configuration.
+- PostgreSQL/backend direction and safe migration principles documented;
+  persistence dependencies deferred until the first inventory slice.
 - Application shell and navigation with a home placeholder.
 - Initial provider-independent domain records and date-only primitive.
 - Formatting, static analysis, unit/widget tests, and build verification.
@@ -75,4 +77,3 @@ Do not start a later phase merely because its types are convenient. Pull forward
 only the smallest prerequisite with a documented reason. Authentication,
 schema changes, and offline synchronization each require explicit threat,
 migration, and failure-mode review.
-

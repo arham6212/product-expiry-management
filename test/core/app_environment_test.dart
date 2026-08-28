@@ -32,5 +32,12 @@ void main() {
         throwsArgumentError,
       );
     });
+
+    test('rejects a non-HTTP API URL', () {
+      expect(
+        () => AppEnvironment.parse(flavor: 'production', apiBaseUrl: 'mailto:ops@example.test'),
+        throwsArgumentError,
+      );
+    });
   });
 }

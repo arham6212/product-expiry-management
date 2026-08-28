@@ -23,11 +23,13 @@ class AppEnvironment {
 
     final trimmedBaseUrl = apiBaseUrl.trim();
     final parsedBaseUrl = trimmedBaseUrl.isEmpty ? null : Uri.tryParse(trimmedBaseUrl);
-    if (parsedBaseUrl != null && !parsedBaseUrl.hasScheme) {
-      throw ArgumentError.value(apiBaseUrl, 'apiBaseUrl', 'Expected an absolute URL');
-    }
     if (trimmedBaseUrl.isNotEmpty && parsedBaseUrl == null) {
       throw ArgumentError.value(apiBaseUrl, 'apiBaseUrl', 'Expected a valid URL');
+    }
+    if (parsedBaseUrl != null &&
+        (!parsedBaseUrl.hasAuthority ||
+            (parsedBaseUrl.scheme != 'http' && parsedBaseUrl.scheme != 'https'))) {
+      throw ArgumentError.value(apiBaseUrl, 'apiBaseUrl', 'Expected an absolute HTTP or HTTPS URL');
     }
 
     return AppEnvironment(flavor: parsedFlavor, apiBaseUrl: parsedBaseUrl);

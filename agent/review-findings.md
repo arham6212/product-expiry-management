@@ -1,6 +1,13 @@
 # Review Findings
 
-Review is pending implementation. Findings must be evidence-based and classified
-as `BLOCKER`, `HIGH`, `MEDIUM`, or `LOW`. Record `None` when review finds no
-actionable issue.
+## Resolved
 
+- **LOW:** `API_BASE_URL` accepted URI schemes unsuitable for API calls. Fixed by
+  requiring an absolute HTTP(S) URI with authority and adding a regression test.
+- **LOW:** `ExpiryRiskService` was described but not represented in the initial
+  domain contracts. Added the provider-independent contract and categories;
+  deterministic implementation remains correctly deferred to Phase 2.
+
+## Open
+
+None.

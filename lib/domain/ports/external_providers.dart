@@ -33,16 +33,40 @@ final class ProductLookupCandidate {
     required this.name,
     required this.providerReference,
     this.brand,
+    this.imageUrl,
   });
 
   final String barcode;
   final String name;
   final String? brand;
+  final Uri? imageUrl;
   final String providerReference;
 }
 
+enum ProductLookupFailureKind { timeout, network, rateLimited, server, malformed, unknown }
+
+sealed class ProductLookupResult {
+  const ProductLookupResult();
+}
+
+final class ProductLookupFound extends ProductLookupResult {
+  const ProductLookupFound(this.candidate);
+
+  final ProductLookupCandidate candidate;
+}
+
+final class ProductLookupNotFound extends ProductLookupResult {
+  const ProductLookupNotFound();
+}
+
+final class ProductLookupUnavailable extends ProductLookupResult {
+  const ProductLookupUnavailable(this.kind);
+
+  final ProductLookupFailureKind kind;
+}
+
 abstract interface class ProductLookupProvider {
-  Future<ProductLookupCandidate?> findByBarcode(String barcode);
+  Future<ProductLookupResult> findByBarcode(String barcode);
 }
 
 final class ExpiryImage {

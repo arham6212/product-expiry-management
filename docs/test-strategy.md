@@ -20,7 +20,8 @@
 - FEFO ordering and tie breakers;
 - batch creation/deduplication rules;
 - date interpretation and MFG-versus-expiry handling; and
-- inventory quantity calculations and invalid quantities.
+- inventory quantity calculations and invalid quantities; and
+- shop-invite QR payload normalization, parsing, and scan deduplication.
 
 ### Integration tests
 
@@ -28,10 +29,20 @@
 - atomic receiving transaction;
 - tenant/shop isolation and authorization rules;
 - idempotent duplicate prevention and safe retries; and
-- simultaneous quantity updates and reconciliation.
+- simultaneous quantity updates and reconciliation; and
+- invite expiry/revocation, one-active-invite integrity, duplicate join requests,
+  and membership authorization.
 
-Use a real disposable PostgreSQL database once backend persistence exists. Local
-store tests use an actual temporary SQLite database.
+The Supabase migrations include pgTAP suites for catalog, receiving, and shop
+invitations: RLS, grants, cross-shop constraints, atomic writes, idempotency,
+expiry, revocation, and active-invite uniqueness. Run them against a disposable
+local Supabase PostgreSQL instance. Local store tests use an actual temporary
+SQLite database once that adapter exists.
+
+The storefront pgTAP suite additionally exercises anonymous and authenticated
+customer visibility, disabled/unpublished/future/expired exclusion, direct
+mutation denial, private Batch/movement denial, owner/manager/worker roles,
+cross-shop foreign keys, offer-price rules, and overlapping deal windows.
 
 ### Widget and E2E tests
 
@@ -40,7 +51,11 @@ store tests use an actual temporary SQLite database.
 - known-product receive flow;
 - unknown barcode flow;
 - expiry confirmation/correction flow; and
-- save-and-scan-next, including offline/retry states.
+- save-and-scan-next, including offline/retry states; and
+- manual/scanned invite convergence with explicit confirmation and QR refresh
+  after owner rotation.
+- anonymous Explore/storefront/search/deal/details navigation; and
+- owner/manager storefront publication controls.
 
 Camera and platform SDKs may use boundary fakes in automated tests, supplemented
 by a small real-device smoke suite.
@@ -93,4 +108,3 @@ Then:
 
 Criteria should use specific values at boundaries and avoid implementation
 details unless an architectural constraint is itself under test.
-

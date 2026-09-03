@@ -1,7 +1,11 @@
 import '../value_objects/local_date.dart';
 import 'domain_validation_exception.dart';
 
-enum BarcodeFormat { ean8, ean13, upcA, upcE, qr, dataMatrix, gs1, unknown }
+enum BarcodeFormat { ean8, ean13, upcA, upcE, gtin14, qr, dataMatrix, gs1, unknown }
+
+enum ProductSource { localManual, openFoodFacts }
+
+enum ShopMembershipRole { owner, manager, worker }
 
 enum InventoryMovementType { received, sold, disposed, returned, adjusted }
 
@@ -56,6 +60,23 @@ final class Shop {
   final bool isArchived;
 }
 
+final class ShopMembership {
+  ShopMembership({
+    required this.shopId,
+    required this.userId,
+    required this.role,
+    required this.createdAt,
+  }) {
+    _requireText(shopId, 'shopId');
+    _requireText(userId, 'userId');
+  }
+
+  final String shopId;
+  final String userId;
+  final ShopMembershipRole role;
+  final DateTime createdAt;
+}
+
 /// Reusable catalog identity. Expiry intentionally does not exist on Product.
 final class Product {
   Product({
@@ -66,11 +87,19 @@ final class Product {
     required this.updatedAt,
     this.brand,
     this.category,
+    this.imageUrl,
+    this.source = ProductSource.localManual,
+    this.sourceReference,
+    this.catalogProductId,
     this.isArchived = false,
   }) {
     _requireText(id, 'id');
     _requireText(shopId, 'shopId');
     _requireText(name, 'name');
+    if (imageUrl != null &&
+        (!imageUrl!.hasAuthority || (imageUrl!.scheme != 'http' && imageUrl!.scheme != 'https'))) {
+      throw const DomainValidationException('imageUrl must be an absolute HTTP or HTTPS URL.');
+    }
   }
 
   final String id;
@@ -78,6 +107,10 @@ final class Product {
   final String name;
   final String? brand;
   final String? category;
+  final Uri? imageUrl;
+  final ProductSource source;
+  final String? sourceReference;
+  final String? catalogProductId;
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool isArchived;
@@ -113,7 +146,7 @@ final class Batch {
     required this.id,
     required this.shopId,
     required this.productId,
-    required this.expiryDate,
+    this.expiryDate,
     required this.currentQuantity,
     required this.createdAt,
     required this.updatedAt,
@@ -139,7 +172,7 @@ final class Batch {
   final String id;
   final String shopId;
   final String productId;
-  final LocalDate expiryDate;
+  final LocalDate? expiryDate;
   final int currentQuantity;
   final String? supplierId;
   final String? lotCode;
@@ -297,4 +330,100 @@ void _requireCurrency(String value) {
       'currencyCode must be a three-letter uppercase ISO 4217 code.',
     );
   }
+}
+
+enum JoinRequestStatus { pending, approved, rejected }
+
+final class ShopJoinRequest {
+  ShopJoinRequest({
+    required this.id,
+    required this.shopId,
+    required this.userId,
+    required this.status,
+    required this.createdAt,
+    this.reviewedAt,
+    this.reviewedBy,
+  }) {
+    _requireText(id, 'id');
+    _requireText(shopId, 'shopId');
+    _requireText(userId, 'userId');
+  }
+
+  final String id;
+  final String shopId;
+  final String userId;
+  final JoinRequestStatus status;
+  final DateTime createdAt;
+  final DateTime? reviewedAt;
+  final String? reviewedBy;
+}
+
+final class ShopInvite {
+  ShopInvite({
+    required this.id,
+    required this.shopId,
+    required this.code,
+    required this.isActive,
+    required this.createdAt,
+    required this.createdBy,
+    required this.expiresAt,
+  }) {
+    _requireText(id, 'id');
+    _requireText(shopId, 'shopId');
+    _requireText(code, 'code');
+    _requireText(createdBy, 'createdBy');
+    if (!expiresAt.isAfter(createdAt)) {
+      throw DomainValidationException('expiresAt must be after createdAt.');
+    }
+  }
+
+  final String id;
+  final String shopId;
+  final String code;
+  final bool isActive;
+  final DateTime createdAt;
+  final String createdBy;
+  final DateTime expiresAt;
+
+  bool isExpiredAt(DateTime instant) => !expiresAt.isAfter(instant.toUtc());
+
+  ShopInvite copyWith({bool? isActive}) {
+    return ShopInvite(
+      id: id,
+      shopId: shopId,
+      code: code,
+      isActive: isActive ?? this.isActive,
+      createdAt: createdAt,
+      createdBy: createdBy,
+      expiresAt: expiresAt,
+    );
+  }
+}
+
+final class ShopMemberProfile {
+  ShopMemberProfile({
+    required this.userId,
+    required this.email,
+    required this.role,
+    required this.createdAt,
+  });
+
+  final String userId;
+  final String email;
+  final ShopMembershipRole role;
+  final DateTime createdAt;
+}
+
+final class PendingRequestProfile {
+  PendingRequestProfile({
+    required this.requestId,
+    required this.userId,
+    required this.email,
+    required this.createdAt,
+  });
+
+  final String requestId;
+  final String userId;
+  final String email;
+  final DateTime createdAt;
 }

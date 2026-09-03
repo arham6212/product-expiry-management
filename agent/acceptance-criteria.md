@@ -1,64 +1,20 @@
 # Acceptance Criteria
 
-## Feature: Phase 0 repository foundation
-
-Given:
-
-- The repository contains the default Flutter scaffold.
-
-When:
-
-- The Phase 0 foundation is completed.
-
-Then:
-
-- `AGENTS.md` defines permanent rules, workflow roles, stop conditions, and the
-  completion report.
-- Product, architecture, domain, roadmap, decision, and testing documents exist
-  and agree on the batch-expiry rule.
-- The app starts in a branded shell with working base navigation and a simple
-  action-oriented home placeholder.
-- Environment values are read without committing secrets.
-- Unhandled Flutter and asynchronous errors use centralized logging hooks.
-- Initial domain types represent the required entities and provider boundaries
-  without depending on Flutter/vendor SDKs.
-- Formatting, static analysis/type checking, unit/widget tests, and a target
-  build pass.
-- No out-of-scope product feature or vendor SDK is implemented.
-
-## Feature: Multiple expiry batches remain independent
-
-Given:
-
-- A product exists.
-- An existing batch expires on 2026-09-03.
-
-When:
-
-- A second batch is represented for that product with expiry 2026-09-12.
-
-Then:
-
-- The product identity is reused.
-- The original batch still expires on 2026-09-03.
-- The new batch expires on 2026-09-12.
-- Expiry is not stored on the product.
-
-## Template for the next slice
-
-Feature: `<one observable outcome>`
-
-Given:
-
-- `<initial state>`
-
-When:
-
-- `<action>`
-
-Then:
-
-- `<observable result>`
-- `<domain/persistence result>`
-- `<important unchanged state>`
-
+- Only `authenticated` receives execute permission on
+  `update_shop_member_role(uuid, uuid, text)`; public and anon do not.
+- The security-definer function pins an empty search path, resolves `auth.uid()`,
+  authorizes a same-shop owner, and locks the exact target membership.
+- A same-shop owner can change worker to manager and manager to worker.
+- Manager, worker, anonymous, and cross-Shop callers are rejected without a
+  write; a caller cannot target a Shop they do not own.
+- Only exact `manager` and `worker` values are accepted. Unknown/null values and
+  promotion to owner are rejected rather than coerced.
+- Self-demotion and attempts to alter any owner membership are rejected without
+  changing the row.
+- Membership Shop/user identity and row count are preserved; direct client
+  membership updates remain unavailable.
+- Existing member roster reads, invites, join behavior, B05 Shop settings RLS,
+  and unrelated Product/inventory/storefront behavior remain unchanged.
+- No Flutter production code changes because role controls are explicitly B07.
+- The migration and 28-assertion pgTAP suite must pass before B06 is complete;
+  otherwise it remains verification-pending.

@@ -40,6 +40,19 @@ void main() {
       expect(secondBatch.expiryDate, LocalDate(2026, 9, 12));
     });
 
+    test('keeps a historical batch without a known expiry readable', () {
+      final batch = Batch(
+        id: 'batch-without-expiry',
+        shopId: 'shop-1',
+        productId: 'product-1',
+        currentQuantity: 4,
+        createdAt: timestamp,
+        updatedAt: timestamp,
+      );
+
+      expect(batch.expiryDate, isNull);
+    });
+
     test('rejects negative current quantity', () {
       expect(
         () => Batch(
@@ -99,6 +112,23 @@ void main() {
           occurredAt: timestamp,
           createdAt: timestamp,
           idempotencyKey: 'adjust-1',
+        ),
+        throwsA(isA<DomainValidationException>()),
+      );
+    });
+  });
+
+  group('shop invites', () {
+    test('requires expiry to be after creation', () {
+      expect(
+        () => ShopInvite(
+          id: 'invite-1',
+          shopId: 'shop-1',
+          code: 'ABC123',
+          isActive: true,
+          createdAt: timestamp,
+          createdBy: 'owner-1',
+          expiresAt: timestamp,
         ),
         throwsA(isA<DomainValidationException>()),
       );

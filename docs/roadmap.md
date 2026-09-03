@@ -3,22 +3,48 @@
 Each bullet is a candidate slice, not a single large release. A slice must ship
 behavior, tests, and documentation together.
 
+For the audited Android pilot critical path, task order, priority, and exact
+verification commands, use `docs/release-plan.md`. This roadmap remains the
+longer-term capability map.
+
 ## Phase 0 — Foundation
 
 - Project conventions, architecture, agent workflow, logging, errors, and
   environment configuration.
 - PostgreSQL/backend direction and safe migration principles documented;
   persistence dependencies deferred until the first inventory slice.
-- Application shell and navigation with a home placeholder.
+- Application shell and navigation; the current Home remains demo data until
+  the expiry-dashboard release slice replaces it.
 - Initial provider-independent domain records and date-only primitive.
 - Formatting, static analysis, unit/widget tests, and build verification.
 
 ## Phase 1 — Core inventory domain
 
-- Persist shop, product, barcode, and batch locally/backend with migrations.
-- Manual product creation.
-- Manual receiving transaction that creates a batch plus `RECEIVED` movement.
-- Quantity projection, reconciliation, and duplicate/idempotency protection.
+- **Delivered for catalog:** authenticated shops, memberships, Product,
+  ProductBarcode, Batch, and InventoryMovement Supabase migrations/RLS.
+- **Delivered:** manual Product creation for a scanned barcode, plus repository
+  support for a normalized shop-owned Product with no barcode or guessed global
+  identity. Receiving can create, select, and continue with that barcode-less
+  Product without clearing the Batch draft.
+- **Delivered:** in-memory manual receiving for an existing product, atomically
+  creating a batch plus `RECEIVED` movement with idempotent retries.
+- **Delivered:** authenticated shop-owned Batch/InventoryMovement persistence,
+  atomic receiving RPC, required new-receive expiry, optional lot input, and
+  resolved-Product handoff. Historical unknown-expiry rows remain nullable.
+- **Delivered for receiving:** initial quantity projection and
+  duplicate/idempotency protection. Later quantity changes and reconciliation
+  remain in the release plan.
+
+## Phase 1B — Customer storefront foundation
+
+- **Delivered:** anonymous Explore, public shop storefront, Product search,
+  Product details, published selling prices, and active deal display.
+- **Delivered:** dedicated public profile/listing/deal schema with server-time
+  RLS, owner/manager publication management, and no private inventory grants.
+- **Delivered foundation:** separate global CatalogProduct identity and optional
+  shop Product relationship without unsafe automated backfill.
+- Next: reviewed global-catalog matching and image-management workflow; do not
+  infer matches or expose stock as part of that slice.
 
 ## Phase 2 — Expiry engine
 
@@ -29,7 +55,9 @@ behavior, tests, and documentation together.
 ## Phase 3 — Barcode receiving
 
 - Scanner adapter and permission/error UX.
-- Local product resolution and unknown-product flow.
+- **Delivered prerequisite:** database-first product resolution, Open Food Facts
+  cache-miss provider, persistent external hits, and unknown-product fallback
+  states through temporary manual barcode entry.
 - Resumable continuous receiving session.
 
 ## Phase 4 — Expiry OCR

@@ -2,14 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/config/app_environment.dart';
 import '../core/logging/app_logger.dart';
+import 'app_dependencies.dart';
 import 'expiry_management_app.dart';
 
 void bootstrap(AppEnvironment environment) {
   runZonedGuarded(
-    () {
+    () async {
       WidgetsFlutterBinding.ensureInitialized();
 
       FlutterError.onError = (details) {
@@ -36,7 +38,18 @@ void bootstrap(AppEnvironment environment) {
         );
       };
 
-      runApp(ExpiryManagementApp(environment: environment));
+      await Supabase.initialize(
+        url: environment.supabaseUrl.toString(),
+        publishableKey: environment.supabasePublishableKey,
+      );
+      AppLogger.instance.info('Supabase initialized');
+
+      runApp(
+        ExpiryManagementApp(
+          environment: environment,
+          dependencies: AppDependencies.supabase(Supabase.instance.client),
+        ),
+      );
     },
     (error, stackTrace) {
       AppLogger.instance.error(

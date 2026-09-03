@@ -2,10 +2,10 @@
 
 ## Product intent
 
-Product Expiry Management helps small shops, groceries, minimarts, pharmacies,
-restaurants, and similar businesses act before stock expires. It should reduce
-expired stock, forgotten products, avoidable waste, manual checking, and missed
-supplier-return opportunities.
+Product Expiry Management has two surfaces. Shop Operations helps small shops,
+groceries, minimarts, pharmacies, restaurants, and similar businesses act before
+stock expires. The Customer Marketplace lets anyone discover enabled shops and
+browse products, prices, and current deals that a shop explicitly publishes.
 
 The operating principle is: **scan once, enter as little as possible, and let
 the system continuously tell the shop what needs attention.**
@@ -36,6 +36,14 @@ Multi-user roles, branches, and plan enforcement are later commercial slices.
 - OCR is assistive. Uncertain results require confirmation before persistence.
 
 ## Target workflows
+
+### Explore a public storefront
+
+`Explore shops -> Open storefront -> Search products -> See price/deal -> Open details`
+
+Browsing does not require sign-in or membership. A storefront is opt-in, each
+listing is opt-in, and active offers are filtered by server time. The public
+surface never derives availability or promotion from private stock or expiry.
 
 ### Receive stock
 
@@ -104,8 +112,45 @@ implemented and locked by tests in the Expiry Engine slice.
 
 ## Current phase scope
 
-Phase 0 provides documentation, project structure, environment handling, app
-shell, logging/error foundations, initial domain contracts, and tests. It does
-not implement persistence, scanning, OCR, notifications, suppliers, analytics,
-subscriptions, multi-user access, or multi-branch support.
+The current application includes authenticated, shop-owned Product resolution,
+stock receiving, and owner-approved worker access. Owners share a current
+six-character invite as text or a QR. Workers may enter the code manually or
+scan it; both paths require explicit confirmation and create the same pending
+join request for owner review.
 
+Continuing from a resolved Product opens a minimal receiving form for a required
+positive quantity and validated expiry date plus an optional lot number. One authenticated
+PostgreSQL operation atomically creates the shop-owned Batch and its initial
+`RECEIVED` movement. Exact retries are idempotent, conflicting key reuse is
+rejected, and the entered draft survives recoverable failures.
+
+Movement history remains the inventory source of truth; the Batch quantity is
+only its transactionally initialized query projection. New manual receiving
+rejects a missing expiry, while existing historical rows with unknown expiry
+remain nullable and are never assigned invented dates. Product resolution
+accepts camera or typed barcodes, checks the selected shop first, caches usable
+Open Food Facts results, and offers manual Product creation without inventing
+an unknown Product after provider failure. The catalog repository can also
+create a normalized shop-owned Product without a barcode. Receiving exposes
+that minimal name/optional-brand action, selects the persisted Product, and
+retains the dated Batch draft so the worker can continue directly.
+OCR, offline outbox, notifications, suppliers, analytics, subscriptions,
+advanced role administration, and multi-branch administration remain out of
+scope.
+
+The application also preserves the first customer storefront slice behind the
+static `ENABLE_STOREFRONT` build define. It defaults to disabled for the pilot,
+which opens Shop Operations directly and hides storefront navigation so the
+optional schema is not required. When explicitly enabled, anonymous customers
+start in Explore and can open an enabled shop, search its published Products,
+see selling prices and currently active deals, and open Product details. Shop
+Operations remains behind the existing authentication and active shop gate.
+Owners and managers can configure the public profile, publish or unpublish
+existing shop Products, set prices, and manage time-bounded deals; workers
+cannot. There is no ordering, payment, stock-availability promise, or automatic
+expiry promotion.
+
+This section describes the repository as inspected, not the Android pilot exit
+criteria. The pilot requires expiry on every new manual receive while preserving
+existing nullable rows safely. The implementation sequence is specified in
+`docs/release-plan.md`.

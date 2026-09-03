@@ -8,7 +8,7 @@
 - Direct client membership mutation remains denied. The RPC cannot transfer
   ownership, promote an owner, demote an owner, move a membership, create a row,
   or change invite/join behavior. B05's owner-only Shop policy is unchanged.
-- **BLOCKER (verification environment):** the migration, 28-assertion pgTAP
+- **BLOCKER (verification environment):** the migration, 29-assertion pgTAP
   suite, grant inspection, and local database reset/lint cannot execute without
   the missing local Supabase/PostgreSQL runtime. B06 remains verification-pending.
 

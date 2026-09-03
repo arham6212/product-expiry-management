@@ -14,7 +14,7 @@
 - Pinned the security-definer search path empty, fully qualified table aliases,
   revoked execute from public/anon/authenticated, then granted only
   authenticated. Direct membership mutation grants remain absent.
-- Added a 28-assertion pgTAP suite covering grants, anonymous/manager/worker/
+- Added a 29-assertion pgTAP suite covering grants, anonymous/manager/worker/
   cross-Shop denial, target-shop isolation, invalid roles, owner invariants,
   both allowed transitions, unchanged failures, roster visibility, invite
   preservation, membership identity/count, direct-update denial, and B05's
@@ -26,8 +26,16 @@
 
 ### B06 verification
 
-- Pending final available checks. Database execution remains blocked by the
-  unavailable local Supabase/PostgreSQL runtime.
+- `flutter test` — PASS (177 tests).
+- `dart format --output=none --set-exit-if-changed lib test` — PASS (100
+  files, zero changes required).
+- `flutter analyze` — PASS, no issues.
+- `git diff --check` — PASS.
+- `supabase status` — BLOCKED: it cannot connect to the Docker daemon at
+  `/var/run/docker.sock`; `docker`, `podman`, `psql`, and `postgres` executables
+  are unavailable. Therefore `supabase db reset && supabase test db` and local
+  database lint were not run. No database PASS is claimed and nothing was
+  deployed.
 
 ## 2026-09-02 — B05 owner-only private Shop settings updates
 

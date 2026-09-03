@@ -338,7 +338,7 @@ settings permission is approved.
 **Priority:** RELEASE BLOCKER
 
 **Status:** Implementation complete on 2026-09-03; verification pending because
-the new 28-assertion role-RPC pgTAP suite and required database reset need the
+the new 29-assertion role-RPC pgTAP suite and required database reset need the
 unavailable local Supabase/PostgreSQL runtime. No deployment was used as a
 substitute, so B06 is not marked complete.
 

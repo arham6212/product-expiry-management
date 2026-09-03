@@ -1,5 +1,5 @@
 begin;
-select plan(28);
+select plan(29);
 
 insert into auth.users (id, email)
 values
@@ -230,6 +230,16 @@ select throws_ok(
   '22023',
   'Role must be manager or worker.',
   'an unknown role is rejected'
+);
+select throws_ok(
+  $$select public.update_shop_member_role(
+      '62000000-0000-0000-0000-000000000001',
+      '61000000-0000-0000-0000-000000000004',
+      null
+    )$$,
+  '22023',
+  'Role must be manager or worker.',
+  'a null role is rejected'
 );
 select throws_ok(
   $$select public.update_shop_member_role(

@@ -16,5 +16,5 @@
 - Existing member roster reads, invites, join behavior, B05 Shop settings RLS,
   and unrelated Product/inventory/storefront behavior remain unchanged.
 - No Flutter production code changes because role controls are explicitly B07.
-- The migration and 28-assertion pgTAP suite must pass before B06 is complete;
+- The migration and 29-assertion pgTAP suite must pass before B06 is complete;
   otherwise it remains verification-pending.

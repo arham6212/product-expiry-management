@@ -19,6 +19,14 @@ python3 -m tools.ansar_catalog.cli repair_details
 # Verify row counts, headers, and uniqueness
 python3 -m tools.ansar_catalog.cli verify --preview-dir data/verification_previews
 
+# Synchronize only rows added since the last successful checkpoint
+SUPABASE_URL=... SUPABASE_SECRET_KEY=... \
+  python3 -m tools.ansar_catalog.sync_supabase sync
+
+# Reconcile every valid Ansar row for recovery or enrichment
+SUPABASE_URL=... SUPABASE_SECRET_KEY=... \
+  python3 -m tools.ansar_catalog.sync_supabase sync --full-reconcile
+
 # Start durable scheduling (macOS launchd or Linux systemd user timer)
 python3 -m tools.ansar_catalog.scheduler install
 
@@ -77,3 +85,17 @@ Workbook operations use the pinned Python `openpyxl` dependency so the same
 code runs on GitHub-hosted runners without a private Codex runtime. The bundled
 workflow tests and verifies the catalog before committing the workbook and
 state back to the same repository paths.
+
+## Supabase synchronization
+
+The hosted workflow synchronizes verified Ansar observations only after the
+crawl and workbook integrity checks pass. It prefers `SUPABASE_SECRET_KEY` and
+supports `SUPABASE_SERVICE_ROLE_KEY` only for legacy projects. These values are
+GitHub Actions secrets and must never be stored in the repository or printed.
+
+`data/ansar_supabase_sync_state.json` advances only after every selected row and
+the complete remote verification succeed. Database uniqueness plus the
+per-barcode transaction lock makes a retry safe even if database writes commit
+before a failed job can save its checkpoint. Ingestion can create or enrich
+global catalog data and provenance only; it never writes shop Products,
+barcodes, prices, batches, inventory movements, listings, or deals.

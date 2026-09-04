@@ -58,11 +58,25 @@ jobs:
           print(json.dumps(result, indent=2))
           PY
 
+      - name: Synchronize catalog with Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python -m tools.ansar_catalog.sync_supabase sync
+
+      - name: Verify Supabase synchronization
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python -m tools.ansar_catalog.sync_supabase verify --concurrency-probe
+
       - name: Commit the same workbook and state
         run: |
           git config user.name "ansar-catalog-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ansar_gallery_product_catalog.xlsx data/ansar_gallery_crawl_state.json data/logs
+          git add data/ansar_gallery_product_catalog.xlsx data/ansar_gallery_crawl_state.json data/ansar_supabase_sync_state.json data/logs
           if git diff --cached --quiet; then
             echo "No catalog changes to commit."
             exit 0

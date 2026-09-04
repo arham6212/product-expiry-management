@@ -1,0 +1,14 @@
+{
+  "errors": [],
+  "last_successfully_synchronized_crawler_run_id": null,
+  "rejection_reasons": {},
+  "rows_enriched": 0,
+  "rows_examined": 0,
+  "rows_inserted": 0,
+  "rows_rejected": 0,
+  "rows_unchanged": 0,
+  "synchronized_at": null,
+  "synchronized_product_ids": [],
+  "valid_rows_imported": 0,
+  "version": 1
+}

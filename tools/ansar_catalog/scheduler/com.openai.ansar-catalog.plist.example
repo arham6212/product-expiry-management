@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.openai.ansar-catalog</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3</string>
+		<string>-m</string>
+		<string>tools.ansar_catalog.cli</string>
+		<string>run_once</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/workspace/scratch/1960a60f7f96/data/logs/scheduler.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/workspace/scratch/1960a60f7f96/data/logs/scheduler.out.log</string>
+	<key>StartInterval</key>
+	<integer>18000</integer>
+	<key>WorkingDirectory</key>
+	<string>/workspace/scratch/1960a60f7f96</string>
+</dict>
+</plist>

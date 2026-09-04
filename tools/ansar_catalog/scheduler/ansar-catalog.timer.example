@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Ansar catalog crawler every five hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5h
+Persistent=true
+Unit=ansar-catalog.service
+
+[Install]
+WantedBy=timers.target

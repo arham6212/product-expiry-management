@@ -1,0 +1,72 @@
+name: Grow Ansar Catalog
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: New products to add
+        required: false
+        default: "50"
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ansar-catalog-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Check out persistent catalog
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Crawl one persistent batch
+        env:
+          TARGET: ${{ inputs.target || '50' }}
+        run: python -m tools.ansar_catalog.cli run_once --target "$TARGET"
+
+      - name: Verify catalog integrity
+        run: |
+          python -m tools.ansar_catalog.cli verify > verification.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("verification.json").read_text())
+          assert result["headers_valid"] is True
+          assert result["duplicate_global_barcodes"] == []
+          assert result["duplicate_source_urls"] == []
+          assert result["formula_error_scan"] == []
+          print(json.dumps(result, indent=2))
+          PY
+
+      - name: Commit the same workbook and state
+        run: |
+          git config user.name "ansar-catalog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ansar_gallery_product_catalog.xlsx data/ansar_gallery_crawl_state.json data/logs
+          if git diff --cached --quiet; then
+            echo "No catalog changes to commit."
+            exit 0
+          fi
+          git commit -m "data: grow Ansar catalog"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

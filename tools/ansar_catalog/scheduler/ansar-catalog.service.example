@@ -1,0 +1,7 @@
+[Unit]
+Description=Ansar Gallery catalog crawler batch
+
+[Service]
+Type=oneshot
+WorkingDirectory=/workspace/scratch/1960a60f7f96
+ExecStart=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m tools.ansar_catalog.cli run_once

@@ -21,31 +21,31 @@
     {
       "exhausted": false,
       "name": "Dry Food",
-      "next_page": 22,
+      "next_page": 23,
       "url": "https://www.ansargallery.com/en/grocery/dry-food"
     },
     {
       "exhausted": false,
       "name": "Cooking & Baking",
-      "next_page": 22,
+      "next_page": 23,
       "url": "https://www.ansargallery.com/en/grocery/cooking-baking-products"
     },
     {
       "exhausted": false,
       "name": "Condiments & Seasoning",
-      "next_page": 22,
+      "next_page": 23,
       "url": "https://www.ansargallery.com/en/grocery/condiments-seasoning"
     },
     {
       "exhausted": false,
       "name": "Canned & Jarred Food",
-      "next_page": 22,
+      "next_page": 23,
       "url": "https://www.ansargallery.com/en/grocery/canned-jarred-food"
     },
     {
       "exhausted": false,
       "name": "Coffee & Tea",
-      "next_page": 21,
+      "next_page": 22,
       "url": "https://www.ansargallery.com/en/grocery/coffee-tea-sugar"
     },
     {
@@ -57,13 +57,13 @@
     {
       "exhausted": false,
       "name": "Frozen Food",
-      "next_page": 21,
+      "next_page": 22,
       "url": "https://www.ansargallery.com/en/grocery/frozen-food"
     },
     {
       "exhausted": false,
       "name": "Bakery",
-      "next_page": 22,
+      "next_page": 23,
       "url": "https://www.ansargallery.com/en/grocery/bakery-breads-cakes"
     },
     {
@@ -121,8 +121,8 @@
       "url": "https://www.ansargallery.com/en/grocery/produce"
     }
   ],
-  "category_cursor": 3,
-  "coverage_cursor": 61,
+  "category_cursor": 13,
+  "coverage_cursor": 85,
   "coverage_jobs": [
     {
       "category_cursor": 8,
@@ -3178,7 +3178,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-peanut-salted-250g-qatar-6271100040027"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3217,7 +3217,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3249,7 +3249,7 @@
         "Bahar ULa Dishwashing Liquid"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 6
+        "Cleaning & Laundry": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/bahar-ula-dishwashing-liquid-lemon-1l-qatar-9501030211516"
     },
@@ -3260,7 +3260,9 @@
       ],
       "created_at": "2026-09-03T06:39:47.386856Z",
       "display_name": "Danet Smoked",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Delicatessen"
+      ],
       "key": "product_family:danet-smoked",
       "kind": "product_family",
       "last_error": null,
@@ -3287,12 +3289,12 @@
         "Qbake Croissant"
       ],
       "next_pages": {
-        "Bakery": 6
+        "Bakery": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/qbake-croissant-chocolate-60g-qatar-6253808660851"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3331,7 +3333,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3363,7 +3365,7 @@
         "Finish Dish Wash Powder"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 6
+        "Cleaning & Laundry": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/finish-dish-wash-powder-lemon-2-5kg-qatar-8410104652319"
     },
@@ -3382,7 +3384,7 @@
         "Al Rifaiai Pistachio"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 6
+        "Dry & Natural Foods": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifaiai-pistachio-salted-400g-qatar-6271100041802"
     },
@@ -3401,12 +3403,12 @@
         "Bayara Peanut"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 6
+        "Dry & Natural Foods": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/bayara-peanut-salted-300g-qatar-6291106449679"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3445,7 +3447,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3463,7 +3465,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kwik-antispectic-disinfectant-250ml-qatar-6271004801106"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3502,7 +3504,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3534,12 +3536,12 @@
         "Strix Biscuit Sticks Coated with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 6
+        "Snacks & Candy": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/strix-biscuit-sticks-coated-with-milk-chocolate-40g-qatar-8691707140049"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3578,7 +3580,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3596,7 +3598,7 @@
       "source_product_url": "https://www.ansargallery.com/en/foster-clarks-milk-chocolate-cake-mix-500g-qatar-5352101363856"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3635,7 +3637,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3653,7 +3655,7 @@
       "source_product_url": "https://www.ansargallery.com/en/heinz-hp-steak-sauce-450g-qatar-6290090014610"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3692,7 +3694,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3710,7 +3712,7 @@
       "source_product_url": "https://www.ansargallery.com/en/gourmet-frozen-chicken-mince-roll-400g-qatar-0705632818770"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3749,7 +3751,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3767,7 +3769,7 @@
       "source_product_url": "https://www.ansargallery.com/en/freez-mix-blue-hawai-tropical-fruits-carbonated-flavoured-drink-275ml-qatar-762571500197"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3806,7 +3808,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3824,7 +3826,7 @@
       "source_product_url": "https://www.ansargallery.com/en/sadia-frozen-chicken-breast-cubes-pre-cut-750g-qatar-7891515554828"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3863,7 +3865,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3881,7 +3883,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kenton-chocolate-cake-mix-450g-qatar-8690547187061"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3920,7 +3922,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -3938,7 +3940,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-alali-apricot-jam-400g-qatar-617950410027"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3978,7 +3980,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -3995,7 +3997,7 @@
       "source_product_url": "https://www.ansargallery.com/en/7days-vanilla-chocolate-croissant-55g-qatar-6281183000108"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4035,7 +4037,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -4066,12 +4068,12 @@
         "Apex Bleach"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 5
+        "Cleaning & Laundry": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/apex-bleach-original-2l-qatar-9501100117281"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4111,7 +4113,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -4142,7 +4144,7 @@
         "Bahar Clean Disinfct"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 5
+        "Cleaning & Laundry": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/bahar-clean-disinfct-lemon-3l-qatar-9501030514518"
     },
@@ -4161,7 +4163,7 @@
         "Modern Food Centre Dry Black"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 5
+        "Dry & Natural Foods": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/modern-food-centre-dry-black-lemon-500g-qatar-4001000007316"
     },
@@ -8306,6 +8308,101 @@
         "Bakery": 1
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-super-roll-strawberry-6-pieces-qatar-6281033209224"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Bakery"
+      ],
+      "created_at": "2026-09-06T19:16:16.505465Z",
+      "display_name": "Deemah Fantasy Cake",
+      "exhausted_categories": [],
+      "key": "product_family:deemah-fantasy-cake",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Deemah Fantasy Cake"
+      ],
+      "next_pages": {
+        "Bakery": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/deemah-fantasy-cake-chocolate-40g-qatar-6285602012697"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Bakery"
+      ],
+      "created_at": "2026-09-06T19:16:26.118497Z",
+      "display_name": "Deemah Marmo Cake",
+      "exhausted_categories": [],
+      "key": "product_family:deemah-marmo-cake",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Deemah Marmo Cake"
+      ],
+      "next_pages": {
+        "Bakery": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/deemah-marmo-cake-chocolate-40g-qatar-6285602012758"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Beverages",
+        "Dairy - Egg & Cheese",
+        "Snacks & Candy",
+        "Dry Food",
+        "Cooking & Baking",
+        "Condiments & Seasoning",
+        "Canned & Jarred Food",
+        "Coffee & Tea",
+        "Breakfast Food",
+        "Frozen Food",
+        "Bakery",
+        "International Food",
+        "Healthy & Organic Foods",
+        "Dry & Natural Foods",
+        "Ice Cream",
+        "Grab & Go",
+        "Cleaning & Laundry",
+        "Disposable & Storage",
+        "Delicatessen",
+        "Produce"
+      ],
+      "created_at": "2026-09-06T19:16:27.286475Z",
+      "display_name": "Noor Gazal",
+      "exhausted_categories": [],
+      "key": "brand:noor-gazal",
+      "kind": "brand",
+      "last_error": null,
+      "match_terms": [
+        "Noor Gazal"
+      ],
+      "next_pages": {
+        "Bakery": 1,
+        "Beverages": 1,
+        "Breakfast Food": 1,
+        "Canned & Jarred Food": 1,
+        "Cleaning & Laundry": 1,
+        "Coffee & Tea": 1,
+        "Condiments & Seasoning": 1,
+        "Cooking & Baking": 1,
+        "Dairy - Egg & Cheese": 1,
+        "Delicatessen": 1,
+        "Disposable & Storage": 1,
+        "Dry & Natural Foods": 1,
+        "Dry Food": 1,
+        "Frozen Food": 1,
+        "Grab & Go": 1,
+        "Healthy & Organic Foods": 1,
+        "Ice Cream": 1,
+        "International Food": 1,
+        "Produce": 1,
+        "Snacks & Candy": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/noor-gazal-black-chana-1kg-qatar-6294003002213"
     }
   ],
   "failed_urls": {
@@ -8327,6 +8424,11 @@
     "https://www.ansargallery.com/en/cashew-tandoori-500g-qatar-9320920008889": {
       "attempts": 1,
       "last_attempt_at": "2026-09-04T15:42:11Z",
+      "last_error": "HTTPError: HTTP Error 404: Not Found"
+    },
+    "https://www.ansargallery.com/en/chocolate-pistachio-kunafa-220g-qatar-6425743216275": {
+      "attempts": 1,
+      "last_attempt_at": "2026-09-06T19:15:57Z",
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     },
     "https://www.ansargallery.com/en/king-fish-light-meat-canned-tuna-in-sunflower-oil-185g-qatar-8852671018158": {
@@ -8365,7 +8467,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "0e149b53-c010-4d73-812f-a51ce55902da",
+  "last_completed_run_id": "278f5aaa-3e08-4047-a01c-1c0c35fc4154",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -10147,8 +10249,59 @@
     "https://www.ansargallery.com/en/americana-super-roll-strawberry-6-pieces-qatar-6281033209224",
     "https://www.ansargallery.com/en/zahara-dates-paste-1kg-qatar-5310714026025",
     "https://www.ansargallery.com/en/arwa-water-qatar-54493704-5449000083982",
-    "https://www.ansargallery.com/en/mazzraty-greek-style-peach-yoghurt-170g-qatar-6300900362425"
+    "https://www.ansargallery.com/en/mazzraty-greek-style-peach-yoghurt-170g-qatar-6300900362425",
+    "https://www.ansargallery.com/en/mama-instant-bowl-pho-bo-rice-noodles-beef-flavour-65g-qatar-8851876001309",
+    "https://www.ansargallery.com/en/food-gate-rice-flour-1kg-qatar-8904408000032",
+    "https://www.ansargallery.com/en/ahlia-biryani-spices-whole-75g-qatar-6271009021219",
+    "https://www.ansargallery.com/en/alalali-skipjack-tuna-in-sunflower-oil-170g-qatar-617950145998",
+    "https://www.ansargallery.com/en/old-town-white-coffee-less-sugar-instant-beverage-mix-35g-qatar-9555076303032",
+    "https://www.ansargallery.com/en/c-best-large-frozen-shrimps-400g-qatar-8935087214175",
+    "https://www.ansargallery.com/en/cake-time-milky-sponge-40g-qatar-6223005610423",
+    "https://www.ansargallery.com/en/brio-basmati-rice-5kg-qatar-0792649400128",
+    "https://www.ansargallery.com/en/dahabi-all-purpose-flour-1-5kg-qatar-9501100300010",
+    "https://www.ansargallery.com/en/nakheel-biryani-spices-whole-100g-qatar-3453664112850",
+    "https://www.ansargallery.com/en/alalali-yellowfin-fancy-tuna-in-water-170g-qatar-617950146032",
+    "https://www.ansargallery.com/en/abu-auf-hazelnut-flavored-coffee-250g-qatar-6223004767876",
+    "https://www.ansargallery.com/en/c-best-super-jumbo-frozen-shrimps-400g-qatar-8935087214144",
+    "https://www.ansargallery.com/en/chocolate-pistachio-kunafa-220g-qatar-6425743216275",
+    "https://www.ansargallery.com/en/maggi-chicken-noodle-soup-60g-qatar-6294017116937",
+    "https://www.ansargallery.com/en/dahabi-all-purpose-flour-1kg-qatar-9501100400017",
+    "https://www.ansargallery.com/en/nakheel-lemon-salt-400g-qatar-5255010145776",
+    "https://www.ansargallery.com/en/libby-tuna-solid-in-water-160g-qatar-0787480996114",
+    "https://www.ansargallery.com/en/alameed-3-in-1-instant-coffee-360g-qatar-6253806491501",
+    "https://www.ansargallery.com/en/perdix-whole-frozen-chicken-griller-1400g-qatar-7891515900595",
+    "https://www.ansargallery.com/en/deemah-chocolate-cupcake-16x27g-qatar-6285602000328",
+    "https://www.ansargallery.com/en/maggie-vegetable-flavour-noodles-5x77g-qatar-9556001302625",
+    "https://www.ansargallery.com/en/dahabi-all-purpose-flour-5kg-qatar-9501100300102",
+    "https://www.ansargallery.com/en/ahila-black-pepper-powder-75g-qatar-6271003091195",
+    "https://www.ansargallery.com/en/shaikh-al-kar-sardines-in-vegetable-oil-425g-qatar-6253011504928",
+    "https://www.ansargallery.com/en/alameed-3-in-1-strong-instant-coffee-360g-qatar-6253806491679",
+    "https://www.ansargallery.com/en/sadia-chicken-frozen-shawarma-meat-300g-qatar-7891515560560",
+    "https://www.ansargallery.com/en/deemah-fantasy-cake-chocolate-40g-qatar-6285602012697",
+    "https://www.ansargallery.com/en/oriental-kitchen-instant-noodle-shrimp-stir-fried-tom-yum-flavour-85g-qatar-8850987148255",
+    "https://www.ansargallery.com/en/fortune-pure-mstrd-oil-500-ml-qatar-8906007280945",
+    "https://www.ansargallery.com/en/ahila-red-chilli-long-whole-80g-qatar-6271008190657",
+    "https://www.ansargallery.com/en/shaikh-al-kar-sardines-in-vegetable-oil-with-chili-pepper-125g-qatar-6253011503600",
+    "https://www.ansargallery.com/en/davidoff-origins-brazil-espresso-coffee-capsul-55g-qatar-4061445272205",
+    "https://www.ansargallery.com/en/sadia-frozen-chicken-gizzard-450g-qatar-7893000461246",
+    "https://www.ansargallery.com/en/deemah-marmo-cake-chocolate-40g-qatar-6285602012758",
+    "https://www.ansargallery.com/en/noor-gazal-black-chana-1kg-qatar-6294003002213",
+    "https://www.ansargallery.com/en/gold-winner-pure-s-f-oil-5lt-qatar-8906010261146",
+    "https://www.ansargallery.com/en/ahlia-cinnamon-sticks-whole-100g-qatar-6271009193244",
+    "https://www.ansargallery.com/en/alyaqeen-chicken-franks-3x340g-qatar-6291101366759",
+    "https://www.ansargallery.com/en/davidoff-origins-colombia-insant-coffee-90g-qatar-4061445294962",
+    "https://www.ansargallery.com/en/sadia-frozen-chicken-griller-1300g-qatar-7893000558595",
+    "https://www.ansargallery.com/en/family-light-diet-bread-105g-qatar-6301800012199",
+    "https://www.ansargallery.com/en/noor-gazal-black-eye-beans-1kg-qatar-6294003002251",
+    "https://www.ansargallery.com/en/klf-tilnad-sesame-oil-200ml-qatar-8906002663323",
+    "https://www.ansargallery.com/en/ahlia-oregano-crushed-25g-qatar-6271008190619",
+    "https://www.ansargallery.com/en/california-garden-fava-beans-egyption-reciepe-450g-assorted-4-pieces-qatar-032894075079",
+    "https://www.ansargallery.com/en/dilmah-organic-english-breakfast-tea-40g-qatar-9312631153446",
+    "https://www.ansargallery.com/en/sadia-frozen-cut-green-beans-900g-qatar-7891515551704",
+    "https://www.ansargallery.com/en/hohos-rolled-chocolate-cake-24g-qatar-6223000550601",
+    "https://www.ansargallery.com/en/noor-gazal-chana-dal-1kg-qatar-6294003002312",
+    "https://www.ansargallery.com/en/klf-tilnad-sesame-oil-500ml-qatar-8906002663422"
   ],
-  "updated_at": "2026-09-06T17:17:50.413901Z",
+  "updated_at": "2026-09-06T19:17:09.480189Z",
   "version": 2
 }

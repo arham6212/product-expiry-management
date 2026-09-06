@@ -26,5 +26,14 @@ void main() {
     test('orders dates without timezones', () {
       expect(LocalDate(2026, 9, 3).compareTo(LocalDate(2026, 9, 12)), isNegative);
     });
+
+    test('counts signed calendar days without time-of-day semantics', () {
+      expect(LocalDate(2026, 9, 30).daysUntil(LocalDate(2026, 10, 1)), 1);
+      expect(LocalDate(2026, 10, 1).daysUntil(LocalDate(2026, 9, 30)), -1);
+    });
+
+    test('counts leap day in calendar differences', () {
+      expect(LocalDate(2028, 2, 28).daysUntil(LocalDate(2028, 3, 1)), 2);
+    });
   });
 }

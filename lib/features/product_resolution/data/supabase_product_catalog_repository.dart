@@ -4,7 +4,8 @@ import '../../../domain/entities/domain_models.dart';
 import '../../../domain/value_objects/normalized_barcode.dart';
 import '../application/product_catalog_repository.dart';
 
-final class SupabaseProductCatalogRepository implements ProductCatalogRepository {
+final class SupabaseProductCatalogRepository
+    implements ProductCatalogRepository, GlobalCatalogProductRepository {
   const SupabaseProductCatalogRepository(this._client);
 
   final SupabaseClient _client;
@@ -20,7 +21,7 @@ final class SupabaseProductCatalogRepository implements ProductCatalogRepository
           .select(
             'products!inner('
             'id,shop_id,name,brand,image_url,source,source_reference,catalog_product_id,'
-            'created_at,updated_at'
+            'selling_price_minor,created_at,updated_at'
             ')',
           )
           .eq('shop_id', shopId)
@@ -36,6 +37,27 @@ final class SupabaseProductCatalogRepository implements ProductCatalogRepository
       throw ProductCatalogException('Product lookup failed.', cause: error);
     } on FormatException catch (error) {
       throw ProductCatalogException('Product lookup returned invalid data.', cause: error);
+    }
+  }
+
+  @override
+  Future<CatalogProductSuggestion?> findGlobalByBarcode({
+    required NormalizedBarcode barcode,
+  }) async {
+    try {
+      final rows = await _client.rpc<List<dynamic>>(
+        'find_catalog_product_by_barcode',
+        params: {'normalized_barcode': barcode.value},
+      );
+      if (rows.isEmpty) return null;
+      if (rows.length != 1 || rows.single is! Map<String, dynamic>) {
+        throw const FormatException('Expected at most one CatalogProduct.');
+      }
+      return _mapCatalogSuggestion(rows.single! as Map<String, dynamic>);
+    } on PostgrestException catch (error) {
+      throw ProductCatalogException('Global product lookup failed.', cause: error);
+    } on FormatException catch (error) {
+      throw ProductCatalogException('Global product lookup returned invalid data.', cause: error);
     }
   }
 
@@ -73,6 +95,26 @@ final class SupabaseProductCatalogRepository implements ProductCatalogRepository
   }
 
   @override
+  Future<ProductCatalogSaveResult> saveCatalogProduct({
+    required String shopId,
+    required NormalizedBarcode barcode,
+    required ManualProductDraft product,
+    required CatalogProductSuggestion suggestion,
+  }) async {
+    final normalized = product.normalized();
+    return _saveProduct(
+      rpcName: 'create_product_from_catalog',
+      shopId: shopId,
+      barcode: barcode,
+      params: {
+        'product_name': normalized.name,
+        'product_brand': normalized.brand,
+        'product_image_url': suggestion.imageUrl?.toString(),
+      },
+    );
+  }
+
+  @override
   Future<Product> createManualProductWithoutBarcode({
     required String shopId,
     required ManualProductDraft product,
@@ -88,7 +130,10 @@ final class SupabaseProductCatalogRepository implements ProductCatalogRepository
             'brand': normalizedProduct.brand,
             'source': 'local_manual',
           })
-          .select('id,shop_id,name,brand,image_url,source,source_reference,created_at,updated_at')
+          .select(
+            'id,shop_id,name,brand,image_url,source,source_reference,catalog_product_id,'
+            'selling_price_minor,created_at,updated_at',
+          )
           .single();
       final createdProduct = _mapProduct(row);
       if (createdProduct.shopId != normalizedShopId ||
@@ -134,13 +179,42 @@ final class SupabaseProductCatalogRepository implements ProductCatalogRepository
       if (product.shopId != shopId) {
         throw const FormatException('Saved Product belongs to another shop.');
       }
-      return ProductCatalogSaveResult(product: product, wasCreated: wasCreated);
+      if (!wasCreated) {
+        final existing = await findByBarcode(shopId: shopId, barcode: barcode);
+        if (existing == null) {
+          throw const FormatException('Existing barcode Product could not be reloaded.');
+        }
+        return ProductCatalogSaveResult(product: existing, wasCreated: false);
+      }
+      return ProductCatalogSaveResult(product: product, wasCreated: true);
     } on PostgrestException catch (error) {
       throw ProductCatalogException('Product could not be saved.', cause: error);
     } on FormatException catch (error) {
       throw ProductCatalogException('Product save returned invalid data.', cause: error);
     }
   }
+}
+
+CatalogProductSuggestion _mapCatalogSuggestion(Map<String, dynamic> row) {
+  return CatalogProductSuggestion(
+    id: _requiredString(row, 'id'),
+    name: _requiredString(row, 'canonical_name'),
+    brand: _optionalString(row, 'brand'),
+    imageUrl: _optionalUri(row, 'image_url'),
+    productFamily: _optionalString(row, 'product_family'),
+    variantName: _optionalString(row, 'variant_name'),
+    productType: _optionalString(row, 'product_type'),
+    packCount: _optionalPositiveInt(row, 'pack_count'),
+    unitQuantity: _optionalPositiveNumber(row, 'unit_quantity'),
+    unitQuantityUnit: _optionalString(row, 'unit_quantity_unit'),
+    totalQuantity: _optionalPositiveNumber(row, 'total_quantity'),
+    totalQuantityUnit: _optionalString(row, 'total_quantity_unit'),
+    packagingDisplay: _optionalString(row, 'packaging_display'),
+    category: _optionalString(row, 'category'),
+    subcategory: _optionalString(row, 'subcategory'),
+    countryOfOrigin: _optionalString(row, 'country_of_origin'),
+    manufacturer: _optionalString(row, 'manufacturer'),
+  );
 }
 
 Product _mapProduct(Map<String, dynamic> row) {
@@ -159,9 +233,35 @@ Product _mapProduct(Map<String, dynamic> row) {
     },
     sourceReference: _optionalString(row, 'source_reference'),
     catalogProductId: _optionalString(row, 'catalog_product_id'),
+    sellingPriceMinor: _optionalPositiveInt(row, 'selling_price_minor'),
     createdAt: DateTime.parse(_requiredString(row, 'created_at')).toUtc(),
     updatedAt: DateTime.parse(_requiredString(row, 'updated_at')).toUtc(),
   );
+}
+
+int? _optionalPositiveInt(Map<String, dynamic> row, String key) {
+  final value = row[key];
+  if (value == null) return null;
+  if (value is! int || value <= 0) throw FormatException('Invalid $key.');
+  return value;
+}
+
+num? _optionalPositiveNumber(Map<String, dynamic> row, String key) {
+  final value = row[key];
+  if (value == null) return null;
+  final number = value is num ? value : num.tryParse(value.toString());
+  if (number == null || number <= 0) throw FormatException('Invalid $key.');
+  return number;
+}
+
+Uri? _optionalUri(Map<String, dynamic> row, String key) {
+  final value = _optionalString(row, key);
+  if (value == null) return null;
+  final uri = Uri.tryParse(value);
+  if (uri == null || !uri.hasScheme || (uri.scheme != 'http' && uri.scheme != 'https')) {
+    throw FormatException('Invalid $key.');
+  }
+  return uri;
 }
 
 String _databaseFormat(BarcodeFormat format) {

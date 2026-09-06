@@ -1,10 +1,8 @@
-import 'package:http/http.dart' as http;
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/identity/secure_id_generator.dart';
 import '../domain/entities/domain_models.dart';
 import '../domain/entities/storefront_models.dart';
-import '../domain/ports/external_providers.dart';
 import '../domain/value_objects/local_date.dart';
 import '../features/auth/application/auth_service.dart';
 import '../features/auth/data/in_memory_auth_service.dart';
@@ -13,9 +11,13 @@ import '../features/inventory/application/receive_stock.dart';
 import '../features/inventory/data/in_memory_inventory_repository.dart';
 import '../features/inventory/data/supabase_inventory_repository.dart';
 import '../features/product_resolution/application/product_catalog_repository.dart';
+import '../features/product_resolution/application/product_image_contribution.dart';
+import '../features/product_resolution/data/compressed_product_image_processor.dart';
+import '../features/product_resolution/data/image_picker_product_image_picker.dart';
 import '../features/product_resolution/data/in_memory_product_catalog_repository.dart';
-import '../features/product_resolution/data/open_food_facts_product_lookup_provider.dart';
+import '../features/product_resolution/data/supabase_cloudinary_product_image_repository.dart';
 import '../features/product_resolution/data/supabase_product_catalog_repository.dart';
+import '../features/product_resolution/data/unavailable_product_image_repository.dart';
 import '../features/shops/application/shop_access.dart';
 import '../features/shops/data/in_memory_shop_repository.dart';
 import '../features/shops/data/supabase_shop_repository.dart';
@@ -28,11 +30,13 @@ final class AppDependencies {
     required this.authService,
     required this.shopRepository,
     required this.productCatalogRepository,
-    required this.productLookupProvider,
     required this.inventoryRepository,
     required this.receiveStock,
     required this.publicStorefrontRepository,
     required this.storefrontManagementRepository,
+    this.productImageContributionRepository = const UnavailableProductImageRepository(),
+    this.productImagePicker,
+    this.productImageProcessor,
   });
 
   factory AppDependencies.inMemory() {
@@ -77,6 +81,7 @@ final class AppDependencies {
       products: [milk, yogurt],
       batches: [existingBatch],
       movements: [existingMovement],
+      expiryDashboardReferenceDate: LocalDate(2026, 9, 1),
     );
     const user = AuthenticatedUser(id: 'user-demo', email: 'demo@example.test');
     final shop = Shop(
@@ -109,7 +114,7 @@ final class AppDependencies {
       id: 'barcode-almarai-milk',
       shopId: milk.shopId,
       productId: milk.id,
-      value: '6281007000066',
+      value: '6281007000062',
       format: BarcodeFormat.ean13,
       isPrimary: true,
       createdAt: seededAt,
@@ -162,7 +167,6 @@ final class AppDependencies {
         products: [milk, yogurt],
         barcodes: [barcode],
       ),
-      productLookupProvider: const _NotFoundProductLookupProvider(),
       inventoryRepository: inventoryRepository,
       receiveStock: ReceiveStock(
         repository: inventoryRepository,
@@ -170,6 +174,8 @@ final class AppDependencies {
       ),
       publicStorefrontRepository: storefrontRepository,
       storefrontManagementRepository: storefrontRepository,
+      productImagePicker: ImagePickerProductImagePicker(),
+      productImageProcessor: CompressedProductImageProcessor(),
     );
   }
 
@@ -180,7 +186,6 @@ final class AppDependencies {
       authService: SupabaseAuthService(client),
       shopRepository: SupabaseShopRepository(client),
       productCatalogRepository: SupabaseProductCatalogRepository(client),
-      productLookupProvider: OpenFoodFactsProductLookupProvider(client: http.Client()),
       inventoryRepository: inventoryRepository,
       receiveStock: ReceiveStock(
         repository: inventoryRepository,
@@ -188,24 +193,20 @@ final class AppDependencies {
       ),
       publicStorefrontRepository: storefrontRepository,
       storefrontManagementRepository: storefrontRepository,
+      productImageContributionRepository: SupabaseCloudinaryProductImageRepository(client),
+      productImagePicker: ImagePickerProductImagePicker(),
+      productImageProcessor: CompressedProductImageProcessor(),
     );
   }
 
   final AuthService authService;
   final ShopRepository shopRepository;
   final ProductCatalogRepository productCatalogRepository;
-  final ProductLookupProvider productLookupProvider;
   final InventoryRepository inventoryRepository;
   final ReceiveStock receiveStock;
   final PublicStorefrontRepository publicStorefrontRepository;
   final StorefrontManagementRepository storefrontManagementRepository;
-}
-
-final class _NotFoundProductLookupProvider implements ProductLookupProvider {
-  const _NotFoundProductLookupProvider();
-
-  @override
-  Future<ProductLookupResult> findByBarcode(String barcode) async {
-    return const ProductLookupNotFound();
-  }
+  final ProductImageContributionRepository productImageContributionRepository;
+  final ProductImagePicker? productImagePicker;
+  final ProductImageProcessor? productImageProcessor;
 }

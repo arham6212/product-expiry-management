@@ -5,19 +5,23 @@ import '../application/product_catalog_repository.dart';
 typedef ProductCatalogIdGenerator = String Function(String prefix);
 typedef ProductCatalogClock = DateTime Function();
 
-final class InMemoryProductCatalogRepository implements ProductCatalogRepository {
+final class InMemoryProductCatalogRepository
+    implements ProductCatalogRepository, GlobalCatalogProductRepository {
   InMemoryProductCatalogRepository({
     Iterable<Product> products = const [],
     Iterable<ProductBarcode> barcodes = const [],
+    Iterable<MapEntry<String, CatalogProductSuggestion>> globalProducts = const [],
     ProductCatalogIdGenerator? idGenerator,
     ProductCatalogClock? clock,
   }) : _products = {for (final product in products) product.id: product},
        _barcodes = {for (final barcode in barcodes) _key(barcode.shopId, barcode.value): barcode},
+       _globalProducts = Map.fromEntries(globalProducts),
        _idGenerator = idGenerator ?? _defaultIdGenerator,
        _clock = clock ?? _defaultClock;
 
   final Map<String, Product> _products;
   final Map<String, ProductBarcode> _barcodes;
+  final Map<String, CatalogProductSuggestion> _globalProducts;
   final ProductCatalogIdGenerator _idGenerator;
   final ProductCatalogClock _clock;
 
@@ -32,6 +36,11 @@ final class InMemoryProductCatalogRepository implements ProductCatalogRepository
     final mapping = _barcodes[_key(shopId, barcode.value)];
     return mapping == null ? null : _products[mapping.productId];
   }
+
+  @override
+  Future<CatalogProductSuggestion?> findGlobalByBarcode({
+    required NormalizedBarcode barcode,
+  }) async => _globalProducts[barcode.value];
 
   @override
   Future<ProductCatalogSaveResult> saveExternalProduct({
@@ -66,6 +75,25 @@ final class InMemoryProductCatalogRepository implements ProductCatalogRepository
   }
 
   @override
+  Future<ProductCatalogSaveResult> saveCatalogProduct({
+    required String shopId,
+    required NormalizedBarcode barcode,
+    required ManualProductDraft product,
+    required CatalogProductSuggestion suggestion,
+  }) async {
+    final normalized = product.normalized();
+    return _saveProduct(
+      shopId: shopId,
+      barcode: barcode,
+      name: normalized.name,
+      brand: normalized.brand,
+      imageUrl: suggestion.imageUrl,
+      source: ProductSource.localManual,
+      catalogProductId: suggestion.id,
+    );
+  }
+
+  @override
   Future<Product> createManualProductWithoutBarcode({
     required String shopId,
     required ManualProductDraft product,
@@ -94,6 +122,7 @@ final class InMemoryProductCatalogRepository implements ProductCatalogRepository
     String? brand,
     Uri? imageUrl,
     String? sourceReference,
+    String? catalogProductId,
   }) {
     final key = _key(shopId, barcode.value);
     final existingMapping = _barcodes[key];
@@ -114,6 +143,7 @@ final class InMemoryProductCatalogRepository implements ProductCatalogRepository
       imageUrl: imageUrl,
       source: source,
       sourceReference: sourceReference,
+      catalogProductId: catalogProductId,
       createdAt: now,
       updatedAt: now,
     );

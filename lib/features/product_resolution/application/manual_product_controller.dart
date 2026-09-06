@@ -25,24 +25,30 @@ final manualProductControllerProvider =
     );
 
 final class ManualProductState {
-  const ManualProductState({this.isSaving = false, this.error});
+  const ManualProductState({this.isSaving = false, this.error, this.savedProduct});
 
   final bool isSaving;
   final String? error;
+  final Product? savedProduct;
 }
 
 final class ManualProductController extends Notifier<ManualProductState> {
   @override
   ManualProductState build() => const ManualProductState();
 
-  Future<Product?> save({required String barcode, required String name, String? brand}) async {
+  Future<Product?> save({
+    required String barcode,
+    required String name,
+    String? brand,
+    CatalogProductSuggestion? suggestion,
+  }) async {
     if (state.isSaving) return null;
     final requestShopId = ref.read(activeShopProvider)?.shop.id;
     state = const ManualProductState(isSaving: true);
     try {
       final product = await ref
           .read(manualProductCreatorProvider)
-          .call(barcode: barcode, name: name, brand: brand);
+          .call(barcode: barcode, name: name, brand: brand, suggestion: suggestion);
       if (!ref.mounted) return null;
       if (!_isCurrentShop(requestShopId)) {
         state = const ManualProductState(
@@ -50,7 +56,7 @@ final class ManualProductController extends Notifier<ManualProductState> {
         );
         return null;
       }
-      state = const ManualProductState();
+      state = ManualProductState(savedProduct: product);
       return product;
     } on BarcodeValidationException catch (error) {
       if (ref.mounted) state = ManualProductState(error: error.message);

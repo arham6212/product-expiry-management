@@ -1,5 +1,6 @@
 import '../../../domain/entities/domain_models.dart';
 import '../../../domain/value_objects/local_date.dart';
+import 'expiry_dashboard.dart';
 
 typedef IdempotencyKeyGenerator = String Function();
 
@@ -7,14 +8,16 @@ final class ReceiveStockInput {
   const ReceiveStockInput({
     required this.shopId,
     required this.productId,
-    required this.quantity,
+    this.quantity,
+    this.sellingPriceMinor,
     this.expiryDate,
     this.lotNumber,
   });
 
   final String shopId;
   final String productId;
-  final int quantity;
+  final int? quantity;
+  final int? sellingPriceMinor;
   final LocalDate? expiryDate;
   final String? lotNumber;
 }
@@ -23,7 +26,8 @@ final class ReceivingRequest {
   const ReceivingRequest({
     required this.shopId,
     required this.productId,
-    required this.quantity,
+    this.quantity,
+    required this.sellingPriceMinor,
     required this.expiryDate,
     required this.idempotencyKey,
     this.lotNumber,
@@ -31,7 +35,8 @@ final class ReceivingRequest {
 
   final String shopId;
   final String productId;
-  final int quantity;
+  final int? quantity;
+  final int sellingPriceMinor;
   final LocalDate expiryDate;
   final String? lotNumber;
   final String idempotencyKey;
@@ -75,6 +80,8 @@ final class InventoryRepositoryException implements Exception {
 
 abstract interface class InventoryRepository {
   Future<List<Product>> listProducts({required String shopId});
+
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId});
 
   /// Persists one Batch and its initial RECEIVED movement atomically.
   Future<ReceivingReceipt> receive(ReceivingRequest request);
@@ -131,6 +138,7 @@ final class ReceiveStock {
        _idempotencyKeyGenerator = idempotencyKeyGenerator;
 
   static const maxQuantity = 2147483647;
+  static const maxSellingPriceMinor = 2147483647;
   static const maxLotNumberLength = 120;
 
   final InventoryRepository _repository;
@@ -152,6 +160,7 @@ final class ReceiveStock {
       shopId: input.shopId.trim(),
       productId: input.productId.trim(),
       quantity: input.quantity,
+      sellingPriceMinor: input.sellingPriceMinor!,
       expiryDate: input.expiryDate!,
       lotNumber: _normalizeLotNumber(input.lotNumber),
       idempotencyKey: idempotencyKey.trim(),
@@ -198,16 +207,34 @@ final class ReceiveStock {
         message: 'Select an existing product.',
       );
     }
-    if (input.quantity <= 0) {
+    if (input.quantity != null && input.quantity! <= 0) {
       return const ReceiveStockInvalidInput(
         field: 'quantity',
         message: 'Quantity must be greater than zero.',
       );
     }
-    if (input.quantity > maxQuantity) {
+    if (input.quantity != null && input.quantity! > maxQuantity) {
       return const ReceiveStockInvalidInput(
         field: 'quantity',
         message: 'Quantity exceeds the supported maximum of 2,147,483,647.',
+      );
+    }
+    if (input.sellingPriceMinor == null) {
+      return const ReceiveStockInvalidInput(
+        field: 'sellingPrice',
+        message: 'Enter a selling price.',
+      );
+    }
+    if (input.sellingPriceMinor! <= 0) {
+      return const ReceiveStockInvalidInput(
+        field: 'sellingPrice',
+        message: 'Selling price must be greater than zero.',
+      );
+    }
+    if (input.sellingPriceMinor! > maxSellingPriceMinor) {
+      return const ReceiveStockInvalidInput(
+        field: 'sellingPrice',
+        message: 'Selling price exceeds the supported maximum.',
       );
     }
     if (input.expiryDate == null) {
@@ -222,6 +249,25 @@ final class ReceiveStock {
     }
     return null;
   }
+}
+
+int? parseSellingPriceMinor(String value) {
+  final match = RegExp(r'^(\d+)(?:\.(\d{1,2}))?$').firstMatch(value.trim());
+  if (match == null) return null;
+  final major = int.tryParse(match.group(1)!);
+  if (major == null) return null;
+  final fractionText = match.group(2) ?? '';
+  final fraction = fractionText.isEmpty ? 0 : int.parse(fractionText.padRight(2, '0'));
+  if (major > ReceiveStock.maxSellingPriceMinor ~/ 100) return null;
+  final minor = major * 100 + fraction;
+  if (minor <= 0 || minor > ReceiveStock.maxSellingPriceMinor) return null;
+  return minor;
+}
+
+String formatSellingPriceMinor(int minor) {
+  final major = minor ~/ 100;
+  final fraction = (minor % 100).toString().padLeft(2, '0');
+  return '$major.$fraction';
 }
 
 String? _normalizeLotNumber(String? value) {

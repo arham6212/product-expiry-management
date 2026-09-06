@@ -14,17 +14,52 @@ class AppEnvironment {
   });
 
   factory AppEnvironment.fromCompileTime() {
-    const flavor = String.fromEnvironment('APP_ENV', defaultValue: 'development');
+    const flavor = String.fromEnvironment('APP_ENV');
     const apiBaseUrl = String.fromEnvironment('API_BASE_URL');
     const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
     const supabasePublishableKey = String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY');
+    const productionSupabaseProjectRef = String.fromEnvironment('PRODUCTION_SUPABASE_PROJECT_REF');
     const enableStorefront = String.fromEnvironment('ENABLE_STOREFRONT');
+    const storefrontSchemaAvailable = String.fromEnvironment('STOREFRONT_SCHEMA_AVAILABLE');
     return AppEnvironment.parse(
       flavor: flavor,
       apiBaseUrl: apiBaseUrl,
       supabaseUrl: supabaseUrl,
       supabasePublishableKey: supabasePublishableKey,
+      productionSupabaseProjectRef: productionSupabaseProjectRef,
       enableStorefront: enableStorefront,
+      storefrontSchemaAvailable: storefrontSchemaAvailable,
+      requireExplicitProductionValues: true,
+    );
+  }
+
+  factory AppEnvironment.fromBuildConfig(Map<String, Object?> values) {
+    String requiredValue(String name) {
+      final value = values[name];
+      if (value is! String || value.trim().isEmpty) {
+        throw ConfigurationException('$name must be an explicit non-empty string.');
+      }
+      return value;
+    }
+
+    String optionalValue(String name) {
+      final value = values[name];
+      if (value == null) return '';
+      if (value is! String) {
+        throw ConfigurationException('$name must be a string when provided.');
+      }
+      return value;
+    }
+
+    return AppEnvironment.parse(
+      flavor: requiredValue('APP_ENV'),
+      apiBaseUrl: optionalValue('API_BASE_URL'),
+      supabaseUrl: requiredValue('SUPABASE_URL'),
+      supabasePublishableKey: requiredValue('SUPABASE_PUBLISHABLE_KEY'),
+      productionSupabaseProjectRef: optionalValue('PRODUCTION_SUPABASE_PROJECT_REF'),
+      enableStorefront: requiredValue('ENABLE_STOREFRONT'),
+      storefrontSchemaAvailable: optionalValue('STOREFRONT_SCHEMA_AVAILABLE'),
+      requireExplicitProductionValues: true,
     );
   }
 
@@ -33,7 +68,10 @@ class AppEnvironment {
     String apiBaseUrl = '',
     String supabaseUrl = '',
     String supabasePublishableKey = '',
+    String productionSupabaseProjectRef = '',
     String enableStorefront = '',
+    String storefrontSchemaAvailable = '',
+    bool requireExplicitProductionValues = false,
   }) {
     final parsedFlavor = switch (flavor.trim().toLowerCase()) {
       'development' => AppFlavor.development,
@@ -54,7 +92,7 @@ class AppEnvironment {
       throw ConfigurationException(
         'Missing required compile-time environment variable(s): '
         '${missingSupabaseVariables.join(', ')}. Run Flutter with '
-        '--dart-define-from-file=config/env.local.json.',
+        '--dart-define-from-file=config/env.<environment>.local.json.',
       );
     }
 
@@ -65,16 +103,51 @@ class AppEnvironment {
       );
     }
 
+    final parsedSupabaseUrl = _parseHttpUrl(supabaseUrl, name: 'SUPABASE_URL')!;
+    final parsedEnableStorefront = _parseStrictBoolean(
+      enableStorefront,
+      name: 'ENABLE_STOREFRONT',
+      defaultValue: false,
+    );
+    final parsedStorefrontSchemaAvailable = _parseStrictBoolean(
+      storefrontSchemaAvailable,
+      name: 'STOREFRONT_SCHEMA_AVAILABLE',
+      defaultValue: false,
+    );
+
+    if (requireExplicitProductionValues && parsedFlavor == AppFlavor.production) {
+      if (enableStorefront.trim().isEmpty) {
+        throw const ConfigurationException(
+          'Production requires an explicit ENABLE_STOREFRONT=true or false value.',
+        );
+      }
+      if (parsedSupabaseUrl.scheme != 'https') {
+        throw const ConfigurationException('Production SUPABASE_URL must use HTTPS.');
+      }
+      final projectRef = productionSupabaseProjectRef.trim().toLowerCase();
+      if (projectRef.isEmpty || parsedSupabaseUrl.host != '$projectRef.supabase.co') {
+        throw const ConfigurationException(
+          'PRODUCTION_SUPABASE_PROJECT_REF must be explicit and match SUPABASE_URL.',
+        );
+      }
+      if (!_isClientSafeSupabaseKey(trimmedPublishableKey)) {
+        throw const ConfigurationException(
+          'Production SUPABASE_PUBLISHABLE_KEY must be a client-safe Supabase publishable key.',
+        );
+      }
+      if (parsedEnableStorefront && !parsedStorefrontSchemaAvailable) {
+        throw const ConfigurationException(
+          'ENABLE_STOREFRONT=true requires STOREFRONT_SCHEMA_AVAILABLE=true.',
+        );
+      }
+    }
+
     return AppEnvironment(
       flavor: parsedFlavor,
       apiBaseUrl: _parseHttpUrl(apiBaseUrl, name: 'apiBaseUrl', allowEmpty: true),
-      supabaseUrl: _parseHttpUrl(supabaseUrl, name: 'SUPABASE_URL')!,
+      supabaseUrl: parsedSupabaseUrl,
       supabasePublishableKey: trimmedPublishableKey,
-      enableStorefront: _parseStrictBoolean(
-        enableStorefront,
-        name: 'ENABLE_STOREFRONT',
-        defaultValue: false,
-      ),
+      enableStorefront: parsedEnableStorefront,
     );
   }
 
@@ -125,6 +198,25 @@ bool _isServerOnlySupabaseKey(String key) {
     final payload = utf8.decode(base64Url.decode(base64Url.normalize(segments[1])));
     final claims = jsonDecode(payload);
     return claims is Map<String, dynamic> && claims['role'] == 'service_role';
+  } on FormatException {
+    return false;
+  }
+}
+
+bool _isClientSafeSupabaseKey(String key) {
+  if (key.startsWith('sb_publishable_') &&
+      key.length > 'sb_publishable_'.length &&
+      !key.toLowerCase().contains('replace_me')) {
+    return true;
+  }
+
+  final segments = key.split('.');
+  if (segments.length != 3) return false;
+
+  try {
+    final payload = utf8.decode(base64Url.decode(base64Url.normalize(segments[1])));
+    final claims = jsonDecode(payload);
+    return claims is Map<String, dynamic> && claims['role'] == 'anon';
   } on FormatException {
     return false;
   }

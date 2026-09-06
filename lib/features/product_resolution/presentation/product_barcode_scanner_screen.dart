@@ -3,9 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../application/product_barcode_scan_controller.dart';
+import 'scanner_overlay.dart';
 
 class ProductBarcodeScannerScreen extends ConsumerStatefulWidget {
-  const ProductBarcodeScannerScreen({super.key});
+  const ProductBarcodeScannerScreen({
+    required this.onDetect,
+    required this.onManualEntry,
+    this.onWithoutBarcode,
+    super.key,
+  });
+
+  final ValueChanged<String> onDetect;
+  final VoidCallback onManualEntry;
+  final VoidCallback? onWithoutBarcode;
 
   @override
   ConsumerState<ProductBarcodeScannerScreen> createState() => _ProductBarcodeScannerScreenState();
@@ -29,9 +39,16 @@ class _ProductBarcodeScannerScreenState extends ConsumerState<ProductBarcodeScan
     if (rawValue == null) return;
 
     final barcode = ref.read(productBarcodeScanControllerProvider.notifier).detect(rawValue);
-    await _cameraController.stop();
-    if (!mounted || barcode == null) return;
-    Navigator.of(context).pop(barcode);
+    if (barcode == null) return;
+
+    try {
+      await _cameraController.stop();
+    } on MobileScannerException {
+      // Resolution can continue even if the camera is already stopping.
+    }
+    if (!mounted) return;
+
+    widget.onDetect(barcode);
   }
 
   Future<void> _retryScan() async {
@@ -46,9 +63,10 @@ class _ProductBarcodeScannerScreenState extends ConsumerState<ProductBarcodeScan
   @override
   Widget build(BuildContext context) {
     final scanState = ref.watch(productBarcodeScanControllerProvider);
+    final isSuccess = scanState.status == ProductBarcodeScanStatus.accepted;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scan product barcode'),
+        title: const Text('Scan product'),
         actions: [
           ValueListenableBuilder(
             valueListenable: _cameraController,
@@ -65,25 +83,98 @@ class _ProductBarcodeScannerScreenState extends ConsumerState<ProductBarcodeScan
           ),
         ],
       ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          MobileScanner(
-            controller: _cameraController,
-            onDetect: _onDetect,
-            errorBuilder: (context, error) => _CameraError(
-              message: _cameraErrorMessage(error.errorCode),
-              onRetry: _retryScan,
-              onManualEntry: () => Navigator.of(context).pop(),
+      body: ValueListenableBuilder(
+        valueListenable: _cameraController,
+        builder: (context, camera, _) => Stack(
+          fit: StackFit.expand,
+          children: [
+            MobileScanner(
+              controller: _cameraController,
+              onDetect: _onDetect,
+              errorBuilder: (context, error) => _CameraError(
+                message: _cameraErrorMessage(error.errorCode),
+                onRetry: _retryScan,
+                onManualEntry: widget.onManualEntry,
+                onWithoutBarcode: widget.onWithoutBarcode,
+              ),
             ),
-          ),
-          if (scanState.status == ProductBarcodeScanStatus.invalid)
-            _InvalidBarcodeOverlay(
-              message: scanState.message ?? 'This barcode is not supported.',
-              onRetry: _retryScan,
-              onManualEntry: () => Navigator.of(context).pop(),
-            ),
-        ],
+
+            if (camera.error == null) ScannerOverlay(isSuccess: isSuccess),
+
+            if (camera.error == null &&
+                scanState.status == ProductBarcodeScanStatus.scanning &&
+                !isSuccess)
+              const Positioned(
+                top: 24,
+                left: 32,
+                right: 32,
+                child: SafeArea(
+                  child: Text(
+                    'Center one barcode inside the frame',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+
+            // Subtle fallback button when scanning is active
+            if (camera.error == null &&
+                scanState.status == ProductBarcodeScanStatus.scanning &&
+                !isSuccess)
+              Positioned(
+                bottom: 32,
+                left: 24,
+                right: 24,
+                child: SafeArea(
+                  top: false,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FilledButton.tonalIcon(
+                          onPressed: () async {
+                            try {
+                              await _cameraController.stop();
+                            } on MobileScannerException {
+                              /* Already stopped. */
+                            }
+                            if (mounted) widget.onManualEntry();
+                          },
+                          icon: const Icon(Icons.keyboard_outlined),
+                          label: const Text('Enter barcode'),
+                        ),
+                        if (widget.onWithoutBarcode != null)
+                          TextButton(
+                            key: const Key('scannerWithoutBarcodeButton'),
+                            style: TextButton.styleFrom(foregroundColor: Colors.white),
+                            onPressed: () async {
+                              try {
+                                await _cameraController.stop();
+                              } on MobileScannerException {
+                                /* Already stopped. */
+                              }
+                              if (mounted) widget.onWithoutBarcode!();
+                            },
+                            child: const Text('No barcode? Add product'),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+            if (scanState.status == ProductBarcodeScanStatus.invalid && !isSuccess)
+              _InvalidBarcodeOverlay(
+                message: scanState.message ?? 'This barcode is not supported.',
+                onRetry: _retryScan,
+                onManualEntry: widget.onManualEntry,
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -100,7 +191,13 @@ String _cameraErrorMessage(MobileScannerErrorCode errorCode) {
 }
 
 class _CameraError extends StatelessWidget {
-  const _CameraError({required this.message, required this.onRetry, required this.onManualEntry});
+  const _CameraError({
+    required this.message,
+    required this.onRetry,
+    required this.onManualEntry,
+    this.onWithoutBarcode,
+  });
+  final VoidCallback? onWithoutBarcode;
 
   final String message;
   final Future<void> Function() onRetry;
@@ -129,7 +226,12 @@ class _CameraError extends StatelessWidget {
                 icon: const Icon(Icons.refresh),
                 label: const Text('Try camera again'),
               ),
-              TextButton(onPressed: onManualEntry, child: const Text('Enter barcode manually')),
+              TextButton(onPressed: onManualEntry, child: const Text('Enter barcode')),
+              if (onWithoutBarcode != null)
+                TextButton(
+                  onPressed: onWithoutBarcode,
+                  child: const Text('No barcode? Add product'),
+                ),
             ],
           ),
         ),

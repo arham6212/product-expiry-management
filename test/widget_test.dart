@@ -33,7 +33,7 @@ void main() {
     await tester.tap(find.byKey(const Key('openShopOperationsButton')));
     await tester.pumpAndSettle();
 
-    expect(find.text('items need attention'), findsOneWidget);
+    expect(find.byKey(const Key('scanProductHomeButton')), findsOneWidget);
   });
 
   testWidgets('storefront disabled starts in Shop Operations without a storefront query', (
@@ -45,7 +45,6 @@ void main() {
       authService: baseDependencies.authService,
       shopRepository: baseDependencies.shopRepository,
       productCatalogRepository: baseDependencies.productCatalogRepository,
-      productLookupProvider: baseDependencies.productLookupProvider,
       inventoryRepository: baseDependencies.inventoryRepository,
       receiveStock: baseDependencies.receiveStock,
       publicStorefrontRepository: storefront,
@@ -62,7 +61,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('items need attention'), findsOneWidget);
+    expect(find.byKey(const Key('scanProductHomeButton')), findsOneWidget);
     expect(find.text('Explore shops'), findsNothing);
     expect(storefront.queryCount, 0);
 

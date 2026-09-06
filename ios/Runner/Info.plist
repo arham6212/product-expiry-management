@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera access is used to scan shop invitation QR codes.</string>
+	<string>Camera access is used to scan barcodes and take optional product photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library access is used to choose optional product photos.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

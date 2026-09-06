@@ -37,9 +37,10 @@ deleted during ordinary operation.
 
 - **Identity:** shop-local `id`; optional `catalogProductId` links to a separate
   platform-wide identity but never replaces the shop-owned ID.
-- **Fields:** `shopId`, name, optional brand/category, timestamps, archive state.
+- **Fields:** `shopId`, name, optional brand/category, optional positive selling
+  price in the Shop currency's minor units, timestamps, archive state.
 - **Metadata:** optional external image URL, provider-independent source
-  (`LOCAL_MANUAL` or `OPEN_FOOD_FACTS`), and optional source reference.
+  (`LOCAL_MANUAL` or `OPEN_FOOD_FACTS` for historical data), and optional source reference.
 - **Relationships:** has zero or many barcodes and has many batches. A manual
   shop-owned Product does not need an invented barcode identity.
 - **Invariant:** it has no expiry field. Expiry is batch-specific.
@@ -54,8 +55,9 @@ deleted during ordinary operation.
 - **Relationships:** many barcodes may identify one product. Within a shop, a
   normalized active code resolves to at most one product unless a structured
   code explicitly has different semantics.
-- **Constraint:** the persisted catalog owns one mapping per `(shopId,
-  normalized code)` and cannot reference a Product from another shop.
+- **Constraint:** the shop catalog owns one mapping per `(shopId, normalized
+  code)` and cannot reference a Product from another shop. A normalized barcode
+  also maps to at most one platform CatalogProduct globally.
 - **Lifecycle:** may be corrected or deactivated; preserve audit metadata.
 
 ### Batch
@@ -75,8 +77,9 @@ deleted during ordinary operation.
   unknown-expiry rows separately.
 - **Mutability:** expiry correction requires an explicit audited use case; cached
   quantity changes only with a committed movement.
-- **Receiving quantity:** manual receiving accepts 1 through 2,147,483,647. Zero,
-  negative, and larger values are rejected before a transaction begins.
+- **Receiving quantity:** optional; blank is stored as SQL/Dart null (unknown).
+  Explicit quantities must be 1 through 2,147,483,647. Zero, negative and larger
+  values remain invalid. Unknown-quantity batches stay visible in expiry lists.
 - **Deletion:** archive only after quantity is zero; history remains.
 
 ### InventoryMovement
@@ -90,6 +93,9 @@ deleted during ordinary operation.
 - **Idempotency:** an exact retry returns the originally committed records. A
   reused key with a different product, expiry, quantity, or lot number is an explicit
   conflict and cannot alter stock.
+- **Unknown received quantity:** a `RECEIVED` movement may have a null delta,
+  recording an uncounted receipt without inventing units. All other movement
+  kinds retain their required known signed deltas.
 - **Quantity model:** movement history is the audit source of truth, while
   `Batch.currentQuantity` is a transactionally maintained projection for fast
   queues and FEFO reads. Every write inserts the movement and updates the batch
@@ -160,11 +166,14 @@ deleted during ordinary operation.
 ### CatalogProduct
 
 - **Identity:** platform-wide `id`, independent of any shop.
-- **Fields:** canonical public name, optional brand/image, source and source
-  reference, timestamps, and globally unique barcode mappings.
+- **Fields:** canonical public name, optional brand/image, source
+  (`OPEN_FOOD_FACTS`, curated `VERIFIED_MANUAL`, or `USER_CONTRIBUTED`) and
+  source reference, timestamps, and globally unique barcode mappings.
 - **Relationship:** a shop-owned Product may optionally reference one
-  CatalogProduct. Existing Products remain unlinked until a deterministic or
-  reviewed matching workflow exists.
+  CatalogProduct, and one Shop may have at most one Product for that non-NULL
+  identity. Barcode resolution creates/reuses the global identity and preserves
+  the shop Product ID used by every Batch and InventoryMovement. Legacy NULL
+  links attach only when their existing barcode resolves deterministically.
 - **Privacy:** the current client has no direct catalog-curation grants. Public
   listings remain usable without this optional relationship.
 
@@ -206,8 +215,33 @@ deleted during ordinary operation.
 
 - `ReceivingSession`/`ReceivingDraft` for resumable scanner state.
 - `SupplierReturnPolicy` for deadlines and eligibility.
-- Domain services such as `ExpiryRiskService` and `FefoOrderingService` for
-  deterministic rules.
+- `FefoOrderingService` and other later deterministic rules.
 
-These are deliberately not implemented until their vertical slice supplies
-acceptance criteria.
+`ExpiryRiskService` is implemented as a pure calendar-date classifier. The
+remaining concepts are deliberately not implemented until their vertical slice
+supplies acceptance criteria.
+# Global catalog observations
+
+An Ansar crawl row is an observation about a global CatalogProduct, not a
+Product, Batch, or inventory event. A checksum-valid GTIN owns one immutable
+global barcode mapping. Distinct GTINs remain distinct CatalogProducts even when
+their names are similar. Ansar SKU, page URL, confidence, and first/last-seen
+timestamps belong to provenance; they do not define global identity.
+
+Crawler values may fill empty global attributes but never replace an existing
+non-empty value. Scanning reads this global record as a suggestion. A shop-owned
+Product is created or attached only after the shopkeeper confirms, and receiving
+still collects price, quantity, and Batch expiry independently.
+
+## CatalogProductImageContribution
+
+- **Identity:** one Cloudinary asset, unique by provider asset ID and bound to
+  the server-derived uploader, Shop, and CatalogProduct.
+- **Fields:** authoritative provider IDs/version/URL, MIME type, byte size,
+  dimensions, review status, canonical flag, and audit timestamps.
+- **Invariant:** a member may submit only for a CatalogProduct linked to a
+  Product in that Shop. New rows are always pending and non-canonical.
+- **Curation:** only the service role may approve, reject, or promote an image;
+  promotion atomically changes the CatalogProduct canonical URL.
+- **Isolation:** image selection/upload never changes price, expiry, Batch,
+  quantity, or InventoryMovement data.

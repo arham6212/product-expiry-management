@@ -69,7 +69,9 @@ rewriting history after implementation depends on it.
 
 - **Status:** Accepted
 - **Decision:** Represent expiry as a validated date without time-of-day or UTC
-  conversion; evaluate it relative to the shop timezone.
+  conversion; evaluate it relative to an explicit reference date derived for
+  the shop timezone. Classify signed calendar-day offsets as expired below 0,
+  today at 0, next 7 days at 1–7, 8–30 days at 8–30, and later at 31 or more.
 - **Reason:** Expiry labels are calendar dates. Treating them as instants can
   shift the visible date across timezones.
 
@@ -145,7 +147,7 @@ rewriting history after implementation depends on it.
 - **Decision:** Automatically cache only a normalized requested barcode plus a
   non-blank product or generic name. Brand and HTTP(S) image URL are optional;
   nutrition, ingredients, quantity, categories, and expiry-like provider data
-  are not persisted. Source is the domain value `OPEN_FOOD_FACTS`.
+  are not persisted. (Source was `OPEN_FOOD_FACTS` when active).
 - **Reason:** Barcode plus a usable name is the minimum catalog identity needed
   by receiving. Saving incomplete or unrelated provider fields would create
   unusable products and blur Product/Batch ownership.
@@ -300,3 +302,91 @@ rewriting history after implementation depends on it.
 - **Recovery:** The matching down script removes the RPC and its execute
   surface. Already-persisted role changes are business data and require an
   explicit audit before manual correction; rollback never guesses prior roles.
+
+## ADR-028 — Resolve global barcode identity behind compatible Shop RPCs
+
+- **Status:** Accepted; implemented locally and not yet deployed.
+- **Decision:** Preserve the existing external and manual barcode RPC signatures
+  while routing both through a non-client-callable helper. The helper locks the
+  global barcode before the Shop/barcode, creates or reuses exactly one global
+  CatalogProduct, and keeps a distinct shop-owned Product as the inventory
+  identity. External compatibility records retain `open_food_facts`; manual
+  catalog contributions use `user_contributed` while their Shop Product remains
+  `local_manual`. Existing NULL links attach lazily; conflicting non-NULL links
+  fail atomically. Direct clients may create only barcode-less local Products
+  and edit shop metadata, not provenance, catalog links, or barcode mappings.
+- **Reason:** Global reuse must be safe under cross-tenant concurrency without
+  breaking installed clients or reassigning Product, Batch, or movement IDs.
+  Fixed-provenance entry points, ordered advisory locks, unique constraints,
+  narrow column grants, RLS, and a private helper keep the authority server-side.
+- **Recovery:** The down script restores the prior RPCs, grants, policy, source
+  constraint, and index on a disposable database. It must not be applied after
+  real `user_contributed` rows exist without an explicit data-preserving recovery
+  decision; rollback never relabels contribution provenance.
+# ADR-029: Ingest Ansar observations through a service-only locked RPC
+
+**Decision:** Treat Ansar rows as source observations, not shop inventory. A
+service-key workflow validates GTINs twice and calls one `SECURITY INVOKER` RPC
+per observation. PostgreSQL takes a transaction advisory lock per barcode,
+reuses immutable global mappings, fills only empty global fields, and records
+source-specific data in a private provenance table. Mobile clients receive only
+a narrow safe-field lookup; shop Products are created or attached only through
+an authenticated confirmation RPC.
+
+**Consequences:** Retries and concurrent runs are idempotent, existing corrected
+catalog values win, and crawler data cannot create prices, expiry, Batches, or
+inventory. The scheduled workflow requires a backend-only Supabase secret and
+advances its checkpoint only after remote verification.
+
+# ADR-030: Verify image contributions at a privileged backend boundary
+
+**Decision:** A user-JWT Edge Function signs Cloudinary uploads only after
+membership and Product-link checks. The verification function reads
+authoritative provider metadata, validates signed uploader/Shop/catalog context
+and format/size/dimension/account/folder limits, then calls a service-only RPC
+that can create only a pending non-canonical contribution. Authenticated roles
+have no direct contribution mutations or canonical-image updates.
+
+**Consequences:** Client IDs, URLs, MIME values, and status are never trusted;
+cross-shop spoofing and global catalog defacement are rejected server-side.
+
+# ADR-031: Isolate platform image selection and compression
+
+**Decision:** Use `image_picker` for camera/gallery and interrupted Android
+activity recovery, `flutter_image_compress` for native bounded re-encoding
+without EXIF, and `http` for multipart upload, each behind a narrow feature
+interface. Client output is JPEG at most 2048 pixels per side and 5 MiB, while
+the backend independently enforces the boundary.
+
+**Consequences:** These dependencies supply capabilities absent from Flutter's
+framework APIs without leaking platform or vendor details into domain code.
+
+## 2026-09-06 — Direct scan-to-receive navigation
+
+Known barcodes return the shop Product immediately; global suggestions and unknown
+barcodes review metadata once before the existing atomic Product creation call.
+A shared navigation helper replaces resolution with receiving, retaining the
+original entry route. Receiving owns the repeat-scan loop; cancelling a next scan
+returns to its acknowledged receipt. Receiving providers use route identity so
+separate receipts for the same Product cannot share draft/submission state.
+Riverpod owns manual-entry mode, detection gating, submission and image progress;
+Flutter text controllers remain disposable form resources. Receiving observes
+its image provider across sheets and success, and image selection automatically
+uploads through the existing contribution boundary. Backend contracts, RLS,
+mandatory price, explicit quantity, Batch expiry and movement semantics are unchanged.
+
+## 2026-09-06 — Optional receiving quantity
+
+The focused receiving follow-up supersedes mandatory quantity. Blank is null in
+Flutter, RPC JSON, Batch.currentQuantity and the initial RECEIVED movement delta.
+Other movement types still require a known signed delta. Existing inventory is
+not rewritten; null-safe idempotency remains in the existing RPC and unknown
+counts remain in expiry reads. Migration 20260906153952 preserves signatures,
+authentication/membership checks, RLS and grants. Rollback refuses to invent
+counts if unknown-quantity data exists.
+
+Receiving uses active-shop currency, labels price per selling unit, loads optional
+pack metadata through the existing safe catalog lookup, and shows the scanned or
+primary barcode. Product metadata lookup failure never blocks a receipt. The
+scanner owns barcode-less creation. Pending image contributions are visually
+separate from the catalog image and cannot be withdrawn through local removal.

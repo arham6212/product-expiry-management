@@ -44,3 +44,25 @@ minimum_password_length = 8
 enable_signup = true
 double_confirm_changes = true
 enable_confirmations = false
+
+[functions.create-cloudinary-upload-signature]
+enabled = true
+verify_jwt = true
+import_map = "./functions/create-cloudinary-upload-signature/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/create-cloudinary-upload-signature/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/create-cloudinary-upload-signature/*.html" ]
+
+[functions.verify-cloudinary-upload]
+enabled = true
+verify_jwt = true
+import_map = "./functions/verify-cloudinary-upload/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/verify-cloudinary-upload/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/verify-cloudinary-upload/*.html" ]

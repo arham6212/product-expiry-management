@@ -1,5 +1,249 @@
 # Implementation Notes
 
+## 2026-09-04 — Ansar catalog synchronization
+
+- Added a standard-library Python importer with independent barcode validation,
+  retry-safe one-observation RPC calls, full reconciliation, atomic checkpoints,
+  concurrency verification, and secret-safe error output.
+- Added nullable global catalog enrichment fields, private Ansar provenance, a
+  checksum/internal-code validator, transaction-locked idempotent ingestion,
+  narrow scan lookup, confirmation-time shop Product attachment, and a
+  service-only verification RPC.
+- Updated the scheduled/manual catalog workflow to test, crawl, verify the
+  workbook, synchronize, verify Supabase, and only then commit persistent state.
+- Added scan-path support that shows global catalog data as a suggestion and
+  creates a shop Product only after the shopkeeper reviews and saves it.
+- Deployed migration `20260904201045_ansar_catalog_sync`; GitHub Actions run
+  `33916764979` completed the first production backfill and committed checkpoint
+  `3b2a92a`.
+
+### Verification
+
+- Python suite — PASS, 24 tests.
+- Clean local migration reset and all pgTAP — PASS, 10 files / 261 assertions.
+- Database schema lint at error level — PASS.
+- Rollback removal and clean restoration — PASS.
+- Linked dry run — PASS; exactly the Ansar sync migration was pending.
+- Focused Flutter suite — PASS, 35 tests; full Flutter suite — PASS, 227 tests.
+- Analyzer — completed with no errors and 14 pre-existing warnings/info notices.
+- Production advisors — completed; new catalog privacy notices are intentional,
+  the provenance foreign key is indexed, and unrelated advisories remain.
+- Production backfill — PASS: 1,120 rows examined; 1,061 inserted; 0 enriched;
+  0 unchanged; 59 rejected (57 workbook-invalid and 2 retailer/weighted).
+- Production identity/concurrency verification — PASS: 1,061 distinct products,
+  mappings, and observations; no missing or duplicate identities.
+- Protected production counts — unchanged at 4 Products, 4 ProductBarcodes,
+  3 Batches, 3 movements, and 0 listings/deals.
+
+## 2026-09-04 — Global Catalog compatibility Migration 1
+
+- Verified the local-only selling-price migration from a clean database. Its
+  38-assertion receive suite, focused Flutter coverage, and database lint pass;
+  it remains intended, compatible, and undeployed.
+- Recorded a read-only linked preflight: 1 Shop, 4 Products, 4 shop barcode
+  mappings, 0 CatalogProducts/global mappings, 3 Batches, 3 movements, and zero
+  duplicate/conflicting identities. RPC signatures/grants, source constraints,
+  RLS, and remote migration history matched the reviewed baseline.
+- Added `20260904100647_global_catalog_barcode_resolution.sql`. It preserves the
+  two public RPC contracts while using global-then-Shop advisory locks, one
+  global barcode identity, distinct shop Products, lazy NULL attachment,
+  conflict rejection, and fixed provenance per entry point.
+- Protected the global boundary with a private helper, unchanged service-only
+  catalog-table access, narrow Product column privileges, a local-only direct
+  insert policy, and removal of direct barcode-mapping writes.
+- Added a down script, expanded catalog pgTAP to 49 assertions, and added a real
+  parallel same-/cross-Shop test. No backfill, Product/Batch/movement identity
+  rewrite, Flutter production-code change, Cloudinary work, Migration 2,
+  deployment, or commit was performed.
+
+### Verification
+
+- Clean `supabase db reset` — PASS through selling-price then Catalog migration.
+- `supabase test db` — PASS, 8 files and 219/219 assertions.
+- Catalog concurrency script — PASS: same Shop `1|1|1`; cross Shop `1|1|4`.
+- `supabase db lint --local --schema public --level error --fail-on error` — PASS.
+- Focused Product-resolution/receiving Flutter tests — PASS, 70 tests.
+- Catalog rollback on the disposable local database plus restoration query — PASS.
+- Linked migration dry run — PASS; it lists exactly the selling-price migration
+  followed by the global-catalog compatibility migration.
+
+
+## 2026-09-04 — B12 real expiry dashboard Home
+
+- Replaced the static demo Home with a Material 3 dashboard driven exclusively
+  by `expiryDashboardProvider` and `expiryDashboardActionsProvider`.
+- Rendered B11's Expired, Today, Next 7 days, 8–30 days, Later, and separate
+  Needs date lists/counts without widget-side classification or device time.
+- Added repository-backed Product, optional brand/lot, expiry, quantity, and
+  received-date cards plus controlled loading, successful empty, error/retry,
+  visible refresh, and pull-to-refresh states.
+- Routed the prominent Home scan/receive action through AppShell's existing
+  Product-resolution-to-receiving navigation; successful receive invalidation
+  remains owned by B11.
+- Removed the misleading hard-coded counts, currency risk, supplier returns,
+  Product rows, and inert sales/reports/Product buttons. No repository, RPC,
+  migration, database, notification, Batch-detail, B13, or B22 behavior changed.
+
+### B12 verification
+
+- Focused Home tests — PASS (10 tests), including a 320x640 compact viewport.
+- App shell, root widget, and B11 controller regressions — PASS (18 tests).
+- Full Flutter suite — PASS (239 tests).
+- Formatting (106 files), analyzer, Android debug APK build, and diff check —
+  PASS. The build retains the existing forward-looking `mobile_scanner` Kotlin
+  plugin warning.
+
+## 2026-09-04 — B11 Riverpod expiry-dashboard controller
+
+- Added a feature-scoped Riverpod workflow with a private auto-disposed family
+  `AsyncNotifier` keyed by Shop ID and a public `expiryDashboardProvider` that
+  obtains that key only from `activeShopProvider`. This prevents a retained
+  Shop A `AsyncValue` from being exposed after Shop B becomes active.
+- Added immutable `ExpiryDashboardState` lists for all items, expired, today,
+  next 7 days, 8–30 days, later, and legacy needs-date items. The controller
+  partitions B10's existing B08 category values; it performs no date arithmetic,
+  classification, clock read, or Supabase mapping.
+- Added `ExpiryDashboardActions` for current-Shop future access, refresh, retry,
+  and targeted invalidation. Overlapping loads use Riverpod family generations,
+  so only the latest result remains observable.
+- Moved the existing `inventoryRepositoryProvider` declaration into a small
+  shared application file and re-exported it from the receiving controller to
+  preserve all existing imports and overrides.
+- Successful receiving now invalidates the current Shop's dashboard after the
+  repository acknowledges the atomic receive. Dashboard loads themselves never
+  call the receive/write path.
+- Added deterministic tests for initial/populated/empty states, immutable B08
+  buckets, authorization/network/malformed errors, retry, refresh, overlapping
+  refreshes, Shop switching, stale responses, missing Shop, no writes, and
+  successful-receive invalidation.
+- No widget, Home/navigation, notification, database, RPC, migration, B12,
+  deployment, or commit work was added.
+
+### B11 verification
+
+- `flutter test test/features/inventory/application/expiry_dashboard_controller_test.dart`
+  — PASS (13 tests).
+- `flutter test test/features/inventory/application test/features/shops/application`
+  — PASS (35 tests).
+- `flutter test test/domain test/features/inventory` — PASS (120 tests).
+- `flutter test --reporter compact` — PASS (229 tests).
+- `dart format --output=none --set-exit-if-changed lib test` — PASS.
+- `flutter analyze` — PASS, no issues.
+- `flutter build apk --debug` — PASS; built
+  `build/app/outputs/flutter-apk/app-debug.apk`. Flutter emitted the existing
+  forward-looking Built-in Kotlin warning for `mobile_scanner`.
+- `git diff --check` — PASS.
+- No pgTAP/database execution is required because B11 changes only application
+  state.
+
+## 2026-09-03 — B10 expiry-dashboard repository mapping
+
+- Added immutable `ExpiryDashboardSnapshot` and `ExpiryDashboardItem` values and
+  one `loadExpiryDashboard(shopId:)` method to `InventoryRepository`; no
+  PostgREST/Supabase type crosses the adapter boundary.
+- The Supabase adapter calls `get_expiry_dashboard`, validates the complete B09
+  field set and Shop identity, preserves the server reference date, checks the
+  signed day offset against date-only arithmetic, and classifies dated rows only
+  through the injected B08 service. Unknown expiry remains fully null/unclassified.
+- Mapping fails closed through existing repository failure kinds for malformed
+  types/dates/UUIDs/timestamps, missing fields, mixed reference dates,
+  non-positive quantity, inconsistent offset, cross-Shop rows, backend failures,
+  and invalid empty responses.
+- The in-memory adapter mirrors positive-stock filtering, Product/Shop integrity,
+  deterministic ordering, explicit injectable reference date, nullable expiry,
+  and B08 classification without consulting a device clock.
+- Corrected one real B09 contract defect in its still-unverified migration: an
+  authorized empty Shop now returns one metadata-only row carrying
+  `reference_date` and `shop_id`. The focused pgTAP plan is now 27 assertions.
+  No deployed migration or verified B09 behavior was rewritten.
+- Added focused Supabase/in-memory mapping tests and date-only difference tests;
+  existing receive-stock test doubles only gained delegation for the new method.
+- No Riverpod/controller, widget, notification, Batch persistence, B11, deploy,
+  or commit work was added.
+
+### B10 verification
+
+- Focused dashboard repository/domain tests — PASS (57 tests).
+- `flutter test test/domain test/features/inventory test/features/product_resolution`
+  — PASS (173 tests).
+- `dart format --output=none --set-exit-if-changed lib test` — PASS.
+- `flutter analyze` — PASS, no issues.
+- `git diff --check` — PASS.
+- B10 requires no database execution. B09's corrected 27-assertion pgTAP suite,
+  database lint, migration execution, and representative `EXPLAIN` remain
+  blocked by the unavailable local Docker/PostgreSQL/Supabase runtime and are
+  deferred to B25.
+
+## 2026-09-03 — B09 server-time expiry-dashboard read RPC
+
+- Confirmed no existing dashboard query/RPC could be safely extended. Existing
+  member RLS reads separate `batches` and `products`; the schema already has the
+  same-Shop composite Product relationship and `(shop_id, expiry_date)` index.
+- Added stable security-definer `get_expiry_dashboard(target_shop_id uuid)` in
+  one additive migration. It resolves `auth.uid()`, checks exact membership
+  before reading the Shop, validates `shops.time_zone` against PostgreSQL's
+  timezone catalog, pins an empty search path, fully qualifies relations, and
+  grants execute only to `authenticated`.
+- The function returns reference date, Shop/Batch/Product IDs, Product name and
+  optional brand, raw nullable expiry, nullable signed day offset, positive
+  current quantity, optional lot number, and Batch creation time as received
+  time. It orders dated urgency first and unknown expiry last.
+- Active dashboard semantics reuse the existing quantity projection:
+  `current_quantity > 0`. Zero-quantity history is excluded; null historical
+  expiry remains explicit with a null offset. No bucket thresholds are in SQL.
+- Added a matching down script and a 27-assertion pgTAP suite covering grants,
+  security-definer/search-path/stability properties, anon/cross-Shop denial,
+  owner/worker access, exact returned fields, ordering, active/unknown rows,
+  Shop-specific server dates across Kiritimati/Honolulu, invalid timezone,
+  existing Product/Batch RLS, empty-snapshot metadata, and absence of writes.
+- The B09 slice itself added no Flutter production contract, Riverpod/UI,
+  notification, deployment, or B07 behavior.
+
+### B09 verification
+
+- `flutter test test/domain test/features/inventory` — PASS (79 tests).
+- `dart format --output=none --set-exit-if-changed lib test` — PASS (101 files,
+  zero changes required).
+- `flutter analyze` — PASS, no issues.
+- Static pgTAP count inspection — PASS (declared plan and 27 assertions match).
+- `git diff --check` — PASS.
+- Database reset/pgTAP/`EXPLAIN` — BLOCKED: the Docker daemon is unavailable and
+  no PostgreSQL server is listening at `127.0.0.1:54322`. No database PASS is
+  claimed; B09 remains verification-pending for B25.
+- `supabase db lint --local` — BLOCKED by the same unavailable local PostgreSQL
+  endpoint.
+
+## 2026-09-03 — B08 deterministic expiry-risk classification
+
+- Reused the existing provider-independent `ExpiryRiskService` contract and
+  `LocalDate` value. Added `CalendarExpiryRiskService`; no clock, timezone
+  lookup, Riverpod state, UI, Supabase, or persistence dependency was added.
+- Replaced the obsolete three-day/overlapping enum with the pilot buckets:
+  expired, expires today, next 7 days, 8–30 days, and later. Unknown expiry is
+  intentionally not accepted by the classifier and remains a caller-owned
+  state for historical nullable Batches.
+- The service converts both date-only values to UTC midnight solely to count
+  calendar boundaries. Because callers cannot supply time-of-day, raw-hour and
+  daylight-saving offsets cannot shift a bucket.
+- Added focused coverage for offsets -1, 0, 1, 7, 8, 30, and 31; month and year
+  rollover; leap day; and repeated-input determinism.
+- Updated the product, domain, architecture, decision, and release-plan text
+  because the exact bucket thresholds are now an implemented business rule.
+- No B09 dashboard RPC/repository work, UI, notifications, migration,
+  deployment, B07 work, or earlier blocker implementation changed.
+
+### B08 verification
+
+- `flutter test test/domain/expiry_risk_service_test.dart` — PASS (11 tests).
+- `flutter test test/domain` — PASS (40 tests).
+- `flutter test test/domain test/features/inventory` — PASS (80 tests).
+- `dart format --output=none --set-exit-if-changed lib test` — PASS (101 files,
+  zero changes required).
+- `flutter analyze` — PASS, no issues.
+- `git diff --check` — PASS.
+- Database/pgTAP verification was not run because B08 changes no database
+  surface.
+
 ## 2026-09-03 — B06 owner-only member-role RPC
 
 - Inspected the owner-only invite/review/profile RPCs, role constraint, direct
@@ -674,3 +918,247 @@ aligned to that Flutter release's current Android template: Gradle 9.3.1, AGP
   local PostgreSQL, Docker, Podman, or `psql` runtime is available. The new
   43-assertion suite remains unexecuted and no pgTAP pass is claimed.
 - No migration deployment and no commit were created.
+
+## 2026-09-05 — Production-safe product image contributions
+
+- Preserved the already-deployed `20260904115650_image_contributions.sql` and
+  added a follow-up hardening migration after a linked preflight proved the
+  production contribution table is empty.
+- Removed authenticated contribution mutations and the client-metadata RPC,
+  added authoritative MIME/byte/dimension constraints and FK indexes, tightened
+  own-row RLS to current Shop members, and added a service-only idempotent
+  verified-record RPC. Canonical promotion remains service-only.
+- Both JWT-protected Edge Functions re-authorize the user/Shop/Product link.
+  Upload signatures bind random public ID, account folder, uploader/Shop/catalog
+  context, allowed formats, overwrite policy, and incoming 2048px transform.
+  Verification reads Cloudinary Admin API metadata, enforces 5 MiB/2048px and
+  account/format/context boundaries, then records only pending state.
+- Added picker, compression, and upload repository ports/adapters plus an
+  auto-disposed Riverpod controller with explicit selection/processing/upload,
+  success/error, duplicate-tap, cancellation, removal, and retained retry state.
+- Added the reusable card to global/local resolution and reviewed manual entry;
+  receiving exposes the same card in an optional photo sheet without changing
+  the receiving form transaction. Shop-only Products cannot submit globally.
+- Product creation completes before an optional manual-entry upload. A failed
+  upload leaves the Product saved and the photo selected, offering Retry or
+  Continue; receiving never waits for or joins an image operation.
+- Added `image_picker`, `flutter_image_compress`, and direct `http` dependencies;
+  ADR-031 records why Flutter framework APIs are insufficient.
+
+### Verification
+
+- Focused image controller/card and affected scan/manual/receiving widget tests:
+  PASS.
+- `flutter test`: PASS, 234 tests.
+- `flutter build web`, Android debug APK, and iOS simulator: PASS. Android emits
+  the upstream future-Kotlin-plugin warning for `mobile_scanner` and
+  `flutter_image_compress_common`.
+- `supabase db reset`: PASS through the hardening migration.
+- `supabase test db`: PASS, 10 files / 264 assertions before the final added
+  idempotent assertion; focused image pgTAP later PASS, 20 assertions.
+- `supabase db diff --local`: PASS, no schema drift.
+- `supabase db lint --level warning`: PASS with only two pre-existing PL/pgSQL
+  variable-shadow warnings outside this slice.
+- Deno format/check and four authoritative-metadata tests: PASS via `npx deno`.
+- Whole-repository `flutter analyze`: no image-slice findings; exits nonzero for
+  eight pre-existing warnings/info items in dirty Home/scanner files and tests.
+- Follow-up implementation deployed
+  `20260905202901_harden_image_contribution_trust_boundary.sql` and versions 7
+  of both Cloudinary Edge Functions to linked project `payabzxtemghbclvwkbc`.
+  Linked verification confirms authenticated execution is revoked from both
+  contribution-recording RPCs and retained only for `service_role` on the
+  trusted RPC.
+- The final focused Flutter analyzer passed. The 37 focused image,
+  scan/manual, and receiving tests passed; the full analyzer remains nonzero
+  only for six unrelated Home-screen lint findings left untouched.
+
+## 2026-09-06 — App-wide operational UI consistency pass
+
+- Added a small Material 3 design system for spacing, radius, semantic status
+  tones, page/section headers, search, and consistent loading/error/empty states.
+- Rebuilt Home around operational priority: expired/today/next-seven-days/date-
+  missing counts, a short next-action queue, and scan/receive shortcuts. Removed
+  decorative no-op actions, mock dates, arbitrary colors, and the oversized
+  presentation-only implementation.
+- Turned Inventory into a searchable active-batch list using the existing expiry
+  dashboard provider. Added a useful Alerts destination without adding a new
+  repository or business rule.
+- Simplified scanner chrome, kept camera/manual recovery, removed presentation
+  `dart:io`, and retained only a short scan-success transition.
+- Reordered receiving to Product -> mandatory Price -> mandatory Expiry ->
+  Quantity -> optional Lot. The follow-up quantity audit confirmed the existing
+  movement model requires a positive quantity, so blank input is rejected and
+  never converted to a fabricated value.
+- Improved authentication and More/Shop/Account hierarchy. Existing team and
+  storefront surfaces inherit the unified theme; their working flows and
+  feature-specific layouts were intentionally preserved.
+- No dependency, backend, migration, deployment, or commit change was made.
+
+### Verification
+
+- `dart format .` — PASS.
+- `flutter analyze` — PASS, no issues.
+- `flutter test` — PASS, 243 tests including compact-phone large-text and
+  optional-quantity regressions.
+- `flutter build web --dart-define-from-file=config/env.local.json` — PASS,
+  including the WebAssembly dry run.
+- `git diff --check` — PASS.
+
+## 2026-09-06 — Product details and catalog UX follow-up
+
+- Audited quantity end to end. Dart inputs and requests require `int`, the use
+  case and RPC reject null/non-positive quantity, and Batch current quantity plus
+  movement delta are non-null. Removed the temporary blank-to-one UI mapping;
+  unknown quantity needs a separately approved domain/schema design.
+- Added a shop-scoped combined catalog controller using the existing complete
+  Product read and active expiry-dashboard read. It rejects stale Shop results
+  and provides shared retry/invalidation behavior.
+- Added operational Product Details with identity/image, current price, most
+  urgent status, active batches ordered by urgency, expiry, lot, known quantity,
+  source/catalog identity, and the existing receive-stock action.
+- Inventory now shows every existing shop Product, including truthful "No active
+  batch" rows, while retaining name/brand/lot search.
+- Alerts now shows one exception queue ordered expired -> today -> next seven
+  days. Home, Inventory, Alerts, and receiving success all use the established
+  Product Details route.
+- Added a reusable product image primitive and shared expiry-status presentation
+  mapping. No package, backend, migration, deployment, or commit change.
+
+### Verification
+
+- `dart format .` — PASS.
+- `flutter analyze` — PASS, no issues.
+- Focused inventory and navigation widget tests — PASS, 24 tests.
+- `flutter test --reporter compact` — PASS, 252 tests.
+- `flutter build web --dart-define-from-file=config/env.local.json` — PASS,
+  including the WebAssembly dry run.
+- `git diff --check` — PASS.
+
+## 2026-09-06 — Shopkeeper scanning workflow
+
+### Result
+
+Known scan → receiving; global/unknown scan → one metadata review → receiving;
+optional photo → required price/expiry/quantity → acknowledged receipt → scan next,
+view product, or receive another batch. Cancelling scan-next keeps the receipt.
+The shared launcher replaces the resolution route, so back reaches the original
+entry point without replaying scanning or showing Home between steps. Manual
+creation no longer pauses for an extra photo/Continue step. Lookup outages stay
+retryable instead of masquerading as unknown products.
+
+Riverpod owns typed-entry mode, scanner duplicate gating, receiving submission,
+and image progress. Each receiving route has independent provider identity.
+Text controllers survive sheets/date pickers/covered routes; the receiving page
+observes image state through overlays and success. Back is blocked during an
+active product/stock write. Existing quantity validation and idempotent retries
+are retained. Receiving another batch retains the currently selected Product.
+
+Photo selection automatically submits through the existing backend adapter.
+Preview, camera/gallery choices, replacement, local removal, progress and retry
+are retained. Cancelling or failing replacement preserves the previously
+submitted contribution and cannot upload it twice. Failed/in-progress photos
+remain recoverable on the receipt screen; optional photos do not block stock.
+The date picker opens at the entered date and ignores results after disposal.
+The scanner no longer delays accepted scans for 600 ms or calls stop after that
+unmounted delay; mobile_scanner retains its built-in app lifecycle handling.
+
+### Files changed in this task
+
+Production:
+- lib/app/app_shell.dart
+- lib/features/home/presentation/home_page.dart
+- lib/features/inventory/presentation/scan_receive_workflow.dart (new)
+- lib/features/inventory/presentation/receive_stock_page.dart
+- lib/features/inventory/application/receive_stock_controller.dart
+- lib/features/product_resolution/presentation/product_resolution_page.dart
+- lib/features/product_resolution/presentation/manual_product_entry_page.dart
+- lib/features/product_resolution/presentation/product_barcode_scanner_screen.dart
+- lib/features/product_resolution/presentation/product_image_card.dart
+- lib/features/product_resolution/application/product_resolution_controller.dart
+- lib/features/product_resolution/application/product_image_controller.dart
+
+Tests:
+- test/app_shell_test.dart
+- test/features/inventory/presentation/receive_stock_page_test.dart
+- test/features/product_resolution/presentation/product_resolution_page_test.dart
+- test/features/product_resolution/presentation/manual_product_entry_page_test.dart
+- test/features/product_resolution/presentation/product_image_card_test.dart
+- test/features/product_resolution/application/product_image_controller_test.dart
+
+Task records: agent/current-task.md, agent/acceptance-criteria.md,
+agent/implementation-notes.md, agent/review-findings.md, docs/decisions.md.
+Existing user changes were retained. No dependency, backend or schema edits.
+
+### Verification
+
+- PASS: `dart format --output=none --set-exit-if-changed` on all 17 touched
+  Dart source/test files (zero changes).
+- PASS: `flutter analyze` (no issues).
+- PASS: `flutter test test/features/product_resolution
+  test/features/inventory/presentation
+  test/features/inventory/application/receive_stock_test.dart
+  test/app_shell_test.dart test/features/home/presentation/home_page_test.dart`
+  (111 tests). Includes known/global/manual resolution, missing/existing images,
+  camera/gallery choice, upload/replace failure/cancellation/retry, mandatory
+  price/expiry/quantity, save failure/idempotency, pending-save back, and the
+  scan-next/cancel/system-back loop.
+- PASS: `git diff --check` on touched tracked source/tests.
+- PASS: `flutter build apk --debug` using the normal app entrypoint.
+  Existing flutter_image_compress_common/mobile_scanner Kotlin Gradle plugin
+  compatibility warnings remain; they did not fail the build.
+- PASS: demo Android build/run via a temporary in-memory entrypoint outside
+  the repository. No live inventory/backend writes were used for emulator QA.
+
+### Limits and next slice
+
+No deployment or commit. Camera optics, real gallery/camera permissions,
+Android process-death recovery and live signed Cloudinary verification still
+need physical-device/backend acceptance. Drafts are retained for the active
+route, not persisted across process death or deliberately leaving the workflow.
+Products without a catalog relationship still cannot submit photos under the
+existing backend contract. Contributions remain pending review and never replace
+the canonical image client-side. Recommended next slice: physical-device scan
+and image-upload acceptance, including process-death/relaunch recovery.
+
+Android emulator QA completed with in-memory data: opened the scanner, used typed
+barcode 6281007000062, reached receiving directly, entered price 7.50, expiry
+2027-01-15 and quantity 12, saved and inspected the receipt, opened Scan next
+product, and used Android system Back to return to the same acknowledged receipt.
+Receiving and success screenshots were visually inspected with no overflow.
+This checks navigation/form rendering; it does not certify optical barcode
+recognition or live Cloudinary/Supabase operations.
+
+## Focused Receive Stock follow-up — complete
+
+- Receiving removes the extra heading and barcode-less action; scanner now owns
+  barcode-less creation. Active-shop currency, per-selling-unit price, available
+  brand/pack/barcode, compact catalog/pending photos, collapsed More details and
+  keyboard-accessible Save stock are implemented. Uploaded contributions cannot
+  be removed through the UI or local removal controller.
+- Blank quantity is null through validation, request JSON, Batch and received
+  movement. Expiry reads retain unknown-quantity batches and display Unknown.
+  Known quantity constraints, required price/expiry, duplicate guards and RLS stay
+  intact. Optional metadata uses the existing safe catalog lookup.
+- Source changes: domain_models; receive_stock/controller; both inventory
+  repositories; expiry_dashboard; receiving/details/filtered-expiry pages;
+  resolver/manual creator; image controller/card; scanner/resolution page;
+  Home/AppShell entry points and unknown-quantity labels. Focused tests cover these
+  changes; relevant domain/architecture/product-spec/decision records updated.
+- PASS: 116 focused Flutter tests across domain, receiving application/data/UI,
+  affected product resolution/image logic, Home and shell navigation.
+- PASS: `supabase test db --local` for optional_receiving_quantity,
+  stock_receiving_rls and expiry_dashboard_rpc (77 assertions).
+- PASS: `flutter analyze`; `dart format --output=none --set-exit-if-changed` on
+  24 touched Dart files; `git diff --check`; `flutter build apk --debug`.
+- Deployed only `20260906153952_optional_receiving_quantity.sql` to linked project
+  `payabzxtemghbclvwkbc`. File version matches deployed history. Local history was
+  aligned after executing/testing this migration directly against local Postgres.
+- Linked pgTAP command could not run because `no_plan()`/pgTAP is unavailable.
+  Equivalent transactional SQL assertions passed for null/known receipts, exact
+  retry, conflict, expiry visibility, mandatory price/expiry and invalid zero.
+  Test fixtures were rolled back. Before/after: 7 batches and 7 movements, both
+  known-quantity sums 106. Nullable fields, retained RLS and RPC grants verified.
+- Rollback refuses to proceed when unknown counts exist rather than inventing
+  quantities. Existing plugin Kotlin Gradle compatibility warnings remain; build
+  succeeds. No commit, broad audit, full suite, device or manual testing performed.
+- Next slice: user device acceptance of the focused form, keyboard and photo UX.

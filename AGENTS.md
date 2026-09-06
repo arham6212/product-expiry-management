@@ -30,6 +30,12 @@ Before changing code:
 
 ## Scope and implementation rules
 
+For implementation requests, inspect only relevant files, make the smallest
+production-safe change, run focused checks, deploy requested Supabase changes
+directly, and provide a short result. Do not perform broad reconnaissance, full
+test suites, unrelated cleanup, documentation rewrites, or lengthy reports
+unless explicitly requested or strictly required by the change.
+
 1. Work on one small, reviewable vertical slice at a time.
 2. Do not expand scope without explicit instruction.
 3. Business rules must never live only in UI components.
@@ -119,4 +125,3 @@ Every completed task must report:
 - important decisions;
 - known limitations; and
 - the recommended next vertical slice.
-

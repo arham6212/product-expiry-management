@@ -91,6 +91,9 @@ final class Product {
     this.source = ProductSource.localManual,
     this.sourceReference,
     this.catalogProductId,
+    this.sellingPriceMinor,
+    this.barcode,
+    this.packagingDisplay,
     this.isArchived = false,
   }) {
     _requireText(id, 'id');
@@ -99,6 +102,9 @@ final class Product {
     if (imageUrl != null &&
         (!imageUrl!.hasAuthority || (imageUrl!.scheme != 'http' && imageUrl!.scheme != 'https'))) {
       throw const DomainValidationException('imageUrl must be an absolute HTTP or HTTPS URL.');
+    }
+    if (sellingPriceMinor != null && sellingPriceMinor! <= 0) {
+      throw const DomainValidationException('sellingPriceMinor must be greater than zero.');
     }
   }
 
@@ -111,9 +117,29 @@ final class Product {
   final ProductSource source;
   final String? sourceReference;
   final String? catalogProductId;
+  final int? sellingPriceMinor;
+  final String? barcode;
+  final String? packagingDisplay;
   final DateTime createdAt;
   final DateTime updatedAt;
   final bool isArchived;
+  Product withScanMetadata({required String barcode, String? packagingDisplay}) => Product(
+    id: id,
+    shopId: shopId,
+    name: name,
+    brand: brand,
+    category: category,
+    imageUrl: imageUrl,
+    source: source,
+    sourceReference: sourceReference,
+    catalogProductId: catalogProductId,
+    sellingPriceMinor: sellingPriceMinor,
+    barcode: barcode,
+    packagingDisplay: packagingDisplay ?? this.packagingDisplay,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
+    isArchived: isArchived,
+  );
 }
 
 final class ProductBarcode {
@@ -159,7 +185,7 @@ final class Batch {
     _requireText(id, 'id');
     _requireText(shopId, 'shopId');
     _requireText(productId, 'productId');
-    _requireNonNegative(currentQuantity, 'currentQuantity');
+    if (currentQuantity != null) _requireNonNegative(currentQuantity!, 'currentQuantity');
     if (unitCostMinor != null) _requireNonNegative(unitCostMinor!, 'unitCostMinor');
     if ((unitCostMinor == null) != (currencyCode == null)) {
       throw const DomainValidationException(
@@ -173,7 +199,7 @@ final class Batch {
   final String shopId;
   final String productId;
   final LocalDate? expiryDate;
-  final int currentQuantity;
+  final int? currentQuantity;
   final String? supplierId;
   final String? lotCode;
   final int? unitCostMinor;
@@ -200,6 +226,9 @@ final class InventoryMovement {
     _requireText(shopId, 'shopId');
     _requireText(batchId, 'batchId');
     _requireText(idempotencyKey, 'idempotencyKey');
+    if (quantityDelta == null && type != InventoryMovementType.received) {
+      throw const DomainValidationException('Only received movements may have unknown quantity.');
+    }
     if (quantityDelta == 0) {
       throw const DomainValidationException('quantityDelta must not be zero.');
     }
@@ -208,10 +237,10 @@ final class InventoryMovement {
         type == InventoryMovementType.sold ||
         type == InventoryMovementType.disposed ||
         type == InventoryMovementType.returned;
-    if (shouldIncrease && quantityDelta < 0) {
+    if (shouldIncrease && quantityDelta != null && quantityDelta! < 0) {
       throw const DomainValidationException('Received quantityDelta must be positive.');
     }
-    if (shouldDecrease && quantityDelta > 0) {
+    if (shouldDecrease && quantityDelta != null && quantityDelta! > 0) {
       throw DomainValidationException('${type.name} quantityDelta must be negative.');
     }
   }
@@ -220,7 +249,7 @@ final class InventoryMovement {
   final String shopId;
   final String batchId;
   final InventoryMovementType type;
-  final int quantityDelta;
+  final int? quantityDelta;
   final DateTime occurredAt;
   final DateTime createdAt;
   final String idempotencyKey;

@@ -69,6 +69,25 @@ void main() {
     });
   });
 
+  test('only received movements may have unknown quantity', () {
+    InventoryMovement movement(InventoryMovementType type) => InventoryMovement(
+      id: 'unknown-movement',
+      shopId: 'shop-1',
+      batchId: 'batch-1',
+      type: type,
+      quantityDelta: null,
+      occurredAt: timestamp,
+      createdAt: timestamp,
+      idempotencyKey: 'unknown',
+    );
+    expect(movement(InventoryMovementType.received).quantityDelta, isNull);
+    for (final type in InventoryMovementType.values.where(
+      (type) => type != InventoryMovementType.received,
+    )) {
+      expect(() => movement(type), throwsA(isA<DomainValidationException>()));
+    }
+  });
+
   group('inventory movements', () {
     test('accepts received stock as a positive delta', () {
       final movement = InventoryMovement(

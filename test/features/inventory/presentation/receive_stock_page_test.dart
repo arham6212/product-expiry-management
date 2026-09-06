@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:product_expiry_management/domain/entities/domain_models.dart';
 import 'package:product_expiry_management/domain/value_objects/local_date.dart';
+import 'package:product_expiry_management/features/inventory/application/expiry_dashboard.dart';
 import 'package:product_expiry_management/features/inventory/application/receive_stock.dart';
 import 'package:product_expiry_management/features/inventory/application/receive_stock_controller.dart';
 import 'package:product_expiry_management/features/inventory/data/in_memory_inventory_repository.dart';
 import 'package:product_expiry_management/features/inventory/presentation/receive_stock_page.dart';
 import 'package:product_expiry_management/features/product_resolution/application/product_catalog_repository.dart';
 import 'package:product_expiry_management/features/product_resolution/application/product_resolution_controller.dart';
-import 'package:product_expiry_management/features/product_resolution/data/in_memory_product_catalog_repository.dart';
 import 'package:product_expiry_management/features/shops/application/shop_access.dart';
 import 'package:product_expiry_management/features/shops/application/shop_session_controller.dart';
 
@@ -30,6 +30,8 @@ void main() {
       id: 'P1',
       shopId: 'shop-1',
       name: 'Almarai Milk 1L',
+      catalogProductId: 'catalog-1',
+      sellingPriceMinor: 725,
       createdAt: timestamp,
       updatedAt: timestamp,
     );
@@ -64,6 +66,7 @@ void main() {
         child: MaterialApp(
           home: ReceiveStockPage(
             shopId: product.shopId,
+            currencyCode: 'USD',
             initialProduct: withInitialProduct ? product : null,
           ),
         ),
@@ -75,17 +78,75 @@ void main() {
   Future<void> fillForm(
     WidgetTester tester, {
     String quantity = '20',
+    String? sellingPrice,
     String expiry = '2026-09-12',
     String lot = 'LOT-7',
   }) async {
+    if (sellingPrice != null) {
+      await tester.enterText(find.byKey(const Key('sellingPriceField')), sellingPrice);
+    }
     await tester.enterText(find.byKey(const Key('quantityField')), quantity);
     if (expiry.isNotEmpty) {
       await tester.enterText(find.byKey(const Key('expiryField')), expiry);
     }
     if (lot.isNotEmpty) {
+      if (find.byKey(const Key('lotNumberField')).evaluate().isEmpty) {
+        await tester.ensureVisible(find.byKey(const Key('receivingMoreDetails')));
+        await tester.tap(find.text('More details'));
+        await tester.pumpAndSettle();
+      }
       await tester.enterText(find.byKey(const Key('lotNumberField')), lot);
     }
+    await tester.scrollUntilVisible(
+      find.byKey(const Key('saveReceivedStockButton')),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
   }
+
+  testWidgets('uses active shop currency and shows metadata below the product', (tester) async {
+    product = product.withScanMetadata(barcode: '6281007000062', packagingDisplay: '1 L');
+    await pumpPage(tester, activeShop: _workerAccess(timestamp));
+    expect(find.text('Selling price (QAR) *'), findsOneWidget);
+    expect(find.text('Price per selling unit'), findsOneWidget);
+    expect(find.text('1 L · 6281007000062'), findsOneWidget);
+    expect(find.text('Add stock'), findsNothing);
+    expect(find.byKey(const Key('addProductWithoutBarcodeButton')), findsNothing);
+    expect(find.byKey(const Key('lotNumberField')), findsNothing);
+    expect(find.text('0/120'), findsNothing);
+  });
+
+  testWidgets('save remains above the keyboard and keyboards match input types', (tester) async {
+    await pumpPage(tester);
+    expect(
+      tester
+          .widget<TextField>(
+            find.descendant(
+              of: find.byKey(const Key('sellingPriceField')),
+              matching: find.byType(TextField),
+            ),
+          )
+          .keyboardType,
+      const TextInputType.numberWithOptions(decimal: true),
+    );
+    expect(
+      tester
+          .widget<TextField>(
+            find.descendant(
+              of: find.byKey(const Key('quantityField')),
+              matching: find.byType(TextField),
+            ),
+          )
+          .keyboardType,
+      TextInputType.number,
+    );
+    tester.view.viewInsets = FakeViewPadding(bottom: 300 * tester.view.devicePixelRatio);
+    addTearDown(tester.view.resetViewInsets);
+    await tester.pumpAndSettle();
+    final save = find.byKey(const Key('saveReceivedStockButton'));
+    expect(tester.getRect(save).bottom, lessThanOrEqualTo(300));
+    expect(save.hitTestable(), findsOneWidget);
+  });
 
   testWidgets('preselects resolved Product and records received stock', (tester) async {
     await pumpPage(tester);
@@ -95,6 +156,7 @@ void main() {
       find.byKey(const Key('productField')),
     );
     expect(productField.initialValue, product.id);
+    expect(_fieldText(tester, 'sellingPriceField'), '7.25');
 
     await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
     await tester.pumpAndSettle();
@@ -108,54 +170,62 @@ void main() {
     expect(repository.movements, hasLength(1));
   });
 
-  testWidgets('creates a barcode-less Product, preserves the draft, and receives it', (
-    tester,
-  ) async {
-    final catalogRepository = InMemoryProductCatalogRepository(
-      idGenerator: (prefix) => '$prefix-created',
-      clock: () => timestamp,
-    );
-    final receivingRepository = _AcceptCreatedProductInventoryRepository(
-      products: const [],
-      clock: () => timestamp,
-    );
-    final receivingUseCase = ReceiveStock(
-      repository: receivingRepository,
-      idempotencyKeyGenerator: () => 'barcode-less-receive',
-    );
-    await pumpPage(
-      tester,
-      displayedRepository: receivingRepository,
-      receiveStock: receivingUseCase,
-      productCatalogRepository: catalogRepository,
-      activeShop: _workerAccess(timestamp),
-      withInitialProduct: false,
-    );
+  testWidgets('blank quantity is saved as unknown without fabricating a count', (tester) async {
+    await pumpPage(tester);
+    await fillForm(tester, quantity: '', lot: '');
+    await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
+    await tester.pumpAndSettle();
+    expect(find.text('Stock received'), findsOneWidget);
+    expect(find.text('Unknown'), findsOneWidget);
+    expect(repository.batches.single.currentQuantity, isNull);
+    expect(repository.movements.single.quantityDelta, isNull);
+  });
+
+  testWidgets('offers an optional product photo without blocking receiving', (tester) async {
+    await pumpPage(tester);
+
+    expect(find.text('Add photo'), findsOneWidget);
+    expect(find.byKey(const Key('addProductWithoutBarcodeButton')), findsNothing);
+    expect(find.text('Add stock'), findsNothing);
     await fillForm(tester);
-
-    await tester.tap(find.byKey(const Key('addProductWithoutBarcodeButton')));
-    await tester.pumpAndSettle();
-    await tester.enterText(find.byKey(const Key('barcodeLessProductName')), '  Fresh   milk  ');
-    await tester.enterText(find.byKey(const Key('barcodeLessProductBrand')), ' Local Dairy ');
-    await tester.tap(find.byKey(const Key('saveBarcodeLessProductButton')));
-    await tester.pumpAndSettle();
-
-    expect(_fieldText(tester, 'quantityField'), '20');
-    expect(_fieldText(tester, 'expiryField'), '2026-09-12');
-    expect(_fieldText(tester, 'lotNumberField'), 'LOT-7');
-    final productField = tester.widget<DropdownButtonFormField<String>>(
-      find.byKey(const Key('productField')),
-    );
-    expect(productField.initialValue, 'product-created');
-    expect(catalogRepository.barcodes, isEmpty);
-
     await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
     await tester.pumpAndSettle();
 
     expect(find.text('Stock received'), findsOneWidget);
-    expect(find.text('Fresh milk'), findsOneWidget);
-    expect(receivingRepository.lastRequest?.productId, 'product-created');
-    expect(receivingRepository.lastRequest?.expiryDate, LocalDate(2026, 9, 12));
+  });
+
+  testWidgets('shows Shop currency and persists an edited existing Product price', (tester) async {
+    await pumpPage(tester);
+
+    expect(find.text('Selling price (USD) *'), findsOneWidget);
+    expect(_fieldText(tester, 'sellingPriceField'), '7.25');
+    await fillForm(tester, sellingPrice: '8.50');
+    await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
+    await tester.pumpAndSettle();
+
+    final updated = (await repository.listProducts(shopId: product.shopId)).single;
+    expect(updated.sellingPriceMinor, 850);
+  });
+
+  testWidgets('rejects missing, zero, negative, and malformed selling prices', (tester) async {
+    await pumpPage(tester);
+
+    for (final invalid in ['', '0', '-1', 'abc', 'NaN', 'Infinity']) {
+      await tester.enterText(find.byKey(const Key('sellingPriceField')), invalid);
+      await fillForm(tester);
+      await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
+      await tester.pump();
+      expect(
+        find.text(
+          invalid.isEmpty
+              ? 'Enter a selling price.'
+              : 'Enter a price greater than zero with up to 2 decimal places.',
+        ),
+        findsOneWidget,
+        reason: invalid,
+      );
+      expect(repository.batches, isEmpty);
+    }
   });
 
   testWidgets('requires expiry while keeping lot number optional', (tester) async {
@@ -213,6 +283,9 @@ void main() {
     expect(button.onPressed, isNull);
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     expect(blockingRepository.receiveCalls, 1);
+    await tester.binding.handlePopRoute();
+    await tester.pump();
+    expect(find.byKey(const Key('saveReceivedStockButton')), findsOneWidget);
 
     gate.complete(
       await repository.receive(
@@ -220,6 +293,7 @@ void main() {
           shopId: 'shop-1',
           productId: 'P1',
           quantity: 20,
+          sellingPriceMinor: 725,
           expiryDate: LocalDate(2026, 9, 12),
           lotNumber: null,
           idempotencyKey: 'gate-result',
@@ -250,7 +324,7 @@ void main() {
     expect(_fieldText(tester, 'expiryField'), '2026-09-12');
     expect(_fieldText(tester, 'lotNumberField'), 'LOT-7');
 
-    await tester.drag(find.byType(ListView), const Offset(0, -300));
+    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -300));
     await tester.pump();
     await tester.tap(find.text('Retry'));
     await tester.pumpAndSettle();
@@ -271,7 +345,7 @@ void main() {
     await tester.pumpAndSettle();
 
     await tester.enterText(find.byKey(const Key('quantityField')), '21');
-    await tester.drag(find.byType(ListView), const Offset(0, -300));
+    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -300));
     await tester.pump();
     await tester.tap(find.byKey(const Key('saveReceivedStockButton')));
     await tester.pumpAndSettle();
@@ -298,6 +372,11 @@ final class _BlockingInventoryRepository implements InventoryRepository {
   }
 
   @override
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId}) {
+    return delegate.loadExpiryDashboard(shopId: shopId);
+  }
+
+  @override
   Future<ReceivingReceipt> receive(ReceivingRequest request) {
     receiveCalls += 1;
     return receipt;
@@ -314,6 +393,11 @@ final class _FailOnceInventoryRepository implements InventoryRepository {
   @override
   Future<List<Product>> listProducts({required String shopId}) {
     return delegate.listProducts(shopId: shopId);
+  }
+
+  @override
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId}) {
+    return delegate.loadExpiryDashboard(shopId: shopId);
   }
 
   @override
@@ -336,7 +420,7 @@ ShopAccess _workerAccess(DateTime timestamp) {
       id: 'shop-1',
       name: 'Shop',
       timeZone: 'UTC',
-      currencyCode: 'USD',
+      currencyCode: 'QAR',
       createdAt: timestamp,
       updatedAt: timestamp,
     ),
@@ -347,47 +431,4 @@ ShopAccess _workerAccess(DateTime timestamp) {
       createdAt: timestamp,
     ),
   );
-}
-
-final class _AcceptCreatedProductInventoryRepository implements InventoryRepository {
-  _AcceptCreatedProductInventoryRepository({required this.products, required this.clock});
-
-  final List<Product> products;
-  final DateTime Function() clock;
-  ReceivingRequest? lastRequest;
-
-  @override
-  Future<List<Product>> listProducts({required String shopId}) async {
-    return products.where((product) => product.shopId == shopId).toList();
-  }
-
-  @override
-  Future<ReceivingReceipt> receive(ReceivingRequest request) async {
-    lastRequest = request;
-    final timestamp = clock();
-    final batch = Batch(
-      id: 'batch-created',
-      shopId: request.shopId,
-      productId: request.productId,
-      expiryDate: request.expiryDate,
-      currentQuantity: request.quantity,
-      lotCode: request.lotNumber,
-      createdAt: timestamp,
-      updatedAt: timestamp,
-    );
-    return ReceivingReceipt(
-      batch: batch,
-      movement: InventoryMovement(
-        id: 'movement-created',
-        shopId: request.shopId,
-        batchId: batch.id,
-        type: InventoryMovementType.received,
-        quantityDelta: request.quantity,
-        occurredAt: timestamp,
-        createdAt: timestamp,
-        idempotencyKey: request.idempotencyKey,
-      ),
-      wasDuplicate: false,
-    );
-  }
 }

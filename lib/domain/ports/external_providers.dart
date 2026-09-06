@@ -27,48 +27,6 @@ abstract interface class BarcodeScanner {
   Future<void> stop();
 }
 
-final class ProductLookupCandidate {
-  const ProductLookupCandidate({
-    required this.barcode,
-    required this.name,
-    required this.providerReference,
-    this.brand,
-    this.imageUrl,
-  });
-
-  final String barcode;
-  final String name;
-  final String? brand;
-  final Uri? imageUrl;
-  final String providerReference;
-}
-
-enum ProductLookupFailureKind { timeout, network, rateLimited, server, malformed, unknown }
-
-sealed class ProductLookupResult {
-  const ProductLookupResult();
-}
-
-final class ProductLookupFound extends ProductLookupResult {
-  const ProductLookupFound(this.candidate);
-
-  final ProductLookupCandidate candidate;
-}
-
-final class ProductLookupNotFound extends ProductLookupResult {
-  const ProductLookupNotFound();
-}
-
-final class ProductLookupUnavailable extends ProductLookupResult {
-  const ProductLookupUnavailable(this.kind);
-
-  final ProductLookupFailureKind kind;
-}
-
-abstract interface class ProductLookupProvider {
-  Future<ProductLookupResult> findByBarcode(String barcode);
-}
-
 final class ExpiryImage {
   const ExpiryImage({required this.bytes, required this.mediaType});
 

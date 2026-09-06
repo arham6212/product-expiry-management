@@ -47,6 +47,46 @@ final class ProductCatalogSaveResult {
   final bool wasCreated;
 }
 
+final class CatalogProductSuggestion {
+  const CatalogProductSuggestion({
+    required this.id,
+    required this.name,
+    this.brand,
+    this.imageUrl,
+    this.productFamily,
+    this.variantName,
+    this.productType,
+    this.packCount,
+    this.unitQuantity,
+    this.unitQuantityUnit,
+    this.totalQuantity,
+    this.totalQuantityUnit,
+    this.packagingDisplay,
+    this.category,
+    this.subcategory,
+    this.countryOfOrigin,
+    this.manufacturer,
+  });
+
+  final String id;
+  final String name;
+  final String? brand;
+  final Uri? imageUrl;
+  final String? productFamily;
+  final String? variantName;
+  final String? productType;
+  final int? packCount;
+  final num? unitQuantity;
+  final String? unitQuantityUnit;
+  final num? totalQuantity;
+  final String? totalQuantityUnit;
+  final String? packagingDisplay;
+  final String? category;
+  final String? subcategory;
+  final String? countryOfOrigin;
+  final String? manufacturer;
+}
+
 final class ProductCatalogException implements Exception {
   const ProductCatalogException(this.message, {this.cause});
 
@@ -82,6 +122,20 @@ abstract interface class ProductCatalogRepository {
   Future<Product> createManualProductWithoutBarcode({
     required String shopId,
     required ManualProductDraft product,
+  });
+}
+
+/// Optional global-catalog capability. Keeping it separate preserves adapters
+/// that intentionally implement only the shop-owned Product boundary.
+abstract interface class GlobalCatalogProductRepository {
+  Future<CatalogProductSuggestion?> findGlobalByBarcode({required NormalizedBarcode barcode});
+
+  /// Creates or attaches the shop-owned Product only after user confirmation.
+  Future<ProductCatalogSaveResult> saveCatalogProduct({
+    required String shopId,
+    required NormalizedBarcode barcode,
+    required ManualProductDraft product,
+    required CatalogProductSuggestion suggestion,
   });
 }
 

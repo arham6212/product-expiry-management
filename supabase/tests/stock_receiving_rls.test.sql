@@ -1,5 +1,5 @@
 begin;
-select plan(31);
+select plan(38);
 
 insert into auth.users (id, email)
 values
@@ -16,19 +16,28 @@ values
   ('cccccccc-cccc-cccc-cccc-cccccccccccc', '44444444-4444-4444-4444-444444444444', 'owner'),
   ('dddddddd-dddd-dddd-dddd-dddddddddddd', '55555555-5555-5555-5555-555555555555', 'owner');
 
-insert into public.products (id, shop_id, name, source)
+insert into public.catalog_products (id, canonical_name, source)
+values (
+  'cccccccc-0000-0000-0000-000000000000',
+  'Canonical receiving product',
+  'verified_manual'
+);
+
+insert into public.products (id, shop_id, name, source, catalog_product_id)
 values
   (
     'cccccccc-1111-1111-1111-111111111111',
     'cccccccc-cccc-cccc-cccc-cccccccccccc',
     'Receiving product',
-    'local_manual'
+    'local_manual',
+    'cccccccc-0000-0000-0000-000000000000'
   ),
   (
     'dddddddd-2222-2222-2222-222222222222',
     'dddddddd-dddd-dddd-dddd-dddddddddddd',
     'Other receiving product',
-    'local_manual'
+    'local_manual',
+    null
   );
 
 -- Historical unknown-expiry stock remains valid data. B02 changes only the
@@ -46,6 +55,21 @@ insert into public.batches (
 
 select has_table('public', 'batches', 'batches table exists');
 select has_table('public', 'inventory_movements', 'inventory movements table exists');
+select is(
+  (
+    select is_nullable
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'products'
+      and column_name = 'selling_price_minor'
+  ),
+  'YES',
+  'selling price stays nullable for historical Products'
+);
+select ok(
+  to_regprocedure('public.receive_product_stock(uuid,uuid,integer,date,text,text)') is null,
+  'the old receive contract cannot bypass mandatory selling price'
+);
 select is(
   (
     select is_nullable
@@ -98,7 +122,8 @@ select throws_ok(
       20,
       '2026-09-12',
       'LOT-7',
-      'receive-anonymous'
+      'receive-anonymous',
+      725
     )$$,
   '42501',
   null,
@@ -164,7 +189,8 @@ select throws_ok(
       20,
       '2026-09-12',
       null,
-      'receive-other-shop'
+      'receive-other-shop',
+      725
     )$$,
   '42501',
   null,
@@ -177,7 +203,8 @@ select throws_ok(
       20,
       '2026-09-12',
       null,
-      'receive-wrong-product'
+      'receive-wrong-product',
+      725
     )$$,
   'P0002',
   null,
@@ -190,7 +217,8 @@ select throws_ok(
       0,
       '2026-09-12',
       null,
-      'receive-invalid-quantity'
+      'receive-invalid-quantity',
+      725
     )$$,
   '22023',
   null,
@@ -203,11 +231,54 @@ select throws_ok(
       20,
       null,
       null,
-      'receive-missing-expiry'
+      'receive-missing-expiry',
+      725
     )$$,
   '22023',
   'Expiry date is required.',
   'missing expiry is rejected before persistence'
+);
+select throws_ok(
+  $$select * from public.receive_product_stock(
+      'cccccccc-cccc-cccc-cccc-cccccccccccc',
+      'cccccccc-1111-1111-1111-111111111111',
+      20,
+      '2026-09-12',
+      null,
+      'receive-missing-price',
+      null
+    )$$,
+  '22023',
+  'Selling price must be greater than zero.',
+  'missing selling price is rejected before persistence'
+);
+select throws_ok(
+  $$select * from public.receive_product_stock(
+      'cccccccc-cccc-cccc-cccc-cccccccccccc',
+      'cccccccc-1111-1111-1111-111111111111',
+      20,
+      '2026-09-12',
+      null,
+      'receive-zero-price',
+      0
+    )$$,
+  '22023',
+  'Selling price must be greater than zero.',
+  'zero selling price is rejected before persistence'
+);
+select throws_ok(
+  $$select * from public.receive_product_stock(
+      'cccccccc-cccc-cccc-cccc-cccccccccccc',
+      'cccccccc-1111-1111-1111-111111111111',
+      20,
+      '2026-09-12',
+      null,
+      'receive-negative-price',
+      -1
+    )$$,
+  '22023',
+  'Selling price must be greater than zero.',
+  'negative selling price is rejected before persistence'
 );
 select results_eq(
   $$select
@@ -224,11 +295,30 @@ select results_eq(
       20,
       '2026-09-12',
       '  LOT-7  ',
-      'receive-1'
+      'receive-1',
+      725
     )$$,
   $$values (false)$$,
   'first receiving request creates a receipt'
 );
+select is(
+  (
+    select selling_price_minor
+    from public.products
+    where id = 'cccccccc-1111-1111-1111-111111111111'
+  ),
+  725,
+  'receiving persists selling price on the shop-owned Product'
+);
+reset role;
+select results_eq(
+  $$select canonical_name, source
+    from public.catalog_products
+    where id = 'cccccccc-0000-0000-0000-000000000000'$$,
+  $$values ('Canonical receiving product'::text, 'verified_manual'::text)$$,
+  'receiving does not modify the global CatalogProduct'
+);
+set local role authenticated;
 select is(
   (select count(*) from public.batches),
   2::bigint,
@@ -263,7 +353,8 @@ select results_eq(
       20,
       '2026-09-12',
       'LOT-7',
-      'receive-1'
+      'receive-1',
+      725
     )$$,
   $$values (true)$$,
   'an exact retry returns the existing receipt'
@@ -282,7 +373,8 @@ select throws_ok(
       21,
       '2026-09-12',
       'LOT-7',
-      'receive-1'
+      'receive-1',
+      725
     )$$,
   '23505',
   null,
@@ -296,7 +388,8 @@ select results_eq(
       5,
       '2026-10-01',
       '   ',
-      'receive-blank-lot'
+      'receive-blank-lot',
+      850
     )$$,
   $$values (false, '2026-10-01'::date, null::text)$$,
   'required expiry and blank-as-null lot are accepted'
@@ -320,7 +413,8 @@ select results_eq(
       3,
       '2026-09-30',
       null,
-      'receive-other-member'
+      'receive-other-member',
+      500
     )$$,
   $$values (false)$$,
   'a member can receive a Product in their own shop'

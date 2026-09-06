@@ -1,11 +1,10 @@
 import '../../../domain/entities/domain_models.dart';
-import '../../../domain/ports/external_providers.dart';
 import '../../../domain/value_objects/normalized_barcode.dart';
 import 'product_catalog_repository.dart';
 
-enum ProductResolutionStage { checkingLocal, lookingUpExternal, saving }
+enum ProductResolutionStage { checkingLocal, checkingGlobal }
 
-enum ProductResolutionFailureStage { database, externalProvider, persistence }
+enum ProductResolutionFailureStage { database }
 
 typedef ProductResolutionStageObserver = void Function(ProductResolutionStage stage);
 
@@ -21,10 +20,10 @@ final class ProductFoundLocally extends ProductResolutionResult {
   final Product product;
 }
 
-final class ProductFoundExternally extends ProductResolutionResult {
-  const ProductFoundExternally({required super.barcode, required this.product});
+final class ProductFoundGlobally extends ProductResolutionResult {
+  const ProductFoundGlobally({required super.barcode, required this.suggestion});
 
-  final Product product;
+  final CatalogProductSuggestion suggestion;
 }
 
 final class ProductResolutionNotFound extends ProductResolutionResult {
@@ -38,14 +37,9 @@ final class ProductResolutionInvalidBarcode extends ProductResolutionResult {
 }
 
 final class ProductResolutionUnavailable extends ProductResolutionResult {
-  const ProductResolutionUnavailable({
-    required super.barcode,
-    required this.stage,
-    this.providerFailure,
-  });
+  const ProductResolutionUnavailable({required super.barcode, required this.stage});
 
   final ProductResolutionFailureStage stage;
-  final ProductLookupFailureKind? providerFailure;
 }
 
 abstract interface class ProductResolver {
@@ -59,13 +53,10 @@ final class ResolveProductByBarcode implements ProductResolver {
   const ResolveProductByBarcode({
     required this.shopId,
     required ProductCatalogRepository repository,
-    required ProductLookupProvider externalProvider,
-  }) : _repository = repository,
-       _externalProvider = externalProvider;
+  }) : _repository = repository;
 
   final String shopId;
   final ProductCatalogRepository _repository;
-  final ProductLookupProvider _externalProvider;
 
   @override
   Future<ProductResolutionResult> resolve(
@@ -89,79 +80,32 @@ final class ResolveProductByBarcode implements ProductResolver {
         stage: ProductResolutionFailureStage.database,
       );
     }
+
     if (localProduct != null) {
-      return ProductFoundLocally(barcode: normalized.value, product: localProduct);
-    }
-
-    onStage?.call(ProductResolutionStage.lookingUpExternal);
-    final ProductLookupResult externalResult;
-    try {
-      externalResult = await _externalProvider.findByBarcode(normalized.value);
-    } on Object {
-      return ProductResolutionUnavailable(
+      return ProductFoundLocally(
         barcode: normalized.value,
-        stage: ProductResolutionFailureStage.externalProvider,
-        providerFailure: ProductLookupFailureKind.unknown,
+        product: localProduct.withScanMetadata(barcode: normalized.value),
       );
     }
 
-    return switch (externalResult) {
-      ProductLookupNotFound() => ProductResolutionNotFound(barcode: normalized.value),
-      ProductLookupUnavailable(:final kind) => ProductResolutionUnavailable(
-        barcode: normalized.value,
-        stage: ProductResolutionFailureStage.externalProvider,
-        providerFailure: kind,
-      ),
-      ProductLookupFound(:final candidate) => _saveCandidate(
-        normalized,
-        candidate,
-        onStage: onStage,
-      ),
-    };
+    final repository = _repository;
+    if (repository is GlobalCatalogProductRepository) {
+      onStage?.call(ProductResolutionStage.checkingGlobal);
+      try {
+        final suggestion = await (repository as GlobalCatalogProductRepository).findGlobalByBarcode(
+          barcode: normalized,
+        );
+        if (suggestion != null) {
+          return ProductFoundGlobally(barcode: normalized.value, suggestion: suggestion);
+        }
+      } on Object {
+        return ProductResolutionUnavailable(
+          barcode: normalized.value,
+          stage: ProductResolutionFailureStage.database,
+        );
+      }
+    }
+
+    return ProductResolutionNotFound(barcode: normalized.value);
   }
-
-  Future<ProductResolutionResult> _saveCandidate(
-    NormalizedBarcode barcode,
-    ProductLookupCandidate candidate, {
-    ProductResolutionStageObserver? onStage,
-  }) async {
-    if (candidate.barcode != barcode.value) {
-      return ProductResolutionUnavailable(
-        barcode: barcode.value,
-        stage: ProductResolutionFailureStage.externalProvider,
-        providerFailure: ProductLookupFailureKind.malformed,
-      );
-    }
-
-    final name = _normalizeText(candidate.name);
-    if (name == null) {
-      return ProductResolutionNotFound(barcode: barcode.value);
-    }
-
-    onStage?.call(ProductResolutionStage.saving);
-    try {
-      final saved = await _repository.saveExternalProduct(
-        shopId: shopId,
-        barcode: barcode,
-        product: ExternalProductDraft(
-          name: name,
-          brand: _normalizeText(candidate.brand),
-          imageUrl: candidate.imageUrl,
-          sourceReference: candidate.providerReference,
-        ),
-      );
-      return ProductFoundExternally(barcode: barcode.value, product: saved.product);
-    } on Object {
-      return ProductResolutionUnavailable(
-        barcode: barcode.value,
-        stage: ProductResolutionFailureStage.persistence,
-      );
-    }
-  }
-}
-
-String? _normalizeText(String? value) {
-  if (value == null) return null;
-  final normalized = value.trim().replaceAll(RegExp(r'\s+'), ' ');
-  return normalized.isEmpty ? null : normalized;
 }

@@ -1,11 +1,33 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/domain_models.dart';
+import '../../../domain/value_objects/normalized_barcode.dart';
+import '../../product_resolution/application/product_catalog_repository.dart';
+import '../../product_resolution/application/product_resolution_controller.dart';
+import 'expiry_dashboard_controller.dart';
+import 'inventory_catalog_controller.dart';
+import 'inventory_repository_provider.dart';
 import 'receive_stock.dart';
 
-final inventoryRepositoryProvider = Provider<InventoryRepository>((ref) {
-  throw StateError('inventoryRepositoryProvider must be overridden at the application root.');
-});
+export 'inventory_repository_provider.dart';
+
+final receivingProductMetadataProvider = FutureProvider.autoDispose
+    .family<CatalogProductSuggestion?, Product>((ref, product) async {
+      if (product.barcode == null || product.packagingDisplay != null) return null;
+      final repository = ref.read(productCatalogRepositoryProvider);
+      if (repository is! GlobalCatalogProductRepository) return null;
+      try {
+        final metadata = await (repository as GlobalCatalogProductRepository).findGlobalByBarcode(
+          barcode: NormalizedBarcode.parse(product.barcode!),
+        );
+        if (product.catalogProductId != null && metadata?.id != product.catalogProductId) {
+          return null;
+        }
+        return metadata;
+      } on Object {
+        return null; // Missing optional metadata never blocks stock entry.
+      }
+    });
 
 final receiveStockProvider = Provider<ReceiveStock>((ref) {
   throw StateError('receiveStockProvider must be overridden at the application root.');
@@ -23,15 +45,7 @@ final class ReceiveStockRouteArgs {
   final String shopId;
   final Product? initialProduct;
 
-  @override
-  bool operator ==(Object other) {
-    return other is ReceiveStockRouteArgs &&
-        other.shopId == shopId &&
-        other.initialProduct?.id == initialProduct?.id;
-  }
-
-  @override
-  int get hashCode => Object.hash(shopId, initialProduct?.id);
+  // Route identity deliberately isolates simultaneous receipts for the same product.
 }
 
 final class ReceiveStockViewState {
@@ -152,12 +166,18 @@ final class ReceiveStockController extends AsyncNotifier<ReceiveStockViewState> 
         shopId: args.shopId,
         productId: input.productId,
         quantity: input.quantity,
+        sellingPriceMinor: input.sellingPriceMinor,
         expiryDate: input.expiryDate,
         lotNumber: input.lotNumber,
       ),
       retryIdempotencyKey: current.retryIdempotencyKey,
     );
     if (!ref.mounted) return;
+
+    if (result is ReceiveStockSuccess) {
+      ref.read(expiryDashboardActionsProvider).invalidateCurrent();
+      ref.read(inventoryCatalogActionsProvider).invalidateCurrent();
+    }
 
     state = AsyncData(
       current.copyWith(
@@ -176,8 +196,7 @@ final class ReceiveStockController extends AsyncNotifier<ReceiveStockViewState> 
     final current = state.requireValue;
     state = AsyncData(
       current.copyWith(
-        selectedProductId: args.initialProduct?.id,
-        clearSelectedProduct: args.initialProduct == null,
+        selectedProductId: current.selectedProductId,
         clearRetryIdempotencyKey: true,
         clearSaveError: true,
         clearSuccess: true,

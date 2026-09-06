@@ -79,12 +79,77 @@ void main() {
     expect(find.text('Retry Product'), findsOneWidget);
     expect(repository.saveCalls, 2);
   });
+
+  testWidgets('global suggestion is prefilled and saved only after confirmation', (tester) async {
+    const suggestion = CatalogProductSuggestion(
+      id: 'catalog-1',
+      name: 'Ansar Cola',
+      brand: 'Ansar Brand',
+      packagingDisplay: '6 x 330ml',
+      category: 'Beverages',
+    );
+    final repository = InMemoryProductCatalogRepository(
+      globalProducts: const [MapEntry(barcode, suggestion)],
+      idGenerator: (prefix) => '$prefix-1',
+      clock: () => DateTime.utc(2026, 8, 31),
+    );
+    final creator = CreateManualProductForBarcode(shopId: 'shop-1', repository: repository);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [manualProductCreatorProvider.overrideWithValue(creator)],
+        child: const MaterialApp(
+          home: _ManualEntryLauncher(barcode: barcode, suggestion: suggestion),
+        ),
+      ),
+    );
+    await tester.tap(find.byKey(const Key('openManualEntry')));
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(TextField, 'Ansar Cola'), findsOneWidget);
+    expect(find.text('Packaging: 6 x 330ml'), findsOneWidget);
+    expect(repository.products, isEmpty);
+
+    await tester.tap(find.byKey(const Key('saveManualProductButton')));
+    await tester.pumpAndSettle();
+
+    expect(repository.products, hasLength(1));
+    expect(repository.products.single.catalogProductId, 'catalog-1');
+  });
+
+  testWidgets('new manual catalog link returns immediately without a second confirmation', (
+    tester,
+  ) async {
+    final repository = _CatalogLinkOnReloadRepository(
+      InMemoryProductCatalogRepository(
+        idGenerator: (prefix) => '$prefix-1',
+        clock: () => DateTime.utc(2026, 8, 31),
+      ),
+    );
+    final creator = CreateManualProductForBarcode(shopId: 'shop-1', repository: repository);
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [manualProductCreatorProvider.overrideWithValue(creator)],
+        child: const MaterialApp(home: _ManualEntryLauncher(barcode: barcode)),
+      ),
+    );
+    await tester.tap(find.byKey(const Key('openManualEntry')));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byKey(const Key('manualProductName')), 'Manual Cola');
+    await tester.tap(find.byKey(const Key('saveManualProductButton')));
+    await tester.pumpAndSettle();
+
+    expect(find.byKey(const Key('saveManualProductButton')), findsNothing);
+    expect(find.text('Manual Cola'), findsOneWidget);
+  });
 }
 
 class _ManualEntryLauncher extends StatefulWidget {
-  const _ManualEntryLauncher({required this.barcode});
+  const _ManualEntryLauncher({required this.barcode, this.suggestion});
 
   final String barcode;
+  final CatalogProductSuggestion? suggestion;
 
   @override
   State<_ManualEntryLauncher> createState() => _ManualEntryLauncherState();
@@ -103,7 +168,10 @@ class _ManualEntryLauncherState extends State<_ManualEntryLauncher> {
             onPressed: () async {
               final product = await Navigator.of(context).push<Product>(
                 MaterialPageRoute<Product>(
-                  builder: (_) => ManualProductEntryPage(barcode: widget.barcode),
+                  builder: (_) => ManualProductEntryPage(
+                    barcode: widget.barcode,
+                    suggestion: widget.suggestion,
+                  ),
                 ),
               );
               if (!mounted || product == null) return;
@@ -153,4 +221,52 @@ final class _FailOnceCatalogRepository implements ProductCatalogRepository {
     }
     return delegate.saveManualProduct(shopId: shopId, barcode: barcode, product: product);
   }
+}
+
+final class _CatalogLinkOnReloadRepository implements ProductCatalogRepository {
+  _CatalogLinkOnReloadRepository(this.delegate);
+
+  final InMemoryProductCatalogRepository delegate;
+
+  @override
+  Future<Product> createManualProductWithoutBarcode({
+    required String shopId,
+    required ManualProductDraft product,
+  }) => delegate.createManualProductWithoutBarcode(shopId: shopId, product: product);
+
+  @override
+  Future<Product?> findByBarcode({
+    required String shopId,
+    required NormalizedBarcode barcode,
+  }) async {
+    final product = await delegate.findByBarcode(shopId: shopId, barcode: barcode);
+    if (product == null) return null;
+    return Product(
+      id: product.id,
+      shopId: product.shopId,
+      name: product.name,
+      brand: product.brand,
+      imageUrl: product.imageUrl,
+      source: product.source,
+      sourceReference: product.sourceReference,
+      catalogProductId: 'catalog-created',
+      sellingPriceMinor: product.sellingPriceMinor,
+      createdAt: product.createdAt,
+      updatedAt: product.updatedAt,
+    );
+  }
+
+  @override
+  Future<ProductCatalogSaveResult> saveExternalProduct({
+    required String shopId,
+    required NormalizedBarcode barcode,
+    required ExternalProductDraft product,
+  }) => delegate.saveExternalProduct(shopId: shopId, barcode: barcode, product: product);
+
+  @override
+  Future<ProductCatalogSaveResult> saveManualProduct({
+    required String shopId,
+    required NormalizedBarcode barcode,
+    required ManualProductDraft product,
+  }) => delegate.saveManualProduct(shopId: shopId, barcode: barcode, product: product);
 }

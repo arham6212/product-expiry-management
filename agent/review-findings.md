@@ -1,5 +1,102 @@
 # Review Findings
 
+## 2026-09-04 — Ansar catalog synchronization
+
+- `MEDIUM` — the importer returned the entire synchronized ID list in CLI JSON,
+  causing catalog-sized workflow logs. Fixed by retaining IDs only in the atomic
+  checkpoint and omitting them from operational output.
+- `LOW` — one affected presentation test expected the superseded lookup label.
+  Fixed to assert the current shop-first state before the global catalog stage.
+- No remaining blocker, high, medium, or low findings after fixes and reruns.
+
+## Global Catalog compatibility Migration 1 — resolved
+
+- **HIGH:** Initial privilege hardening made an existing pgTAP insert with an
+  explicit Product ID fail. This was a test-only use of authority the production
+  barcode-less client never requests. The test now exercises the actual default-ID
+  insert contract; client access remains intentionally narrow.
+- **MEDIUM:** The first concurrency test left fixture memberships behind and
+  contaminated a later whole-suite invariant. Cleanup now removes its exact
+  UUID namespace and orphan test catalog rows; the affected 29-assertion role
+  suite passes immediately afterward.
+- **LOW:** The helper initially relied solely on the advisory lock plus the
+  global unique barcode constraint. It now also verifies that an `ON CONFLICT`
+  outcome cannot silently retain a different CatalogProduct identity.
+- No unresolved BLOCKER, HIGH, MEDIUM, or LOW finding remains. Public signatures
+  and return shape, provenance, grants, RLS, lazy attachment, conflict atomicity,
+  inventory IDs, concurrency, and rollback were reviewed against the task.
+
+
+## B12 real expiry dashboard Home — resolved
+
+- No BLOCKER, HIGH, MEDIUM, or LOW implementation finding remains after focused
+  widget coverage and complete B12 diff review.
+- Review caught and fixed a compact-width overflow in the received-date fact;
+  long item facts now wrap within the Batch card.
+- Every count/category is read directly from B11, unknown expiry is distinct,
+  errors omit internal text, and Shop switching replaces old data with loading
+  before the new Shop result arrives.
+- No repository/Supabase call, device-time read, risk arithmetic, database
+  change, Batch-detail navigation, notification, B13, or B22 work was added.
+
+## B11 Riverpod expiry-dashboard controller — resolved
+
+- No BLOCKER, HIGH, MEDIUM, or LOW implementation finding remains after focused
+  concurrency tests and full diff review.
+- The initial single-provider design briefly retained Shop A's previous value
+  during a Shop B dependency reload. Review caught this with an explicit test;
+  the final private Shop-keyed family design keeps each Shop's async lifecycle
+  separate and the public provider switches synchronously with active Shop.
+- Review confirmed current Shop is the only public Shop source, stale and older
+  overlapping responses cannot replace current state, and successful receiving
+  invalidates the active dashboard only after persistence succeeds.
+- Buckets are immutable partitions of B10/B08 output. No threshold, local date,
+  device clock, Supabase type, write, widget, navigation, notification, database,
+  or B12 behavior was introduced.
+
+## B10 expiry-dashboard repository mapping — resolved
+
+- No BLOCKER, HIGH, MEDIUM, or LOW implementation finding remains after full
+  diff review and focused verification.
+- Review confirmed that the typed snapshot retains B09's authoritative date,
+  all dated rows use B08 classification, unknown expiry stays unclassified, and
+  neither adapter reads local time or reproduces bucket thresholds.
+- Supabase responses fail closed on cross-Shop identity, missing/malformed
+  fields, inconsistent reference dates/day offsets, invalid quantity, and absent
+  empty-snapshot metadata. Existing authorization/backend errors retain typed
+  repository semantics.
+- The required B09 empty-result correction is limited to its undeployed,
+  verification-pending migration and adds one matching pgTAP assertion. B09
+  remains pending database execution; B10 requires no database verification.
+- Review confirmed no Riverpod, UI, notification, persistence, B11, deployment,
+  or unrelated refactor was introduced.
+
+## B09 server-time expiry-dashboard read RPC — open verification
+
+- No BLOCKER, HIGH, MEDIUM, or LOW implementation finding remains after static
+  review. The security-definer function authorizes the exact requested Shop,
+  filters every Batch join by that Shop, pins its search path, validates the
+  timezone, and exposes only the dashboard read contract to `authenticated`.
+- Review confirmed zero-quantity history is excluded, historical null expiry is
+  preserved, and the signed offset is raw date arithmetic rather than a second
+  implementation of B08's buckets. No mutation or client/dashboard layer was
+  added.
+- **BLOCKER (verification environment):** migration execution, the 27-assertion
+  pgTAP suite, database lint, and indexed-query `EXPLAIN` cannot run without the
+  missing Docker/PostgreSQL/Supabase runtime. B09 remains verification-pending.
+
+## B08 deterministic expiry-risk classification — resolved
+
+- No BLOCKER, HIGH, MEDIUM, or LOW finding remains after diff review and focused
+  verification.
+- The five categories are mutually exclusive and exhaustive for non-null
+  `LocalDate` expiry values. Inclusive boundaries match the release plan, and
+  month/year/leap transitions use date-only UTC-midnight arithmetic rather than
+  elapsed local hours.
+- Review confirmed that B08 adds no clock, timezone lookup, Riverpod/controller,
+  widget, Supabase, RPC, migration, notification, or Batch-persistence behavior.
+- B01–B06 implementation remains intact and B07 remains deferred.
+
 ## B06 owner-only member-role RPC — open verification
 
 - No BLOCKER, HIGH, MEDIUM, or LOW implementation finding remains after static
@@ -313,3 +410,115 @@ the active-invite RPC, non-owner rejection, and the Team & Access QR rendering
 path passed post-deployment verification. The CLI pgTAP wrapper remains
 unavailable because Docker Desktop is not installed, but equivalent isolated
 linked SQL checks executed successfully and left no test data behind.
+
+## Product image contribution flow — resolved
+
+- **BLOCKER:** The deployed client-callable RPC trusted asset ID, URL, version,
+  and Shop/catalog values, while authenticated users also retained direct table
+  INSERT/UPDATE/DELETE. The hardening migration revokes every mutation path,
+  makes the old RPC non-executable, and permits only a service-only RPC fed by
+  authoritative provider metadata after membership/Product-link checks.
+- **HIGH:** Initial verification cleanup could delete a Cloudinary asset after
+  PostgreSQL committed but its response was lost. The fixer now performs a
+  service-role idempotency lookup and returns the committed contribution; it
+  deletes only after a successful lookup proves no row exists and preserves the
+  asset when database state is uncertain.
+- **HIGH:** Provider format, bytes, dimensions, account, folder, and uploader
+  ownership were not all authoritative. Signed upload context plus Admin API
+  validation and database constraints now cover each boundary; cleanup occurs
+  only after the authoritative context proves the current caller owns the asset.
+- **MEDIUM:** The first UI placement increased lazy-list extent enough to defer
+  existing compact-screen controls. Cards now follow the scan/manual primary
+  action, and receiving opens the card from a same-row optional photo action;
+  the unchanged receiving widget suite passes.
+- **MEDIUM:** A transport failure after selection discarded actionable state.
+  The controller now retains the processed selection across offline/upload/
+  verification failures and blocks repeated taps until the active operation
+  completes.
+
+## Product image contribution flow — open
+
+No code findings remain after the fixer pass. The reviewed hardening migration
+and both JWT-protected Edge Functions are deployed; linked privilege checks and
+function status verification passed.
+
+## App-wide operational UI consistency pass — resolved
+
+- **HIGH:** Home displayed a fabricated `May 2025` date beside real expiry data,
+  which could cause an unsafe stock decision. The rebuilt row shows only
+  authoritative status and quantity data.
+- **MEDIUM:** Alerts navigation led to a placeholder and multiple Home actions
+  were no-ops. Alerts now exposes expired/today queues and decorative actions
+  were removed.
+- **MEDIUM:** Inventory had no inventory list or search despite being a primary
+  destination. It now renders the existing authorized active-batch snapshot and
+  filters locally by product, brand, or lot.
+- **MEDIUM:** The first large-text review found status-summary overflow on a
+  320px viewport at 1.8x text scale. The summary and status chip now reflow, and
+  a regression test passes.
+- **LOW:** Scanner presentation imported `dart:io` only to suppress an animation
+  in tests. The static, responsive frame removes that web-hostile dependency and
+  avoids a constant animation.
+
+## App-wide operational UI consistency pass — open
+
+No blocking code findings remain. Device camera/permission behavior and visual
+inspection on physical iOS/Android hardware remain manual release checks.
+
+## Product details and catalog UX follow-up — resolved
+
+- **HIGH:** Blank receiving quantity was temporarily converted to one, creating
+  false inventory and an audit movement not asserted by the user. The UI now
+  rejects blank quantity because every existing domain/database receiving
+  boundary requires a positive known value; no backend behavior was changed.
+- **MEDIUM:** Inventory omitted Products without positive active batches despite
+  an existing authorized complete-product read. Combined catalog state now
+  renders all Products and derives batch status only from real dashboard rows.
+- **MEDIUM:** Home and Alerts rows terminated in batch-only list views. They now
+  open one operational Product Details screen, as do Inventory rows and the
+  receiving-success action.
+- **MEDIUM:** Alerts summarized categories without identifying affected items.
+  It now ranks and renders actionable rows with icon, text, date, quantity, and
+  a details destination.
+- **LOW:** Long status chips in trailing list slots were likely to compress names
+  on narrow or large-text devices. Status now reflows beneath row metadata.
+
+## Product details and catalog UX follow-up — open
+
+Barcode lists and movement history are not exposed by the current Flutter
+repository contracts. Physical camera, platform keyboard, TalkBack/VoiceOver,
+and system-bar checks remain device verification work.
+
+## 2026-09-06 — Shopkeeper scanning workflow review
+
+Reviewed scanner/resolution/manual handoff, shared launcher, receiving state,
+image selection/upload and affected tests against this task's acceptance criteria.
+
+- HIGH, fixed: receiving family arguments were equal for separate routes for the
+  same Product, allowing a nested receive action to reuse an earlier success.
+  Arguments now use route identity.
+- MEDIUM, fixed: receiving another batch after scanning a different Product could
+  select the route's original Product. It now retains the current selection.
+- MEDIUM, fixed: cancelled/failed photo replacement could discard the previous
+  contribution state and offer a duplicate upload. Preserve the contribution and
+  prevent its resubmission.
+- MEDIUM, fixed: photo state was disposed when its sheet closed. The receiving
+  page now observes it through overlays and receipt display; failed/in-flight
+  uploads remain visible on success for recovery.
+- No backend/schema/security changes required. No remaining confirmed blocker.
+
+## Focused Receive Stock follow-up review
+
+Reviewed nullable quantity through validation, request JSON, Batch/Movement mapping,
+RPC persistence, null-safe idempotency and expiry reads. Existing known quantities
+are untouched. Non-received movements still require signed known deltas. Function
+signatures, membership checks, RLS and mutation grants are unchanged.
+
+Fixed during verification: thumbnail placeholder text overflow; tests now inspect
+actual TextField keyboard configuration and use logical keyboard height. Explicit
+null response fields are distinguished from missing contract fields. Pending
+contributions cannot be removed through the UI/controller. No remaining blocker.
+
+Local verification before deployment: 116 focused Flutter tests and 77 focused
+pgTAP assertions pass; analyzer clean. Linked preflight has seven batches and seven
+movements, all known, each quantity sum 106. No unrelated migrations are included.

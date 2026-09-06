@@ -6,9 +6,14 @@ This plan is based on the repository and linked Supabase project inspected on
 2026-09-01. It is an execution plan, not a claim that the listed work has been
 implemented. Existing uncommitted work is user-owned and must be preserved.
 
-The pilot release succeeds when a shop can complete this path reliably:
+The first controlled Android pilot succeeds when one real shop can complete this
+path reliably:
 
-`sign up -> create or join a shop -> resolve/create a Product -> receive a dated Batch -> see expiry risk -> resolve the Batch -> retain movement history -> receive useful reminders`
+`owner signs up -> creates a Shop -> optionally adds a worker -> scans a barcode or creates a barcode-less Product -> receives a dated Batch -> sees actionable expiry information -> confirms data is persisted and Shop-scoped`
+
+Batch resolution, notifications, manager administration, Product correction,
+and Play Store distribution remain valuable, but are not prerequisites for
+this deliberately narrow receive-and-see-expiry pilot.
 
 The customer storefront is preserved but is not on that critical path. Riverpod
 remains the only Flutter workflow-state mechanism. The existing shop-owned
@@ -28,7 +33,7 @@ workflows.
 - Supabase Auth provides email/password identity. `shops` is the tenant and
   `shop_memberships` is the RLS authorization source.
 - `products` and `product_barcodes` are shop-owned. Barcode resolution is
-  database-first, then Open Food Facts, then a race-safe manual barcode path.
+  database-first, then a race-safe manual barcode path. (Open Food Facts integration was retired).
 - `batches` owns nullable expiry and cached quantity. `inventory_movements` is
   append-only audit history. `receive_product_stock` atomically creates one
   Batch and its initial `received` movement with idempotency protection.
@@ -94,6 +99,62 @@ incremental and must assume production tables contain data. Run focused tests
 before the standard verification commands. Never weaken RLS or replace the
 shop-owned Product identity.
 
+## Pilot-first classification and execution order
+
+This classification supersedes the former assumption that every `B` task was a
+blocker for the first real-shop trial. Counts below cover the 21 tasks from
+`B07` through `B27`; B08 has since completed.
+
+| Classification | Count | Ordered tasks |
+| --- | ---: | --- |
+| PILOT BLOCKER | 8 | B08, B09, B10, B11, B12, B22, B25, B26 |
+| PLAY STORE BLOCKER | 11 | B07, B13, B14, B15, B18, B19, B20, B21, B23, B24, B27 |
+| POST-PILOT | 2 | B16, B17 |
+
+Each remaining B task was reviewed independently:
+
+| Task | Classification | Pilot decision |
+| --- | --- | --- |
+| B07 — Add owner role controls to Team & Access | PLAY STORE BLOCKER | Approved users already become workers; one owner plus workers is sufficient for the pilot, so manager promotion/demotion is not on its core path. |
+| B08 — Implement deterministic expiry-risk classification | PILOT BLOCKER | The pilot cannot present actionable expiry information without correct, shared bucket boundaries. |
+| B09 — Add a server-time expiry-dashboard read RPC | PILOT BLOCKER | Trusted Shop-timezone calculations and same-Shop active-stock reads are required for safe real data. |
+| B10 — Map expiry-dashboard data in InventoryRepository | PILOT BLOCKER | The dashboard needs a validated application boundary; presentation must not call Supabase directly. |
+| B11 — Add the Riverpod expiry-dashboard controller | PILOT BLOCKER | Loading, bucketing, refresh, retry, and Shop-change safety are required before showing real expiry state. |
+| B12 — Replace the demo Home with the real expiry dashboard | PILOT BLOCKER | Hard-coded demo values cannot guide a real shopkeeper; the received Batch must become practically visible. |
+| B13 — Add an idempotent Batch-resolution RPC | PLAY STORE BLOCKER | Resolution is needed for a durable full inventory lifecycle, but the narrow pilot can validate receiving and observation before this workflow is introduced. |
+| B14 — Add the Batch-resolution application boundary | PLAY STORE BLOCKER | It depends on deferred B13 and is not used by the receive-and-see-expiry pilot. |
+| B15 — Add Batch detail, resolution, and history UI | PLAY STORE BLOCKER | It closes the later resolution workflow, but is outside the stated pilot journey. |
+| B16 — Add shop-owned Product correction to the repository | POST-PILOT | Metadata correction is useful feedback-driven completeness, not a prerequisite for creating/resolving a Product and receiving stock. |
+| B17 — Add minimal Product correction UI | POST-PILOT | It depends on deferred B16 and improves convenience rather than pilot safety. |
+| B18 — Define a deterministic, low-noise notification policy | PLAY STORE BLOCKER | A supervised pilot can inspect the dashboard directly; notification behavior can wait for broader-release readiness. |
+| B19 — Implement the local notification adapter and Android setup | PLAY STORE BLOCKER | Notification permissions/scheduling do not block installation or the core pilot workflow. |
+| B20 — Add the notification reconciliation coordinator | PLAY STORE BLOCKER | It depends on deferred notification and resolution work and is not needed for direct dashboard use. |
+| B21 — Replace Alerts placeholder with notification status and retry UI | PLAY STORE BLOCKER | The Alerts surface must be finished before a broad release, but it does not gate the controlled core-flow trial. |
+| B22 — Add an explicit production environment build contract | PILOT BLOCKER | The installed app must fail closed on missing/wrong production Supabase values and keep storefront disabled. |
+| B23 — Set the immutable Android application identity and branding | PLAY STORE BLOCKER | A controlled APK can be sideloaded with the temporary identity; immutable identity/branding must be settled before Play publication. |
+| B24 — Configure non-debug Android release signing | PLAY STORE BLOCKER | Securely delivered controlled sideloading does not require the Play upload key; debug signing must still be eliminated before Play distribution. |
+| B25 — Verify and deploy the complete migration chain | PILOT BLOCKER | Pending RPC/RLS behavior and the dashboard RPC must pass together before real shop data uses the linked backend. |
+| B26 — Run the real-device critical-path smoke matrix | PILOT BLOCKER | This is the final proof that installation, auth, receive, dashboard, persistence, and Shop isolation work together. |
+| B27 — Produce and hand off the closed-pilot Android release | PLAY STORE BLOCKER | Play closed-track packaging, metadata, signing, and handoff are unnecessary for the first controlled sideload. |
+
+No Medium implementation slice remains before the release checkpoints. `B25`
+completed the single database verification/deployment checkpoint for B02, B03,
+B05, B06, and B09. `B26` is the next executable PILOT BLOCKER and the controlled
+real-device acceptance pass.
+
+The minimum dependency graph is:
+
+- Dashboard: `B02 -> B09 -> B10`, plus completed `B08`; both branches join at
+  `B11 -> B12`.
+- Production-configured install: `B01 -> B22`.
+- Database checkpoint: `B02 + B03 + B05 + B06 + B09 -> B25`.
+- Pilot gate: `B04 + B12 + B22 + B25 -> B26 -> first real-shop pilot`.
+
+The non-`B` items are not included in the counts above. `I01`, `I03`, and `I04`
+are POST-PILOT for this controlled trial. `I02` is a PLAY STORE BLOCKER; the
+pilot may use a pre-verified account and direct human support if credentials are
+lost.
+
 ## P0 — Release correctness and access control
 
 ### B01 — Gate the optional storefront with a static release flag
@@ -114,7 +175,7 @@ deleting the completed storefront.
 `ENABLE_STOREFRONT` define and defaults it to `false`. Disabled builds start in
 `AuthenticatedShopGate` and omit storefront browsing/management navigation;
 explicitly enabled builds preserve Explore and Shop Operations. Migration
-`20260901040000` remains pending remotely.
+`20260901040000` is deployed, while the pilot build flag remains disabled.
 
 **Scope:** Add `ENABLE_STOREFRONT` to `AppEnvironment`; default it to false for
 production and true only when explicitly supplied. Select `ExploreShopsPage` or
@@ -152,9 +213,8 @@ that is intentionally optional.
 
 **Priority:** RELEASE BLOCKER
 
-**Status:** Implementation complete on 2026-09-01; verification blocked because
-the required local Supabase/PostgreSQL runtime is unavailable. B02 is not marked
-complete until its migration and 31-assertion pgTAP suite execute successfully.
+**Status:** Complete on 2026-09-04. The full migration chain reset cleanly and
+the 31-assertion stock-receiving pgTAP suite passed during B25.
 
 **Goal:** New stock cannot be received without a validated expiry date.
 
@@ -164,7 +224,7 @@ quantity. Today the domain use case, Flutter form, and RPC all accept null.
 **Current implementation:** The worktree requires expiry in `ReceiveStock`, the
 repository request, the form, and corrective `receive_product_stock` migration.
 `Batch.expiryDate` and `batches.expiry_date` remain nullable for historical
-records. Flutter tests pass; local migration/pgTAP execution remains outstanding.
+records. Flutter tests and the local migration/pgTAP verification pass.
 
 **Scope:** Keep the column/domain value nullable so existing unknown-expiry rows
 remain readable, but reject null for new `receive_product_stock` calls and in
@@ -202,10 +262,9 @@ readable and untouched.
 
 **Priority:** RELEASE BLOCKER
 
-**Status:** Implementation complete on 2026-09-01; verification pending because
-the focused 24-assertion RLS/pgTAP suite requires the unavailable local
-Supabase/PostgreSQL runtime. Flutter verification passes; B03 is not marked
-complete until pgTAP executes successfully.
+**Status:** Complete on 2026-09-04. Flutter verification passes, the full
+migration chain reset cleanly, and the 24-assertion Shop-catalog RLS/pgTAP suite
+passed during B25.
 
 **Goal:** Create a shop-owned manual Product without inventing a barcode.
 
@@ -216,8 +275,7 @@ existing manual path always requires and persists a barcode.
 normalized manual Product insert with no barcode. Supabase and in-memory
 adapters create only the shop-owned `local_manual` Product; focused Flutter
 tests pass. `products` already allows same-shop member insert through RLS and
-does not require a barcode child row. The expanded pgTAP suite has not executed
-locally because the required runtime is unavailable.
+does not require a barcode child row. The expanded pgTAP suite passes locally.
 
 **Scope:** Add a narrowly named repository operation for a normalized manual
 Product without a barcode, implement Supabase and in-memory adapters, validate
@@ -293,10 +351,9 @@ barcode in one flow; all state is Riverpod-owned except disposable form controls
 
 **Priority:** RELEASE BLOCKER
 
-**Status:** Implementation complete on 2026-09-02; verification pending because
-the new 10-assertion Shop-settings RLS suite and required database lint/reset
-need the unavailable local Supabase/PostgreSQL runtime. No deployment was used
-as a substitute, so B05 is not marked complete.
+**Status:** Complete on 2026-09-04. The full migration chain reset cleanly, the
+10-assertion Shop-settings RLS suite passed, and local database lint completed
+during B25.
 
 **Goal:** Workers and managers cannot mutate tenant identity/configuration through the API.
 
@@ -308,8 +365,7 @@ there is no reviewed settings workflow.
 `20260902000000_owner_only_shop_settings.sql` replaces only the Shop UPDATE
 policy with same-shop owner checks in `USING` and `WITH CHECK`. Member SELECT and
 all unrelated operational policies remain unchanged. No private-settings client
-workflow currently exists. Static review is complete; database execution is
-pending on local infrastructure.
+workflow currently exists. Static review and local database execution pass.
 
 **Scope:** Add one corrective migration replacing only the Shop UPDATE policy
 with an owner check. Add owner/manager/worker/cross-shop pgTAP cases.
@@ -337,10 +393,8 @@ settings permission is approved.
 
 **Priority:** RELEASE BLOCKER
 
-**Status:** Implementation complete on 2026-09-03; verification pending because
-the new 29-assertion role-RPC pgTAP suite and required database reset need the
-unavailable local Supabase/PostgreSQL runtime. No deployment was used as a
-substitute, so B06 is not marked complete.
+**Status:** Complete on 2026-09-04. The full migration chain reset cleanly and
+the 29-assertion role-RPC pgTAP suite passed during B25.
 
 **Goal:** An owner can promote/demote a member between manager and worker safely.
 
@@ -351,7 +405,7 @@ always become workers and no supported operation can assign the manager role.
 membership rows remain directly immutable to clients. The versioned
 `update_shop_member_role` function now lets only a same-shop owner lock and
 toggle a non-owner target between `manager` and `worker`; its grant, role,
-ownership, tenant, and unchanged-data assertions await local pgTAP execution.
+ownership, tenant, and unchanged-data assertions pass under local pgTAP.
 
 **Scope:** Add one security-definer RPC that locks the target membership,
 authorizes the caller as same-shop owner, accepts only manager/worker, and
@@ -375,7 +429,7 @@ caller and every attempt to alter an owner is rejected without a write.
 
 ### B07 — Add owner role controls to Team & Access
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Owners can use the role RPC from the existing member list with clear feedback.
 
@@ -408,15 +462,22 @@ manager/worker see no controls; failure leaves the prior roster intact and retry
 
 ### B08 — Implement deterministic expiry-risk classification
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Complete on 2026-09-03.
 
 **Goal:** Classify a date into Expired, Today, Next 7 days, 8–30 days, or Later.
 
 **Why this is needed:** Dashboard and notification code must share tested rules;
 the existing service is abstract and its enum does not exactly match the release buckets.
 
-**Current implementation:** `ExpiryRiskService` has no implementation;
-`LocalDate` is provider-independent and tested.
+**Current implementation:** `CalendarExpiryRiskService` implements the existing
+provider-independent contract over explicit `LocalDate` inputs. It classifies
+signed calendar-day offsets as expired (`<0`), expires today (`0`), next 7 days
+(`1..7`), 8–30 days (`8..30`), or later (`31+`). Both inputs are converted to
+UTC midnight only for calendar-day counting; no clock, timezone lookup, Flutter,
+Supabase, locale, or UI dependency is present. Unknown expiry remains a separate
+caller-owned state.
 
 **Scope:** Define exact inclusive boundaries and implement a pure Dart service.
 Unknown expiry is handled by callers as a separate “Needs date” state.
@@ -435,11 +496,20 @@ Supabase, locale, or current-clock dependency.
 
 **Verification:** `flutter test test/domain`; `flutter analyze`.
 
+Focused B08 tests and the combined domain/inventory regression suite pass,
+including -1/0/1/7/8/30/31-day boundaries, month/year rollover, leap day, and
+repeat determinism. Formatting, analysis, and `git diff --check` also pass. No
+database verification is required because B08 changes no database surface.
+
 **Dependencies:** None.
 
 ### B09 — Add a server-time expiry-dashboard read RPC
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Complete on 2026-09-04. The full migration chain reset cleanly, the
+27-assertion dashboard pgTAP suite passed, local lint completed, and a
+representative `EXPLAIN` used `batches_shop_expiry_idx` during B25.
 
 **Goal:** Return active Batch rows with Product display data and server-derived
 days-to-expiry in the Shop timezone.
@@ -448,13 +518,22 @@ days-to-expiry in the Shop timezone.
 trust an incorrect device clock. Existing indexes support the query, but no
 read contract joins the required fields.
 
-**Current implementation:** Members can SELECT same-shop `batches` and
-`products`; `shops.time_zone` is stored; `batches_shop_expiry_idx` exists.
+**Current implementation:** Additive migration
+`20260903110406_expiry_dashboard_read_rpc.sql` defines the stable,
+security-definer `get_expiry_dashboard(uuid)` read contract. It authenticates
+and independently authorizes exact Shop membership, validates the stored IANA
+timezone, derives `reference_date` from PostgreSQL `now()`, and returns only
+positive-quantity same-Shop Batch/Product display rows. An empty Shop returns a
+metadata-only row so the authoritative reference date remains available. Raw
+nullable expiry and nullable signed offset are preserved; no B08 bucket
+threshold is duplicated. Static review, Flutter regressions, and database
+execution pass.
 
 **Scope:** Add one read-only, member-authorized function returning Batch ID,
 Product display fields, expiry, quantity, received timestamp, and signed day
 offset based on PostgreSQL `now()` in `shops.time_zone`. Include positive-quantity
-rows and unknown-expiry rows; exclude zero-quantity history.
+item rows and unknown-expiry rows; exclude zero-quantity history, and preserve
+reference-date metadata when no item rows exist.
 
 **Out of scope:** Do not expose movements, cost, exact data publicly, mutate
 Batches, or add materialized caches.
@@ -471,18 +550,35 @@ same-shop active stock is returned; no customer/anon grant is added.
 
 **Verification:** `supabase db reset && supabase test db`; inspect `EXPLAIN` on a representative indexed query.
 
+During B25, `supabase db reset` and all database tests passed locally. The
+representative active-Batch query used `batches_shop_expiry_idx`. No migration
+was deployed as part of that verification pass.
+
 **Dependencies:** B02 so new receive semantics are already defined.
 
 ### B10 — Map expiry-dashboard data in InventoryRepository
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Complete on 2026-09-03. Focused repository/domain tests, relevant
+inventory regressions, formatting, analysis, and `git diff --check` pass. B10
+adds no new database surface. Its narrow correction to B09's undeployed contract
+remains covered by B09's verification-pending pgTAP suite.
 
 **Goal:** Expose a provider-neutral expiry snapshot from the inventory boundary.
 
 **Why this is needed:** Riverpod/presentation must not map PostgREST rows or call Supabase.
 
-**Current implementation:** `InventoryRepository` lists Products and receives
-stock; Supabase mapping code already validates receipts strictly.
+**Current implementation:** `InventoryRepository.loadExpiryDashboard` returns
+an immutable provider-neutral snapshot with B09's authoritative reference date
+and typed active-stock items. The Supabase adapter strictly validates all B09
+fields, exact Shop identity, calendar-day offsets, timestamps, and quantities;
+it maps errors through existing typed repository semantics and classifies dated
+items only with B08. Historical null expiry remains null/unclassified. The
+in-memory adapter mirrors the contract with an explicit deterministic reference
+date. B09's undeployed migration now emits one metadata-only row for an empty
+Shop so the authoritative date is preserved; its pgTAP plan is 27 assertions
+and remains verification-pending for B25.
 
 **Scope:** Add immutable dashboard row/snapshot values and `loadExpiryDashboard`;
 implement Supabase and in-memory adapters; reject malformed/cross-shop responses.
@@ -502,19 +598,35 @@ explicit; another-shop row fails closed.
 
 **Verification:** focused inventory repository tests; `flutter analyze`.
 
+Focused Supabase and in-memory adapter tests pass for populated and empty
+snapshots, every risk boundary, nullable fields, quantities, cross-Shop rows,
+malformed/inconsistent data, and backend/authorization failures. Domain and
+receiving regressions, formatting, analysis, and `git diff --check` pass.
+
 **Dependencies:** B09.
 
 ### B11 — Add the Riverpod expiry-dashboard controller
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Complete on 2026-09-04. Focused controller, receiving, shop-session,
+domain/inventory regressions, formatting, analysis, and `git diff --check` pass.
+B11 changes no database surface and requires no pgTAP execution.
 
 **Goal:** Load, bucket, retry, and refresh the active Shop’s expiry snapshot.
 
 **Why this is needed:** The current Home is static, and business rules must not
 move into the widget.
 
-**Current implementation:** Riverpod active-shop/session providers exist;
-receiving uses feature-scoped `AsyncNotifier` state.
+**Current implementation:** `expiryDashboardProvider` exposes current-Shop-only
+async state backed by a private auto-disposed family `AsyncNotifier`. The family
+key comes exclusively from `activeShopProvider`, physically separating Shop
+request lifecycles so retained or late results cannot cross a Shop switch. Its
+immutable state preserves B10's authoritative reference date and partitions the
+existing B08 category into expired, today, next-7, 8–30, later, and needs-date
+lists without recalculation. Explicit current-Shop refresh/retry is available,
+overlapping requests retain only the latest result, and successful receiving
+invalidates the current dashboard after persistence succeeds.
 
 **Scope:** Add an auto-disposed/family `AsyncNotifier` scoped to explicit Shop
 ID, use B08 classification over B10 rows, expose immutable bucket counts/lists,
@@ -533,19 +645,29 @@ buckets derive from B08; a receive refreshes the active dashboard.
 
 **Verification:** focused application tests plus receiving controller regression tests.
 
+Focused tests pass for loading, populated and empty success, controlled
+authorization/network/malformed errors, retry, refresh, overlapping requests,
+Shop switching, stale responses, missing Shop, unchanged reference/category
+values, no dashboard writes, and receive-triggered invalidation.
+
 **Dependencies:** B08, B10.
 
 ### B12 — Replace the demo Home with the real expiry dashboard
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Complete on 2026-09-04.
 
 **Goal:** Owner/manager/worker see actual urgent stock with actionable bucket navigation.
 
 **Why this is needed:** Hard-coded counts, currency risk, supplier returns, and
 product dates are misleading in production.
 
-**Current implementation:** `home_page.dart` is 405 lines of static demo UI;
-`AppShell` passes only Shop name.
+**Current implementation:** Home consumes B11's current-Shop Riverpod state and
+actions. It renders repository-backed risk summaries and Batch rows, represents
+legacy unknown expiry separately, and keeps the shell-owned scan/receive route
+prominent. The former static counts, dates, value-at-risk, supplier-return, and
+inert action content have been removed.
 
 **Scope:** Render B11 states with compact summary and buckets: Expired, Today,
 Next 7 days, 8–30 days, Later, and Needs date for legacy data. Show Product,
@@ -564,13 +686,15 @@ open Batch details placeholder only when B15 is available, and remove inert butt
 **Acceptance criteria:** Every visible number/date comes from repository state;
 all required states are tested; no business bucketing occurs in widgets.
 
-**Verification:** new Home/dashboard widget tests, `test/app_shell_test.dart`, golden/manual compact-screen check, standard Flutter checks.
+**Verification:** Home/dashboard widget tests and `test/app_shell_test.dart`
+pass, including a deterministic 320x640 compact-screen layout check. Standard
+Flutter tests, formatting, analysis, Android debug build, and diff checks pass.
 
 **Dependencies:** B11; final Batch-row navigation depends on B15.
 
 ### B13 — Add an idempotent Batch-resolution RPC
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Resolve all or part of active Batch quantity as disposed, returned, or cleared by adjustment while preserving audit history.
 
@@ -607,7 +731,7 @@ remains queryable in history but disappears from active dashboard; failures writ
 
 ### B14 — Add the Batch-resolution application boundary
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Flutter can load Batch history and submit/retry one resolution safely.
 
@@ -637,7 +761,7 @@ uses the same key; successful resolution returns updated quantity and movement.
 
 ### B15 — Add Batch detail, resolution, and history UI
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** From the dashboard, a member can inspect a Batch, resolve quantity,
 and see immutable history.
@@ -669,7 +793,7 @@ in history; loading/empty/error/retry and role-neutral member access are tested.
 
 ### B16 — Add shop-owned Product correction to the repository
 
-**Priority:** RELEASE BLOCKER
+**Priority:** POST-PILOT
 
 **Goal:** Correct a shop Product name/brand/image metadata without changing global catalog data.
 
@@ -700,7 +824,7 @@ identity unchanged; cross-shop and anon writes remain denied.
 
 ### B17 — Add minimal Product correction UI
 
-**Priority:** RELEASE BLOCKER
+**Priority:** POST-PILOT
 
 **Goal:** A member can correct the selected Product before/after receiving without losing the Batch workflow.
 
@@ -734,7 +858,7 @@ receiving uses the corrected result; all workflow states are tested.
 
 ### I01 — Remove the one-shop-per-user database restriction safely
 
-**Priority:** IMPORTANT BEFORE PILOT
+**Priority:** POST-PILOT
 
 **Goal:** Allow one user to hold memberships in several Shops while preserving
 one active Shop in the client.
@@ -776,7 +900,7 @@ Shops; same-Shop duplicate membership is impossible; active Shop remains explici
 
 ### B18 — Define a deterministic, low-noise notification policy
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Convert active dated Batches into aggregated Shop reminders at 30, 15,
 7, 3, 1, and 0/expired thresholds.
@@ -811,7 +935,7 @@ screen owns thresholds; workers/unknown/cleared Batches schedule nothing.
 
 ### B19 — Implement the local notification adapter and Android setup
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Initialize, request permission for, schedule, enumerate, and cancel
 local expiry notifications on Android.
@@ -847,7 +971,7 @@ the app’s expiry channel; denial is recoverable; no exact-alarm permission is 
 
 ### B20 — Add the notification reconciliation coordinator
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Pending local reminders automatically match current active Batches for
 the eligible active Shop.
@@ -881,7 +1005,7 @@ to the correct pending set; retries do not duplicate; screens contain no schedul
 
 ### B21 — Replace Alerts placeholder with notification status and retry UI
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Owner/manager can see whether expiry reminders are active, grant
 permission, and retry reconciliation; workers see a clear role explanation.
@@ -912,7 +1036,7 @@ scheduled summaries; workers never schedule and do not see misleading controls.
 
 ### I02 — Add email password-reset flow
 
-**Priority:** IMPORTANT BEFORE PILOT
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** A pilot user who forgets a password can request and complete recovery.
 
@@ -944,15 +1068,22 @@ links fail safely; existing auth flow regresses cleanly.
 
 ### B22 — Add an explicit production environment build contract
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
+
+**Status:** Implementation complete on 2026-09-04; verification pending the
+human-owned production public values and physical-device build/install check.
 
 **Goal:** Every release artifact is unmistakably built with validated production defines.
 
 **Why this is needed:** `APP_ENV` defaults to development and is absent from the
 example used during inspection, so a release AAB can still show development behavior.
 
-**Current implementation:** Supabase URL/key validation is centralized; local env
-files are ignored; there is no release build wrapper/check.
+**Current implementation:** `AppEnvironment` centrally validates compile-time
+and JSON build values. Production requires an explicit environment, HTTPS
+Supabase endpoint, matching production project reference, recognizable
+client-safe key, and explicit storefront state. The pilot APK wrapper rejects
+invalid/non-production files before invoking Flutter/Gradle; local production
+files remain ignored and the committed example contains placeholders only.
 
 **Scope:** Document/create a safe production config template or build script that
 requires `APP_ENV=production`, production Supabase public values, and explicit
@@ -966,16 +1097,21 @@ README, Android build commands, environment tests.
 **Implementation steps:** Add validation/tests, document secret ownership, and
 provide exact debug/staging/production commands without scattering endpoints.
 
-**Acceptance criteria:** A production build cannot silently use development
-flavor or a server-only key; client-safe config remains centralized and ignored where appropriate.
+**Acceptance criteria:** A production-configured pilot APK cannot silently use
+development flavor or a server-only key; storefront is explicitly disabled;
+client-safe config remains centralized and ignored where appropriate.
 
-**Verification:** environment tests; intentional bad-config build fails; production web/AAB builds with approved local file.
+**Verification:** Focused environment tests pass (18 tests); focused analysis
+passes; the preflight wrapper rejects the development example with exit 64
+before Flutter/Gradle. The production-configured release APK build/install
+remains pending approved local values and the pilot device. Web/AAB builds do
+not gate the controlled sideloaded pilot.
 
 **Dependencies:** B01.
 
 ### B23 — Set the immutable Android application identity and branding
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Replace template package/name/icon with the approved pilot identity before Play upload.
 
@@ -1009,7 +1145,7 @@ launcher name/icon are pilot-ready; camera/auth flows still launch.
 
 ### B24 — Configure non-debug Android release signing
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Release artifacts use the approved upload key without committing credentials.
 
@@ -1043,7 +1179,7 @@ ignored; key recovery ownership is documented; Play accepts the upload certifica
 
 ### I03 — Add crash reporting through the existing logging boundary
 
-**Priority:** IMPORTANT BEFORE PILOT
+**Priority:** POST-PILOT
 
 **Goal:** Capture redacted Flutter/platform/async crashes from pilot builds.
 
@@ -1074,7 +1210,7 @@ sensitive payload; missing DSN behavior is explicit; local tests need no network
 
 ### I04 — Add reproducible CI quality gates
 
-**Priority:** IMPORTANT BEFORE PILOT
+**Priority:** POST-PILOT
 
 **Goal:** Run formatting, analysis, Flutter tests, and release-build smoke checks on every change.
 
@@ -1106,20 +1242,40 @@ merge; no production credential appears in logs/artifacts.
 
 ### B25 — Verify and deploy the complete migration chain
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
 
-**Goal:** The linked pilot project exactly matches all reviewed local migrations before client rollout.
+**Status:** Complete on 2026-09-04. The reviewed five-migration chain was
+verified locally, explicitly authorized, deployed through the linked CLI
+workflow, and verified read-only on the linked project.
+
+**Goal:** In one checkpoint, prove the full reviewed local migration chain and
+then make the linked pilot project match it before client rollout.
 
 **Why this is needed:** The storefront migration is already pending and local
 pgTAP could not run because Docker/PostgreSQL was unavailable. Later core
 migrations will extend that pending chain.
 
-**Current implementation:** Linked history ends at `20260901030000`; dry-run
-lists only `20260901040000` today. Five pgTAP suites exist.
+**Current implementation:** Local and linked histories match through
+`20260901030000`; there are no remote-only versions. The reviewed local-only
+chain is `20260901040000`, `20260901050000`, `20260902000000`,
+`20260903000000`, and `20260903110406`. A reusable Colima/Docker local Supabase
+stack reset the complete eleven-migration chain from zero. All eight pgTAP files
+passed (187/187 assertions), local lint completed with two pre-existing
+non-blocking warnings in `rotate_shop_invite_code`, and the B09 representative
+query used `batches_shop_expiry_idx`. The linked dry-run still lists exactly the
+five reviewed local-only migrations. After the authorized push, local and remote
+histories match through `20260903110406`, the linked dry-run is empty,
+error-level linked lint passes, and 18 read-only catalog checks confirm the
+reviewed functions, views, policies, RLS, indexes, and grants. B02, B03, B05,
+B06, and B09 remain complete. `ENABLE_STOREFRONT=false` remains the pilot
+setting.
 
-**Scope:** On a working Docker/Supabase runtime, reset from zero, execute every
-pgTAP suite, lint/diff, review the dry-run, take the approved backup/recovery
-checkpoint, apply migrations once, and confirm linked/local histories match.
+**Scope:** On one working local, staging, or otherwise approved PostgreSQL/
+Supabase verification environment, reset from zero, execute every pgTAP suite,
+lint/diff, and close the database-verification portions of B02, B03, B05, B06,
+and B09 together. Then review the linked dry-run, take the approved
+backup/recovery checkpoint, apply the complete reviewed migration chain once,
+and confirm linked/local histories match.
 
 **Out of scope:** Do not alter production manually in Dashboard, repair history
 by marking versions without evidence, or deploy from an unreviewed dirty diff.
@@ -1131,38 +1287,50 @@ notes/review findings, linked project ID, Supabase CLI output.
 diff and grants, record backup/recovery plan, run linked dry-run, obtain release
 authorization, push, then re-list history and run non-mutating smoke queries.
 
-**Acceptance criteria:** All pgTAP assertions pass locally; dry-run contains only
-reviewed files; remote/local versions match after push; RLS smoke tests pass.
+**Acceptance criteria:** All pgTAP assertions pass in the approved verification
+environment; B02, B03, B05, B06, and B09 database verification is recorded from
+that same pass; dry-run contains only reviewed files; remote/local versions
+match after the authorized push; RLS smoke tests pass. B01's storefront flag
+remains disabled for the pilot regardless of whether its preserved additive
+migration is present in the linear chain.
 
 **Verification:** `supabase start`; `supabase db reset`; `supabase test db`;
 `supabase db lint --local`; `supabase migration list --linked`;
 `supabase db push --linked --dry-run`; authorized `supabase db push --linked`;
 final `supabase migration list --linked`.
 
-**Dependencies:** All migration-producing RELEASE BLOCKER tasks.
+**Dependencies:** B02, B03, B05, B06, and B09 implementation; review of every
+local migration in the chain; a working approved database runtime; human
+authorization and recovery ownership for the linked push. Deferred
+PLAY STORE BLOCKER and POST-PILOT migrations are not prerequisites.
 
-**Risk notes:** Production deployment requires explicit authorization and a
-recorded recovery point. This planning pass does not authorize it.
+**Risk notes:** Supabase security advisors report generic warnings for intended
+authenticated security-definer RPCs and two older roster RPCs callable by
+`anon`; direct linked checks confirm both older RPCs reject anonymous callers.
+Existing informational index/policy-efficiency findings remain outside B25.
 
 ### B26 — Run the real-device critical-path smoke matrix
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PILOT BLOCKER
 
 **Goal:** Prove the pilot workflow on physical Android devices against the pilot Supabase project.
 
-**Why this is needed:** Unit/widget/pgTAP tests cannot prove camera permission,
-QR scanning, OS notifications, email confirmation, or two-user coordination.
+**Why this is needed:** Unit/widget/pgTAP tests cannot prove Android
+installation, camera permission, email confirmation, restart persistence, or
+real-device interaction with the pilot backend.
 
 **Current implementation:** No `integration_test/` suite or recorded pilot smoke matrix exists.
 
-**Scope:** Use at least owner and worker accounts (preferably two devices) to
-test signup, create Shop, invite QR/manual join, reject and approve, role change,
-local/external/not-found Product, barcode-less Product, required dated receive,
-multiple Batches, every dashboard bucket with controlled dates, resolution,
-history, notification permission/schedule/cancel, offline errors/retry, sign-out,
-and Shop isolation.
+**Scope:** Install a production-configured Android APK on a physical device and
+run the minimum pilot journey: owner signup and email confirmation, Shop
+creation, optional worker invite/join/approval, one barcode resolution path,
+one barcode-less Product creation, quantity plus mandatory-expiry receive,
+restart/reload persistence, actionable dashboard display, recoverable network
+error, sign-out/in, and a second-account Shop-isolation check.
 
-**Out of scope:** Do not test OCR, POS, customer checkout, iOS polish, or load/performance at scale.
+**Out of scope:** Do not gate the pilot on manager promotion, Product correction,
+Batch resolution/history UI, local notifications, Play signing/upload, OCR,
+POS, customer checkout, iOS polish, or load/performance at scale.
 
 **Files/components to inspect:** release checklist, Supabase Auth settings/test
 accounts, Android permission config, all acceptance criteria.
@@ -1171,17 +1339,22 @@ accounts, Android permission config, all acceptance criteria.
 versions, execute the matrix, capture failures without personal data, fix via
 separate scoped tasks, rerun from a clean install, and retain results.
 
-**Acceptance criteria:** Every critical path passes on the signed release build;
-denied permissions/network failures are recoverable; another Shop’s data is never visible.
+**Acceptance criteria:** The production-configured APK installs and starts on the
+pilot device; the stated receive-and-see-expiry journey passes against the
+verified backend; camera denial and network failure are recoverable through an
+available manual/retry path; data survives restart; another Shop's data is never
+visible. Non-debug Play signing is not required for this controlled sideload.
 
-**Verification:** Recorded PASS/FAIL matrix plus relevant Supabase audit rows and
-Android notification tray observations.
+**Verification:** Recorded PASS/FAIL matrix, installed APK package/version/config
+evidence, relevant Supabase Batch/movement rows, and explicit Shop-isolation
+observations without personal data.
 
-**Dependencies:** B25 and a signed build from B24.
+**Dependencies:** B04, B12, B22, B25, an Android device, pilot Supabase public
+configuration, test email access, and owner/second-account test credentials.
 
 ### B27 — Produce and hand off the closed-pilot Android release
 
-**Priority:** RELEASE BLOCKER
+**Priority:** PLAY STORE BLOCKER
 
 **Goal:** Deliver one versioned, signed, verified AAB to the Play closed-testing track with rollback notes.
 
@@ -1519,32 +1692,48 @@ obtain product approval before implementation.
 
 ## Task counts and critical path
 
-- **RELEASE BLOCKER:** 27 tasks (`B01`–`B27`).
-- **IMPORTANT BEFORE PILOT:** 4 tasks (`I01`–`I04`).
-- **POST-RELEASE:** 10 tasks (`P01`–`P10`).
+- **Completed:** B01, B02, B03, B04, B05, B06, B08, B09, B10, B11, B12, and
+  B25.
+- **Implementation complete / verification pending:** B22.
+- **Remaining PILOT BLOCKER:** 2 tasks (B22, B26).
+- **Remaining PLAY STORE BLOCKER:** 11 tasks (B07, `B13`–`B15`, `B18`–`B21`,
+  B23, B24, B27).
+- **Remaining POST-PILOT B task:** 2 tasks (B16, B17).
+- **Other deferred work:** I01, I03, I04, and `P01`–`P10` are POST-PILOT; I02
+  is a PLAY STORE BLOCKER.
 
-The first Codex Medium task should be **B01 — Gate the optional storefront with
-a static release flag**. It is small, removes the current client/backend startup
-mismatch from the core path, and does not alter inventory or deploy anything.
+The next executable PILOT BLOCKER is **B26 — Run the real-device critical-path
+smoke matrix**.
 
-The main implementation critical path is:
+The pilot implementation order is:
 
-`B01 -> B02 -> B03/B04 -> B08–B15 -> B18–B21 -> B22–B27`
+`B26`
 
-Security tasks `B05–B07` and correction tasks `B16–B17` can run between those
-slices but must finish before `B25`.
+Run `B26` for physical-device acceptance and the remaining B22 build/install
+check against the now-verified linked database.
+
+As of 2026-09-04, two later local migrations are independently verified but
+not deployed: `20260903225832_require_receive_selling_price.sql` and
+`20260904100647_global_catalog_barcode_resolution.sql`. They must be reviewed in
+that order through the normal linked migration workflow before B26 uses the
+updated receiving/catalog contracts. This is a deployment checkpoint, not a
+new application feature task; Cloudinary/image-contribution Migration 2 remains
+out of scope.
+No B07, Batch-resolution, notification, Product-correction, Play identity,
+Play-signing, or Play-upload task is on the first-shop critical path.
 
 ## Human/product inputs that cannot be guessed
 
-1. Approve the immutable Android application ID, display name, launcher icon,
-   Play Console owner, and upload-key owner before B23/B24.
-2. Confirm the production Supabase project/environment values and who may
-   authorize/execute B25 deployment.
-3. Decide whether crash reporting is required before the very first closed
-   build; if yes, select/provision the provider and approve its privacy terms.
-4. For I01, confirm whether users may hold multiple pending join requests or
-   whether the current one-at-a-time throttle should remain.
+Before the first real-shop pilot, a human must:
 
-No other product input is required to begin B01. This plan treats expiry as
-mandatory for every new manual receive, while preserving legacy nullable rows,
-because that is the explicit V1 requirement and the safest non-destructive path.
+1. Supply and verify the pilot Supabase URL and publishable/anon client key,
+   email-confirmation/redirect settings, and `APP_ENV=production` configuration
+   with `ENABLE_STOREFRONT=false` for B22.
+2. Provide the Android device, pilot shopkeeper/tester, test email access, and a
+   second account for the Shop-isolation portion of B26; approve the APK's
+   controlled sideload and the handling of real shop data.
+
+The immutable Play application ID/branding, Play Console ownership, upload key,
+crash-reporting vendor, CI, multi-Shop policy, and password-recovery flow do not
+block this controlled pilot. They must be resolved in their deferred tasks
+before the applicable broader release.

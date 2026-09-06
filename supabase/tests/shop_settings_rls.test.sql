@@ -63,19 +63,14 @@ select set_config(
   true
 );
 select set_config('request.jwt.claim.role', 'authenticated', true);
-select is(
-  (
-    with changed as (
-      update public.shops
-      set name = 'Owner Updated Shop',
-          time_zone = 'Asia/Dubai',
-          currency_code = 'AED'
-      where id = '52000000-0000-0000-0000-000000000001'
-      returning id
-    )
-    select count(*) from changed
-  ),
-  1::bigint,
+select results_eq(
+  $$update public.shops
+    set name = 'Owner Updated Shop',
+        time_zone = 'Asia/Dubai',
+        currency_code = 'AED'
+    where id = '52000000-0000-0000-0000-000000000001'
+    returning id$$,
+  $$values ('52000000-0000-0000-0000-000000000001'::uuid)$$,
   'an owner can update private settings for their Shop'
 );
 select results_eq(
@@ -89,17 +84,12 @@ select set_config(
   '51000000-0000-0000-0000-000000000002',
   true
 );
-select is(
-  (
-    with changed as (
-      update public.shops
-      set name = 'Manager edit'
-      where id = '52000000-0000-0000-0000-000000000001'
-      returning id
-    )
-    select count(*) from changed
-  ),
-  0::bigint,
+select results_eq(
+  $$update public.shops
+    set name = 'Manager edit'
+    where id = '52000000-0000-0000-0000-000000000001'
+    returning id$$,
+  $$select null::uuid where false$$,
   'a manager cannot update private Shop settings'
 );
 select results_eq(
@@ -113,17 +103,12 @@ select set_config(
   '51000000-0000-0000-0000-000000000003',
   true
 );
-select is(
-  (
-    with changed as (
-      update public.shops
-      set name = 'Worker edit'
-      where id = '52000000-0000-0000-0000-000000000001'
-      returning id
-    )
-    select count(*) from changed
-  ),
-  0::bigint,
+select results_eq(
+  $$update public.shops
+    set name = 'Worker edit'
+    where id = '52000000-0000-0000-0000-000000000001'
+    returning id$$,
+  $$select null::uuid where false$$,
   'a worker cannot update private Shop settings'
 );
 select results_eq(
@@ -137,17 +122,12 @@ select set_config(
   '51000000-0000-0000-0000-000000000004',
   true
 );
-select is(
-  (
-    with changed as (
-      update public.shops
-      set name = 'Cross-shop edit'
-      where id = '52000000-0000-0000-0000-000000000001'
-      returning id
-    )
-    select count(*) from changed
-  ),
-  0::bigint,
+select results_eq(
+  $$update public.shops
+    set name = 'Cross-shop edit'
+    where id = '52000000-0000-0000-0000-000000000001'
+    returning id$$,
+  $$select null::uuid where false$$,
   'an owner from another Shop cannot update private settings'
 );
 select results_eq(

@@ -254,7 +254,9 @@ select throws_ok(
 select is(
   (
     select membership.role
-    from public.shop_memberships as membership
+    from public.get_shop_members_with_users(
+      '62000000-0000-0000-0000-000000000001'
+    ) as membership
     where membership.user_id = '61000000-0000-0000-0000-000000000004'
   ),
   'worker'::text,
@@ -361,17 +363,12 @@ select set_config(
   '61000000-0000-0000-0000-000000000004',
   true
 );
-select is(
-  (
-    with changed as (
-      update public.shops
-      set name = 'Manager private edit'
-      where id = '62000000-0000-0000-0000-000000000001'
-      returning id
-    )
-    select count(*) from changed
-  ),
-  0::bigint,
+select results_eq(
+  $$update public.shops
+    set name = 'Manager private edit'
+    where id = '62000000-0000-0000-0000-000000000001'
+    returning id$$,
+  $$select null::uuid where false$$,
   'a promoted manager remains unable to update private Shop settings'
 );
 

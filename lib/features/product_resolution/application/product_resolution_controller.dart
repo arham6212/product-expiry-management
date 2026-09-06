@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../domain/ports/external_providers.dart';
 import '../../shops/application/shop_access.dart';
 import '../../shops/application/shop_session_controller.dart';
 import 'product_catalog_repository.dart';
@@ -8,10 +7,6 @@ import 'resolve_product_by_barcode.dart';
 
 final productCatalogRepositoryProvider = Provider<ProductCatalogRepository>((ref) {
   throw StateError('productCatalogRepositoryProvider must be overridden at the application root.');
-});
-
-final productLookupProviderProvider = Provider<ProductLookupProvider>((ref) {
-  throw StateError('productLookupProviderProvider must be overridden at the application root.');
 });
 
 final productResolverProvider = Provider<ProductResolver>((ref) {
@@ -22,7 +17,6 @@ final productResolverProvider = Provider<ProductResolver>((ref) {
   return ResolveProductByBarcode(
     shopId: activeShop.shop.id,
     repository: ref.watch(productCatalogRepositoryProvider),
-    externalProvider: ref.watch(productLookupProviderProvider),
   );
 });
 
@@ -32,11 +26,17 @@ final productResolutionControllerProvider =
     );
 
 final class ProductResolutionState {
-  const ProductResolutionState({this.stage, this.result, this.isResolving = false});
+  const ProductResolutionState({
+    this.stage,
+    this.result,
+    this.isResolving = false,
+    this.manualEntry = false,
+  });
 
   final ProductResolutionStage? stage;
   final ProductResolutionResult? result;
   final bool isResolving;
+  final bool manualEntry;
 }
 
 final class ProductResolutionController extends Notifier<ProductResolutionState> {
@@ -74,6 +74,8 @@ final class ProductResolutionController extends Notifier<ProductResolutionState>
     }
     state = ProductResolutionState(result: result);
   }
+
+  void showManualEntry() => state = const ProductResolutionState(manualEntry: true);
 
   void reset() => state = const ProductResolutionState();
 

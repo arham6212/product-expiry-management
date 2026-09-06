@@ -47,3 +47,24 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Shorebird
+.shorebird/
+
+# Environment variables
+.env
+
+# Scratch files
+*.py
+*.sql
+!supabase/**/*.sql
+!db_schema.sql
+*.sh
+!tool/**/*.sh
+!get_args.sh
+!get_functions.sh
+mock_*.html
+*.txt
+!CMakeLists.txt
+data/state.json
+test_local.js

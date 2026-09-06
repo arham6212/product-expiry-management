@@ -184,18 +184,23 @@ select ok(
   ),
   'the rotated invite has a future expiry'
 );
+select set_config(
+  'test.active_invite_code',
+  (select code from public.shop_invites where is_active),
+  true
+);
 
 select set_config('request.jwt.claim.sub', '22222222-2222-2222-2222-222222222222', true);
 select results_eq(
   $$select public.request_to_join_shop(
-      lower((select code from public.shop_invites where is_active))
+      lower(current_setting('test.active_invite_code'))
     )$$,
   $$values ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'::uuid)$$,
   'manual lowercase input is normalized by the server'
 );
 select throws_ok(
   $$select public.request_to_join_shop(
-      (select code from public.shop_invites where is_active)
+      current_setting('test.active_invite_code')
     )$$,
   'P0001',
   'User already has a pending join request.',
@@ -205,7 +210,7 @@ select throws_ok(
 select set_config('request.jwt.claim.sub', '11111111-1111-1111-1111-111111111111', true);
 select throws_ok(
   $$select public.request_to_join_shop(
-      (select code from public.shop_invites where is_active)
+      current_setting('test.active_invite_code')
     )$$,
   'P0001',
   'User is already a member of a shop.',

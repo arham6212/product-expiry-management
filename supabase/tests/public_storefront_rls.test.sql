@@ -40,14 +40,37 @@ values
   ('40000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000001', '30000000-0000-0000-0000-000000000002', 'Unpublished A2', 1200, 'QAR', false),
   ('40000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000002', '30000000-0000-0000-0000-000000000003', 'Published B', 900, 'QAR', true);
 
+select set_config(
+  'request.jwt.claim.sub',
+  '10000000-0000-0000-0000-000000000001',
+  true
+);
 insert into public.deals (
   id, shop_id, listing_id, offer_price_minor, starts_at, ends_at, is_enabled, title
 )
 values
   ('50000000-0000-0000-0000-000000000001', '20000000-0000-0000-0000-000000000001', '40000000-0000-0000-0000-000000000001', 800, now() - interval '1 hour', now() + interval '1 hour', true, 'Active'),
   ('50000000-0000-0000-0000-000000000002', '20000000-0000-0000-0000-000000000001', '40000000-0000-0000-0000-000000000001', 750, now() + interval '2 hours', now() + interval '3 hours', true, 'Future'),
-  ('50000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000001', '40000000-0000-0000-0000-000000000001', 700, now() - interval '3 hours', now() - interval '2 hours', true, 'Expired'),
-  ('50000000-0000-0000-0000-000000000004', '20000000-0000-0000-0000-000000000002', '40000000-0000-0000-0000-000000000003', 700, now() - interval '1 hour', now() + interval '1 hour', true, 'Private shop');
+  ('50000000-0000-0000-0000-000000000003', '20000000-0000-0000-0000-000000000001', '40000000-0000-0000-0000-000000000001', 700, now() - interval '3 hours', now() - interval '2 hours', true, 'Expired');
+select set_config(
+  'request.jwt.claim.sub',
+  '10000000-0000-0000-0000-000000000004',
+  true
+);
+insert into public.deals (
+  id, shop_id, listing_id, offer_price_minor, starts_at, ends_at, is_enabled, title
+)
+values (
+  '50000000-0000-0000-0000-000000000004',
+  '20000000-0000-0000-0000-000000000002',
+  '40000000-0000-0000-0000-000000000003',
+  700,
+  now() - interval '1 hour',
+  now() + interval '1 hour',
+  true,
+  'Private shop'
+);
+select set_config('request.jwt.claim.sub', '', true);
 
 select has_table('public', 'catalog_products', 'global catalog products table exists');
 select has_table('public', 'catalog_product_barcodes', 'global catalog barcodes table exists');

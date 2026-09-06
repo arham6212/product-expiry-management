@@ -7,6 +7,112 @@ const supabasePublishableKey = 'sb_publishable_test-key';
 
 void main() {
   group('AppEnvironment', () {
+    test('accepts an explicit safe production build contract', () {
+      final environment = AppEnvironment.fromBuildConfig({
+        'APP_ENV': 'production',
+        'SUPABASE_URL': supabaseUrl,
+        'SUPABASE_PUBLISHABLE_KEY': supabasePublishableKey,
+        'PRODUCTION_SUPABASE_PROJECT_REF': 'project',
+        'ENABLE_STOREFRONT': 'false',
+      });
+
+      expect(environment.flavor, AppFlavor.production);
+      expect(environment.enableStorefront, isFalse);
+    });
+
+    test('rejects a production build contract with missing values', () {
+      expect(
+        () => AppEnvironment.fromBuildConfig({
+          'APP_ENV': 'production',
+          'SUPABASE_URL': supabaseUrl,
+          'PRODUCTION_SUPABASE_PROJECT_REF': 'project',
+          'ENABLE_STOREFRONT': 'false',
+        }),
+        throwsA(
+          isA<ConfigurationException>().having(
+            (error) => error.message,
+            'message',
+            'SUPABASE_PUBLISHABLE_KEY must be an explicit non-empty string.',
+          ),
+        ),
+      );
+    });
+
+    test('requires APP_ENV instead of defaulting a build contract', () {
+      expect(
+        () => AppEnvironment.fromBuildConfig({
+          'SUPABASE_URL': supabaseUrl,
+          'SUPABASE_PUBLISHABLE_KEY': supabasePublishableKey,
+          'ENABLE_STOREFRONT': 'false',
+        }),
+        throwsA(
+          isA<ConfigurationException>().having(
+            (error) => error.message,
+            'message',
+            'APP_ENV must be an explicit non-empty string.',
+          ),
+        ),
+      );
+    });
+
+    test('rejects an invalid production client key', () {
+      expect(
+        () => AppEnvironment.fromBuildConfig({
+          'APP_ENV': 'production',
+          'SUPABASE_URL': supabaseUrl,
+          'SUPABASE_PUBLISHABLE_KEY': 'not-a-supabase-key',
+          'PRODUCTION_SUPABASE_PROJECT_REF': 'project',
+          'ENABLE_STOREFRONT': 'false',
+        }),
+        throwsA(isA<ConfigurationException>()),
+      );
+    });
+
+    test('rejects unsafe production storefront enablement', () {
+      expect(
+        () => AppEnvironment.fromBuildConfig({
+          'APP_ENV': 'production',
+          'SUPABASE_URL': supabaseUrl,
+          'SUPABASE_PUBLISHABLE_KEY': supabasePublishableKey,
+          'PRODUCTION_SUPABASE_PROJECT_REF': 'project',
+          'ENABLE_STOREFRONT': 'true',
+        }),
+        throwsA(
+          isA<ConfigurationException>().having(
+            (error) => error.message,
+            'message',
+            'ENABLE_STOREFRONT=true requires STOREFRONT_SCHEMA_AVAILABLE=true.',
+          ),
+        ),
+      );
+    });
+
+    test('allows production storefront only with explicit schema acknowledgement', () {
+      final environment = AppEnvironment.fromBuildConfig({
+        'APP_ENV': 'production',
+        'SUPABASE_URL': supabaseUrl,
+        'SUPABASE_PUBLISHABLE_KEY': supabasePublishableKey,
+        'PRODUCTION_SUPABASE_PROJECT_REF': 'project',
+        'ENABLE_STOREFRONT': 'true',
+        'STOREFRONT_SCHEMA_AVAILABLE': 'true',
+      });
+
+      expect(environment.enableStorefront, isTrue);
+    });
+
+    test('rejects a production URL that does not match the explicit project ref', () {
+      expect(
+        () => AppEnvironment.fromBuildConfig({
+          'APP_ENV': 'production',
+          'SUPABASE_URL': supabaseUrl,
+          'SUPABASE_PUBLISHABLE_KEY': supabasePublishableKey,
+          'PRODUCTION_SUPABASE_PROJECT_REF': 'different-project',
+          'ENABLE_STOREFRONT': 'false',
+        }),
+        throwsA(isA<ConfigurationException>()),
+      );
+    });
+
     test('parses a configured staging environment', () {
       final environment = AppEnvironment.parse(
         flavor: 'staging',
@@ -83,7 +189,7 @@ void main() {
               .having(
                 (error) => error.message,
                 'run guidance',
-                contains('--dart-define-from-file=config/env.local.json'),
+                contains('--dart-define-from-file=config/env.<environment>.local.json'),
               ),
         ),
       );

@@ -34,6 +34,13 @@ final class LocalDate implements Comparable<LocalDate> {
   final int month;
   final int day;
 
+  /// Returns the signed number of whole calendar days from this date to [other].
+  int daysUntil(LocalDate other) {
+    final thisDate = DateTime.utc(year, month, day);
+    final otherDate = DateTime.utc(other.year, other.month, other.day);
+    return otherDate.difference(thisDate).inDays;
+  }
+
   @override
   int compareTo(LocalDate other) {
     final yearComparison = year.compareTo(other.year);

@@ -15,7 +15,7 @@ the system continuously tell the shop what needs attention.**
 The initial user is a shop owner or staff member receiving and rotating stock.
 Their primary jobs are:
 
-- receive products rapidly with a barcode, expiry date, and quantity;
+- receive products rapidly with a barcode, expiry date, and optional quantity;
 - see which batches require action today;
 - sell or rotate stock in first-expired-first-out order;
 - record what happened to expiring stock; and
@@ -47,7 +47,7 @@ surface never derives availability or promotion from private stock or expiry.
 
 ### Receive stock
 
-`Scan product -> Resolve product -> Detect expiry -> Confirm expiry -> Enter quantity -> Save batch -> Scan next`
+`Scan product -> Resolve product -> Detect expiry -> Confirm expiry -> Optional quantity -> Save batch -> Scan next`
 
 For a known product, the normal interaction should ask only for expiry and
 quantity. Structured barcodes may prefill batch/expiry fields. Product-photo
@@ -84,9 +84,11 @@ Recognition may provide a candidate date, detected type (`EXP`, `USE_BY`,
 date must not be treated as expiry without a separately specified deterministic
 rule. Low-confidence or ambiguous results are never silently saved.
 
-Initial risk categories are `EXPIRED`, `TODAY`, `WITHIN_3_DAYS`,
-`WITHIN_7_DAYS`, `WITHIN_30_DAYS`, and `SAFE`. Threshold semantics will be
-implemented and locked by tests in the Expiry Engine slice.
+Expiry risk is classified from an explicit shop-context reference date using
+calendar-day offsets: `EXPIRED` below 0, `EXPIRES_TODAY` at 0,
+`NEXT_7_DAYS` from 1 through 7, `DAYS_8_TO_30` from 8 through 30, and `LATER`
+from 31 onward. Unknown expiry remains a separate caller-owned state rather
+than receiving a fabricated risk category.
 
 ## UX principles
 
@@ -119,7 +121,8 @@ scan it; both paths require explicit confirmation and create the same pending
 join request for owner review.
 
 Continuing from a resolved Product opens a minimal receiving form for a required
-positive quantity and validated expiry date plus an optional lot number. One authenticated
+optional positive quantity (blank means unknown) and a validated expiry date
+plus an optional lot number. One authenticated
 PostgreSQL operation atomically creates the shop-owned Batch and its initial
 `RECEIVED` movement. Exact retries are idempotent, conflicting key reuse is
 rejected, and the entered draft survives recoverable failures.
@@ -129,11 +132,17 @@ only its transactionally initialized query projection. New manual receiving
 rejects a missing expiry, while existing historical rows with unknown expiry
 remain nullable and are never assigned invented dates. Product resolution
 accepts camera or typed barcodes, checks the selected shop first, caches usable
-Open Food Facts results, and offers manual Product creation without inventing
+handles unresolved barcodes, and offers manual Product creation without inventing
 an unknown Product after provider failure. The catalog repository can also
 create a normalized shop-owned Product without a barcode. Receiving exposes
 that minimal name/optional-brand action, selects the persisted Product, and
 retains the dated Batch draft so the worker can continue directly.
+Home is the real expiry dashboard for owners and workers. Its counts and item
+rows come from the active Shop's authoritative dashboard snapshot and show
+expired, today, next-7-day, 8–30-day, later, and separate needs-date stock. It
+supports loading, successful empty, controlled error/retry, and refresh states,
+and keeps scanning/receiving as the primary action; it no longer presents demo
+financial, supplier-return, sales, reporting, or Product data.
 OCR, offline outbox, notifications, suppliers, analytics, subscriptions,
 advanced role administration, and multi-branch administration remain out of
 scope.

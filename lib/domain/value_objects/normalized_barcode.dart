@@ -34,6 +34,10 @@ final class NormalizedBarcode {
       ),
     };
 
+    if (_isRetailerOnly(value) || !_hasValidGtinChecksum(value)) {
+      throw const BarcodeValidationException('Barcode is not a valid global EAN, UPC, or GTIN.');
+    }
+
     if (formatHint != null &&
         formatHint != BarcodeFormat.unknown &&
         !_isCompatible(formatHint, value.length)) {
@@ -61,6 +65,33 @@ final class NormalizedBarcode {
       BarcodeFormat.gtin14 => length == 14,
       _ => false,
     };
+  }
+
+  static bool _isRetailerOnly(String value) {
+    if (value.split('').toSet().length == 1 || value.startsWith('499990')) {
+      return true;
+    }
+    if (value.length == 13 && RegExp(r'^\d{6}0{7}$').hasMatch(value)) {
+      return true;
+    }
+    if ((value.length == 13 || value.length == 14) &&
+        int.parse(value.substring(0, 2)) >= 20 &&
+        int.parse(value.substring(0, 2)) <= 29) {
+      return true;
+    }
+    return false;
+  }
+
+  static bool _hasValidGtinChecksum(String value) {
+    var sum = 0;
+    var positionFromRight = 1;
+    for (var index = value.length - 2; index >= 0; index--) {
+      final digit = int.parse(value[index]);
+      sum += digit * (positionFromRight.isOdd ? 3 : 1);
+      positionFromRight += 1;
+    }
+    final expected = (10 - sum % 10) % 10;
+    return expected == int.parse(value[value.length - 1]);
   }
 
   @override

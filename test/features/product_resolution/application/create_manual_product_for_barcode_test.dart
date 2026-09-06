@@ -55,7 +55,8 @@ void main() {
 
     final result = await createManual(barcode: barcode, name: 'Manual retry');
 
-    expect(result, same(external.product));
+    expect(result.id, external.product.id);
+    expect(result.barcode, barcode);
     expect(result.source, ProductSource.openFoodFacts);
     expect(repository.products, hasLength(1));
     expect(repository.barcodes, hasLength(1));

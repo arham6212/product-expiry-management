@@ -13,12 +13,18 @@ void main() {
   test('supports EAN-8, UPC-A, EAN-13, and GTIN-14 representations', () {
     expect(NormalizedBarcode.parse('12345670').format, BarcodeFormat.ean8);
     expect(NormalizedBarcode.parse('123456789012').format, BarcodeFormat.upcA);
-    expect(NormalizedBarcode.parse('1234567890123').format, BarcodeFormat.ean13);
-    expect(NormalizedBarcode.parse('01234567890123').format, BarcodeFormat.gtin14);
+    expect(NormalizedBarcode.parse('5000112519945').format, BarcodeFormat.ean13);
+    expect(NormalizedBarcode.parse('05000112519945').format, BarcodeFormat.gtin14);
   });
 
   for (final invalid in ['', '   ', '123-45678', '1234567', '123456789012345']) {
     test('rejects invalid barcode "$invalid"', () {
+      expect(() => NormalizedBarcode.parse(invalid), throwsA(isA<BarcodeValidationException>()));
+    });
+  }
+
+  for (final invalid in ['1234567890123', '2901234567893', '999999999999']) {
+    test('rejects non-global barcode "$invalid"', () {
       expect(() => NormalizedBarcode.parse(invalid), throwsA(isA<BarcodeValidationException>()));
     });
   }

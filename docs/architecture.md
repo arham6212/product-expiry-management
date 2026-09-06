@@ -12,7 +12,7 @@
 | Authentication | Supabase Auth email/password with shop-membership RLS | Supplies `auth.uid()` to PostgreSQL policies without putting privileged credentials in the client. |
 | Offline | Online-first V1 with explicit loading/error/retry and server idempotency; a local outbox is post-release | Releases the core value sooner without pretending a partial cache is full synchronization. |
 | Barcode | `mobile_scanner` UI adapter with normalization/deduplication in Riverpod application state | Camera SDK details stay outside resolution and persistence rules. |
-| Product lookup | Shop-owned Supabase catalog, then Open Food Facts behind `ProductLookupProvider` | Enforces database-first resolution and persistently caches normalized external hits without coupling provider data to widgets/domain. |
+| Product lookup | Shop-owned Supabase catalog | Enforces database-first resolution and clean separation from widgets/domain. |
 | Expiry OCR | On-device recognition when practical, optional remote adapter behind `ExpiryRecognitionProvider` | Supports latency/offline goals and avoids coupling persisted data to one OCR vendor. |
 | Notifications | Local scheduling behind `NotificationProvider` for V1; push is post-release | Supports on-device reminders without coupling expiry rules to one delivery system. |
 | Analytics/crashes | Privacy-conscious product events and crash reporting selected in a dedicated observability slice | Avoids leaking barcode/OCR/inventory data before consent and redaction rules exist. |
@@ -107,28 +107,35 @@ derives authorization from its selected shop alone—the explicit shop ID scopes
 queries, while RLS independently authorizes it.
 
 `product_barcodes` has `UNIQUE (shop_id, barcode)` and a composite foreign key
-to `(products.shop_id, products.id)`. The external-save RPC takes a transaction
-advisory lock for that shop/code, rechecks the mapping, and creates both records
-or returns the winner. Manual entry delegates to that RPC before marking a newly
-created Product as `local_manual`, so manual/external races share the same lock.
-This prevents concurrent cache misses from creating two products for one shop
-barcode.
+to `(products.shop_id, products.id)`. Both compatibility save RPCs use one
+protected resolver that takes a global barcode advisory lock before the
+shop/barcode lock. It creates or reuses one `catalog_product_barcodes` identity,
+then creates or reuses the separate shop Product. This order prevents concurrent
+same-Shop or cross-Shop misses from creating duplicate identities.
+
+The public RPC signatures and ten-field Product result remain unchanged.
+`create_product_for_barcode` preserves legacy `open_food_facts` provenance;
+manual barcode creation records global `user_contributed` provenance and a
+shop-local `local_manual` Product. Existing barcode Products with a NULL catalog
+link attach lazily. A conflicting non-NULL identity fails atomically. Clients
+cannot call the private helper, mutate global catalog tables, write barcode
+mappings directly, or set Product source/catalog identity directly.
 
 The catalog repository also exposes one explicit barcode-less manual creation
 operation. It normalizes required name and optional brand metadata, inserts a
 shop-owned `local_manual` Product through the existing member-scoped RLS policy,
 and creates neither a `product_barcodes` row nor a platform catalog identity. A
 feature-scoped Riverpod notifier captures the active shop while saving; the
-minimal receiving action returns the persisted Product, adds and selects it in
-the existing receiving state, and leaves quantity, expiry, and lot controls
-untouched.
+secondary scanner action returns the persisted Product and opens receiving;
+barcode-less creation is not offered within the receiving form.
 
 ### Public storefront boundary
 
 The deployed `products` table remains the shop-owned Product used by barcode,
-Batch, and movement workflows. A new optional `catalog_product_id` points toward
-the separate platform-wide `catalog_products` identity; existing Products are
-left unlinked because safe global deduplication is not yet specified.
+Batch, and movement workflows. Optional `catalog_product_id` points toward the
+separate platform-wide `catalog_products` identity. Barcode resolution links
+new Products and lazily links an existing NULL Product without changing its ID;
+unscanned legacy and barcode-less Products remain unlinked.
 
 Customer publication uses three dedicated tables plus filtered customer views:
 
@@ -170,6 +177,41 @@ The in-memory adapter mirrors this contract for deterministic tests by staging
 complete replacement collections before publishing. It is not used for
 receiving in production composition.
 
+The expiry-dashboard database boundary is the stable security-definer function
+`get_expiry_dashboard(target_shop_id uuid)`. It independently authorizes the
+authenticated caller through `shop_memberships`, validates the stored Shop IANA
+timezone, and derives one `reference_date` from PostgreSQL transaction time in
+that timezone. It returns positive-quantity or unknown-quantity same-Shop Batch identity,
+Product display name/brand, raw nullable expiry, signed day offset, quantity,
+optional lot, and received timestamp. Zero-quantity history is excluded;
+historical unknown expiry is returned as null with a null offset. SQL does not
+assign expiry-risk buckets: B08 remains the canonical classifier, and B10 owns
+client mapping. An authorized empty Shop returns one metadata-only row so the
+server-derived reference date is not lost when there are no active Batches.
+
+`InventoryRepository.loadExpiryDashboard` exposes that contract as an immutable
+`ExpiryDashboardSnapshot` containing the authoritative `LocalDate` and typed
+items. The Supabase adapter validates every contract field, exact Shop identity,
+calendar-day offset, nullable positive quantity, and timestamp before returning data; it
+rejects malformed or cross-Shop rows through typed repository errors. Dated
+items are classified by the B08 service, while historical unknown expiry stays
+null and unclassified. The in-memory adapter uses an explicit injectable
+reference date and mirrors these active-stock semantics without a device clock.
+
+The expiry dashboard's Riverpod boundary exposes only the currently active
+Shop. A private auto-disposed family `AsyncNotifier` keys repository loads by
+Shop ID, while the public provider obtains that key from `activeShopProvider`;
+presentation cannot supply an arbitrary Shop. This prevents Riverpod's retained
+previous async value or a late response from one Shop from appearing after a
+Shop switch. Application state preserves B10's reference date and partitions
+its existing B08 categories into immutable lists, including unknown expiry.
+Explicit refresh/retry targets the current Shop, and a successful receive
+invalidates that Shop's dashboard only after the atomic write is acknowledged.
+Home renders this state without repository access, date arithmetic, or category
+reclassification. It shows the five canonical B08 lists plus a distinct
+needs-date section for historical nullable expiry, and delegates its primary
+scan/receive action to the existing AppShell navigation workflow.
+
 ### Shop invitation boundary
 
 Owners manage one current, time-bounded invite through `ShopMembersController`.
@@ -193,12 +235,17 @@ and expiry.
 
 - Store expiry as a calendar date, not an instant; shop timezone is used when
   comparing it with "today."
+- `CalendarExpiryRiskService` consumes explicit expiry and shop-context
+  reference `LocalDate` values. It classifies signed calendar-day offsets as
+  expired (`<0`), today (`0`), next 7 days (`1..7`), 8–30 days (`8..30`), or
+  later (`31+`) without reading a clock, timezone, UI, or provider SDK.
 - Store timestamps as UTC instants and render them in the shop timezone.
 - All shop-owned rows carry `shop_id` even when ownership could be reached by a
   join, making authorization and querying explicit.
 - Every remote mutation has a client-generated idempotency key.
-- A manual receive quantity is currently limited to the portable signed 32-bit
-  domain `1..2,147,483,647`; the application validates this before persistence.
+- Manual receive quantity is optional. SQL/Dart null means unknown; explicit
+  counts must be in `1..2,147,483,647`. The Batch and initial received movement
+  preserve null together, and null-safe retry comparison prevents duplicates.
 - A local receiving draft is not shown as saved until the server acknowledges
   it. Retrying uses the same key.
 - Conflicts that alter quantity or expiry are surfaced; last-write-wins is not
@@ -244,3 +291,30 @@ must not expose stack traces or secrets.
   Riverpod-based Team & Access integration remains the separate B07 slice.
 - Camera images and OCR text have explicit retention rules before upload.
 - Destructive operations and data migrations require review under `AGENTS.md`.
+# Ansar global-catalog synchronization boundary
+
+The catalog crawler persists its workbook and crawl checkpoint in Git. After a
+successful batch, a backend-only importer validates every newly covered GTIN and
+calls `ingest_ansar_catalog_observation`. That service-only RPC is the sole write
+boundary for Ansar catalog observations; it serializes by barcode, preserves
+existing global identity and non-empty catalog values, and writes provenance in
+the same transaction. A verification RPC checks full workbook coverage and
+protected shop/inventory counts before GitHub Actions commits the advanced
+checkpoint.
+
+The mobile application cannot call ingestion or query catalog tables directly.
+It uses `find_catalog_product_by_barcode` for a narrow safe-field suggestion and
+`create_product_from_catalog` only after explicit confirmation. Receiving price,
+expiry, quantity, Batch, and movement writes remain in the existing receiving
+boundary.
+
+# Product image contribution boundary
+
+Product photos are an optional workflow outside Product creation and receiving
+transactions. Widgets use a Riverpod controller through picker, processor, and
+repository ports; only adapters import platform, HTTP, Supabase, or Cloudinary
+APIs. An authenticated Edge Function issues a constrained signed upload only
+after Shop membership and Product-to-CatalogProduct checks. A second function
+re-reads authoritative Cloudinary metadata and alone uses the service role to
+create a pending, non-canonical contribution. Global canonical images remain
+curated backend state, so photo failure cannot partially mutate inventory.

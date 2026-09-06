@@ -17,16 +17,38 @@ final class CreateManualProductForBarcode {
   final String shopId;
   final ProductCatalogRepository repository;
 
-  Future<Product> call({required String barcode, required String name, String? brand}) async {
+  Future<Product> call({
+    required String barcode,
+    required String name,
+    String? brand,
+    CatalogProductSuggestion? suggestion,
+  }) async {
     final normalizedBarcode = NormalizedBarcode.parse(barcode);
     final normalizedName = _normalizeRequired(name, field: 'Product name', maximumLength: 240);
     final normalizedBrand = _normalizeOptional(brand, field: 'Brand', maximumLength: 240);
-    final result = await repository.saveManualProduct(
-      shopId: shopId,
-      barcode: normalizedBarcode,
-      product: ManualProductDraft(name: normalizedName, brand: normalizedBrand),
+    final draft = ManualProductDraft(name: normalizedName, brand: normalizedBrand);
+    final result = suggestion != null && repository is GlobalCatalogProductRepository
+        ? await (repository as GlobalCatalogProductRepository).saveCatalogProduct(
+            shopId: shopId,
+            barcode: normalizedBarcode,
+            product: draft,
+            suggestion: suggestion,
+          )
+        : await repository.saveManualProduct(
+            shopId: shopId,
+            barcode: normalizedBarcode,
+            product: draft,
+          );
+    final product = result.product.catalogProductId != null
+        ? result.product
+        : await repository.findByBarcode(shopId: shopId, barcode: normalizedBarcode) ??
+              result.product;
+    return product.withScanMetadata(
+      barcode: normalizedBarcode.value,
+      packagingDisplay: product.catalogProductId == suggestion?.id
+          ? suggestion?.packagingDisplay
+          : null,
     );
-    return result.product;
   }
 }
 

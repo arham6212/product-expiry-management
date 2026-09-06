@@ -1,5 +1,8 @@
 import '../../../core/identity/local_id_generator.dart';
 import '../../../domain/entities/domain_models.dart';
+import '../../../domain/services/expiry_risk_service.dart';
+import '../../../domain/value_objects/local_date.dart';
+import '../application/expiry_dashboard.dart';
 import '../application/receive_stock.dart';
 
 enum ReceivingTransactionStage { batchStaged, movementStaged }
@@ -16,20 +19,26 @@ final class InMemoryInventoryRepository implements InventoryRepository {
     TransactionStageObserver? onTransactionStage,
     EntityIdGenerator? idGenerator,
     UtcClock? clock,
+    LocalDate? expiryDashboardReferenceDate,
+    ExpiryRiskService expiryRiskService = const CalendarExpiryRiskService(),
   }) : _products = {for (final product in products) product.id: product},
        _batches = List<Batch>.of(batches),
        _movements = List<InventoryMovement>.of(movements),
        _onTransactionStage = onTransactionStage,
        _idGenerator = idGenerator ?? LocalIdGenerator.next,
-       _clock = clock ?? _systemUtcClock;
+       _clock = clock ?? _systemUtcClock,
+       _expiryDashboardReferenceDate = expiryDashboardReferenceDate ?? LocalDate(2000, 1, 1),
+       _expiryRiskService = expiryRiskService;
 
-  final Map<String, Product> _products;
+  Map<String, Product> _products;
   List<Batch> _batches;
   List<InventoryMovement> _movements;
   Map<String, _StoredReceiving> _receivings = {};
   final TransactionStageObserver? _onTransactionStage;
   final EntityIdGenerator _idGenerator;
   final UtcClock _clock;
+  final LocalDate _expiryDashboardReferenceDate;
+  final ExpiryRiskService _expiryRiskService;
 
   List<Batch> get batches => List.unmodifiable(_batches);
   List<InventoryMovement> get movements => List.unmodifiable(_movements);
@@ -39,6 +48,63 @@ final class InMemoryInventoryRepository implements InventoryRepository {
     final products = _products.values.where((product) => product.shopId == shopId).toList()
       ..sort((left, right) => left.name.compareTo(right.name));
     return List.unmodifiable(products);
+  }
+
+  @override
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId}) async {
+    final normalizedShopId = shopId.trim();
+    if (normalizedShopId.isEmpty) {
+      throw const InventoryRepositoryException(
+        InventoryRepositoryFailureKind.invalidInput,
+        'A Shop ID is required to load the expiry dashboard.',
+      );
+    }
+
+    final batches =
+        _batches
+            .where(
+              (batch) =>
+                  batch.shopId == normalizedShopId &&
+                  (batch.currentQuantity == null || batch.currentQuantity! > 0),
+            )
+            .toList()
+          ..sort(_compareDashboardBatches);
+    final items = <ExpiryDashboardItem>[];
+
+    for (final batch in batches) {
+      final product = _products[batch.productId];
+      if (product == null || product.shopId != normalizedShopId) {
+        throw const InventoryRepositoryException(
+          InventoryRepositoryFailureKind.invalidResponse,
+          'Dashboard inventory references an unavailable Product.',
+        );
+      }
+      final expiryDate = batch.expiryDate;
+      items.add(
+        ExpiryDashboardItem(
+          shopId: batch.shopId,
+          batchId: batch.id,
+          productId: product.id,
+          productName: product.name,
+          productBrand: product.brand,
+          expiryDate: expiryDate,
+          daysToExpiry: expiryDate == null
+              ? null
+              : _expiryDashboardReferenceDate.daysUntil(expiryDate),
+          riskCategory: expiryDate == null
+              ? null
+              : _expiryRiskService.classify(
+                  expiryDate: expiryDate,
+                  referenceDate: _expiryDashboardReferenceDate,
+                ),
+          currentQuantity: batch.currentQuantity,
+          lotNumber: batch.lotCode,
+          receivedAt: batch.createdAt,
+        ),
+      );
+    }
+
+    return ExpiryDashboardSnapshot(referenceDate: _expiryDashboardReferenceDate, items: items);
   }
 
   @override
@@ -86,6 +152,24 @@ final class InMemoryInventoryRepository implements InventoryRepository {
     );
 
     try {
+      final updatedProduct = Product(
+        id: product.id,
+        shopId: product.shopId,
+        name: product.name,
+        brand: product.brand,
+        category: product.category,
+        imageUrl: product.imageUrl,
+        source: product.source,
+        sourceReference: product.sourceReference,
+        catalogProductId: product.catalogProductId,
+        sellingPriceMinor: request.sellingPriceMinor,
+        barcode: product.barcode,
+        packagingDisplay: product.packagingDisplay,
+        createdAt: product.createdAt,
+        updatedAt: now,
+        isArchived: product.isArchived,
+      );
+      final stagedProducts = Map<String, Product>.of(_products)..[product.id] = updatedProduct;
       final stagedBatches = List<Batch>.of(_batches)..add(batch);
       _onTransactionStage?.call(ReceivingTransactionStage.batchStaged);
 
@@ -96,6 +180,7 @@ final class InMemoryInventoryRepository implements InventoryRepository {
         ..[receiptKey] = _StoredReceiving(request: request, batch: batch, movement: movement);
 
       // No await or fallible work occurs while publishing the staged state.
+      _products = stagedProducts;
       _batches = stagedBatches;
       _movements = stagedMovements;
       _receivings = stagedReceivings;
@@ -111,6 +196,20 @@ final class InMemoryInventoryRepository implements InventoryRepository {
 
     return ReceivingReceipt(batch: batch, movement: movement, wasDuplicate: false);
   }
+}
+
+int _compareDashboardBatches(Batch left, Batch right) {
+  final leftExpiry = left.expiryDate;
+  final rightExpiry = right.expiryDate;
+  if (leftExpiry == null && rightExpiry != null) return 1;
+  if (leftExpiry != null && rightExpiry == null) return -1;
+  if (leftExpiry != null && rightExpiry != null) {
+    final expiryComparison = leftExpiry.compareTo(rightExpiry);
+    if (expiryComparison != 0) return expiryComparison;
+  }
+  final receivedComparison = left.createdAt.compareTo(right.createdAt);
+  if (receivedComparison != 0) return receivedComparison;
+  return left.id.compareTo(right.id);
 }
 
 final class _StoredReceiving {

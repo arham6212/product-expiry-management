@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:product_expiry_management/domain/entities/domain_models.dart';
-import 'package:product_expiry_management/domain/ports/external_providers.dart';
 import 'package:product_expiry_management/features/product_resolution/application/create_manual_product_for_barcode.dart';
 import 'package:product_expiry_management/features/product_resolution/application/manual_product_controller.dart';
+import 'package:product_expiry_management/features/product_resolution/application/product_catalog_repository.dart';
 import 'package:product_expiry_management/features/product_resolution/application/product_resolution_controller.dart';
 import 'package:product_expiry_management/features/product_resolution/application/resolve_product_by_barcode.dart';
 import 'package:product_expiry_management/features/product_resolution/data/in_memory_product_catalog_repository.dart';
@@ -44,41 +44,32 @@ void main() {
   }
 
   Future<void> submit(WidgetTester tester) async {
+    final manualFallback = find.textContaining('Enter barcode manually');
+    if (manualFallback.evaluate().isNotEmpty) {
+      await tester.tap(manualFallback.first);
+      await tester.pumpAndSettle();
+    }
+
     await tester.enterText(find.byKey(const Key('barcodeInput')), barcode);
     await tester.tap(find.byKey(const Key('resolveBarcodeButton')));
     await tester.pump();
   }
 
-  testWidgets('shows local database loading state while lookup is pending', (tester) async {
+  testWidgets('shows shop lookup state while lookup is pending', (tester) async {
     final resolver = _ControlledResolver();
     await pumpPage(tester, resolver);
 
     await submit(tester);
 
     expect(find.byKey(const Key('localLookupState')), findsOneWidget);
-    expect(find.text('Checking our database…'), findsOneWidget);
-
-    resolver.complete(ProductResolutionNotFound(barcode: barcode));
-    await tester.pumpAndSettle();
-  });
-
-  testWidgets('shows external lookup state when the resolver reports it', (tester) async {
-    final resolver = _ControlledResolver(externalStage: true);
-    await pumpPage(tester, resolver);
-
-    await submit(tester);
-
-    expect(find.byKey(const Key('externalLookupState')), findsOneWidget);
-    expect(find.text('Looking up product…'), findsOneWidget);
+    expect(find.text('Checking this shop…'), findsOneWidget);
 
     resolver.complete(ProductResolutionNotFound(barcode: barcode));
     await tester.pumpAndSettle();
   });
 
   testWidgets('shows a found product and missing-image placeholder', (tester) async {
-    final resolver = _ImmediateResolver(
-      ProductFoundExternally(barcode: barcode, product: product()),
-    );
+    final resolver = _ImmediateResolver(ProductFoundLocally(barcode: barcode, product: product()));
     await pumpPage(tester, resolver);
 
     await submit(tester);
@@ -86,15 +77,21 @@ void main() {
 
     expect(find.byKey(const Key('productFoundState')), findsOneWidget);
     expect(find.text('Coca Cola Zero'), findsOneWidget);
-    expect(find.text('Open Food Facts'), findsOneWidget);
+    expect(find.text('Our database'), findsOneWidget);
     expect(find.byKey(const Key('productImagePlaceholder')), findsOneWidget);
   });
 
-  testWidgets('shows the persisted winner source after an external-save race', (tester) async {
+  testWidgets('shows global suggestion without creating a shop product', (tester) async {
     final resolver = _ImmediateResolver(
-      ProductFoundExternally(
+      const ProductFoundGlobally(
         barcode: barcode,
-        product: product(source: ProductSource.localManual),
+        suggestion: CatalogProductSuggestion(
+          id: 'catalog-1',
+          name: 'Ansar Cola',
+          brand: 'Ansar Brand',
+          packagingDisplay: '6 x 330ml',
+          category: 'Beverages',
+        ),
       ),
     );
     await pumpPage(tester, resolver);
@@ -102,11 +99,17 @@ void main() {
     await submit(tester);
     await tester.pumpAndSettle();
 
-    expect(find.text('Manual entry'), findsOneWidget);
-    expect(find.text('Open Food Facts'), findsNothing);
+    expect(find.byKey(const Key('manualProductName')), findsOneWidget);
+    expect(find.text('Ansar Cola'), findsOneWidget);
+    expect(find.text('Packaging: 6 x 330ml'), findsOneWidget);
+    expect(find.byKey(const Key('saveManualProductButton')), findsOneWidget);
+    expect(
+      find.text('Review the global catalog suggestion before saving it to this shop.'),
+      findsOneWidget,
+    );
   });
 
-  testWidgets('shows not-found with retry and manual-add actions', (tester) async {
+  testWidgets('automatically navigates to manual add on not-found', (tester) async {
     String? manualBarcode;
     final resolver = _ImmediateResolver(ProductResolutionNotFound(barcode: barcode));
     await pumpPage(tester, resolver, onManualAdd: (value) => manualBarcode = value);
@@ -114,40 +117,24 @@ void main() {
     await submit(tester);
     await tester.pumpAndSettle();
 
-    expect(find.byKey(const Key('productNotFoundState')), findsOneWidget);
-    expect(find.text('Try again'), findsOneWidget);
-    expect(find.byKey(const Key('manualAddButton')), findsOneWidget);
-
-    await tester.tap(find.byKey(const Key('manualAddButton')));
     expect(manualBarcode, barcode);
-
-    await tester.tap(find.text('Try again'));
-    await tester.pump();
-    expect(find.byKey(const Key('barcodeInput')), findsOneWidget);
   });
 
-  testWidgets('failure state does not crash and retry reruns lookup', (tester) async {
+  testWidgets('lookup failure stays retryable without creating a manual product', (tester) async {
+    String? manualBarcode;
     final resolver = _SequenceResolver([
       const ProductResolutionUnavailable(
         barcode: barcode,
-        stage: ProductResolutionFailureStage.externalProvider,
-        providerFailure: ProductLookupFailureKind.network,
+        stage: ProductResolutionFailureStage.database,
       ),
-      ProductFoundLocally(barcode: barcode, product: product()),
     ]);
-    await pumpPage(tester, resolver);
+    await pumpPage(tester, resolver, onManualAdd: (value) => manualBarcode = value);
 
     await submit(tester);
     await tester.pumpAndSettle();
 
+    expect(manualBarcode, isNull);
     expect(find.byKey(const Key('lookupUnavailableState')), findsOneWidget);
-    expect(find.text('No internet connection'), findsOneWidget);
-
-    await tester.tap(find.text('Try again'));
-    await tester.pumpAndSettle();
-
-    expect(find.byKey(const Key('productFoundState')), findsOneWidget);
-    expect(resolver.calls, 2);
   });
 
   testWidgets('invalid barcode leaves loading and shows actionable message', (tester) async {
@@ -155,6 +142,12 @@ void main() {
       const ProductResolutionInvalidBarcode(barcode: '', message: 'Enter or scan a barcode.'),
     );
     await pumpPage(tester, resolver);
+
+    final manualFallback = find.textContaining('Enter barcode manually');
+    if (manualFallback.evaluate().isNotEmpty) {
+      await tester.tap(manualFallback.first);
+      await tester.pumpAndSettle();
+    }
 
     await tester.tap(find.byKey(const Key('resolveBarcodeButton')));
     await tester.pumpAndSettle();
@@ -185,8 +178,6 @@ void main() {
     await tester.pumpAndSettle();
     await submit(tester);
     await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const Key('manualAddButton')));
-    await tester.pumpAndSettle();
     await tester.enterText(find.byKey(const Key('manualProductName')), 'Manual Cola');
     await tester.tap(find.byKey(const Key('saveManualProductButton')));
     await tester.pumpAndSettle();
@@ -213,9 +204,8 @@ final class _ImmediateResolver implements ProductResolver {
 }
 
 final class _ControlledResolver implements ProductResolver {
-  _ControlledResolver({this.externalStage = false});
+  _ControlledResolver();
 
-  final bool externalStage;
   final _completer = Completer<ProductResolutionResult>();
 
   void complete(ProductResolutionResult result) => _completer.complete(result);
@@ -226,7 +216,6 @@ final class _ControlledResolver implements ProductResolver {
     ProductResolutionStageObserver? onStage,
   }) {
     onStage?.call(ProductResolutionStage.checkingLocal);
-    if (externalStage) onStage?.call(ProductResolutionStage.lookingUpExternal);
     return _completer.future;
   }
 }

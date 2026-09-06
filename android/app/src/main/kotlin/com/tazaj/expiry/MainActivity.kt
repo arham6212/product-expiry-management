@@ -1,4 +1,4 @@
-package com.example.product_expiry_management
+package com.tazaj.expiry
 
 import io.flutter.embedding.android.FlutterActivity
 

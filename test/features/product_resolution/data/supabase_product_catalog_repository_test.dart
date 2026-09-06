@@ -20,6 +20,8 @@ void main() {
     'image_url': null,
     'source': 'open_food_facts',
     'source_reference': barcodeValue,
+    'catalog_product_id': null,
+    'selling_price_minor': 725,
     'created_at': '2026-08-29T00:00:00Z',
     'updated_at': '2026-08-29T00:00:00Z',
   };
@@ -49,6 +51,7 @@ void main() {
 
     expect(product?.name, 'External Cola');
     expect(product?.shopId, shopId);
+    expect(product?.sellingPriceMinor, 725);
     expect(captured.url.path, '/rest/v1/product_barcodes');
     expect(captured.url.queryParameters['shop_id'], 'eq.$shopId');
     expect(captured.url.queryParameters['barcode'], 'eq.$barcodeValue');
@@ -133,6 +136,91 @@ void main() {
     expect(body['product_brand'], 'Local Brand');
   });
 
+  test('loads safe global catalog fields by barcode', () async {
+    late http.Request captured;
+    final repository = SupabaseProductCatalogRepository(
+      _client(
+        MockClient((request) async {
+          captured = request;
+          return http.Response(
+            jsonEncode([
+              {
+                'id': 'catalog-1',
+                'canonical_name': 'Ansar Cola',
+                'brand': 'Ansar Brand',
+                'image_url': 'https://media.ansargallery.com/product.jpg',
+                'product_family': 'Cola',
+                'variant_name': 'Zero',
+                'product_type': 'multipack',
+                'pack_count': 6,
+                'unit_quantity': 330,
+                'unit_quantity_unit': 'ml',
+                'total_quantity': 1980,
+                'total_quantity_unit': 'ml',
+                'packaging_display': '6 x 330ml',
+                'category': 'Beverages',
+                'subcategory': 'Soft Drinks',
+                'country_of_origin': null,
+                'manufacturer': null,
+              },
+            ]),
+            200,
+            request: request,
+            headers: {'content-type': 'application/json'},
+          );
+        }),
+      ),
+    );
+
+    final suggestion = await repository.findGlobalByBarcode(
+      barcode: NormalizedBarcode.parse(barcodeValue),
+    );
+
+    expect(suggestion?.name, 'Ansar Cola');
+    expect(suggestion?.packagingDisplay, '6 x 330ml');
+    expect(captured.url.path, '/rest/v1/rpc/find_catalog_product_by_barcode');
+    expect(jsonDecode(captured.body), {'normalized_barcode': barcodeValue});
+  });
+
+  test('creates shop product from reviewed catalog suggestion only on save', () async {
+    late http.Request captured;
+    final repository = SupabaseProductCatalogRepository(
+      _client(
+        MockClient((request) async {
+          captured = request;
+          return http.Response(
+            jsonEncode([
+              {
+                ...productJson,
+                'name': 'Reviewed Cola',
+                'source': 'local_manual',
+                'source_reference': null,
+                'catalog_product_id': 'catalog-1',
+                'was_created': true,
+              },
+            ]),
+            200,
+            request: request,
+            headers: {'content-type': 'application/json'},
+          );
+        }),
+      ),
+    );
+
+    final result = await repository.saveCatalogProduct(
+      shopId: shopId,
+      barcode: NormalizedBarcode.parse(barcodeValue),
+      product: const ManualProductDraft(name: ' Reviewed   Cola '),
+      suggestion: const CatalogProductSuggestion(id: 'catalog-1', name: 'Ansar Cola'),
+    );
+
+    expect(result.product.catalogProductId, 'catalog-1');
+    expect(captured.url.path, '/rest/v1/rpc/create_product_from_catalog');
+    final body = jsonDecode(captured.body) as Map<String, dynamic>;
+    expect(body['product_name'], 'Reviewed Cola');
+    expect(body['normalized_barcode'], barcodeValue);
+  });
+
   test('creates only a normalized local Product without a barcode request', () async {
     late http.Request captured;
     var requestCount = 0;
@@ -148,6 +236,7 @@ void main() {
               'brand': 'Local Dairy',
               'source': 'local_manual',
               'source_reference': null,
+              'selling_price_minor': null,
             }),
             201,
             request: request,
@@ -167,6 +256,7 @@ void main() {
     expect(product.source, ProductSource.localManual);
     expect(product.sourceReference, isNull);
     expect(product.catalogProductId, isNull);
+    expect(product.sellingPriceMinor, isNull);
     expect(requestCount, 1);
     expect(captured.url.path, '/rest/v1/products');
     expect(captured.method, 'POST');

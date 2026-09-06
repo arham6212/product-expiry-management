@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/app_shell.dart';
+import '../../../design_system/components/app_components.dart';
+import '../../../design_system/theme/app_tokens.dart';
 import '../../shops/application/shop_access.dart';
 import '../../shops/application/shop_session_controller.dart';
 import '../application/auth_controller.dart';
@@ -83,6 +85,7 @@ class _EmailPasswordPage extends ConsumerStatefulWidget {
 class _EmailPasswordPageState extends ConsumerState<_EmailPasswordPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _obscurePassword = true;
 
   @override
   void dispose() {
@@ -95,42 +98,89 @@ class _EmailPasswordPageState extends ConsumerState<_EmailPasswordPage> {
   Widget build(BuildContext context) {
     final state = ref.watch(authFormControllerProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Shop operations')),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 420),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Icon(Icons.inventory_2_outlined, size: 56, color: Theme.of(context).primaryColor),
-                  const SizedBox(height: 20),
-                  Text(
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 64,
+                      height: 64,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        borderRadius: BorderRadius.circular(AppRadius.large),
+                      ),
+                      child: Icon(
+                        Icons.inventory_2_outlined,
+                        size: 32,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+                  const Text(
                     'Sign in for shop operations',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineSmall,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    'Sign in to check expiries and receive stock.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
                   TextField(
                     key: const Key('authEmailField'),
                     controller: _emailController,
                     enabled: !state.isSubmitting,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(labelText: 'Email'),
+                    textInputAction: TextInputAction.next,
+                    autofillHints: const [AutofillHints.email],
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                      prefixIcon: Icon(Icons.email_outlined),
+                    ),
                   ),
                   const SizedBox(height: 12),
                   TextField(
                     key: const Key('authPasswordField'),
                     controller: _passwordController,
                     enabled: !state.isSubmitting,
-                    obscureText: true,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    obscureText: _obscurePassword,
+                    textInputAction: TextInputAction.done,
+                    autofillHints: const [AutofillHints.password],
+                    onSubmitted: (_) => _submit(signUp: false),
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      suffixIcon: IconButton(
+                        tooltip: _obscurePassword ? 'Show password' : 'Hide password',
+                        onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                        ),
+                      ),
+                    ),
                   ),
                   if (state.message != null) ...[
                     const SizedBox(height: 12),
-                    Text(state.message!, key: const Key('authMessage')),
+                    Semantics(
+                      liveRegion: true,
+                      child: Text(
+                        state.message!,
+                        key: const Key('authMessage'),
+                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                      ),
+                    ),
                   ],
                   const SizedBox(height: 20),
                   FilledButton(
@@ -214,19 +264,16 @@ class _GateMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 48),
-            const SizedBox(height: 16),
-            Text(title),
-            if (message != null) ...[const SizedBox(height: 8), Text(message!)],
-            if (showProgress) ...[const SizedBox(height: 16), const CircularProgressIndicator()],
-            if (actionLabel != null && onAction != null) ...[
-              const SizedBox(height: 16),
-              FilledButton(onPressed: onAction, child: Text(actionLabel!)),
-            ],
-          ],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          child: AppStatePanel(
+            icon: icon,
+            title: title,
+            message: message ?? 'Please wait a moment.',
+            actionLabel: actionLabel,
+            onAction: onAction,
+            showProgress: showProgress,
+          ),
         ),
       ),
     );

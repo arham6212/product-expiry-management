@@ -3,16 +3,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/domain_models.dart';
-import '../../../domain/ports/external_providers.dart';
+import '../../shops/application/shop_session_controller.dart';
+import '../application/product_catalog_repository.dart';
 import '../application/product_resolution_controller.dart';
 import '../application/resolve_product_by_barcode.dart';
+import 'barcode_less_product_entry_page.dart';
 import 'manual_product_entry_page.dart';
 import 'product_barcode_scanner_screen.dart';
+import 'product_image_card.dart';
 
 class ProductResolutionPage extends ConsumerStatefulWidget {
-  const ProductResolutionPage({this.onManualAdd, super.key});
+  const ProductResolutionPage({this.onManualAdd, this.onResolved, super.key});
 
   final ValueChanged<String>? onManualAdd;
+  final ValueChanged<Product>? onResolved;
 
   @override
   ConsumerState<ProductResolutionPage> createState() => _ProductResolutionPageState();
@@ -29,9 +33,36 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(productResolutionControllerProvider, (previous, current) {
+      if (current.isResolving || identical(previous?.result, current.result)) return;
+      final result = current.result;
+      if (result is ProductFoundLocally && Navigator.of(context).canPop()) {
+        _complete(result.product);
+      } else if (result is ProductFoundGlobally) {
+        _openManualEntry(result.barcode, suggestion: result.suggestion);
+      } else if (result is ProductResolutionNotFound) {
+        _manualAdd(result.barcode);
+      }
+    });
+
     final resolution = ref.watch(productResolutionControllerProvider);
+    final isInitial = !resolution.isResolving && resolution.result == null;
+
+    if (isInitial && !resolution.manualEntry) {
+      return ProductBarcodeScannerScreen(
+        onWithoutBarcode: _openWithoutBarcode,
+        onDetect: (barcode) {
+          _barcodeController.text = barcode;
+          _resolve();
+        },
+        onManualEntry: () {
+          ref.read(productResolutionControllerProvider.notifier).showManualEntry();
+        },
+      );
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Resolve product')),
+      appBar: AppBar(title: const Text('Scan product')),
       body: SafeArea(child: _buildBody(context, resolution)),
     );
   }
@@ -46,28 +77,28 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
         sourceLabel: 'Our database',
       );
     }
-    if (result is ProductFoundExternally) {
-      return _FoundProduct(
-        product: result.product,
-        barcode: result.barcode,
-        sourceLabel: switch (result.product.source) {
-          ProductSource.openFoodFacts => 'Open Food Facts',
-          ProductSource.localManual => 'Manual entry',
-        },
-      );
-    }
-    if (result is ProductResolutionNotFound) {
+    if (result is ProductResolutionUnavailable) {
       return _ResultMessage(
-        key: const Key('productNotFoundState'),
-        icon: Icons.search_off_outlined,
-        title: 'Product not found',
-        message: "We couldn't find this product in your shop or Open Food Facts.",
-        primaryLabel: 'Try again',
-        onPrimary: _reset,
-        secondaryLabel: 'Add product manually',
-        onSecondary: () => _manualAdd(result.barcode),
+        key: const Key('lookupUnavailableState'),
+        icon: Icons.cloud_off_outlined,
+        title: 'Couldn’t look up this barcode',
+        message: 'Check your connection and retry. Your barcode is kept.',
+        primaryLabel: 'Retry lookup',
+        onPrimary: _resolve,
       );
     }
+    if (result is ProductFoundGlobally || result is ProductResolutionNotFound) {
+      return _ResultMessage(
+        icon: Icons.edit_outlined,
+        title: 'Review product details',
+        message: 'Barcode: ${result!.barcode}',
+        primaryLabel: 'Continue',
+        onPrimary: () => result is ProductFoundGlobally
+            ? _openManualEntry(result.barcode, suggestion: result.suggestion)
+            : _manualAdd(result.barcode),
+      );
+    }
+
     if (result is ProductResolutionInvalidBarcode) {
       return _ResultMessage(
         key: const Key('invalidBarcodeState'),
@@ -78,21 +109,6 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
         onPrimary: _reset,
       );
     }
-    if (result is ProductResolutionUnavailable) {
-      final offline = result.providerFailure == ProductLookupFailureKind.network;
-      return _ResultMessage(
-        key: const Key('lookupUnavailableState'),
-        icon: offline ? Icons.cloud_off_outlined : Icons.warning_amber_rounded,
-        title: offline ? 'No internet connection' : 'Lookup unavailable',
-        message: offline
-            ? 'Check your connection and try again.'
-            : 'The product could not be resolved right now. Nothing was saved.',
-        primaryLabel: 'Try again',
-        onPrimary: _resolve,
-        secondaryLabel: 'Add product manually',
-        onSecondary: () => _manualAdd(result.barcode),
-      );
-    }
     return _buildEntry(context);
   }
 
@@ -100,37 +116,16 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
     return ListView(
       padding: const EdgeInsets.all(24),
       children: [
-        Icon(Icons.qr_code_scanner, size: 56, color: Theme.of(context).colorScheme.primary),
+        Icon(Icons.keyboard_outlined, size: 56, color: Theme.of(context).colorScheme.primary),
         const SizedBox(height: 18),
         Text(
-          'Scan or enter a barcode',
+          'Enter barcode manually',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Your current shop is checked before Open Food Facts.',
-          textAlign: TextAlign.center,
-        ),
+        const Text('Enter the barcode exactly as it appears.', textAlign: TextAlign.center),
         const SizedBox(height: 24),
-        FilledButton.icon(
-          key: const Key('scanProductBarcodeButton'),
-          onPressed: _scanBarcode,
-          icon: const Icon(Icons.qr_code_scanner),
-          label: const Text('Scan barcode'),
-        ),
-        const SizedBox(height: 16),
-        const Row(
-          children: [
-            Expanded(child: Divider()),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              child: Text('or enter it manually'),
-            ),
-            Expanded(child: Divider()),
-          ],
-        ),
-        const SizedBox(height: 16),
         TextField(
           key: const Key('barcodeInput'),
           controller: _barcodeController,
@@ -152,41 +147,39 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
           icon: const Icon(Icons.search),
           label: const Text('Look up product'),
         ),
+        const SizedBox(height: 16),
+        const Row(
+          children: [
+            Expanded(child: Divider()),
+            Padding(padding: EdgeInsets.symmetric(horizontal: 12), child: Text('or')),
+            Expanded(child: Divider()),
+          ],
+        ),
+        const SizedBox(height: 16),
+        OutlinedButton.icon(
+          key: const Key('scanProductBarcodeButton'),
+          onPressed: _reset,
+          icon: const Icon(Icons.qr_code_scanner),
+          label: const Text('Back to camera'),
+        ),
       ],
     );
   }
 
   Widget _buildLoading(ProductResolutionStage? stage) {
-    final lookingExternal = stage == ProductResolutionStage.lookingUpExternal;
-    final saving = stage == ProductResolutionStage.saving;
     return Center(
-      key: Key(
-        saving
-            ? 'savingProductState'
-            : lookingExternal
-            ? 'externalLookupState'
-            : 'localLookupState',
-      ),
+      key: const Key('localLookupState'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            saving
-                ? Icons.cloud_upload_outlined
-                : lookingExternal
-                ? Icons.public
-                : Icons.storage_outlined,
-            size: 48,
-          ),
+          const Icon(Icons.storage_outlined, size: 48),
           const SizedBox(height: 18),
           const CircularProgressIndicator(),
           const SizedBox(height: 18),
           Text(
-            saving
-                ? 'Saving product…'
-                : lookingExternal
-                ? 'Looking up product…'
-                : 'Checking our database…',
+            stage == ProductResolutionStage.checkingGlobal
+                ? 'Checking the global catalog…'
+                : 'Checking this shop…',
             key: const Key('resolutionStageText'),
           ),
         ],
@@ -195,16 +188,8 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
   }
 
   Future<void> _resolve() async {
+    FocusScope.of(context).unfocus();
     await ref.read(productResolutionControllerProvider.notifier).resolve(_barcodeController.text);
-  }
-
-  Future<void> _scanBarcode() async {
-    final barcode = await Navigator.of(
-      context,
-    ).push<String>(MaterialPageRoute<String>(builder: (_) => const ProductBarcodeScannerScreen()));
-    if (!mounted || barcode == null) return;
-    _barcodeController.text = barcode;
-    await _resolve();
   }
 
   void _reset() {
@@ -220,12 +205,42 @@ class _ProductResolutionPageState extends ConsumerState<ProductResolutionPage> {
     _openManualEntry(barcode);
   }
 
-  Future<void> _openManualEntry(String barcode) async {
+  Future<void> _openWithoutBarcode() async {
+    final shop = ref.read(activeShopProvider)?.shop;
+    if (shop == null) return;
+    ref.read(productResolutionControllerProvider.notifier).showManualEntry();
     final product = await Navigator.of(context).push<Product>(
-      MaterialPageRoute<Product>(builder: (_) => ManualProductEntryPage(barcode: barcode)),
+      MaterialPageRoute<Product>(builder: (_) => BarcodeLessProductEntryPage(shopId: shop.id)),
     );
-    if (!mounted || product == null) return;
-    Navigator.of(context).pop<Product>(product);
+    if (!mounted) return;
+    if (product == null) {
+      _reset();
+      return;
+    }
+    _complete(product);
+  }
+
+  void _complete(Product product) {
+    final handler = widget.onResolved;
+    if (handler != null) {
+      handler(product);
+    } else {
+      Navigator.of(context).pop<Product>(product);
+    }
+  }
+
+  Future<void> _openManualEntry(String barcode, {CatalogProductSuggestion? suggestion}) async {
+    final product = await Navigator.of(context).push<Product>(
+      MaterialPageRoute<Product>(
+        builder: (_) => ManualProductEntryPage(barcode: barcode, suggestion: suggestion),
+      ),
+    );
+    if (!mounted) return;
+    if (product == null) {
+      _reset();
+      return;
+    }
+    _complete(product);
   }
 }
 
@@ -242,8 +257,6 @@ class _FoundProduct extends StatelessWidget {
       key: const Key('productFoundState'),
       padding: const EdgeInsets.all(24),
       children: [
-        Center(child: _ProductImage(imageUrl: product.imageUrl)),
-        const SizedBox(height: 20),
         Text(
           product.name,
           textAlign: TextAlign.center,
@@ -262,40 +275,9 @@ class _FoundProduct extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(product),
           child: const Text('Continue'),
         ),
+        const SizedBox(height: 20),
+        ProductImageCard(shopId: product.shopId, productId: product.id, imageUrl: product.imageUrl),
       ],
-    );
-  }
-}
-
-class _ProductImage extends StatelessWidget {
-  const _ProductImage({required this.imageUrl});
-
-  final Uri? imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    final placeholder = Container(
-      key: const Key('productImagePlaceholder'),
-      width: 120,
-      height: 120,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: const Icon(Icons.inventory_2_outlined, size: 48),
-    );
-    if (imageUrl == null) return placeholder;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: Image.network(
-        imageUrl.toString(),
-        key: const Key('productImage'),
-        width: 120,
-        height: 120,
-        fit: BoxFit.contain,
-        errorBuilder: (_, _, _) => placeholder,
-      ),
     );
   }
 }
@@ -307,8 +289,6 @@ class _ResultMessage extends StatelessWidget {
     required this.message,
     required this.primaryLabel,
     required this.onPrimary,
-    this.secondaryLabel,
-    this.onSecondary,
     super.key,
   });
 
@@ -317,8 +297,6 @@ class _ResultMessage extends StatelessWidget {
   final String message;
   final String primaryLabel;
   final VoidCallback onPrimary;
-  final String? secondaryLabel;
-  final VoidCallback? onSecondary;
 
   @override
   Widget build(BuildContext context) {
@@ -335,12 +313,6 @@ class _ResultMessage extends StatelessWidget {
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: 24),
             FilledButton(onPressed: onPrimary, child: Text(primaryLabel)),
-            if (secondaryLabel != null && onSecondary != null)
-              OutlinedButton(
-                key: const Key('manualAddButton'),
-                onPressed: onSecondary,
-                child: Text(secondaryLabel!),
-              ),
           ],
         ),
       ),

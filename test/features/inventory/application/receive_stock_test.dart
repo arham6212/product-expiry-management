@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:product_expiry_management/domain/entities/domain_models.dart';
 import 'package:product_expiry_management/domain/value_objects/local_date.dart';
+import 'package:product_expiry_management/features/inventory/application/expiry_dashboard.dart';
 import 'package:product_expiry_management/features/inventory/application/receive_stock.dart';
 import 'package:product_expiry_management/features/inventory/data/in_memory_inventory_repository.dart';
 
@@ -42,9 +43,10 @@ void main() {
   });
 
   ReceiveStockInput input({
-    int quantity = 20,
+    int? quantity = 20,
     String shopId = 'shop-1',
     String productId = 'P1',
+    int? sellingPriceMinor = 725,
     LocalDate? expiryDate,
     bool omitExpiry = false,
     String? lotNumber = 'LOT-7',
@@ -53,10 +55,29 @@ void main() {
       shopId: shopId,
       productId: productId,
       quantity: quantity,
+      sellingPriceMinor: sellingPriceMinor,
       expiryDate: omitExpiry ? null : expiryDate ?? LocalDate(2026, 9, 12),
       lotNumber: lotNumber,
     );
   }
+
+  test('unknown quantity is audited, visible and safely retryable', () async {
+    final first = await useCase(input(quantity: null)) as ReceiveStockSuccess;
+    expect(first.receipt.batch.currentQuantity, isNull);
+    expect(first.receipt.movement.quantityDelta, isNull);
+    final retry =
+        await useCase(input(quantity: null), retryIdempotencyKey: first.idempotencyKey)
+            as ReceiveStockSuccess;
+    expect(retry.receipt.wasDuplicate, isTrue);
+    expect(repository.batches, hasLength(1));
+    final dashboard = await repository.loadExpiryDashboard(shopId: 'shop-1');
+    expect(dashboard.items.single.currentQuantity, isNull);
+    expect(dashboard.items.single.quantityLabel, 'Unknown');
+    expect(
+      await useCase(input(quantity: 1), retryIdempotencyKey: first.idempotencyKey),
+      isA<ReceiveStockIdempotencyConflict>(),
+    );
+  });
 
   test('creates a new batch and initial RECEIVED movement', () async {
     final result = await useCase(input(expiryDate: LocalDate(2026, 9, 12)));
@@ -73,6 +94,28 @@ void main() {
     expect(success.receipt.wasDuplicate, isFalse);
     expect(repository.batches, hasLength(1));
     expect(repository.movements, hasLength(1));
+    expect((await repository.listProducts(shopId: 'shop-1')).single.sellingPriceMinor, 725);
+  });
+
+  test('rejects missing, zero, and negative selling prices before repository I/O', () async {
+    for (final price in <int?>[null, 0, -1]) {
+      final result = await useCase(input(sellingPriceMinor: price));
+      expect(
+        result,
+        isA<ReceiveStockInvalidInput>().having((value) => value.field, 'field', 'sellingPrice'),
+      );
+    }
+    expect(keySequence, 0);
+    expect(repository.batches, isEmpty);
+  });
+
+  test('parses valid prices and rejects malformed or non-finite text', () {
+    expect(parseSellingPriceMinor('7'), 700);
+    expect(parseSellingPriceMinor('7.2'), 720);
+    expect(parseSellingPriceMinor('7.25'), 725);
+    for (final invalid in ['', '0', '-1', '1.234', 'abc', 'NaN', 'Infinity']) {
+      expect(parseSellingPriceMinor(invalid), isNull, reason: invalid);
+    }
   });
 
   test('accepts a nullable lot number with a required expiry', () async {
@@ -207,6 +250,11 @@ final class _RecordingRepository implements InventoryRepository {
   }
 
   @override
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId}) {
+    return delegate.loadExpiryDashboard(shopId: shopId);
+  }
+
+  @override
   Future<ReceivingReceipt> receive(ReceivingRequest request) {
     lastRequest = request;
     return delegate.receive(request);
@@ -220,6 +268,11 @@ final class _FailingRepository implements InventoryRepository {
 
   @override
   Future<List<Product>> listProducts({required String shopId}) async => const [];
+
+  @override
+  Future<ExpiryDashboardSnapshot> loadExpiryDashboard({required String shopId}) {
+    throw UnsupportedError('Not used by receiving tests.');
+  }
 
   @override
   Future<ReceivingReceipt> receive(ReceivingRequest request) {

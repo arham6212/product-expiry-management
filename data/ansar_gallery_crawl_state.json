@@ -122,10 +122,10 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 280,
+  "coverage_cursor": 10,
   "coverage_jobs": [
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -158,7 +158,7 @@
         "Aqua Gulf"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -196,12 +196,12 @@
         "Kinder Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-milk-chocolate-100g-qatar-80177616"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -234,7 +234,7 @@
         "Indomie"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -258,7 +258,7 @@
       "source_product_url": "https://www.ansargallery.com/en/indomi-beef-flavoured-cup-noodle-60g-qatar-089686122046"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -291,7 +291,7 @@
         "American Garden"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -315,7 +315,7 @@
       "source_product_url": "https://www.ansargallery.com/en/american-garden-panko-bread-crumbs-227g-qatar-717273504127"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -348,7 +348,7 @@
         "California Garden"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -372,7 +372,7 @@
       "source_product_url": "https://www.ansargallery.com/en/california-garden-light-solid-tuna-in-water-salt-185g-qatar-032894015518"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -405,7 +405,7 @@
         "Al Rifai"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -429,7 +429,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-turkish-coffee-with-cardamom-250g-qatar-6271100041635"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -472,7 +472,7 @@
         "lion cereal"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -496,7 +496,7 @@
       "source_product_url": "https://www.ansargallery.com/en/nestle-lion-caramel-chocolate-cereals-400g-qatar-7613031370641"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -529,7 +529,7 @@
         "Toblerone"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -567,12 +567,12 @@
         "Indomie Instant Fried Cup Noodles"
       ],
       "next_pages": {
-        "Dry Food": 11
+        "Dry Food": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/indomie-instant-fried-cup-noodles-migoreng-75g-qatar-089686180657"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -605,7 +605,7 @@
         "Al Kabeer"
       ],
       "next_pages": {
-        "Bakery": 1,
+        "Bakery": 2,
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
@@ -10015,7 +10015,7 @@
         "Valor Sugar-Free 70% Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-free-70-dark-chocolate-100g-qatar-8410109050882"
     },
@@ -10034,7 +10034,7 @@
         "Amul Super Fruit"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-super-fruit-chocolate-150g-qatar-8901262071109"
     },
@@ -10053,7 +10053,7 @@
         "McVities Digestive Cream Filled Wheat Biscuit"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/mcvities-digestive-cream-filled-wheat-biscuit-chocolate-40g-qatar-5000396044645"
     },
@@ -10072,7 +10072,7 @@
         "Doha Dates with"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/doha-dates-with-chocolate-400g-qatar-0604170032733"
     },
@@ -10091,7 +10091,7 @@
         "Galaxy Smooth Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-milk-chocolate-3x80g-qatar-5255010298199"
     },
@@ -10110,7 +10110,7 @@
         "Ferrero Rocher Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/ferrero-rocher-hazelnut-chocolate-90g-qatar-8000500359488"
     },
@@ -10129,7 +10129,7 @@
         "Galaxy Smooth & Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-dark-chocolate-24x43g-qatar-6294001815259"
     },
@@ -10148,7 +10148,7 @@
         "Ion Dark Super"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/ion-dark-super-chocolate-90g-qatar-5201127039248"
     },
@@ -10167,7 +10167,7 @@
         "M M Crispy"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/m-m-crispy-chocolate-24x36g-qatar-5000159304238"
     },
@@ -10186,12 +10186,12 @@
         "Nestle Tola Crispy Wafer Covered in"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/nestle-tola-crispy-wafer-covered-in-chocolate-31g-qatar-6294003544690"
     },
     {
-      "category_cursor": 0,
+      "category_cursor": 1,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10225,7 +10225,7 @@
       ],
       "next_pages": {
         "Bakery": 1,
-        "Beverages": 1,
+        "Beverages": 2,
         "Breakfast Food": 1,
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
@@ -10262,7 +10262,7 @@
         "Twix Top"
       ],
       "next_pages": {
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/twix-top-chocolate-21g-qatar-5900951251849"
     },
@@ -10281,7 +10281,7 @@
         "Cholula Hot Sauce"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 1
+        "Condiments & Seasoning": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/cholula-hot-sauce-original-150ml-qatar-049733091015"
     },
@@ -10300,7 +10300,7 @@
         "Beef Stock Cubes Golden"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 1
+        "Condiments & Seasoning": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/beef-stock-cubes-golden-beef-20g-qatar-6254000119062"
     }
@@ -10592,7 +10592,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "162a2c25-b11f-40c8-bdc1-3809a3533e1c",
+  "last_completed_run_id": "f054bf2a-de50-454d-b750-e45d725a3bc7",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13794,6 +13794,6 @@
     "https://www.ansargallery.com/en/yasmeen-turmeric-powder-200g-qatar-6291103783295",
     "https://www.ansargallery.com/en/savoria-choco-hazelnut-coffe-latte-3-in-1-instant-coffee-sachet-20g-qatar-8991998010213"
   ],
-  "updated_at": "2026-09-11T19:47:25.453572Z",
+  "updated_at": "2026-09-11T22:38:57.230685Z",
   "version": 2
 }

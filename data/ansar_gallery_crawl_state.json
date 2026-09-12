@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 157,
+  "coverage_cursor": 181,
   "coverage_jobs": [
     {
       "category_cursor": 11,
@@ -6728,12 +6728,12 @@
         "Ashraf Farghly Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 6
+        "Frozen Food": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/ashraf-farghly-frozen-strawberry-1kg-qatar-6772505054294"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6772,7 +6772,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -6790,7 +6790,7 @@
       "source_product_url": "https://www.ansargallery.com/en/mama-sitas-kare-kare-peanut-sauce-mix-57g-qatar-025407803313"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6829,7 +6829,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -6861,12 +6861,12 @@
         "Al Maha Custard"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 6
+        "Dairy - Egg & Cheese": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/al-maha-custard-chocolate-90g-qatar-9504000286088"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6905,7 +6905,7 @@
         "Canned & Jarred Food": 1,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
-        "Condiments & Seasoning": 1,
+        "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
@@ -6937,7 +6937,7 @@
         "Today Hazelnuts Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 6
+        "Snacks & Candy": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/today-hazelnuts-milk-chocolate-42g-qatar-6251100004205"
     },
@@ -6956,7 +6956,7 @@
         "Galaxy Minstrels"
       ],
       "next_pages": {
-        "Snacks & Candy": 6
+        "Snacks & Candy": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-minstrels-chocolate-42g-qatar-5900951000270"
     },
@@ -6975,7 +6975,7 @@
         "Ukol Cake Mix Milk"
       ],
       "next_pages": {
-        "Cooking & Baking": 6
+        "Cooking & Baking": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/ukol-cake-mix-milk-chocolate-500g-qatar-6253357902921"
     },
@@ -6994,7 +6994,7 @@
         "137 Degrees Double Belgian"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 6
+        "Dairy - Egg & Cheese": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/137-degrees-double-belgian-chocolate-1l-qatar-8854761951574"
     },
@@ -7013,7 +7013,7 @@
         "Loaker Tortina Caramel Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 6
+        "Snacks & Candy": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/loaker-tortina-caramel-milk-chocolate-21g-qatar-80820970"
     },
@@ -7032,7 +7032,7 @@
         "Bayfin Saray Premium"
       ],
       "next_pages": {
-        "Snacks & Candy": 6
+        "Snacks & Candy": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/bayfin-saray-premium-chocolate-1kg-qatar-8690705531545"
     },
@@ -7051,12 +7051,12 @@
         "Cake Time Donut"
       ],
       "next_pages": {
-        "Bakery": 5
+        "Bakery": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/cake-time-donut-chocolate-40g-qatar-6223005618535"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7096,7 +7096,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -7127,7 +7127,7 @@
         "Nestl\u00e9 Fitness Granola"
       ],
       "next_pages": {
-        "Breakfast Food": 5
+        "Breakfast Food": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/nestl-fitness-granola-chocolate-350g-qatar-8445291773028"
     },
@@ -7146,7 +7146,7 @@
         "Qbake Swiss Roll Jumbo"
       ],
       "next_pages": {
-        "Bakery": 4
+        "Bakery": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/qbake-swiss-roll-jumbo-chocolate-20g-qatar-6253808661872"
     },
@@ -7165,12 +7165,12 @@
         "Qbake Swiss Roll Mini"
       ],
       "next_pages": {
-        "Bakery": 4
+        "Bakery": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/qbake-swiss-roll-mini-chocolate-12x20g-qatar-6253808661827"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7210,7 +7210,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -7241,7 +7241,7 @@
         "Ajinomoto Crispy Fry Breading Mix"
       ],
       "next_pages": {
-        "Cooking & Baking": 5
+        "Cooking & Baking": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/ajinomoto-crispy-fry-breading-mix-original-62g-qatar-4801958390108"
     },
@@ -7260,7 +7260,7 @@
         "Barebells Milkshake"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 5
+        "Dairy - Egg & Cheese": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/barebells-milkshake-chocolate-330ml-qatar-7340001804195"
     },
@@ -7279,7 +7279,7 @@
         "Vochelle Almonds Coated Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 5
+        "Snacks & Candy": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/vochelle-almonds-coated-milk-chocolate-380g-qatar-9556049003225"
     },
@@ -7298,7 +7298,7 @@
         "Amul I Love You Fruit'n Nut"
       ],
       "next_pages": {
-        "Snacks & Candy": 5
+        "Snacks & Candy": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-i-love-you-fruitn-nut-chocolate-150g-qatar-8901262071543"
     },
@@ -7317,7 +7317,7 @@
         "Coca-Cola"
       ],
       "next_pages": {
-        "Beverages": 5
+        "Beverages": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/coca-cola-original-6x250ml-qatar-5449000031815"
     },
@@ -7336,12 +7336,12 @@
         "Al Kanater Halawa with"
       ],
       "next_pages": {
-        "Canned & Jarred Food": 5
+        "Canned & Jarred Food": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/al-kanater-halawa-with-chocolate-450g-qatar-5285000870395"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7381,7 +7381,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -10592,7 +10592,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "b68aec0e-90ef-4840-8ba9-288442c58133",
+  "last_completed_run_id": "b7c5d64f-ec58-435d-b95f-3224fa234c8a",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13793,8 +13793,9 @@
     "https://www.ansargallery.com/en/savoria-caffino-cappuccino-mocha-instant-coffee-2-x-200g-qatar-0698596741492",
     "https://www.ansargallery.com/en/yasmeen-turmeric-powder-200g-qatar-6291103783295",
     "https://www.ansargallery.com/en/savoria-choco-hazelnut-coffe-latte-3-in-1-instant-coffee-sachet-20g-qatar-8991998010213",
-    "https://www.ansargallery.com/en/rainbow-full-cream-milk-powder-2-25kg-qatar-9501033125223"
+    "https://www.ansargallery.com/en/rainbow-full-cream-milk-powder-2-25kg-qatar-9501033125223",
+    "https://www.ansargallery.com/en/shan-special-kheer-mix-150g-qatar-788821063076"
   ],
-  "updated_at": "2026-09-12T19:27:37.435238Z",
+  "updated_at": "2026-09-12T22:22:38.098699Z",
   "version": 2
 }

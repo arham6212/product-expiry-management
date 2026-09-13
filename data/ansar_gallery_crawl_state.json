@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 253,
+  "coverage_cursor": 277,
   "coverage_jobs": [
     {
       "category_cursor": 11,
@@ -9350,7 +9350,7 @@
         "CBL Lanka Soy Textured Soya"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 3
+        "Condiments & Seasoning": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/lanka-soya-curry-90gm-qatar-4796002070153"
     },
@@ -9369,7 +9369,7 @@
         "Al Sharqiya Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 3
+        "Frozen Food": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/al-sharqiya-frozen-chicken-1100g-qatar-6297000857046"
     },
@@ -9388,7 +9388,7 @@
         "Al Yaqeen Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 3
+        "Frozen Food": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/al-yaqeen-frozen-whole-chicken-1100g-qatar-6073000210360"
     },
@@ -9407,12 +9407,12 @@
         "Foster Clark Brownie Mix"
       ],
       "next_pages": {
-        "Cooking & Baking": 3
+        "Cooking & Baking": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/foster-clark-brownie-mix-chocolate-500g-qatar-5352101007903"
     },
     {
-      "category_cursor": 2,
+      "category_cursor": 3,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9464,12 +9464,12 @@
         "Ice Cream": 1,
         "International Food": 1,
         "Produce": 1,
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/rs-refined-olive-pomace-oil-blended-with-extra-virgin-500ml-qatar-8420701103206"
     },
     {
-      "category_cursor": 2,
+      "category_cursor": 3,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9521,12 +9521,12 @@
         "Ice Cream": 1,
         "International Food": 1,
         "Produce": 1,
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/hellmanns-tomato-ketchup-500g-qatar-6281006824089"
     },
     {
-      "category_cursor": 2,
+      "category_cursor": 3,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9578,7 +9578,7 @@
         "Ice Cream": 1,
         "International Food": 1,
         "Produce": 1,
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/freshly-mayonnaise-237ml-qatar-6281063881711"
     },
@@ -9597,7 +9597,7 @@
         "Today Almond Dragee with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/today-almond-dragee-with-milk-chocolate-60g-qatar-6251100008456"
     },
@@ -9616,7 +9616,7 @@
         "Today Hazelnut Dragee with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/today-hazelnut-dragee-with-milk-chocolate-60g-qatar-6251100008449"
     },
@@ -9635,7 +9635,7 @@
         "Daawat Basmati White Basmati Rice"
       ],
       "next_pages": {
-        "Dry Food": 3
+        "Dry Food": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/daawat-basmati-white-basmati-rice-original-5kg-qatar-8901537024090"
     },
@@ -9654,7 +9654,7 @@
         "Galaxy Flutes Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-flutes-cream-chocolate-22-5g-qatar-6221134010718"
     },
@@ -9673,12 +9673,12 @@
         "Americana Tender Chicken Breast"
       ],
       "next_pages": {
-        "Frozen Food": 3
+        "Frozen Food": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-tender-chicken-breast-original-1000g-qatar-6281050214744"
     },
     {
-      "category_cursor": 2,
+      "category_cursor": 3,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9730,7 +9730,7 @@
         "Ice Cream": 1,
         "International Food": 1,
         "Produce": 1,
-        "Snacks & Candy": 1
+        "Snacks & Candy": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/prolife-salt-vinegar-chips-50g-qatar-6277000008396"
     },
@@ -9749,7 +9749,7 @@
         "Tabasco Ramen Instant Noodles Savory Spiced"
       ],
       "next_pages": {
-        "Dry Food": 3
+        "Dry Food": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/tabasco-ramen-instant-noodles-savory-spiced-beef-375g-qatar-5060670992376"
     },
@@ -9768,7 +9768,7 @@
         "Schweppes Tonic Water"
       ],
       "next_pages": {
-        "Beverages": 3
+        "Beverages": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/schweppes-tonic-water-zero-sugar-253ml-qatar-5449000342867"
     },
@@ -9787,7 +9787,7 @@
         "Farmland Fromage Kashkaval"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 3
+        "Dairy - Egg & Cheese": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/farmland-fromage-kashkaval-cheese-2-x-350g-qatar-8572195117303"
     },
@@ -9806,7 +9806,7 @@
         "Imima Gardens Shredded Cheddar"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 3
+        "Dairy - Egg & Cheese": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/imima-gardens-shredded-cheddar-cheese-2-x-200g-qatar-8023004595152"
     },
@@ -9825,7 +9825,7 @@
         "Mima Garden Fresh Olives Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 3
+        "Dairy - Egg & Cheese": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-garden-fresh-olives-cream-cheese-133g-qatar-5998207951124"
     },
@@ -9844,7 +9844,7 @@
         "St. Clemens Danish Blue"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 3
+        "Dairy - Egg & Cheese": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/st-clemens-danish-blue-cheese-100g-qatar-5701377101134"
     },
@@ -9863,7 +9863,7 @@
         "Quanta Adore Mini Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/quanta-adore-mini-milk-chocolate-253g-qatar-6291003084966"
     },
@@ -9882,7 +9882,7 @@
         "Quanta Almonday Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/quanta-almonday-milk-chocolate-12x35g-qatar-6291003078613"
     },
@@ -9901,7 +9901,7 @@
         "Mr Krisp Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisp-twist-lightly-salted-80g-qatar-6291028111029"
     },
@@ -9920,7 +9920,7 @@
         "Mr. Krisps Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisps-twist-lightly-salted-75g-qatar-6291028006028"
     },
@@ -9939,7 +9939,7 @@
         "Kinder Tronky"
       ],
       "next_pages": {
-        "Snacks & Candy": 3
+        "Snacks & Candy": 4
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-tronky-chocolate-18g-qatar-8000500384763"
     },
@@ -10592,7 +10592,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "6ac8ce41-ecc1-459b-8cb1-e7167e75a061",
+  "last_completed_run_id": "0863d0ee-b99f-4806-8784-fa5502b8f507",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13796,6 +13796,6 @@
     "https://www.ansargallery.com/en/rainbow-full-cream-milk-powder-2-25kg-qatar-9501033125223",
     "https://www.ansargallery.com/en/shan-special-kheer-mix-150g-qatar-788821063076"
   ],
-  "updated_at": "2026-09-13T12:05:10.633888Z",
+  "updated_at": "2026-09-13T16:24:50.593824Z",
   "version": 2
 }

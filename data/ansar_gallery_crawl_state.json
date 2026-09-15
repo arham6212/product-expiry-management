@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 226,
+  "coverage_cursor": 250,
   "coverage_jobs": [
     {
       "category_cursor": 12,
@@ -8685,7 +8685,7 @@
         "AL Maha Feta"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 5
+        "Dairy - Egg & Cheese": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/al-maha-feta-cheese-400g-qatar-6300900083559"
     },
@@ -8704,12 +8704,12 @@
         "Qualiko Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 5
+        "Frozen Food": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/qualiko-frozen-whole-chicken-12kg-qatar-4820107352132"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8749,7 +8749,7 @@
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 1,
-        "Cooking & Baking": 1,
+        "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
         "Disposable & Storage": 1,
@@ -8780,7 +8780,7 @@
         "Kinder"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-chocolate-4x50g-qatar-8000500033784"
     },
@@ -8799,12 +8799,12 @@
         "Entaj Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/entaj-frozen-whole-chicken-700g-qatar-6281102720650"
     },
     {
-      "category_cursor": 3,
+      "category_cursor": 4,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8849,7 +8849,7 @@
         "Delicatessen": 1,
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
-        "Dry Food": 1,
+        "Dry Food": 2,
         "Frozen Food": 1,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
@@ -8875,7 +8875,7 @@
         "Samanco"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/binggrae-samanco-chocolate-crunch-150ml-qatar-8801104666404"
     },
@@ -8894,7 +8894,7 @@
         "A'Saffa Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-frozen-chicken-1200g-qatar-6073000210544"
     },
@@ -8913,7 +8913,7 @@
         "Eclairs Tifany Milk Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/eclairs-tifany-milk-cream-chocolate-600g-qatar-6291003090967"
     },
@@ -8932,7 +8932,7 @@
         "Al Khair Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/al-khair-frozen-chicken-900g-qatar-6253812280021"
     },
@@ -8951,7 +8951,7 @@
         "Dodoni Authentic Greek Feta"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 4
+        "Dairy - Egg & Cheese": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/dodoni-authentic-greek-feta-cheese-200g-qatar-5201168215298"
     },
@@ -8970,7 +8970,7 @@
         "Ile De France Petit Brie"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 4
+        "Dairy - Egg & Cheese": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/ile-de-france-petit-brie-cheese-125g-qatar-3161712996146"
     },
@@ -8989,12 +8989,12 @@
         "L'exquis Light Halloumi"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 4
+        "Dairy - Egg & Cheese": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/l-exquis-light-halloumi-cheese-225g-qatar-5285001036363"
     },
     {
-      "category_cursor": 3,
+      "category_cursor": 4,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9039,7 +9039,7 @@
         "Delicatessen": 1,
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
-        "Dry Food": 1,
+        "Dry Food": 2,
         "Frozen Food": 1,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
@@ -9065,7 +9065,7 @@
         "Foody's Frozen Okra"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/foody-s-frozen-okra-zero-2-x-400g-qatar-0698596741362"
     },
@@ -9084,7 +9084,7 @@
         "Kitco Stix Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/kitco-stix-lightly-salted-45g-qatar-6271001310502"
     },
@@ -9103,12 +9103,12 @@
         "Ocean Fish Smoked Salmon Spiced with Dill &"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/ocean-fish-smoked-salmon-spiced-with-dill-lemon-100g-qatar-6300900220084"
     },
     {
-      "category_cursor": 3,
+      "category_cursor": 4,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9153,7 +9153,7 @@
         "Delicatessen": 1,
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
-        "Dry Food": 1,
+        "Dry Food": 2,
         "Frozen Food": 1,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
@@ -9179,7 +9179,7 @@
         "TAYBAT Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/taybat-frozen-whole-chicken-1200g-qatar-6291101369781"
     },
@@ -9198,7 +9198,7 @@
         "A'Saffa Halal Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 4
+        "Frozen Food": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-halal-frozen-whole-chicken-10-x-1000g-qatar-6073000210537"
     },
@@ -9217,7 +9217,7 @@
         "Albadia Instant Flavored Drink Powder"
       ],
       "next_pages": {
-        "Beverages": 4
+        "Beverages": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/albadia-instant-flavored-drink-powder-mango-500g-qatar-5065000241155"
     },
@@ -9236,7 +9236,7 @@
         "Amul Sugar Free Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-sugar-free-dark-chocolate-150g-qatar-8901262071048"
     },
@@ -9255,7 +9255,7 @@
         "Elit Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/elit-milk-chocolate-200g-qatar-8698701022104"
     },
@@ -9274,7 +9274,7 @@
         "Kagi Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 4
+        "Snacks & Candy": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/kagi-milk-chocolate-125g-qatar-7610046125655"
     },
@@ -10597,7 +10597,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "49cac1ac-6cb1-4d13-840a-2850b053a4cd",
+  "last_completed_run_id": "0594e843-6060-4f34-9b39-f21de5fd879d",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13810,8 +13810,9 @@
     "https://www.ansargallery.com/en/fruttini-ice-bites-mix-150g-qatar-726665705219",
     "https://www.ansargallery.com/en/kdd-strawberry-ice-cream-1l-qatar-8690101361364",
     "https://www.ansargallery.com/en/baladna-yoghurt-greek-style-4x150g-qatar-9501101826878",
-    "https://www.ansargallery.com/en/555-sardines-in-tomato-sauce-155g-qatar-748485200019"
+    "https://www.ansargallery.com/en/555-sardines-in-tomato-sauce-155g-qatar-748485200019",
+    "https://www.ansargallery.com/en/mehran-firni-mix-180g-qatar-0633152002075"
   ],
-  "updated_at": "2026-09-15T13:38:55.422252Z",
+  "updated_at": "2026-09-15T18:16:06.211816Z",
   "version": 2
 }

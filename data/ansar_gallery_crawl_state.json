@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 79,
+  "coverage_cursor": 103,
   "coverage_jobs": [
     {
       "category_cursor": 13,
@@ -3970,7 +3970,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-alali-apricot-jam-400g-qatar-617950410027"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4016,7 +4016,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4027,7 +4027,7 @@
       "source_product_url": "https://www.ansargallery.com/en/7days-vanilla-chocolate-croissant-55g-qatar-6281183000108"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4073,7 +4073,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4098,12 +4098,12 @@
         "Apex Bleach"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 10
+        "Cleaning & Laundry": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/apex-bleach-original-2l-qatar-9501100117281"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4149,7 +4149,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4174,7 +4174,7 @@
         "Bahar Clean Disinfct"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 10
+        "Cleaning & Laundry": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/bahar-clean-disinfct-lemon-3l-qatar-9501030514518"
     },
@@ -4193,7 +4193,7 @@
         "Modern Food Centre Dry Black"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 10
+        "Dry & Natural Foods": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/modern-food-centre-dry-black-lemon-500g-qatar-4001000007316"
     },
@@ -4212,12 +4212,12 @@
         "Yasmeen Black Dry"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 10
+        "Dry & Natural Foods": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/yasmeen-black-dry-lemon-200g-qatar-6291103781444"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4263,7 +4263,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4274,7 +4274,7 @@
       "source_product_url": "https://www.ansargallery.com/en/qfm-patent-flour-all-purpose-no-1-4x1kg-qatar-9501100372895"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4320,7 +4320,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4331,7 +4331,7 @@
       "source_product_url": "https://www.ansargallery.com/en/emborg-frozen-broad-beans-450g-qatar-5701215058361"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4377,7 +4377,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4394,7 +4394,9 @@
       ],
       "created_at": "2026-09-03T15:42:12.961369Z",
       "display_name": "Kasih Premium Quality Halwa With",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "product_family:kasih-premium-quality-halwa-with",
       "kind": "product_family",
       "last_error": null,
@@ -4421,7 +4423,7 @@
         "Loacker Gran Pasticceria Tortina"
       ],
       "next_pages": {
-        "Snacks & Candy": 10
+        "Snacks & Candy": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/loacker-gran-pasticceria-tortina-original-21g-qatar-80001027"
     },
@@ -4440,12 +4442,12 @@
         "Al Emlaq Super Gel 1 Kg"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 10
+        "Cleaning & Laundry": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/al-emlaq-super-gel-1-kg-lemon-qatar-6253009214198"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4491,7 +4493,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4516,7 +4518,7 @@
         "Wonderful Pistachios Roasted And"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 10
+        "Dry & Natural Foods": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/wonderful-pistachios-roasted-and-salted-220g-qatar-014113913584"
     },
@@ -4535,12 +4537,12 @@
         "Hershey's Kisses Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 10
+        "Snacks & Candy": 11
       },
       "source_product_url": "https://www.ansargallery.com/en/hershey-kisses-milk-chocolate-226g-qatar-034000132010"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4586,7 +4588,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4597,7 +4599,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ahmed-foods-mango-pickle-in-oil-300g-qatar-054529001017"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4643,7 +4645,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4654,7 +4656,7 @@
       "source_product_url": "https://www.ansargallery.com/en/pringles-salt-vinegar-chips-165g-qatar-5053990101580"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4700,7 +4702,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4711,7 +4713,7 @@
       "source_product_url": "https://www.ansargallery.com/en/del-monte-light-skip-jack-meat-in-sunflower-oil-185g-qatar-736211763631"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4757,7 +4759,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4768,7 +4770,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-shifa-acacia-queeeze-400g-qatar-6281073210402"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4814,7 +4816,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4825,7 +4827,7 @@
       "source_product_url": "https://www.ansargallery.com/en/lusine-chocolate-cupcake-30g-qatar-6281007045841"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4871,7 +4873,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4882,7 +4884,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kitco-nice-salt-vinegar-16g-qatar-6080401323018"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4928,7 +4930,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -4939,7 +4941,7 @@
       "source_product_url": "https://www.ansargallery.com/en/yamama-rose-water-750ml-qatar-623695000201"
     },
     {
-      "category_cursor": 9,
+      "category_cursor": 10,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4985,7 +4987,7 @@
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
         "Dry Food": 2,
-        "Frozen Food": 1,
+        "Frozen Food": 2,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
@@ -10703,7 +10705,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "238a8b2c-3ea3-4ae7-b12e-56cdc7d561a8",
+  "last_completed_run_id": "e0f8c59f-1760-49e6-989a-94ef8bc71abb",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13925,8 +13927,9 @@
     "https://www.ansargallery.com/en/double-up-cola-carbonated-drink-1l-qatar-5051153804408",
     "https://www.ansargallery.com/en/double-up-cola-zero-sugar-200ml-qatar-5051153804965",
     "https://www.ansargallery.com/en/kinza-orange-carbonated-drink-6x250ml-qatar-6900008000030",
-    "https://www.ansargallery.com/en/kinza-citrus-carbonated-drink-6x360ml-qatar-6287034100393"
+    "https://www.ansargallery.com/en/kinza-citrus-carbonated-drink-6x360ml-qatar-6287034100393",
+    "https://www.ansargallery.com/en/emborg-frozen-mixed-vegetables-450g-qatar-5701215058323"
   ],
-  "updated_at": "2026-09-16T17:05:24.828411Z",
+  "updated_at": "2026-09-16T20:12:35.613317Z",
   "version": 2
 }

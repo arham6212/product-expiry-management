@@ -1,16 +1,16 @@
 {
   "errors": [],
-  "last_successfully_synchronized_crawler_run_id": "e0f8c59f-1760-49e6-989a-94ef8bc71abb",
+  "last_successfully_synchronized_crawler_run_id": "7816d300-903a-4569-b5b7-c24a98042438",
   "rejection_reasons": {
     "retailer/weighted pattern with seven trailing zeroes": 2,
     "workbook_barcode_not_valid": 118
   },
   "rows_enriched": 0,
-  "rows_examined": 1,
-  "rows_inserted": 1,
+  "rows_examined": 0,
+  "rows_inserted": 0,
   "rows_rejected": 120,
   "rows_unchanged": 0,
-  "synchronized_at": "2026-09-16T20:12:42Z",
+  "synchronized_at": "2026-09-16T23:00:21Z",
   "synchronized_product_ids": [
     "0017d40e-de1e-558d-8355-6e36a3c0571c",
     "002c7de5-2933-501e-a456-fa1c60c7c8fc",
@@ -3057,6 +3057,6 @@
     "ffbb9491-9ede-544a-bfb6-0d54a1689131",
     "ffd5240e-4cee-50e4-bee7-3c5d67504633"
   ],
-  "valid_rows_imported": 1,
+  "valid_rows_imported": 0,
   "version": 1
 }

@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 54,
+  "coverage_cursor": 79,
   "coverage_jobs": [
     {
       "category_cursor": 13,
@@ -2893,7 +2893,7 @@
       "source_product_url": "https://www.ansargallery.com/en/dany-watermelon-juice-200ml-qatar-5051146360355"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2918,7 +2918,9 @@
       ],
       "created_at": "2026-09-03T03:35:42.917330Z",
       "display_name": "Kasih",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:kasih",
       "kind": "brand",
       "last_error": null,
@@ -2950,7 +2952,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kasih-sea-salt-400g-qatar-6253001065620"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2975,7 +2977,9 @@
       ],
       "created_at": "2026-09-03T03:37:01.442645Z",
       "display_name": "Ahmad Tea",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:ahmad-tea",
       "kind": "brand",
       "last_error": null,
@@ -3021,12 +3025,12 @@
         "Al Saffa Whole Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 11
+        "Frozen Food": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/al-saffa-whole-frozen-chicken-1000g-qatar-6291101360023"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3051,7 +3055,9 @@
       ],
       "created_at": "2026-09-03T03:38:12.596941Z",
       "display_name": "Al Attar",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:al-attar",
       "kind": "brand",
       "last_error": null,
@@ -3083,7 +3089,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-attar-chamomile-lemon-tea-37-5g-qatar-6212900018168"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3108,7 +3114,9 @@
       ],
       "created_at": "2026-09-03T06:37:10.277665Z",
       "display_name": "Pepsi Cola",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:pepsi-cola",
       "kind": "brand",
       "last_error": null,
@@ -3154,7 +3162,7 @@
         "Pepsi"
       ],
       "next_pages": {
-        "Beverages": 11
+        "Beverages": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/pepsi-diet-2-25l-qatar-012000001017"
     },
@@ -3173,12 +3181,12 @@
         "Al Rifai Peanut"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 11
+        "Dry & Natural Foods": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-peanut-salted-250g-qatar-6271100040027"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3203,7 +3211,9 @@
       ],
       "created_at": "2026-09-03T06:37:40.864120Z",
       "display_name": "Bahar",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:bahar",
       "kind": "brand",
       "last_error": null,
@@ -3249,7 +3259,7 @@
         "Bahar ULa Dishwashing Liquid"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 11
+        "Cleaning & Laundry": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/bahar-ula-dishwashing-liquid-lemon-1l-qatar-9501030211516"
     },
@@ -3289,12 +3299,12 @@
         "Qbake Croissant"
       ],
       "next_pages": {
-        "Bakery": 11
+        "Bakery": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/qbake-croissant-chocolate-60g-qatar-6253808660851"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3319,7 +3329,9 @@
       ],
       "created_at": "2026-09-03T06:40:25.945599Z",
       "display_name": "Finish",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:finish",
       "kind": "brand",
       "last_error": null,
@@ -3365,7 +3377,7 @@
         "Finish Dish Wash Powder"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 11
+        "Cleaning & Laundry": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/finish-dish-wash-powder-lemon-2-5kg-qatar-8410104652319"
     },
@@ -3384,7 +3396,7 @@
         "Al Rifaiai Pistachio"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 11
+        "Dry & Natural Foods": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifaiai-pistachio-salted-400g-qatar-6271100041802"
     },
@@ -3403,12 +3415,12 @@
         "Bayara Peanut"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 11
+        "Dry & Natural Foods": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/bayara-peanut-salted-300g-qatar-6291106449679"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3433,7 +3445,9 @@
       ],
       "created_at": "2026-09-03T06:42:07.922456Z",
       "display_name": "Kwik",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:kwik",
       "kind": "brand",
       "last_error": null,
@@ -3465,7 +3479,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kwik-antispectic-disinfectant-250ml-qatar-6271004801106"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3490,7 +3504,9 @@
       ],
       "created_at": "2026-09-03T06:42:39.998593Z",
       "display_name": "London Bakery",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:london-bakery",
       "kind": "brand",
       "last_error": null,
@@ -3536,12 +3552,12 @@
         "Strix Biscuit Sticks Coated with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/strix-biscuit-sticks-coated-with-milk-chocolate-40g-qatar-8691707140049"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3566,7 +3582,9 @@
       ],
       "created_at": "2026-09-03T09:41:32.723497Z",
       "display_name": "Foster Clark's",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:foster-clark-s",
       "kind": "brand",
       "last_error": null,
@@ -3598,7 +3616,7 @@
       "source_product_url": "https://www.ansargallery.com/en/foster-clarks-milk-chocolate-cake-mix-500g-qatar-5352101363856"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3623,7 +3641,9 @@
       ],
       "created_at": "2026-09-03T09:41:48.915608Z",
       "display_name": "Heinz",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:heinz",
       "kind": "brand",
       "last_error": null,
@@ -3655,7 +3675,7 @@
       "source_product_url": "https://www.ansargallery.com/en/heinz-hp-steak-sauce-450g-qatar-6290090014610"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3680,7 +3700,9 @@
       ],
       "created_at": "2026-09-03T09:42:53.356936Z",
       "display_name": "Gourmet",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:gourmet",
       "kind": "brand",
       "last_error": null,
@@ -3712,7 +3734,7 @@
       "source_product_url": "https://www.ansargallery.com/en/gourmet-frozen-chicken-mince-roll-400g-qatar-0705632818770"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3737,7 +3759,9 @@
       ],
       "created_at": "2026-09-03T09:46:22.515801Z",
       "display_name": "Freez",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:freez",
       "kind": "brand",
       "last_error": null,
@@ -3769,7 +3793,7 @@
       "source_product_url": "https://www.ansargallery.com/en/freez-mix-blue-hawai-tropical-fruits-carbonated-flavoured-drink-275ml-qatar-762571500197"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3794,7 +3818,9 @@
       ],
       "created_at": "2026-09-03T09:49:12.908777Z",
       "display_name": "Sadia",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:sadia",
       "kind": "brand",
       "last_error": null,
@@ -3826,7 +3852,7 @@
       "source_product_url": "https://www.ansargallery.com/en/sadia-frozen-chicken-breast-cubes-pre-cut-750g-qatar-7891515554828"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3851,7 +3877,9 @@
       ],
       "created_at": "2026-09-03T09:50:25.353272Z",
       "display_name": "Kenton",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:kenton",
       "kind": "brand",
       "last_error": null,
@@ -3883,7 +3911,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kenton-chocolate-cake-mix-450g-qatar-8690547187061"
     },
     {
-      "category_cursor": 10,
+      "category_cursor": 11,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3908,7 +3936,9 @@
       ],
       "created_at": "2026-09-03T09:51:23.344915Z",
       "display_name": "Al Alali",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Bakery"
+      ],
       "key": "brand:al-alali",
       "kind": "brand",
       "last_error": null,
@@ -10673,7 +10703,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "da0a9b2e-cb61-4c13-a238-d46b6bebda44",
+  "last_completed_run_id": "238a8b2c-3ea3-4ae7-b12e-56cdc7d561a8",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -13897,6 +13927,6 @@
     "https://www.ansargallery.com/en/kinza-orange-carbonated-drink-6x250ml-qatar-6900008000030",
     "https://www.ansargallery.com/en/kinza-citrus-carbonated-drink-6x360ml-qatar-6287034100393"
   ],
-  "updated_at": "2026-09-16T11:44:40.644362Z",
+  "updated_at": "2026-09-16T17:05:24.828411Z",
   "version": 2
 }

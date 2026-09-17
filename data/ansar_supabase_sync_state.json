@@ -1,16 +1,16 @@
 {
   "errors": [],
-  "last_successfully_synchronized_crawler_run_id": "7816d300-903a-4569-b5b7-c24a98042438",
+  "last_successfully_synchronized_crawler_run_id": "d98bd6b3-bdcb-49df-9816-c903cc6edc19",
   "rejection_reasons": {
     "retailer/weighted pattern with seven trailing zeroes": 2,
     "workbook_barcode_not_valid": 118
   },
   "rows_enriched": 0,
-  "rows_examined": 0,
-  "rows_inserted": 0,
+  "rows_examined": 4,
+  "rows_inserted": 4,
   "rows_rejected": 120,
   "rows_unchanged": 0,
-  "synchronized_at": "2026-09-16T23:00:21Z",
+  "synchronized_at": "2026-09-17T01:30:07Z",
   "synchronized_product_ids": [
     "0017d40e-de1e-558d-8355-6e36a3c0571c",
     "002c7de5-2933-501e-a456-fa1c60c7c8fc",
@@ -288,6 +288,7 @@
     "17aeb0be-4404-5826-9303-661cc24de950",
     "17cdbec5-e465-5f5f-b8a0-3f9450451f5f",
     "17f8b1f9-7033-5c72-af38-2e787837fdd9",
+    "180ee5ac-355b-5558-a055-0e81c259b0ea",
     "1821e956-cec0-5acc-bd5b-b12b412fea5f",
     "182a3668-5391-596d-ae44-df6faf1b9ba3",
     "18312468-0d2e-5b40-a786-913b7a8fc49e",
@@ -682,6 +683,7 @@
     "39756a29-40f8-5a06-9a77-d6ff53fb19f4",
     "398f1bd9-5721-550c-8b97-204a6308e881",
     "39d03b58-8995-5f98-86f3-7e21a77db8d7",
+    "39d05a36-dce8-5708-a6bd-d2593b52b6f5",
     "39d1f235-9100-589d-9e8e-fc473511f2e1",
     "39d95eb6-b0b2-5bec-8a4e-d73a9fa496ab",
     "39eb3dbd-c968-5a2b-bebb-8ac9962c41b2",
@@ -928,6 +930,7 @@
     "4e9fa1e3-da26-5d1b-825c-fe5f2deee631",
     "4ee178a4-189d-5c4b-9361-543efeaed04a",
     "4ee42e85-ea30-5f41-9ef9-057c107384e1",
+    "4f223160-b2c1-5e52-8788-2df1b67ce703",
     "4f2ad81d-d8a6-559d-94b0-d3810edbf217",
     "4f37c047-a79b-5a56-a0d8-044ff5809896",
     "4f45cc6d-1b4f-59e3-a6af-2012339faed4",
@@ -1570,6 +1573,7 @@
     "839cebed-d702-5084-be43-7ea37611b269",
     "83a39c98-aa88-51c2-8fc4-9e255be92336",
     "83ac7fe4-8a84-5048-97b9-cf0b5423cd5e",
+    "83b5974f-8791-5b61-8bc5-bf1d0bf4a17f",
     "83c5a71a-9e39-51c5-bb4c-f6dffd18e1f5",
     "83c5c5cd-a858-5377-9f80-ad0b8dec97b1",
     "83f88aae-ff90-56b2-aff6-beac2ff1ec50",
@@ -3057,6 +3061,6 @@
     "ffbb9491-9ede-544a-bfb6-0d54a1689131",
     "ffd5240e-4cee-50e4-bee7-3c5d67504633"
   ],
-  "valid_rows_imported": 0,
+  "valid_rows_imported": 4,
   "version": 1
 }

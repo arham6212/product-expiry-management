@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 213,
+  "coverage_cursor": 237,
   "coverage_jobs": [
     {
       "category_cursor": 15,
@@ -8356,7 +8356,7 @@
         "Deemah Fantasy Cake"
       ],
       "next_pages": {
-        "Bakery": 8
+        "Bakery": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/deemah-fantasy-cake-chocolate-40g-qatar-6285602012697"
     },
@@ -8375,12 +8375,12 @@
         "Deemah Marmo Cake"
       ],
       "next_pages": {
-        "Bakery": 8
+        "Bakery": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/deemah-marmo-cake-chocolate-40g-qatar-6285602012758"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8418,7 +8418,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -8451,12 +8451,12 @@
         "Chtaura Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/chtaura-frozen-mango-400g-qatar-603388574035"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8494,7 +8494,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -8527,7 +8527,7 @@
         "Tangesir Date with"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 8
+        "Dry & Natural Foods": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/tangesir-date-with-chocolate-125g-qatar-6262971700387"
     },
@@ -8546,7 +8546,7 @@
         "Qualiko Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/qualiko-frozen-chicken-1100g-qatar-4820107353290"
     },
@@ -8565,12 +8565,12 @@
         "Amada Biscuit Stix With Hazelnut Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/amada-biscuit-stix-with-hazelnut-milk-chocolate-32g-qatar-8691707140032"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8608,7 +8608,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -8641,7 +8641,7 @@
         "Cadbury Sandwich Snack Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/cadbury-sandwich-snack-milk-chocolate-22g-qatar-4002000002158"
     },
@@ -8660,7 +8660,7 @@
         "Baladna Greek Style Yoghurt"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 8
+        "Dairy - Egg & Cheese": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/baladna-greek-style-yoghurt-strawberry-150g-qatar-6300900230588"
     },
@@ -8679,7 +8679,7 @@
         "Fatina Sardine Fillets Skinless & Boneless In Sunflower Oil &"
       ],
       "next_pages": {
-        "Canned & Jarred Food": 8
+        "Canned & Jarred Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/fatina-sardine-fillets-skinless-boneless-in-sunflower-oil-lemon-125g-qatar-6111265790798"
     },
@@ -8698,7 +8698,7 @@
         "Delaviuda Bombones Avellana Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/delaviuda-bombones-avellana-hazelnut-chocolate-150g-qatar-8410223607726"
     },
@@ -8717,7 +8717,7 @@
         "AL Maha Feta"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 8
+        "Dairy - Egg & Cheese": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/al-maha-feta-cheese-400g-qatar-6300900083559"
     },
@@ -8736,12 +8736,12 @@
         "Qualiko Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/qualiko-frozen-whole-chicken-12kg-qatar-4820107352132"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8779,7 +8779,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -8812,7 +8812,7 @@
         "Kinder"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-chocolate-4x50g-qatar-8000500033784"
     },
@@ -8831,12 +8831,12 @@
         "Entaj Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/entaj-frozen-whole-chicken-700g-qatar-6281102720650"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8872,7 +8872,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -8907,7 +8907,7 @@
         "Samanco"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/binggrae-samanco-chocolate-crunch-150ml-qatar-8801104666404"
     },
@@ -8926,7 +8926,7 @@
         "A'Saffa Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-frozen-chicken-1200g-qatar-6073000210544"
     },
@@ -8945,7 +8945,7 @@
         "Eclairs Tifany Milk Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/eclairs-tifany-milk-cream-chocolate-600g-qatar-6291003090967"
     },
@@ -8964,7 +8964,7 @@
         "Al Khair Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/al-khair-frozen-chicken-900g-qatar-6253812280021"
     },
@@ -8983,7 +8983,7 @@
         "Dodoni Authentic Greek Feta"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 7
+        "Dairy - Egg & Cheese": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/dodoni-authentic-greek-feta-cheese-200g-qatar-5201168215298"
     },
@@ -10762,7 +10762,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "5066db75-7d1b-4ff8-aaa5-391d08346791",
+  "last_completed_run_id": "9907ce48-4f18-4b02-b68e-a38a05499d35",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14018,8 +14018,9 @@
     "https://www.ansargallery.com/en/puck-cream-cheese-squares-432g-qatar-6281048109625",
     "https://www.ansargallery.com/en/rawa-spreadable-processed-cream-cheese-670g-qatar-9504000342784",
     "https://www.ansargallery.com/en/rawa-spreadable-processed-full-fat-cream-cheese-150g-qatar-9504000342807",
-    "https://www.ansargallery.com/en/hilli-frozen-alphonso-mango-pulp-1kg-qatar-0705632211090"
+    "https://www.ansargallery.com/en/hilli-frozen-alphonso-mango-pulp-1kg-qatar-0705632211090",
+    "https://www.ansargallery.com/en/kinder-joy-with-surprise-for-girl-20g-qatar-80768258"
   ],
-  "updated_at": "2026-09-21T19:35:40.150510Z",
+  "updated_at": "2026-09-21T23:21:32.418781Z",
   "version": 2
 }

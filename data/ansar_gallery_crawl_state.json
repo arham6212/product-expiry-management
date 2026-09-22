@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 237,
+  "coverage_cursor": 261,
   "coverage_jobs": [
     {
       "category_cursor": 15,
@@ -9002,7 +9002,7 @@
         "Ile De France Petit Brie"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 7
+        "Dairy - Egg & Cheese": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/ile-de-france-petit-brie-cheese-125g-qatar-3161712996146"
     },
@@ -9021,12 +9021,12 @@
         "L'exquis Light Halloumi"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 7
+        "Dairy - Egg & Cheese": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/l-exquis-light-halloumi-cheese-225g-qatar-5285001036363"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9062,7 +9062,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -9097,7 +9097,7 @@
         "Foody's Frozen Okra"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/foody-s-frozen-okra-zero-2-x-400g-qatar-0698596741362"
     },
@@ -9116,7 +9116,7 @@
         "Kitco Stix Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/kitco-stix-lightly-salted-45g-qatar-6271001310502"
     },
@@ -9135,12 +9135,12 @@
         "Ocean Fish Smoked Salmon Spiced with Dill &"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/ocean-fish-smoked-salmon-spiced-with-dill-lemon-100g-qatar-6300900220084"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9176,7 +9176,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -9211,7 +9211,7 @@
         "TAYBAT Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/taybat-frozen-whole-chicken-1200g-qatar-6291101369781"
     },
@@ -9230,7 +9230,7 @@
         "A'Saffa Halal Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-halal-frozen-whole-chicken-10-x-1000g-qatar-6073000210537"
     },
@@ -9249,7 +9249,7 @@
         "Albadia Instant Flavored Drink Powder"
       ],
       "next_pages": {
-        "Beverages": 7
+        "Beverages": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/albadia-instant-flavored-drink-powder-mango-500g-qatar-5065000241155"
     },
@@ -9268,7 +9268,7 @@
         "Amul Sugar Free Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-sugar-free-dark-chocolate-150g-qatar-8901262071048"
     },
@@ -9287,7 +9287,7 @@
         "Elit Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/elit-milk-chocolate-200g-qatar-8698701022104"
     },
@@ -9306,7 +9306,7 @@
         "Kagi Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/kagi-milk-chocolate-125g-qatar-7610046125655"
     },
@@ -9325,7 +9325,7 @@
         "Argganco Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/argganco-frozen-whole-chicken-10-x-1000g-qatar-6253812280052"
     },
@@ -9344,7 +9344,7 @@
         "Snips Baked Snacks Bread Chips Mixed"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/snips-baked-snacks-bread-chips-mixed-cheese-85g-qatar-5281128101694"
     },
@@ -9363,7 +9363,7 @@
         "Mima Foods Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-foods-frozen-mango-2x400g-qatar-6425743930942"
     },
@@ -9382,7 +9382,7 @@
         "CBL Lanka Soy Textured Soya"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 7
+        "Condiments & Seasoning": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/lanka-soya-curry-90gm-qatar-4796002070153"
     },
@@ -9401,7 +9401,7 @@
         "Al Sharqiya Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/al-sharqiya-frozen-chicken-1100g-qatar-6297000857046"
     },
@@ -9420,7 +9420,7 @@
         "Al Yaqeen Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 7
+        "Frozen Food": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/al-yaqeen-frozen-whole-chicken-1100g-qatar-6073000210360"
     },
@@ -9439,12 +9439,12 @@
         "Foster Clark Brownie Mix"
       ],
       "next_pages": {
-        "Cooking & Baking": 7
+        "Cooking & Baking": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/foster-clark-brownie-mix-chocolate-500g-qatar-5352101007903"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9480,7 +9480,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -9501,7 +9501,7 @@
       "source_product_url": "https://www.ansargallery.com/en/rs-refined-olive-pomace-oil-blended-with-extra-virgin-500ml-qatar-8420701103206"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9537,7 +9537,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -9558,7 +9558,7 @@
       "source_product_url": "https://www.ansargallery.com/en/hellmanns-tomato-ketchup-500g-qatar-6281006824089"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9594,7 +9594,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -9629,7 +9629,7 @@
         "Today Almond Dragee with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/today-almond-dragee-with-milk-chocolate-60g-qatar-6251100008456"
     },
@@ -10762,7 +10762,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "9907ce48-4f18-4b02-b68e-a38a05499d35",
+  "last_completed_run_id": "c4d00008-442d-4212-a933-d95676ad6ac1",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14021,6 +14021,6 @@
     "https://www.ansargallery.com/en/hilli-frozen-alphonso-mango-pulp-1kg-qatar-0705632211090",
     "https://www.ansargallery.com/en/kinder-joy-with-surprise-for-girl-20g-qatar-80768258"
   ],
-  "updated_at": "2026-09-21T23:21:32.418781Z",
+  "updated_at": "2026-09-22T05:05:49.336394Z",
   "version": 2
 }

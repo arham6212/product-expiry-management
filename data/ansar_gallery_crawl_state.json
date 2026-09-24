@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 230,
+  "coverage_cursor": 254,
   "coverage_jobs": [
     {
       "category_cursor": 16,
@@ -8835,12 +8835,12 @@
         "Entaj Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/entaj-frozen-whole-chicken-700g-qatar-6281102720650"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8878,7 +8878,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -8911,7 +8911,7 @@
         "Samanco"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/binggrae-samanco-chocolate-crunch-150ml-qatar-8801104666404"
     },
@@ -8930,7 +8930,7 @@
         "A'Saffa Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-frozen-chicken-1200g-qatar-6073000210544"
     },
@@ -8949,7 +8949,7 @@
         "Eclairs Tifany Milk Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/eclairs-tifany-milk-cream-chocolate-600g-qatar-6291003090967"
     },
@@ -8968,7 +8968,7 @@
         "Al Khair Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/al-khair-frozen-chicken-900g-qatar-6253812280021"
     },
@@ -8987,7 +8987,7 @@
         "Dodoni Authentic Greek Feta"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 8
+        "Dairy - Egg & Cheese": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/dodoni-authentic-greek-feta-cheese-200g-qatar-5201168215298"
     },
@@ -9006,7 +9006,7 @@
         "Ile De France Petit Brie"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 8
+        "Dairy - Egg & Cheese": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/ile-de-france-petit-brie-cheese-125g-qatar-3161712996146"
     },
@@ -9025,12 +9025,12 @@
         "L'exquis Light Halloumi"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 8
+        "Dairy - Egg & Cheese": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/l-exquis-light-halloumi-cheese-225g-qatar-5285001036363"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9068,7 +9068,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -9101,7 +9101,7 @@
         "Foody's Frozen Okra"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/foody-s-frozen-okra-zero-2-x-400g-qatar-0698596741362"
     },
@@ -9120,7 +9120,7 @@
         "Kitco Stix Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/kitco-stix-lightly-salted-45g-qatar-6271001310502"
     },
@@ -9139,12 +9139,12 @@
         "Ocean Fish Smoked Salmon Spiced with Dill &"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/ocean-fish-smoked-salmon-spiced-with-dill-lemon-100g-qatar-6300900220084"
     },
     {
-      "category_cursor": 7,
+      "category_cursor": 8,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9182,7 +9182,7 @@
         "Breakfast Food": 1,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
-        "Coffee & Tea": 1,
+        "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
@@ -9215,7 +9215,7 @@
         "TAYBAT Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/taybat-frozen-whole-chicken-1200g-qatar-6291101369781"
     },
@@ -9234,7 +9234,7 @@
         "A'Saffa Halal Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-halal-frozen-whole-chicken-10-x-1000g-qatar-6073000210537"
     },
@@ -9248,7 +9248,7 @@
       "exhausted_categories": [],
       "key": "product_family:albadia-instant-flavored-drink-powder",
       "kind": "product_family",
-      "last_error": null,
+      "last_error": "TimeoutError: The read operation timed out",
       "match_terms": [
         "Albadia Instant Flavored Drink Powder"
       ],
@@ -9272,7 +9272,7 @@
         "Amul Sugar Free Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-sugar-free-dark-chocolate-150g-qatar-8901262071048"
     },
@@ -9291,7 +9291,7 @@
         "Elit Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/elit-milk-chocolate-200g-qatar-8698701022104"
     },
@@ -9310,7 +9310,7 @@
         "Kagi Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/kagi-milk-chocolate-125g-qatar-7610046125655"
     },
@@ -9329,7 +9329,7 @@
         "Argganco Frozen Whole"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/argganco-frozen-whole-chicken-10-x-1000g-qatar-6253812280052"
     },
@@ -9348,7 +9348,7 @@
         "Snips Baked Snacks Bread Chips Mixed"
       ],
       "next_pages": {
-        "Snacks & Candy": 8
+        "Snacks & Candy": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/snips-baked-snacks-bread-chips-mixed-cheese-85g-qatar-5281128101694"
     },
@@ -9367,7 +9367,7 @@
         "Mima Foods Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 8
+        "Frozen Food": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-foods-frozen-mango-2x400g-qatar-6425743930942"
     },
@@ -9386,7 +9386,7 @@
         "CBL Lanka Soy Textured Soya"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 8
+        "Condiments & Seasoning": 9
       },
       "source_product_url": "https://www.ansargallery.com/en/lanka-soya-curry-90gm-qatar-4796002070153"
     },
@@ -10842,7 +10842,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "1539df4d-3b07-4a56-a8ae-5f5103160570",
+  "last_completed_run_id": "82be8a5b-6d3c-40c5-b2a0-345f2eec3017",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14127,6 +14127,6 @@
     "https://www.ansargallery.com/en/kinder-joy-egg-for-girls-with-surprises-3x20g-qatar-8000500126325",
     "https://www.ansargallery.com/en/kinder-joy-with-surprise-for-boys-20g-qatar-80974482"
   ],
-  "updated_at": "2026-09-24T04:59:34.570773Z",
+  "updated_at": "2026-09-24T10:12:45.767879Z",
   "version": 2
 }

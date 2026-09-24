@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 278,
+  "coverage_cursor": 302,
   "coverage_jobs": [
     {
       "category_cursor": 16,
@@ -10013,7 +10013,7 @@
         "Godiva Belgium Smooth & Cream Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/godiva-belgium-smooth-cream-milk-chocolate-90g-qatar-8690504154679"
     },
@@ -10032,7 +10032,7 @@
         "Valor Sugar Creamy 70% Dark Chocolate with a Filling with"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-creamy-70-dark-chocolate-with-a-filling-with-orange-100g-qatar-8410109056525"
     },
@@ -10051,7 +10051,7 @@
         "Valor Sugar-Free 70% Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-free-70-dark-chocolate-100g-qatar-8410109050882"
     },
@@ -10070,7 +10070,7 @@
         "Amul Super Fruit"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-super-fruit-chocolate-150g-qatar-8901262071109"
     },
@@ -10089,7 +10089,7 @@
         "McVities Digestive Cream Filled Wheat Biscuit"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/mcvities-digestive-cream-filled-wheat-biscuit-chocolate-40g-qatar-5000396044645"
     },
@@ -10108,7 +10108,7 @@
         "Doha Dates with"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/doha-dates-with-chocolate-400g-qatar-0604170032733"
     },
@@ -10127,7 +10127,7 @@
         "Galaxy Smooth Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-milk-chocolate-3x80g-qatar-5255010298199"
     },
@@ -10146,7 +10146,7 @@
         "Ferrero Rocher Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/ferrero-rocher-hazelnut-chocolate-90g-qatar-8000500359488"
     },
@@ -10165,7 +10165,7 @@
         "Galaxy Smooth & Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-dark-chocolate-24x43g-qatar-6294001815259"
     },
@@ -10184,7 +10184,7 @@
         "Ion Dark Super"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/ion-dark-super-chocolate-90g-qatar-5201127039248"
     },
@@ -10203,7 +10203,7 @@
         "M M Crispy"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/m-m-crispy-chocolate-24x36g-qatar-5000159304238"
     },
@@ -10222,12 +10222,12 @@
         "Nestle Tola Crispy Wafer Covered in"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/nestle-tola-crispy-wafer-covered-in-chocolate-31g-qatar-6294003544690"
     },
     {
-      "category_cursor": 6,
+      "category_cursor": 7,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10263,7 +10263,7 @@
         "Bakery": 1,
         "Beverages": 2,
         "Breakfast Food": 1,
-        "Canned & Jarred Food": 1,
+        "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 1,
         "Condiments & Seasoning": 2,
@@ -10298,7 +10298,7 @@
         "Twix Top"
       ],
       "next_pages": {
-        "Snacks & Candy": 7
+        "Snacks & Candy": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/twix-top-chocolate-21g-qatar-5900951251849"
     },
@@ -10317,7 +10317,7 @@
         "Cholula Hot Sauce"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 7
+        "Condiments & Seasoning": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/cholula-hot-sauce-original-150ml-qatar-049733091015"
     },
@@ -10336,7 +10336,7 @@
         "Beef Stock Cubes Golden"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 7
+        "Condiments & Seasoning": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/beef-stock-cubes-golden-beef-20g-qatar-6254000119062"
     },
@@ -10355,12 +10355,12 @@
         "Double Up Cola"
       ],
       "next_pages": {
-        "Beverages": 4
+        "Beverages": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/double-up-cola-zero-sugar-200ml-qatar-5051153804965"
     },
     {
-      "category_cursor": 3,
+      "category_cursor": 4,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10405,7 +10405,7 @@
         "Delicatessen": 1,
         "Disposable & Storage": 1,
         "Dry & Natural Foods": 1,
-        "Dry Food": 1,
+        "Dry Food": 2,
         "Frozen Food": 1,
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
@@ -10431,7 +10431,7 @@
         "Kiri Al Jarra Spreadable Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 4
+        "Dairy - Egg & Cheese": 5
       },
       "source_product_url": "https://www.ansargallery.com/en/kiri-al-jarra-spreadable-cream-cheese-230g-qatar-3073780976466"
     },
@@ -10450,7 +10450,7 @@
         "Rawa Spreadable Processed Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 2
+        "Dairy - Egg & Cheese": 3
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-cream-cheese-670g-qatar-9504000342784"
     },
@@ -10469,7 +10469,7 @@
         "Rawa Spreadable Processed Full Fat Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 2
+        "Dairy - Egg & Cheese": 3
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-full-fat-cream-cheese-150g-qatar-9504000342807"
     },
@@ -10488,7 +10488,7 @@
         "Double Dare Carbonated Drink Coffee"
       ],
       "next_pages": {
-        "Beverages": 1
+        "Beverages": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/double-dare-carbonated-drink-coffee-chocolate-275ml-qatar-6224008082057"
     },
@@ -10507,7 +10507,7 @@
         "Mima Gardens Fresh Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 1
+        "Dairy - Egg & Cheese": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-gardens-fresh-cream-cheese-2-x-200g-qatar-6425745291232"
     },
@@ -10526,7 +10526,7 @@
         "Muratbey Anatolian Mix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 1
+        "Dairy - Egg & Cheese": 2
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-anatolian-mix-cheese-150g-qatar-8695543008013"
     },
@@ -10842,7 +10842,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "61c11c27-bba6-445a-9803-072a33e92ea8",
+  "last_completed_run_id": "c7ac501c-ebcc-40a8-af30-b37129f561e0",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14127,6 +14127,6 @@
     "https://www.ansargallery.com/en/kinder-joy-egg-for-girls-with-surprises-3x20g-qatar-8000500126325",
     "https://www.ansargallery.com/en/kinder-joy-with-surprise-for-boys-20g-qatar-80974482"
   ],
-  "updated_at": "2026-09-24T15:17:40.502322Z",
+  "updated_at": "2026-09-24T19:15:20.129946Z",
   "version": 2
 }

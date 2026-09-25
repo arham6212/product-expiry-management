@@ -1,16 +1,16 @@
 {
   "errors": [],
-  "last_successfully_synchronized_crawler_run_id": "5dc68bba-8942-48ca-a2b2-2615162fe1d1",
+  "last_successfully_synchronized_crawler_run_id": "041a1295-e072-4d8a-93e7-2819b6d3d7f2",
   "rejection_reasons": {
     "retailer/weighted pattern with seven trailing zeroes": 2,
     "workbook_barcode_not_valid": 119
   },
   "rows_enriched": 0,
-  "rows_examined": 1,
-  "rows_inserted": 1,
+  "rows_examined": 6,
+  "rows_inserted": 6,
   "rows_rejected": 121,
   "rows_unchanged": 0,
-  "synchronized_at": "2026-09-25T01:35:43Z",
+  "synchronized_at": "2026-09-25T07:56:01Z",
   "synchronized_product_ids": [
     "0017d40e-de1e-558d-8355-6e36a3c0571c",
     "002c7de5-2933-501e-a456-fa1c60c7c8fc",
@@ -160,6 +160,7 @@
     "0cf1b98d-c867-5b4f-90b8-faf6b535d9ba",
     "0d0d7c5e-21d0-58b7-9739-e10c78d4709d",
     "0d1e5ab3-50c8-5a65-b932-f462fbf2c113",
+    "0d31a68b-2e0f-5962-9139-b180c6e16ce8",
     "0d57b65f-2b63-5bd3-b11e-a66673461ca4",
     "0d59157e-bf0d-5744-816f-0854f8adce51",
     "0d6636c7-4a4d-5293-a2c5-90b597ee930a",
@@ -229,6 +230,7 @@
     "124a038f-2385-5c08-8d40-f9bce164871e",
     "125478b8-e0ec-5d99-a5ea-5d706bffec18",
     "1256c735-8221-50df-be4b-1e97f25eb654",
+    "127f1cdf-201f-5c8e-80cd-0d055650ff8f",
     "127f4662-78d7-556d-a2ab-b585732252db",
     "128a5a52-888c-520a-965a-289361825982",
     "128b2792-9d5b-5d0e-8a9c-c065a1c30b90",
@@ -591,6 +593,7 @@
     "30ad7cdf-da1d-53d3-b67c-1d27bcd5553e",
     "30bb2614-56f0-573d-8892-ac0d6b44b91f",
     "30bd1c7e-d6fb-5852-8fa1-59cae9c24903",
+    "30e6276c-fca6-58e5-951c-2e6089c965f4",
     "30e89ffe-0bed-5a7d-ba85-97a0ae29bfd0",
     "30f48668-31cf-575f-9e38-fdc451044cec",
     "31137f15-1329-5f6f-a120-4a5a21edfce4",
@@ -1137,6 +1140,7 @@
     "5e8f1ce2-2d9d-552f-8d10-c66ee203aec1",
     "5e9f208f-ef33-5f02-8a1a-b2367a2b5b61",
     "5ee5b610-123b-594f-8e01-77397d34f9e1",
+    "5f0a5e3b-14aa-5267-9eeb-fbc1ff0c6b69",
     "5f23b78b-3c76-557f-95a3-5f0ca7679faa",
     "5f41dd60-f2fc-5016-8711-0e3ac9a46f45",
     "5f547515-f97e-5063-b34f-5878873b2af4",
@@ -1583,6 +1587,7 @@
     "819599d8-ccb6-537b-a385-916ba68488ec",
     "81a3b733-d39f-5dd1-a264-8c29e075d250",
     "81a9c541-0f34-5e0f-a37f-293f92ab469c",
+    "81ae3e94-358a-517e-a63a-6bc206ede4f1",
     "81b5ed20-b37c-5343-afce-9e031043bb6b",
     "81e25ddf-4e25-5340-b2c3-5d6f4692a0eb",
     "82458ccc-78ce-50da-b3e7-adf010315e13",
@@ -2523,6 +2528,7 @@
     "d08f2411-b489-561a-91e6-29c256bfcd82",
     "d09612fa-0afa-5042-8a72-6700342f715e",
     "d10963b5-a85d-5faf-b722-2d5425120ab8",
+    "d11e3676-d507-5374-bd18-f4be7fafe592",
     "d1324827-0a35-5aa2-874c-d30ed2b99130",
     "d1513553-a47b-5a26-b9ce-678044e0a63c",
     "d1622c23-9c9d-51f4-b716-5e9ce3501a0d",
@@ -3117,6 +3123,6 @@
     "ffbb9491-9ede-544a-bfb6-0d54a1689131",
     "ffd5240e-4cee-50e4-bee7-3c5d67504633"
   ],
-  "valid_rows_imported": 1,
+  "valid_rows_imported": 6,
   "version": 1
 }

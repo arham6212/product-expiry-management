@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 38,
+  "coverage_cursor": 63,
   "coverage_jobs": [
     {
       "category_cursor": 18,
@@ -2057,7 +2057,7 @@
       "source_product_url": "https://www.ansargallery.com/en/qbake-brown-bread-medium-650g-qatar-6253808660295"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2094,7 +2094,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2114,7 +2114,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kdd-lulu-vanilla-chocolate-with-almond-ice-cream-stick-62-5ml-qatar-6271002320913"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2151,7 +2151,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2171,7 +2171,7 @@
       "source_product_url": "https://www.ansargallery.com/en/red-bull-sugar-free-energy-drink-4x250ml-qatar-9002490200381"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2208,7 +2208,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2228,7 +2228,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-shamal-pure-drinking-water-24x225ml-qatar-7798049258294"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2265,7 +2265,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2285,7 +2285,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-maha-1kg-full-fat-yoghurt-qatar-9504000172619"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2322,7 +2322,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2363,7 +2363,7 @@
       "source_product_url": "https://www.ansargallery.com/en/5-star-peanut-butter-chocolate-340g-qatar-8908004415108"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2400,7 +2400,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2420,7 +2420,7 @@
       "source_product_url": "https://www.ansargallery.com/en/loacker-gardena-hazelnut-milk-chocolate-coated-wafers-5x38g-qatar-8000380005284"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2457,7 +2457,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2491,12 +2491,12 @@
         "Al Rifai Pistachio"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 17
+        "Dry & Natural Foods": 18
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-pistachio-salted-180g-qatar-6271100040010"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2533,7 +2533,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2553,7 +2553,7 @@
       "source_product_url": "https://www.ansargallery.com/en/apex-anti-bacterial-cleaner-750-ml-qatar-9501100119599"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2600,7 +2600,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2610,7 +2610,7 @@
       "source_product_url": "https://www.ansargallery.com/en/rawa-low-fat-yoghurt-with-fruits-4-cereals-150g-qatar-9504000172176"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2657,7 +2657,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2667,7 +2667,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ferrero-nutella-b-ready-chocolate-filled-biscuit-22g-qatar-8000500224281"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2714,7 +2714,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2724,7 +2724,7 @@
       "source_product_url": "https://www.ansargallery.com/en/adeera-pure-corn-oil-1-8l-qatar-9504000062675"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2771,7 +2771,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2781,7 +2781,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ahlia-seasoning-spice-mix-80g-qatar-6271003091454"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2828,7 +2828,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2838,7 +2838,7 @@
       "source_product_url": "https://www.ansargallery.com/en/rio-mare-light-meat-tuna-in-olive-oil-2x160g-qatar-8004030349797"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2885,7 +2885,7 @@
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
-        "Grab & Go": 1,
+        "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
         "International Food": 2,
@@ -2895,7 +2895,7 @@
       "source_product_url": "https://www.ansargallery.com/en/dany-watermelon-juice-200ml-qatar-5051146360355"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2934,7 +2934,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2954,7 +2954,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kasih-sea-salt-400g-qatar-6253001065620"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2993,7 +2993,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -3027,12 +3027,12 @@
         "Al Saffa Whole Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 16
+        "Frozen Food": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/al-saffa-whole-frozen-chicken-1000g-qatar-6291101360023"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3071,7 +3071,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -3091,7 +3091,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-attar-chamomile-lemon-tea-37-5g-qatar-6212900018168"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3130,7 +3130,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -3164,7 +3164,7 @@
         "Pepsi"
       ],
       "next_pages": {
-        "Beverages": 16
+        "Beverages": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/pepsi-diet-2-25l-qatar-012000001017"
     },
@@ -3183,12 +3183,12 @@
         "Al Rifai Peanut"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 16
+        "Dry & Natural Foods": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-peanut-salted-250g-qatar-6271100040027"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -3227,7 +3227,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -3261,7 +3261,7 @@
         "Bahar ULa Dishwashing Liquid"
       ],
       "next_pages": {
-        "Cleaning & Laundry": 16
+        "Cleaning & Laundry": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/bahar-ula-dishwashing-liquid-lemon-1l-qatar-9501030211516"
     },
@@ -10880,7 +10880,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "f9cb7a58-23cb-4459-b986-6c7800fbbb76",
+  "last_completed_run_id": "4d19dfac-f1a7-4977-a6a1-a28d11c9a99e",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14176,8 +14176,12 @@
     "https://www.ansargallery.com/en/ukol-cream-caramel-6x71g-qatar-6253357000429",
     "https://www.ansargallery.com/en/mama-sitas-menudo-afritada-mix-meat-stew-mix-30g-qatar-025407805201",
     "https://www.ansargallery.com/en/coca-cola-zero-sugar-can-330ml-qatar-5449000131805",
-    "https://www.ansargallery.com/en/sanita-easy-lock-large-20-s-qatar-6281017909027"
+    "https://www.ansargallery.com/en/sanita-easy-lock-large-20-s-qatar-6281017909027",
+    "https://www.ansargallery.com/en/bahar-colour-safe-fabric-care-liquid-detergent-1l-qatar-9501030521219",
+    "https://www.ansargallery.com/en/bahar-detergent-powder-320g-qatar-9501030111021",
+    "https://www.ansargallery.com/en/bahar-detergent-powder-625g-qatar-9501030111038",
+    "https://www.ansargallery.com/en/bahar-premium-antiseptic-disinfectant-750ml-qatar-9501030511081"
   ],
-  "updated_at": "2026-09-27T08:17:55.564896Z",
+  "updated_at": "2026-09-27T14:43:49.922561Z",
   "version": 2
 }

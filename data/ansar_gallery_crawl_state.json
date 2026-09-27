@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 12,
+  "coverage_cursor": 38,
   "coverage_jobs": [
     {
       "category_cursor": 18,
@@ -705,7 +705,7 @@
       "source_product_url": "https://www.ansargallery.com/en/baskin-robbins-chocolate-ice-cream-120ml-qatar-036631084249"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -748,7 +748,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -762,7 +762,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-badia-full-cream-milk-1l-qatar-7348008683300"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -805,7 +805,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -819,7 +819,7 @@
       "source_product_url": "https://www.ansargallery.com/en/bahlsen-choco-leibniz-chocolate-milk-biscuit-27-5g-qatar-4017100210556"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -862,7 +862,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -876,7 +876,7 @@
       "source_product_url": "https://www.ansargallery.com/en/starbucks-frappuccino-coffee-drink-cookies-cream-flavour-250ml-qatar-5711953118111"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -919,7 +919,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -933,7 +933,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kellogg-s-coco-pops-chocolate-flavoured-cereal-35g-qatar-5050083392801"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -976,7 +976,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -990,7 +990,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ola-frozen-breaded-chicken-nuggets-1kg-qatar-6084000100704"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1033,7 +1033,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1047,7 +1047,7 @@
       "source_product_url": "https://www.ansargallery.com/en/awafi-170g-full-fat-yoghurt-qatar-6291107055022"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1090,7 +1090,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1104,7 +1104,7 @@
       "source_product_url": "https://www.ansargallery.com/en/hershey-s-genuine-chocolate-syrup-650g-qatar-034000312283"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1147,7 +1147,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1161,7 +1161,7 @@
       "source_product_url": "https://www.ansargallery.com/en/americana-beef-burger-arabic-spices-1344g-qatar-6281050113177"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1204,7 +1204,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1218,7 +1218,7 @@
       "source_product_url": "https://www.ansargallery.com/en/baladna-high-proteain-plain-yoghurt-drink-360ml-qatar-6300900237938"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1261,7 +1261,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1275,7 +1275,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ambi-pur-glass-cleaner-500ml-qatar-5283000401014"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1318,7 +1318,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1332,7 +1332,7 @@
       "source_product_url": "https://www.ansargallery.com/en/britannia-milk-rusk-310g-qatar-8901063136762"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1375,7 +1375,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1410,7 +1410,7 @@
       "source_product_url": "https://www.ansargallery.com/en/mazzraty-pro-high-protein-milk-chocolate-360ml-qatar-6300900362449"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1453,7 +1453,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1519,12 +1519,12 @@
         "energy drink"
       ],
       "next_pages": {
-        "Beverages": 18
+        "Beverages": 19
       },
       "source_product_url": null
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1567,7 +1567,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1581,7 +1581,7 @@
       "source_product_url": "https://www.ansargallery.com/en/amul-pasteurized-salted-butter-500g-qatar-8901262010023"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1624,7 +1624,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1638,7 +1638,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-wazir-2l-olive-pomace-oil-qatar-8428483200137"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1681,7 +1681,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1695,7 +1695,7 @@
       "source_product_url": "https://www.ansargallery.com/en/bayara-caraway-200g-qatar-3434410002694"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1738,7 +1738,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1766,12 +1766,12 @@
         "A Saffa Whole Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 18
+        "Frozen Food": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-whole-frozen-chicken-1100g-qatar-6291101360030"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1814,7 +1814,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1828,7 +1828,7 @@
       "source_product_url": "https://www.ansargallery.com/en/anchor-fortified-full-cream-milk-powder-900g-qatar-9415007017134"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1871,7 +1871,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -1885,7 +1885,7 @@
       "source_product_url": "https://www.ansargallery.com/en/queen-light-meat-tuna-flakes-in-sunflower-oil-185g-qatar-8850231756960"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1923,7 +1923,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -1943,7 +1943,7 @@
       "source_product_url": "https://www.ansargallery.com/en/coca-cola-soft-drink-can-150ml-qatar-54491014"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1980,7 +1980,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -2000,7 +2000,7 @@
       "source_product_url": "https://www.ansargallery.com/en/schweppes-soda-water-150ml-qatar-54491007"
     },
     {
-      "category_cursor": 16,
+      "category_cursor": 17,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2037,7 +2037,7 @@
         "Beverages": 2,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
-        "Cleaning & Laundry": 1,
+        "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
@@ -10880,7 +10880,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "7086f4d9-b5c6-4df3-ade9-64ce1bf248c3",
+  "last_completed_run_id": "f9cb7a58-23cb-4459-b986-6c7800fbbb76",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14175,8 +14175,9 @@
     "https://www.ansargallery.com/en/puck-cream-cheese-2x500g-qatar-8121183626886",
     "https://www.ansargallery.com/en/ukol-cream-caramel-6x71g-qatar-6253357000429",
     "https://www.ansargallery.com/en/mama-sitas-menudo-afritada-mix-meat-stew-mix-30g-qatar-025407805201",
-    "https://www.ansargallery.com/en/coca-cola-zero-sugar-can-330ml-qatar-5449000131805"
+    "https://www.ansargallery.com/en/coca-cola-zero-sugar-can-330ml-qatar-5449000131805",
+    "https://www.ansargallery.com/en/sanita-easy-lock-large-20-s-qatar-6281017909027"
   ],
-  "updated_at": "2026-09-27T01:32:30.194239Z",
+  "updated_at": "2026-09-27T08:17:55.564896Z",
   "version": 2
 }

@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 199,
+  "coverage_cursor": 223,
   "coverage_jobs": [
     {
       "category_cursor": 19,
@@ -7980,12 +7980,12 @@
         "Dunkin Premium Iced Coffee"
       ],
       "next_pages": {
-        "Beverages": 13
+        "Beverages": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/dunkin-premium-iced-coffee-original-300ml-qatar-6281022174014"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8033,7 +8033,7 @@
         "Dry Food": 2,
         "Frozen Food": 2,
         "Grab & Go": 1,
-        "Healthy & Organic Foods": 1,
+        "Healthy & Organic Foods": 2,
         "Ice Cream": 1,
         "International Food": 2,
         "Produce": 1,
@@ -8056,7 +8056,7 @@
         "Ulker Napoliten"
       ],
       "next_pages": {
-        "Snacks & Candy": 13
+        "Snacks & Candy": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/ulker-napoliten-chocolate-33g-qatar-8690504023135"
     },
@@ -8075,12 +8075,12 @@
         "Jewan Greek Yogurt"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 13
+        "Dairy - Egg & Cheese": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/jewan-greek-yogurt-strawberry-170g-qatar-5051153828824"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8128,7 +8128,7 @@
         "Dry Food": 2,
         "Frozen Food": 2,
         "Grab & Go": 1,
-        "Healthy & Organic Foods": 1,
+        "Healthy & Organic Foods": 2,
         "Ice Cream": 1,
         "International Food": 2,
         "Produce": 1,
@@ -8137,7 +8137,7 @@
       "source_product_url": "https://www.ansargallery.com/en/tilda-basmati-rice-2kg-30-off-qatar-8901144900060"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8185,7 +8185,7 @@
         "Dry Food": 2,
         "Frozen Food": 2,
         "Grab & Go": 1,
-        "Healthy & Organic Foods": 1,
+        "Healthy & Organic Foods": 2,
         "Ice Cream": 1,
         "International Food": 2,
         "Produce": 1,
@@ -8208,7 +8208,7 @@
         "Dubai Kunafa"
       ],
       "next_pages": {
-        "Bakery": 13
+        "Bakery": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/dubai-kunafa-chocolate-250g-qatar-3273484132711"
     },
@@ -8227,7 +8227,7 @@
         "Kracklite Toasted Chips Biscuits"
       ],
       "next_pages": {
-        "Snacks & Candy": 13
+        "Snacks & Candy": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/kracklite-toasted-chips-biscuits-salted-26g-qatar-9501025182111"
     },
@@ -8246,7 +8246,7 @@
         "Frutos Instant Fruit Drink Powder Mix"
       ],
       "next_pages": {
-        "Beverages": 13
+        "Beverages": 14
       },
       "source_product_url": "https://www.ansargallery.com/en/frutos-instant-fruit-drink-powder-mix-lemon-750g-qatar-682568001769"
     },
@@ -8265,7 +8265,7 @@
         "Nobar Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 12
+        "Frozen Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/nobar-frozen-strawberry-400g-qatar-6260257500539"
     },
@@ -8284,7 +8284,7 @@
         "Americana Chicken Franks"
       ],
       "next_pages": {
-        "Canned & Jarred Food": 12
+        "Canned & Jarred Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-chicken-franks-original-3x300g-qatar-6281050117427"
     },
@@ -8303,7 +8303,7 @@
         "Biscolata Starz Milky"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/biscolata-starz-milky-chocolate-37-5g-qatar-8699141013004"
     },
@@ -8322,7 +8322,7 @@
         "Karikku Tender Coconut Water"
       ],
       "next_pages": {
-        "Beverages": 12
+        "Beverages": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/karikku-tender-coconut-water-zero-sugar-200ml-qatar-8908025684057"
     },
@@ -8341,7 +8341,7 @@
         "Americana Super Roll"
       ],
       "next_pages": {
-        "Bakery": 12
+        "Bakery": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-super-roll-strawberry-6-pieces-qatar-6281033209224"
     },
@@ -8360,7 +8360,7 @@
         "Deemah Fantasy Cake"
       ],
       "next_pages": {
-        "Bakery": 12
+        "Bakery": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/deemah-fantasy-cake-chocolate-40g-qatar-6285602012697"
     },
@@ -8379,12 +8379,12 @@
         "Deemah Marmo Cake"
       ],
       "next_pages": {
-        "Bakery": 12
+        "Bakery": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/deemah-marmo-cake-chocolate-40g-qatar-6285602012758"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8434,7 +8434,7 @@
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
-        "International Food": 1,
+        "International Food": 2,
         "Produce": 1,
         "Snacks & Candy": 2
       },
@@ -8455,12 +8455,12 @@
         "Chtaura Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 12
+        "Frozen Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/chtaura-frozen-mango-400g-qatar-603388574035"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8510,7 +8510,7 @@
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
-        "International Food": 1,
+        "International Food": 2,
         "Produce": 1,
         "Snacks & Candy": 2
       },
@@ -8531,7 +8531,7 @@
         "Tangesir Date with"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 12
+        "Dry & Natural Foods": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/tangesir-date-with-chocolate-125g-qatar-6262971700387"
     },
@@ -8550,7 +8550,7 @@
         "Qualiko Frozen"
       ],
       "next_pages": {
-        "Frozen Food": 12
+        "Frozen Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/qualiko-frozen-chicken-1100g-qatar-4820107353290"
     },
@@ -8569,12 +8569,12 @@
         "Amada Biscuit Stix With Hazelnut Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/amada-biscuit-stix-with-hazelnut-milk-chocolate-32g-qatar-8691707140032"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8624,7 +8624,7 @@
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
-        "International Food": 1,
+        "International Food": 2,
         "Produce": 1,
         "Snacks & Candy": 2
       },
@@ -8645,7 +8645,7 @@
         "Cadbury Sandwich Snack Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/cadbury-sandwich-snack-milk-chocolate-22g-qatar-4002000002158"
     },
@@ -10895,7 +10895,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "175ff5db-cb60-4e80-a4b6-35a7125da82f",
+  "last_completed_run_id": "ac07094e-a6cf-4a91-bad5-2843cc74db71",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14245,6 +14245,6 @@
     "https://www.ansargallery.com/en/castania-mixed-kernel-300gm-qatar-5281009568301",
     "https://www.ansargallery.com/en/castania-super-mix-nut-300gm-qatar-5281009568349"
   ],
-  "updated_at": "2026-10-01T19:36:19.874837Z",
+  "updated_at": "2026-10-01T23:56:41.581069Z",
   "version": 2
 }

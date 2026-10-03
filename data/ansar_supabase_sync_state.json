@@ -1,16 +1,16 @@
 {
   "errors": [],
-  "last_successfully_synchronized_crawler_run_id": "a2e414f0-3858-48ef-a586-e5984a0e7700",
+  "last_successfully_synchronized_crawler_run_id": "ab4c01a1-4abb-4efb-8d0e-57c292db3d52",
   "rejection_reasons": {
     "retailer/weighted pattern with seven trailing zeroes": 2,
     "workbook_barcode_not_valid": 150
   },
   "rows_enriched": 0,
-  "rows_examined": 0,
-  "rows_inserted": 0,
+  "rows_examined": 2,
+  "rows_inserted": 2,
   "rows_rejected": 152,
   "rows_unchanged": 0,
-  "synchronized_at": "2026-10-03T18:00:39Z",
+  "synchronized_at": "2026-10-03T21:23:55Z",
   "synchronized_product_ids": [
     "0017d40e-de1e-558d-8355-6e36a3c0571c",
     "002c7de5-2933-501e-a456-fa1c60c7c8fc",
@@ -1985,6 +1985,7 @@
     "a2a21a6a-282f-536d-8ffa-b420f3040ad6",
     "a2b2cf07-9f03-52ab-8a92-e19887b0f7c7",
     "a2d16487-0a29-5647-9cff-26e75a9af01d",
+    "a2d40dbf-97f7-58f8-aedd-bb80e9288baa",
     "a2eea166-3ba7-5b3c-9e50-b6169fb42a0a",
     "a31e4c8d-2229-59da-a700-d1313f21a950",
     "a324982d-541d-5ea0-a784-fea4e33ce396",
@@ -2964,6 +2965,7 @@
     "f17a2e9e-d6eb-5b68-be3e-20d1339f7959",
     "f17ab08a-b367-517a-ab58-ff23a4081d52",
     "f1898516-4027-599b-8ce9-4f4495694925",
+    "f194259f-e2ee-5e22-ae0b-d4e3eba56e03",
     "f1ca328e-b035-5ea0-8155-a538e7015fd4",
     "f1cee529-f5b3-5e7f-a71a-bc761209d38d",
     "f1dfe9b1-899b-5e1e-9c94-d21fae4adf50",
@@ -3157,6 +3159,6 @@
     "ffbb9491-9ede-544a-bfb6-0d54a1689131",
     "ffd5240e-4cee-50e4-bee7-3c5d67504633"
   ],
-  "valid_rows_imported": 0,
+  "valid_rows_imported": 2,
   "version": 1
 }

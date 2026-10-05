@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 260,
+  "coverage_cursor": 284,
   "coverage_jobs": [
     {
       "category_cursor": 0,
@@ -9635,7 +9635,7 @@
         "Today Almond Dragee with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/today-almond-dragee-with-milk-chocolate-60g-qatar-6251100008456"
     },
@@ -9654,7 +9654,7 @@
         "Today Hazelnut Dragee with Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/today-hazelnut-dragee-with-milk-chocolate-60g-qatar-6251100008449"
     },
@@ -9673,7 +9673,7 @@
         "Daawat Basmati White Basmati Rice"
       ],
       "next_pages": {
-        "Dry Food": 12
+        "Dry Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/daawat-basmati-white-basmati-rice-original-5kg-qatar-8901537024090"
     },
@@ -9692,7 +9692,7 @@
         "Galaxy Flutes Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-flutes-cream-chocolate-22-5g-qatar-6221134010718"
     },
@@ -9711,12 +9711,12 @@
         "Americana Tender Chicken Breast"
       ],
       "next_pages": {
-        "Frozen Food": 12
+        "Frozen Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-tender-chicken-breast-original-1000g-qatar-6281050214744"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -9766,7 +9766,7 @@
         "Grab & Go": 1,
         "Healthy & Organic Foods": 1,
         "Ice Cream": 1,
-        "International Food": 1,
+        "International Food": 2,
         "Produce": 1,
         "Snacks & Candy": 2
       },
@@ -9787,7 +9787,7 @@
         "Tabasco Ramen Instant Noodles Savory Spiced"
       ],
       "next_pages": {
-        "Dry Food": 12
+        "Dry Food": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/tabasco-ramen-instant-noodles-savory-spiced-beef-375g-qatar-5060670992376"
     },
@@ -9806,7 +9806,7 @@
         "Schweppes Tonic Water"
       ],
       "next_pages": {
-        "Beverages": 12
+        "Beverages": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/schweppes-tonic-water-zero-sugar-253ml-qatar-5449000342867"
     },
@@ -9825,7 +9825,7 @@
         "Farmland Fromage Kashkaval"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 12
+        "Dairy - Egg & Cheese": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/farmland-fromage-kashkaval-cheese-2-x-350g-qatar-8572195117303"
     },
@@ -9844,7 +9844,7 @@
         "Imima Gardens Shredded Cheddar"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 12
+        "Dairy - Egg & Cheese": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/imima-gardens-shredded-cheddar-cheese-2-x-200g-qatar-8023004595152"
     },
@@ -9863,7 +9863,7 @@
         "Mima Garden Fresh Olives Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 12
+        "Dairy - Egg & Cheese": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-garden-fresh-olives-cream-cheese-133g-qatar-5998207951124"
     },
@@ -9882,7 +9882,7 @@
         "St. Clemens Danish Blue"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 12
+        "Dairy - Egg & Cheese": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/st-clemens-danish-blue-cheese-100g-qatar-5701377101134"
     },
@@ -9901,7 +9901,7 @@
         "Quanta Adore Mini Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/quanta-adore-mini-milk-chocolate-253g-qatar-6291003084966"
     },
@@ -9920,7 +9920,7 @@
         "Quanta Almonday Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/quanta-almonday-milk-chocolate-12x35g-qatar-6291003078613"
     },
@@ -9939,7 +9939,7 @@
         "Mr Krisp Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisp-twist-lightly-salted-80g-qatar-6291028111029"
     },
@@ -9958,7 +9958,7 @@
         "Mr. Krisps Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisps-twist-lightly-salted-75g-qatar-6291028006028"
     },
@@ -9977,7 +9977,7 @@
         "Kinder Tronky"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-tronky-chocolate-18g-qatar-8000500384763"
     },
@@ -9996,7 +9996,7 @@
         "Toblerone Fruit And Nut"
       ],
       "next_pages": {
-        "Snacks & Candy": 12
+        "Snacks & Candy": 13
       },
       "source_product_url": "https://www.ansargallery.com/en/toblerone-fruit-nut-100g-qatar-7622300107949"
     },
@@ -10015,7 +10015,7 @@
         "Godiva Belgium Smooth & Cream Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/godiva-belgium-smooth-cream-milk-chocolate-90g-qatar-8690504154679"
     },
@@ -10034,7 +10034,7 @@
         "Valor Sugar Creamy 70% Dark Chocolate with a Filling with"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-creamy-70-dark-chocolate-with-a-filling-with-orange-100g-qatar-8410109056525"
     },
@@ -10053,7 +10053,7 @@
         "Valor Sugar-Free 70% Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-free-70-dark-chocolate-100g-qatar-8410109050882"
     },
@@ -10072,7 +10072,7 @@
         "Amul Super Fruit"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-super-fruit-chocolate-150g-qatar-8901262071109"
     },
@@ -10091,7 +10091,7 @@
         "McVities Digestive Cream Filled Wheat Biscuit"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/mcvities-digestive-cream-filled-wheat-biscuit-chocolate-40g-qatar-5000396044645"
     },
@@ -10110,7 +10110,7 @@
         "Doha Dates with"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/doha-dates-with-chocolate-400g-qatar-0604170032733"
     },
@@ -10912,7 +10912,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "828a0cb5-5a31-4fdf-b8e7-c3d1b1e656db",
+  "last_completed_run_id": "b7778626-4eca-44fd-92d4-559382943f9b",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14273,6 +14273,6 @@
     "https://www.ansargallery.com/en/al-maha-custard-chocolate-8x90g-qatar-9504000286491",
     "https://www.ansargallery.com/en/emborg-frozen-sliced-mushrooms-450g-qatar-5701215059665"
   ],
-  "updated_at": "2026-10-04T21:35:12.536840Z",
+  "updated_at": "2026-10-05T01:01:05.190679Z",
   "version": 2
 }

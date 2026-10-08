@@ -122,10 +122,10 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 298,
+  "coverage_cursor": 17,
   "coverage_jobs": [
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -166,7 +166,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -196,12 +196,12 @@
         "Kinder Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-milk-chocolate-100g-qatar-80177616"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -242,7 +242,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -258,7 +258,7 @@
       "source_product_url": "https://www.ansargallery.com/en/indomi-beef-flavoured-cup-noodle-60g-qatar-089686122046"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -299,7 +299,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -315,7 +315,7 @@
       "source_product_url": "https://www.ansargallery.com/en/american-garden-panko-bread-crumbs-227g-qatar-717273504127"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -356,7 +356,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -372,7 +372,7 @@
       "source_product_url": "https://www.ansargallery.com/en/california-garden-light-solid-tuna-in-water-salt-185g-qatar-032894015518"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -413,7 +413,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -429,7 +429,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-turkish-coffee-with-cardamom-250g-qatar-6271100041635"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -480,7 +480,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -496,7 +496,7 @@
       "source_product_url": "https://www.ansargallery.com/en/nestle-lion-caramel-chocolate-cereals-400g-qatar-7613031370641"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -537,7 +537,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -567,12 +567,12 @@
         "Indomie Instant Fried Cup Noodles"
       ],
       "next_pages": {
-        "Dry Food": 22
+        "Dry Food": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/indomie-instant-fried-cup-noodles-migoreng-75g-qatar-089686180657"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -613,7 +613,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -643,12 +643,12 @@
         "Al Rifai Cashew"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 22
+        "Dry & Natural Foods": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-cashew-salted-200g-qatar-6271100040034"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -689,7 +689,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -705,7 +705,7 @@
       "source_product_url": "https://www.ansargallery.com/en/baskin-robbins-chocolate-ice-cream-120ml-qatar-036631084249"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -746,7 +746,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -762,7 +762,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-badia-full-cream-milk-1l-qatar-7348008683300"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -803,7 +803,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -819,7 +819,7 @@
       "source_product_url": "https://www.ansargallery.com/en/bahlsen-choco-leibniz-chocolate-milk-biscuit-27-5g-qatar-4017100210556"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -860,7 +860,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -876,7 +876,7 @@
       "source_product_url": "https://www.ansargallery.com/en/starbucks-frappuccino-coffee-drink-cookies-cream-flavour-250ml-qatar-5711953118111"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -917,7 +917,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -933,7 +933,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kellogg-s-coco-pops-chocolate-flavoured-cereal-35g-qatar-5050083392801"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -974,7 +974,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -10471,7 +10471,7 @@
         "Rawa Spreadable Processed Full Fat Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 7
+        "Dairy - Egg & Cheese": 8
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-full-fat-cream-cheese-150g-qatar-9504000342807"
     },
@@ -10490,7 +10490,7 @@
         "Double Dare Carbonated Drink Coffee"
       ],
       "next_pages": {
-        "Beverages": 6
+        "Beverages": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/double-dare-carbonated-drink-coffee-chocolate-275ml-qatar-6224008082057"
     },
@@ -10509,7 +10509,7 @@
         "Mima Gardens Fresh Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 6
+        "Dairy - Egg & Cheese": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-gardens-fresh-cream-cheese-2-x-200g-qatar-6425745291232"
     },
@@ -10528,7 +10528,7 @@
         "Muratbey Anatolian Mix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 6
+        "Dairy - Egg & Cheese": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-anatolian-mix-cheese-150g-qatar-8695543008013"
     },
@@ -10547,7 +10547,7 @@
         "Muratbey Helix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 6
+        "Dairy - Egg & Cheese": 7
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-helix-cheese-150g-qatar-8695543006934"
     },
@@ -10561,7 +10561,7 @@
       "exhausted_categories": [],
       "key": "product_family:dandy-ice-cream-tri-cone",
       "kind": "product_family",
-      "last_error": null,
+      "last_error": "HTTPError: HTTP Error 403: Forbidden",
       "match_terms": [
         "Dandy Ice Cream Tri Cone"
       ],
@@ -10585,7 +10585,7 @@
         "Puck Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 5
+        "Dairy - Egg & Cheese": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/puck-cream-cheese-2x500g-qatar-8121183626886"
     },
@@ -10972,7 +10972,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "60d17495-fbc3-446e-b840-cdabe44f128c",
+  "last_completed_run_id": "730e98f3-b07a-4319-a924-0c1f6a8d34ad",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14367,8 +14367,9 @@
     "https://www.ansargallery.com/en/rawa-toffee-dessert-custard-100g-qatar-6300900084037",
     "https://www.ansargallery.com/en/mima-foods-frozen-strawberry-400g-qatar-6271100081518",
     "https://www.ansargallery.com/en/bake-city-muffin-protein-birthday-cake-113g-qatar-814856011154",
-    "https://www.ansargallery.com/en/dubai-choco-pistachio-kunafa-250g-qatar-3273484132728"
+    "https://www.ansargallery.com/en/dubai-choco-pistachio-kunafa-250g-qatar-3273484132728",
+    "https://www.ansargallery.com/en/nestle-caramelized-sweetened-condensed-milk-397g-qatar-7613036425322"
   ],
-  "updated_at": "2026-10-08T09:05:43.134045Z",
+  "updated_at": "2026-10-08T16:35:02.977599Z",
   "version": 2
 }

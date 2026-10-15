@@ -1,16 +1,16 @@
 {
   "errors": [],
-  "last_successfully_synchronized_crawler_run_id": "ed1eef23-5e9e-464b-b8a3-660426807658",
+  "last_successfully_synchronized_crawler_run_id": "4c646174-5e46-4672-8673-c0b49e39ec1c",
   "rejection_reasons": {
     "retailer/weighted pattern with seven trailing zeroes": 2,
     "workbook_barcode_not_valid": 154
   },
   "rows_enriched": 0,
-  "rows_examined": 0,
-  "rows_inserted": 0,
+  "rows_examined": 4,
+  "rows_inserted": 4,
   "rows_rejected": 156,
   "rows_unchanged": 0,
-  "synchronized_at": "2026-10-15T13:30:23Z",
+  "synchronized_at": "2026-10-15T18:22:19Z",
   "synchronized_product_ids": [
     "0017d40e-de1e-558d-8355-6e36a3c0571c",
     "002c7de5-2933-501e-a456-fa1c60c7c8fc",
@@ -68,6 +68,7 @@
     "04504b9f-2e72-5069-8b84-6f343b1d63bf",
     "04591073-748d-5bd5-b654-6b100f711637",
     "048bf083-f559-5631-8ec6-962975239776",
+    "049e3168-3975-5d94-bdf2-6c5cb9373468",
     "04cc475d-a5a5-5ac0-a32b-bc6fb9587fa3",
     "04cd188e-d1a8-59e4-be86-f34004fbefee",
     "04cdf8b9-ea15-53a3-a707-8413ede17571",
@@ -870,6 +871,7 @@
     "461a02d1-18ef-5ab2-bfdc-bb621cd8784b",
     "462076b5-b958-51c1-934e-4a0f68a0506d",
     "4643b32c-54b2-5def-8179-ccc4c09f31ef",
+    "46459364-1d36-5d30-b668-77445f37b6f7",
     "465b31dc-fee4-507d-a2a5-ae9bc809ae33",
     "466d8cb1-c232-5f3f-90f1-2d5ce7f1efed",
     "4681f4db-0acb-574c-b6e8-d8bd3912b824",
@@ -1549,6 +1551,7 @@
     "7ab4e14d-08a0-5ba2-8ff4-75ffa71c29bc",
     "7ad0e748-9bfe-593c-bf89-1a5de2d82653",
     "7ad647d5-0720-5bc1-a30b-5ee1510f5c9e",
+    "7b078ba1-87f1-51dd-bad0-b9cd7be0a113",
     "7b160a11-96e2-55d9-925c-7d547525c269",
     "7b20130d-7286-5e92-9cde-11da37ffa7c3",
     "7b2faf3f-7d09-5eab-8627-099af4a40f25",
@@ -2544,6 +2547,7 @@
     "cb35f333-37e0-5c4e-a51e-0bac614a8c67",
     "cb378794-24d6-5dfe-8d5a-c25ebdeddca7",
     "cb389bef-b419-56b3-b832-16b40bfec7b6",
+    "cb3ca37f-f121-5b43-aefc-1be3631c14e4",
     "cb862792-8714-5bfa-bd8a-0c10ae1c6651",
     "cb93f997-5947-56e8-9218-fe200f203f49",
     "cb959b99-16fa-518f-9722-e2e4c1844a05",
@@ -3232,6 +3236,6 @@
     "ffbb9491-9ede-544a-bfb6-0d54a1689131",
     "ffd5240e-4cee-50e4-bee7-3c5d67504633"
   ],
-  "valid_rows_imported": 0,
+  "valid_rows_imported": 4,
   "version": 1
 }

@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 95,
+  "coverage_cursor": 121,
   "coverage_jobs": [
     {
       "category_cursor": 9,
@@ -4562,7 +4562,7 @@
       "source_product_url": "https://www.ansargallery.com/en/hershey-kisses-milk-chocolate-226g-qatar-034000132010"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4601,7 +4601,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4619,7 +4619,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ahmed-foods-mango-pickle-in-oil-300g-qatar-054529001017"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4658,7 +4658,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4676,7 +4676,7 @@
       "source_product_url": "https://www.ansargallery.com/en/pringles-salt-vinegar-chips-165g-qatar-5053990101580"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4715,7 +4715,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4733,7 +4733,7 @@
       "source_product_url": "https://www.ansargallery.com/en/del-monte-light-skip-jack-meat-in-sunflower-oil-185g-qatar-736211763631"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4772,7 +4772,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4790,7 +4790,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-shifa-acacia-queeeze-400g-qatar-6281073210402"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4829,7 +4829,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4847,7 +4847,7 @@
       "source_product_url": "https://www.ansargallery.com/en/lusine-chocolate-cupcake-30g-qatar-6281007045841"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4886,7 +4886,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4904,7 +4904,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kitco-nice-salt-vinegar-16g-qatar-6080401323018"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4943,7 +4943,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -4961,7 +4961,7 @@
       "source_product_url": "https://www.ansargallery.com/en/yamama-rose-water-750ml-qatar-623695000201"
     },
     {
-      "category_cursor": 5,
+      "category_cursor": 6,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5000,7 +5000,7 @@
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
-        "Condiments & Seasoning": 2,
+        "Condiments & Seasoning": 3,
         "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
@@ -5032,7 +5032,7 @@
         "American Heritage Medium Cheddar"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 25
+        "Dairy - Egg & Cheese": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-medium-cheddar-cheese-226g-qatar-071505018807"
     },
@@ -5051,12 +5051,12 @@
         "American Heritage Mild Cheddar"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 25
+        "Dairy - Egg & Cheese": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-mild-cheddar-cheese-226g-qatar-071505018814"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5096,7 +5096,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -5127,7 +5127,7 @@
         "American Heritage Monterey Jack"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 25
+        "Dairy - Egg & Cheese": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-monterey-jack-cheese-226-79g-qatar-071505018791"
     },
@@ -5146,7 +5146,7 @@
         "American Heritage Pasteurized Processed"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 25
+        "Dairy - Egg & Cheese": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-pasteurized-processed-cheese-226g-qatar-071505018838"
     },
@@ -5165,7 +5165,7 @@
         "American Heritage Sharp Cheddar"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 25
+        "Dairy - Egg & Cheese": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-sharp-chedar-cheese-226g-qatar-071505018999"
     },
@@ -5184,7 +5184,7 @@
         "Fluffy Pancake Sandwich"
       ],
       "next_pages": {
-        "Cooking & Baking": 25
+        "Cooking & Baking": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/amalfi-pancake-sandwich-chocolate-37g-qatar-6084012140019"
     },
@@ -5210,7 +5210,7 @@
       "source_product_url": "https://www.ansargallery.com/en/nv-oats-chocolate-21gm-qatar-8410076801289"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5250,7 +5250,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -5267,7 +5267,7 @@
       "source_product_url": "https://www.ansargallery.com/en/brahmins-coriander-powder-200g-qatar-8906014084833"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5307,7 +5307,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -5338,7 +5338,7 @@
         "Americana Quality Frozen Rolls"
       ],
       "next_pages": {
-        "Frozen Food": 25
+        "Frozen Food": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/americana-quality-rolls-orange-120g-qatar-6281033302055"
     },
@@ -5357,7 +5357,7 @@
         "Koka Noodles Bowl"
       ],
       "next_pages": {
-        "Dry Food": 25
+        "Dry Food": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/koka-noodles-bowl-chicken-flavor-90g-qatar-8888056803606"
     },
@@ -5376,12 +5376,12 @@
         "Al Mudhish Potato Chips Ready"
       ],
       "next_pages": {
-        "Snacks & Candy": 25
+        "Snacks & Candy": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/al-mudhish-potato-chips-ready-salted-15g-qatar-9501033112056"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5421,7 +5421,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -5452,7 +5452,7 @@
         "Bayara Sunflower Seed"
       ],
       "next_pages": {
-        "Dry & Natural Foods": 25
+        "Dry & Natural Foods": 26
       },
       "source_product_url": "https://www.ansargallery.com/en/bayara-sunflower-seed-salted-250g-qatar-6291109760917"
     },
@@ -5478,7 +5478,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ice-queen-jumbo-sandwich-strawberry-100ml-qatar-6253334605500"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5518,7 +5518,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -5535,7 +5535,7 @@
       "source_product_url": "https://www.ansargallery.com/en/mr-muscle-liquid-toilet-cleaner-750ml-qatar-5000204965346"
     },
     {
-      "category_cursor": 4,
+      "category_cursor": 5,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5575,7 +5575,7 @@
         "Cleaning & Laundry": 2,
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
-        "Cooking & Baking": 2,
+        "Cooking & Baking": 3,
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
@@ -11234,7 +11234,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "f30b1d53-b86b-45a6-a135-ce1fac67f255",
+  "last_completed_run_id": "6c306a8e-429b-4211-9d4f-4fbdb0c31295",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14756,6 +14756,6 @@
     "https://www.ansargallery.com/en/kyufi-instant-green-tea-with-lemon-and-with-sugar-15-sticks-qatar-6191469702032",
     "https://www.ansargallery.com/en/almutasaliq-black-tea-with-hibiscus-rose-25-pyramid-bags-qatar-6425751443458"
   ],
-  "updated_at": "2026-10-26T20:34:08.486588Z",
+  "updated_at": "2026-10-27T00:32:04.344107Z",
   "version": 2
 }

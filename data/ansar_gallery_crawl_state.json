@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 274,
+  "coverage_cursor": 298,
   "coverage_jobs": [
     {
       "category_cursor": 10,
@@ -9985,7 +9985,7 @@
         "Mr Krisp Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisp-twist-lightly-salted-80g-qatar-6291028111029"
     },
@@ -10004,7 +10004,7 @@
         "Mr. Krisps Twist Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/mr-krisps-twist-lightly-salted-75g-qatar-6291028006028"
     },
@@ -10023,7 +10023,7 @@
         "Kinder Tronky"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/kinder-tronky-chocolate-18g-qatar-8000500384763"
     },
@@ -10042,7 +10042,7 @@
         "Toblerone Fruit And Nut"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/toblerone-fruit-nut-100g-qatar-7622300107949"
     },
@@ -10061,7 +10061,7 @@
         "Godiva Belgium Smooth & Cream Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/godiva-belgium-smooth-cream-milk-chocolate-90g-qatar-8690504154679"
     },
@@ -10080,7 +10080,7 @@
         "Valor Sugar Creamy 70% Dark Chocolate with a Filling with"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-creamy-70-dark-chocolate-with-a-filling-with-orange-100g-qatar-8410109056525"
     },
@@ -10099,7 +10099,7 @@
         "Valor Sugar-Free 70% Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/valor-sugar-free-70-dark-chocolate-100g-qatar-8410109050882"
     },
@@ -10118,7 +10118,7 @@
         "Amul Super Fruit"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-super-fruit-chocolate-150g-qatar-8901262071109"
     },
@@ -10137,7 +10137,7 @@
         "McVities Digestive Cream Filled Wheat Biscuit"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/mcvities-digestive-cream-filled-wheat-biscuit-chocolate-40g-qatar-5000396044645"
     },
@@ -10156,7 +10156,7 @@
         "Doha Dates with"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/doha-dates-with-chocolate-400g-qatar-0604170032733"
     },
@@ -10175,7 +10175,7 @@
         "Galaxy Smooth Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-milk-chocolate-3x80g-qatar-5255010298199"
     },
@@ -10194,7 +10194,7 @@
         "Ferrero Rocher Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/ferrero-rocher-hazelnut-chocolate-90g-qatar-8000500359488"
     },
@@ -10213,7 +10213,7 @@
         "Galaxy Smooth & Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-dark-chocolate-24x43g-qatar-6294001815259"
     },
@@ -10232,7 +10232,7 @@
         "Ion Dark Super"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/ion-dark-super-chocolate-90g-qatar-5201127039248"
     },
@@ -10251,7 +10251,7 @@
         "M M Crispy"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/m-m-crispy-chocolate-24x36g-qatar-5000159304238"
     },
@@ -10270,12 +10270,12 @@
         "Nestle Tola Crispy Wafer Covered in"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/nestle-tola-crispy-wafer-covered-in-chocolate-31g-qatar-6294003544690"
     },
     {
-      "category_cursor": 0,
+      "category_cursor": 1,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10309,7 +10309,7 @@
       ],
       "next_pages": {
         "Bakery": 2,
-        "Beverages": 2,
+        "Beverages": 3,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
@@ -10346,7 +10346,7 @@
         "Twix Top"
       ],
       "next_pages": {
-        "Snacks & Candy": 21
+        "Snacks & Candy": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/twix-top-chocolate-21g-qatar-5900951251849"
     },
@@ -10365,7 +10365,7 @@
         "Cholula Hot Sauce"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 21
+        "Condiments & Seasoning": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/cholula-hot-sauce-original-150ml-qatar-049733091015"
     },
@@ -10384,7 +10384,7 @@
         "Beef Stock Cubes Golden"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 21
+        "Condiments & Seasoning": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/beef-stock-cubes-golden-beef-20g-qatar-6254000119062"
     },
@@ -10403,12 +10403,12 @@
         "Double Up Cola"
       ],
       "next_pages": {
-        "Beverages": 18
+        "Beverages": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/double-up-cola-zero-sugar-200ml-qatar-5051153804965"
     },
     {
-      "category_cursor": 17,
+      "category_cursor": 18,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10451,7 +10451,7 @@
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
         "Delicatessen": 1,
-        "Disposable & Storage": 1,
+        "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
         "Frozen Food": 2,
@@ -10479,7 +10479,7 @@
         "Kiri Al Jarra Spreadable Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 18
+        "Dairy - Egg & Cheese": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/kiri-al-jarra-spreadable-cream-cheese-230g-qatar-3073780976466"
     },
@@ -10498,7 +10498,7 @@
         "Rawa Spreadable Processed Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 16
+        "Dairy - Egg & Cheese": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-cream-cheese-670g-qatar-9504000342784"
     },
@@ -11260,7 +11260,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "a854e026-d68d-498e-99e1-eb8850580a40",
+  "last_completed_run_id": "2e483006-9da0-4afc-b926-4fe19bf0c74b",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14799,6 +14799,6 @@
     "https://www.ansargallery.com/en/deemah-fantasy-cake-choco-12x40g-qatar-8121183628026",
     "https://www.ansargallery.com/en/americana-super-roll-vanilla-6x60g-qatar-6281033202917"
   ],
-  "updated_at": "2026-10-31T07:04:05.310984Z",
+  "updated_at": "2026-10-31T13:42:28.619820Z",
   "version": 2
 }

@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 284,
+  "coverage_cursor": 317,
   "coverage_jobs": [
     {
       "category_cursor": 11,
@@ -10199,7 +10199,7 @@
         "Galaxy Smooth Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-milk-chocolate-3x80g-qatar-5255010298199"
     },
@@ -10218,7 +10218,7 @@
         "Ferrero Rocher Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/ferrero-rocher-hazelnut-chocolate-90g-qatar-8000500359488"
     },
@@ -10237,7 +10237,7 @@
         "Galaxy Smooth & Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-dark-chocolate-24x43g-qatar-6294001815259"
     },
@@ -10256,7 +10256,7 @@
         "Ion Dark Super"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/ion-dark-super-chocolate-90g-qatar-5201127039248"
     },
@@ -10275,7 +10275,7 @@
         "M M Crispy"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/m-m-crispy-chocolate-24x36g-qatar-5000159304238"
     },
@@ -10294,12 +10294,12 @@
         "Nestle Tola Crispy Wafer Covered in"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/nestle-tola-crispy-wafer-covered-in-chocolate-31g-qatar-6294003544690"
     },
     {
-      "category_cursor": 1,
+      "category_cursor": 2,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10340,7 +10340,7 @@
         "Coffee & Tea": 2,
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
-        "Dairy - Egg & Cheese": 2,
+        "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
@@ -10370,7 +10370,7 @@
         "Twix Top"
       ],
       "next_pages": {
-        "Snacks & Candy": 22
+        "Snacks & Candy": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/twix-top-chocolate-21g-qatar-5900951251849"
     },
@@ -10389,7 +10389,7 @@
         "Cholula Hot Sauce"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 22
+        "Condiments & Seasoning": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/cholula-hot-sauce-original-150ml-qatar-049733091015"
     },
@@ -10408,7 +10408,7 @@
         "Beef Stock Cubes Golden"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 22
+        "Condiments & Seasoning": 23
       },
       "source_product_url": "https://www.ansargallery.com/en/beef-stock-cubes-golden-beef-20g-qatar-6254000119062"
     },
@@ -10427,12 +10427,12 @@
         "Double Up Cola"
       ],
       "next_pages": {
-        "Beverages": 19
+        "Beverages": 20
       },
       "source_product_url": "https://www.ansargallery.com/en/double-up-cola-zero-sugar-200ml-qatar-5051153804965"
     },
     {
-      "category_cursor": 18,
+      "category_cursor": 19,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10474,7 +10474,7 @@
         "Condiments & Seasoning": 2,
         "Cooking & Baking": 2,
         "Dairy - Egg & Cheese": 2,
-        "Delicatessen": 1,
+        "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
         "Dry Food": 2,
@@ -10503,7 +10503,7 @@
         "Kiri Al Jarra Spreadable Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 19
+        "Dairy - Egg & Cheese": 20
       },
       "source_product_url": "https://www.ansargallery.com/en/kiri-al-jarra-spreadable-cream-cheese-230g-qatar-3073780976466"
     },
@@ -10522,7 +10522,7 @@
         "Rawa Spreadable Processed Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 17
+        "Dairy - Egg & Cheese": 18
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-cream-cheese-670g-qatar-9504000342784"
     },
@@ -10541,7 +10541,7 @@
         "Rawa Spreadable Processed Full Fat Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 17
+        "Dairy - Egg & Cheese": 18
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-full-fat-cream-cheese-150g-qatar-9504000342807"
     },
@@ -10560,7 +10560,7 @@
         "Double Dare Carbonated Drink Coffee"
       ],
       "next_pages": {
-        "Beverages": 16
+        "Beverages": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/double-dare-carbonated-drink-coffee-chocolate-275ml-qatar-6224008082057"
     },
@@ -10579,7 +10579,7 @@
         "Mima Gardens Fresh Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 16
+        "Dairy - Egg & Cheese": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-gardens-fresh-cream-cheese-2-x-200g-qatar-6425745291232"
     },
@@ -10598,7 +10598,7 @@
         "Muratbey Anatolian Mix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 16
+        "Dairy - Egg & Cheese": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-anatolian-mix-cheese-150g-qatar-8695543008013"
     },
@@ -10617,7 +10617,7 @@
         "Muratbey Helix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 16
+        "Dairy - Egg & Cheese": 17
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-helix-cheese-150g-qatar-8695543006934"
     },
@@ -10657,7 +10657,7 @@
         "Puck Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 15
+        "Dairy - Egg & Cheese": 16
       },
       "source_product_url": "https://www.ansargallery.com/en/puck-cream-cheese-2x500g-qatar-8121183626886"
     },
@@ -10767,7 +10767,7 @@
         "Bahlsen Leibniz Biscuits n Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 9
+        "Snacks & Candy": 10
       },
       "source_product_url": "https://www.ansargallery.com/en/bahlsen-leibniz-choco-cream-biscuits-19g-qatar-4017100366895"
     },
@@ -10786,7 +10786,7 @@
         "Dandy Frutti Cup"
       ],
       "next_pages": {
-        "Beverages": 9
+        "Beverages": 10
       },
       "source_product_url": "https://www.ansargallery.com/en/dandy-frutti-cup-orange-225ml-qatar-8044190073798"
     },
@@ -10806,7 +10806,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-wajba-spreadable-cream-cheese-2x500g-qatar-6300900100607"
     },
     {
-      "category_cursor": 8,
+      "category_cursor": 9,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10841,7 +10841,7 @@
       "next_pages": {
         "Bakery": 1,
         "Beverages": 2,
-        "Breakfast Food": 1,
+        "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 1,
         "Coffee & Tea": 2,
@@ -10892,7 +10892,7 @@
         "7 Up"
       ],
       "next_pages": {
-        "Beverages": 5
+        "Beverages": 6
       },
       "source_product_url": "https://www.ansargallery.com/en/7-up-lemon-mint-mojito-330ml-qatar-012000066894"
     },
@@ -11284,7 +11284,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "5dd17c6a-41cc-4d3f-85e8-ee0234ff102c",
+  "last_completed_run_id": "910ef53c-2076-4666-bed4-1a34de3d25bf",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14826,6 +14826,6 @@
     "https://www.ansargallery.com/en/kinza-cola-soft-drinks-1l-qatar-6287034102045",
     "https://www.ansargallery.com/en/foody-s-frozen-okra-zero-400g-qatar-6271100084274"
   ],
-  "updated_at": "2026-11-03T09:40:21.632739Z",
+  "updated_at": "2026-11-03T17:54:32.713836Z",
   "version": 2
 }

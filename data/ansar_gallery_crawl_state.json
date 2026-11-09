@@ -75,7 +75,7 @@
     {
       "exhausted": false,
       "name": "Healthy & Organic Foods",
-      "next_page": 4,
+      "next_page": 5,
       "url": "https://www.ansargallery.com/en/grocery/healthy-organic-foods"
     },
     {
@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 282,
+  "coverage_cursor": 313,
   "coverage_jobs": [
     {
       "category_cursor": 13,
@@ -10177,7 +10177,7 @@
         "McVities Digestive Cream Filled Wheat Biscuit"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/mcvities-digestive-cream-filled-wheat-biscuit-chocolate-40g-qatar-5000396044645"
     },
@@ -10196,7 +10196,7 @@
         "Doha Dates with"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/doha-dates-with-chocolate-400g-qatar-0604170032733"
     },
@@ -10215,7 +10215,7 @@
         "Galaxy Smooth Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-milk-chocolate-3x80g-qatar-5255010298199"
     },
@@ -10234,7 +10234,7 @@
         "Ferrero Rocher Hazelnut"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/ferrero-rocher-hazelnut-chocolate-90g-qatar-8000500359488"
     },
@@ -10253,7 +10253,7 @@
         "Galaxy Smooth & Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-smooth-dark-chocolate-24x43g-qatar-6294001815259"
     },
@@ -10272,7 +10272,7 @@
         "Ion Dark Super"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/ion-dark-super-chocolate-90g-qatar-5201127039248"
     },
@@ -10291,7 +10291,7 @@
         "M M Crispy"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/m-m-crispy-chocolate-24x36g-qatar-5000159304238"
     },
@@ -10310,12 +10310,12 @@
         "Nestle Tola Crispy Wafer Covered in"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/nestle-tola-crispy-wafer-covered-in-chocolate-31g-qatar-6294003544690"
     },
     {
-      "category_cursor": 3,
+      "category_cursor": 4,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10360,7 +10360,7 @@
         "Delicatessen": 2,
         "Disposable & Storage": 2,
         "Dry & Natural Foods": 2,
-        "Dry Food": 2,
+        "Dry Food": 3,
         "Frozen Food": 2,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
@@ -10386,7 +10386,7 @@
         "Twix Top"
       ],
       "next_pages": {
-        "Snacks & Candy": 24
+        "Snacks & Candy": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/twix-top-chocolate-21g-qatar-5900951251849"
     },
@@ -10405,7 +10405,7 @@
         "Cholula Hot Sauce"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 24
+        "Condiments & Seasoning": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/cholula-hot-sauce-original-150ml-qatar-049733091015"
     },
@@ -10424,7 +10424,7 @@
         "Beef Stock Cubes Golden"
       ],
       "next_pages": {
-        "Condiments & Seasoning": 24
+        "Condiments & Seasoning": 25
       },
       "source_product_url": "https://www.ansargallery.com/en/beef-stock-cubes-golden-beef-20g-qatar-6254000119062"
     },
@@ -10443,12 +10443,12 @@
         "Double Up Cola"
       ],
       "next_pages": {
-        "Beverages": 21
+        "Beverages": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/double-up-cola-zero-sugar-200ml-qatar-5051153804965"
     },
     {
-      "category_cursor": 0,
+      "category_cursor": 1,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -10482,7 +10482,7 @@
       ],
       "next_pages": {
         "Bakery": 2,
-        "Beverages": 2,
+        "Beverages": 3,
         "Breakfast Food": 2,
         "Canned & Jarred Food": 2,
         "Cleaning & Laundry": 2,
@@ -10519,7 +10519,7 @@
         "Kiri Al Jarra Spreadable Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 21
+        "Dairy - Egg & Cheese": 22
       },
       "source_product_url": "https://www.ansargallery.com/en/kiri-al-jarra-spreadable-cream-cheese-230g-qatar-3073780976466"
     },
@@ -10538,7 +10538,7 @@
         "Rawa Spreadable Processed Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 19
+        "Dairy - Egg & Cheese": 20
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-cream-cheese-670g-qatar-9504000342784"
     },
@@ -10557,7 +10557,7 @@
         "Rawa Spreadable Processed Full Fat Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 19
+        "Dairy - Egg & Cheese": 20
       },
       "source_product_url": "https://www.ansargallery.com/en/rawa-spreadable-processed-full-fat-cream-cheese-150g-qatar-9504000342807"
     },
@@ -10576,7 +10576,7 @@
         "Double Dare Carbonated Drink Coffee"
       ],
       "next_pages": {
-        "Beverages": 18
+        "Beverages": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/double-dare-carbonated-drink-coffee-chocolate-275ml-qatar-6224008082057"
     },
@@ -10595,7 +10595,7 @@
         "Mima Gardens Fresh Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 18
+        "Dairy - Egg & Cheese": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/mima-gardens-fresh-cream-cheese-2-x-200g-qatar-6425745291232"
     },
@@ -10614,7 +10614,7 @@
         "Muratbey Anatolian Mix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 18
+        "Dairy - Egg & Cheese": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-anatolian-mix-cheese-150g-qatar-8695543008013"
     },
@@ -10633,7 +10633,7 @@
         "Muratbey Helix"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 18
+        "Dairy - Egg & Cheese": 19
       },
       "source_product_url": "https://www.ansargallery.com/en/muratbey-helix-cheese-150g-qatar-8695543006934"
     },
@@ -10673,7 +10673,7 @@
         "Puck Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 17
+        "Dairy - Egg & Cheese": 18
       },
       "source_product_url": "https://www.ansargallery.com/en/puck-cream-cheese-2x500g-qatar-8121183626886"
     },
@@ -10783,7 +10783,7 @@
         "Bahlsen Leibniz Biscuits n Cream"
       ],
       "next_pages": {
-        "Snacks & Candy": 11
+        "Snacks & Candy": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/bahlsen-leibniz-choco-cream-biscuits-19g-qatar-4017100366895"
     },
@@ -10802,7 +10802,7 @@
         "Dandy Frutti Cup"
       ],
       "next_pages": {
-        "Beverages": 11
+        "Beverages": 12
       },
       "source_product_url": "https://www.ansargallery.com/en/dandy-frutti-cup-orange-225ml-qatar-8044190073798"
     },
@@ -10956,6 +10956,82 @@
       ],
       "next_pages": {},
       "source_product_url": "https://www.ansargallery.com/en/puck-organic-cream-cheese-150g-qatar-5711953178092"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Healthy & Organic Foods"
+      ],
+      "created_at": "2026-11-09T11:44:16.115776Z",
+      "display_name": "Corona Stevia No Sugar Added Milk Hazelnut",
+      "exhausted_categories": [],
+      "key": "product_family:corona-stevia-no-sugar-added-milk-hazelnut",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Corona Stevia No Sugar Added Milk Hazelnut"
+      ],
+      "next_pages": {
+        "Healthy & Organic Foods": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/corona-stevia-no-sugar-added-milk-hazelnut-chocolate-44g-qatar-6221073011180"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Healthy & Organic Foods"
+      ],
+      "created_at": "2026-11-09T11:44:20.103365Z",
+      "display_name": "Bake City Cookie+ Protein Double",
+      "exhausted_categories": [],
+      "key": "product_family:bake-city-cookie-protein-double",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Bake City Cookie+ Protein Double"
+      ],
+      "next_pages": {
+        "Healthy & Organic Foods": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/bake-city-cookie-protein-double-chocolate-113g-qatar-814856011055"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Healthy & Organic Foods"
+      ],
+      "created_at": "2026-11-09T11:44:22.472306Z",
+      "display_name": "Bake City Muffin+ Protein Double",
+      "exhausted_categories": [],
+      "key": "product_family:bake-city-muffin-protein-double",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Bake City Muffin+ Protein Double"
+      ],
+      "next_pages": {
+        "Healthy & Organic Foods": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/bake-city-muffin-protein-double-chocolate-113g-qatar-814856010782"
+    },
+    {
+      "category_cursor": 0,
+      "category_names": [
+        "Healthy & Organic Foods"
+      ],
+      "created_at": "2026-11-09T11:44:29.323423Z",
+      "display_name": "Quest Tortilla Style Protein Chips Nacho",
+      "exhausted_categories": [],
+      "key": "product_family:quest-tortilla-style-protein-chips-nacho",
+      "kind": "product_family",
+      "last_error": null,
+      "match_terms": [
+        "Quest Tortilla Style Protein Chips Nacho"
+      ],
+      "next_pages": {
+        "Healthy & Organic Foods": 1
+      },
+      "source_product_url": "https://www.ansargallery.com/en/quest-tortilla-style-protein-chips-nacho-cheese-flavored-32g-qatar-888849006632"
     }
   ],
   "failed_urls": {
@@ -11300,7 +11376,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "75072c91-0580-4990-9ec9-e7d571c7de20",
+  "last_completed_run_id": "c7368b97-89fc-48fa-aba3-83d312d25753",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -14860,8 +14936,26 @@
     "https://www.ansargallery.com/en/emborg-frozen-chopped-spinach-300g-qatar-5704025035829",
     "https://www.ansargallery.com/en/al-taghziah-chicken-luncheon-meat-200g-qatar-5283002830065",
     "https://www.ansargallery.com/en/al-taghziah-halal-turkey-luncheon-meat-340g-qatar-5283002830102",
-    "https://www.ansargallery.com/en/al-taghziah-turkey-luncheon-meat-200g-qatar-5283002830096"
+    "https://www.ansargallery.com/en/al-taghziah-turkey-luncheon-meat-200g-qatar-5283002830096",
+    "https://www.ansargallery.com/en/corona-stevia-no-sugar-added-milk-hazelnut-chocolate-44g-qatar-6221073011180",
+    "https://www.ansargallery.com/en/corona-stevia-no-sugar-added-milk-hazelnut-chocolate-44g-qatar-6221073012224",
+    "https://www.ansargallery.com/en/abu-auf-salted-pretzel-almond-nut-bar-40g-qatar-6223011433528",
+    "https://www.ansargallery.com/en/bake-city-cookie-protein-double-chocolate-113g-qatar-814856011055",
+    "https://www.ansargallery.com/en/bake-city-cookie-zero-sugar-peanut-butter-34g-qatar-814856012304",
+    "https://www.ansargallery.com/en/bake-city-muffin-protein-double-chocolate-113g-qatar-814856010782",
+    "https://www.ansargallery.com/en/quest-original-style-protein-chips-bbq-flavored-32g-qatar-888849000272",
+    "https://www.ansargallery.com/en/quest-original-style-protein-chips-cheddar-sour-cream-flavored-32g-qatar-888849000296",
+    "https://www.ansargallery.com/en/quest-tortilla-style-protein-chips-chili-lime-flavored-32g-qatar-888849006656",
+    "https://www.ansargallery.com/en/quest-tortilla-style-protein-chips-nacho-cheese-flavored-32g-qatar-888849006632",
+    "https://www.ansargallery.com/en/quest-tortilla-style-protein-chips-spicy-sweet-chili-32g-qatar-888849011063",
+    "https://www.ansargallery.com/en/tamrita-maamoul-dates-without-added-sugar-320g-qatar-6281000377925",
+    "https://www.ansargallery.com/en/abu-auf-coconut-fruit-nut-bar-40g-qatar-6223011433504",
+    "https://www.ansargallery.com/en/abu-auf-cookies-cream-protein-bar-50g-qatar-6223011433979",
+    "https://www.ansargallery.com/en/abu-auf-hazelnut-cocoa-nut-bar-40g-qatar-6223011433511",
+    "https://www.ansargallery.com/en/bake-city-muffin-protein-banana-nut-113g-qatar-814856010775",
+    "https://www.ansargallery.com/en/bake-city-muffin-protein-blueberry-113g-qatar-814856010768",
+    "https://www.ansargallery.com/en/santiveri-noglut-crispy-gluten-free-toasts-100g-qatar-8412170009646"
   ],
-  "updated_at": "2026-11-09T02:43:22.041782Z",
+  "updated_at": "2026-11-09T11:44:43.432017Z",
   "version": 2
 }

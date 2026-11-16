@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 28,
+  "coverage_cursor": 55,
   "coverage_jobs": [
     {
       "category_cursor": 16,
@@ -1526,7 +1526,7 @@
       "source_product_url": null
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1573,7 +1573,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1583,7 +1583,7 @@
       "source_product_url": "https://www.ansargallery.com/en/amul-pasteurized-salted-butter-500g-qatar-8901262010023"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1630,7 +1630,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1640,7 +1640,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-wazir-2l-olive-pomace-oil-qatar-8428483200137"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1687,7 +1687,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1697,7 +1697,7 @@
       "source_product_url": "https://www.ansargallery.com/en/bayara-caraway-200g-qatar-3434410002694"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1744,7 +1744,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1775,7 +1775,7 @@
       "source_product_url": "https://www.ansargallery.com/en/a-saffa-whole-frozen-chicken-1100g-qatar-6291101360030"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1822,7 +1822,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1832,7 +1832,7 @@
       "source_product_url": "https://www.ansargallery.com/en/anchor-fortified-full-cream-milk-powder-900g-qatar-9415007017134"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1879,7 +1879,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -1889,7 +1889,7 @@
       "source_product_url": "https://www.ansargallery.com/en/queen-light-meat-tuna-flakes-in-sunflower-oil-185g-qatar-8850231756960"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1939,7 +1939,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -1947,7 +1947,7 @@
       "source_product_url": "https://www.ansargallery.com/en/coca-cola-soft-drink-can-150ml-qatar-54491014"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -1996,7 +1996,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2004,7 +2004,7 @@
       "source_product_url": "https://www.ansargallery.com/en/schweppes-soda-water-150ml-qatar-54491007"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2053,7 +2053,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2061,7 +2061,7 @@
       "source_product_url": "https://www.ansargallery.com/en/qbake-brown-bread-medium-650g-qatar-6253808660295"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2110,7 +2110,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2118,7 +2118,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kdd-lulu-vanilla-chocolate-with-almond-ice-cream-stick-62-5ml-qatar-6271002320913"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2167,7 +2167,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2175,7 +2175,7 @@
       "source_product_url": "https://www.ansargallery.com/en/red-bull-sugar-free-energy-drink-4x250ml-qatar-9002490200381"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2224,7 +2224,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2232,7 +2232,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-shamal-pure-drinking-water-24x225ml-qatar-7798049258294"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2281,7 +2281,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2289,7 +2289,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-maha-1kg-full-fat-yoghurt-qatar-9504000172619"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2338,7 +2338,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2367,7 +2367,7 @@
       "source_product_url": "https://www.ansargallery.com/en/5-star-peanut-butter-chocolate-340g-qatar-8908004415108"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2416,7 +2416,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2424,7 +2424,7 @@
       "source_product_url": "https://www.ansargallery.com/en/loacker-gardena-hazelnut-milk-chocolate-coated-wafers-5x38g-qatar-8000380005284"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2473,7 +2473,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2502,7 +2502,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-rifai-pistachio-salted-180g-qatar-6271100040010"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2551,7 +2551,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -2559,7 +2559,7 @@
       "source_product_url": "https://www.ansargallery.com/en/apex-anti-bacterial-cleaner-750-ml-qatar-9501100119599"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2603,7 +2603,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2616,7 +2616,7 @@
       "source_product_url": "https://www.ansargallery.com/en/rawa-low-fat-yoghurt-with-fruits-4-cereals-150g-qatar-9504000172176"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2660,7 +2660,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2673,7 +2673,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ferrero-nutella-b-ready-chocolate-filled-biscuit-22g-qatar-8000500224281"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2717,7 +2717,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2730,7 +2730,7 @@
       "source_product_url": "https://www.ansargallery.com/en/adeera-pure-corn-oil-1-8l-qatar-9504000062675"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2774,7 +2774,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2787,7 +2787,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ahlia-seasoning-spice-mix-80g-qatar-6271003091454"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2831,7 +2831,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2844,7 +2844,7 @@
       "source_product_url": "https://www.ansargallery.com/en/rio-mare-light-meat-tuna-in-olive-oil-2x160g-qatar-8004030349797"
     },
     {
-      "category_cursor": 13,
+      "category_cursor": 14,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2888,7 +2888,7 @@
         "Dairy - Egg & Cheese": 3,
         "Delicatessen": 2,
         "Disposable & Storage": 2,
-        "Dry & Natural Foods": 2,
+        "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
@@ -2901,7 +2901,7 @@
       "source_product_url": "https://www.ansargallery.com/en/dany-watermelon-juice-200ml-qatar-5051146360355"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -2950,7 +2950,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 2,
@@ -11436,7 +11436,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "2fb9bd46-4d32-4720-b414-92ed7f76924d",
+  "last_completed_run_id": "b8a7468b-e1d9-4db3-be61-81dca74e6075",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -15039,6 +15039,6 @@
     "https://www.ansargallery.com/en/coca-cola-zero-sugar-24x350ml-qatar-5449000165336",
     "https://www.ansargallery.com/en/schweppes-zesty-carbonated-lemon-soft-drink-253ml-qatar-5449000342898"
   ],
-  "updated_at": "2026-11-16T02:13:10.610425Z",
+  "updated_at": "2026-11-16T09:52:50.868636Z",
   "version": 2
 }

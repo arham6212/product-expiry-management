@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 134,
+  "coverage_cursor": 164,
   "coverage_jobs": [
     {
       "category_cursor": 17,
@@ -6113,12 +6113,12 @@
         "Lindit Excellence Sea Salt Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/lindit-excellence-sea-salt-dark-chocolate-100g-qatar-3046920029674"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6166,7 +6166,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -6189,12 +6189,12 @@
         "Al Mudhish Natural Potato Sticks"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/al-mudhish-natural-potato-sticks-salted-20g-qatar-9501033112599"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6242,7 +6242,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -6265,12 +6265,12 @@
         "Batatos Stix Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/kitco-stix-lightly-salted-potato-snacks-55g-qatar-6271101190691"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6318,7 +6318,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -6432,7 +6432,7 @@
       "source_product_url": "https://www.ansargallery.com/en/sara-cake-swiss-roll-chocolate-75g-qatar-6271005020117"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6482,7 +6482,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -6503,12 +6503,12 @@
         "Kiri Fresh Spreadable Cream"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 31
+        "Dairy - Egg & Cheese": 32
       },
       "source_product_url": "https://www.ansargallery.com/en/kiri-fresh-spreadable-cream-cheese-216g-qatar-3073780624435"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6558,7 +6558,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -6579,7 +6579,7 @@
         "Benjem Compound"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/benjem-compound-chocolate-1kg-qatar-8698849550583"
     },
@@ -6598,7 +6598,7 @@
         "Baladna Yoghurt"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 32
+        "Dairy - Egg & Cheese": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/baladna-yoghurt-mango-170g-qatar-6291107054117"
     },
@@ -6617,12 +6617,12 @@
         "El Tahan Milk Shake"
       ],
       "next_pages": {
-        "Beverages": 32
+        "Beverages": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/el-tahan-milk-shake-chocolate-150g-qatar-6223001502074"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6672,7 +6672,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -6693,7 +6693,7 @@
         "Lindt Excellence Extra Creamy Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/lindt-excellence-extra-creamy-milk-chocolate-100g-qatar-7610400010481"
     },
@@ -6712,7 +6712,7 @@
         "Lindt Excellence Orange Intense Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/lindt-excellence-orange-intense-dark-chocolate-100g-qatar-3046920028370"
     },
@@ -6731,7 +6731,7 @@
         "Storck Merci Finest Selection Assorted"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/storck-merci-finest-selection-assorted-chocolate-400g-qatar-4014400900217"
     },
@@ -6750,12 +6750,12 @@
         "Prima Kottu Mee Instant Noodles"
       ],
       "next_pages": {
-        "Dry Food": 31
+        "Dry Food": 32
       },
       "source_product_url": "https://www.ansargallery.com/en/prima-kottu-mee-instant-noodles-chicken-flavor-5-x-78g-qatar-4792018233971"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6805,7 +6805,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -6833,7 +6833,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ashraf-farghly-frozen-strawberry-1kg-qatar-6772505054294"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6883,14 +6883,14 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
       "source_product_url": "https://www.ansargallery.com/en/mama-sitas-kare-kare-peanut-sauce-mix-57g-qatar-025407803313"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6940,7 +6940,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -6961,12 +6961,12 @@
         "Al Maha Custard"
       ],
       "next_pages": {
-        "Dairy - Egg & Cheese": 32
+        "Dairy - Egg & Cheese": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/al-maha-custard-chocolate-90g-qatar-9504000286088"
     },
     {
-      "category_cursor": 11,
+      "category_cursor": 12,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7016,7 +7016,7 @@
         "Grab & Go": 2,
         "Healthy & Organic Foods": 2,
         "Ice Cream": 2,
-        "International Food": 2,
+        "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
       },
@@ -7037,7 +7037,7 @@
         "Today Hazelnuts Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/today-hazelnuts-milk-chocolate-42g-qatar-6251100004205"
     },
@@ -7056,7 +7056,7 @@
         "Galaxy Minstrels"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/galaxy-minstrels-chocolate-42g-qatar-5900951000270"
     },
@@ -11484,7 +11484,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "aefe8a7a-9a7d-4f64-a212-0c2f39adc152",
+  "last_completed_run_id": "5d86aa1b-f66a-4a2d-b238-2cb1e637e528",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -15101,6 +15101,6 @@
     "https://www.ansargallery.com/en/dandy-mango-ice-cream-tub-500ml-qatar-8044190037264",
     "https://www.ansargallery.com/en/dandy-peanut-delight-ice-cream-stick-100ml-qatar-4990000003360"
   ],
-  "updated_at": "2026-11-20T21:13:45.774882Z",
+  "updated_at": "2026-11-21T02:27:29.262197Z",
   "version": 2
 }

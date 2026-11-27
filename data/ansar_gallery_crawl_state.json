@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 99,
+  "coverage_cursor": 139,
   "coverage_jobs": [
     {
       "category_cursor": 19,
@@ -4810,7 +4810,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-shifa-acacia-queeeze-400g-qatar-6281073210402"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4857,7 +4857,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -4867,7 +4867,7 @@
       "source_product_url": "https://www.ansargallery.com/en/lusine-chocolate-cupcake-30g-qatar-6281007045841"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4914,7 +4914,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -4924,7 +4924,7 @@
       "source_product_url": "https://www.ansargallery.com/en/kitco-nice-salt-vinegar-16g-qatar-6080401323018"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -4971,7 +4971,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -4981,7 +4981,7 @@
       "source_product_url": "https://www.ansargallery.com/en/yamama-rose-water-750ml-qatar-623695000201"
     },
     {
-      "category_cursor": 15,
+      "category_cursor": 16,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5028,7 +5028,7 @@
         "Dry & Natural Foods": 3,
         "Dry Food": 3,
         "Frozen Food": 3,
-        "Grab & Go": 2,
+        "Grab & Go": 3,
         "Healthy & Organic Foods": 3,
         "Ice Cream": 3,
         "International Food": 3,
@@ -5080,7 +5080,7 @@
       "source_product_url": "https://www.ansargallery.com/en/american-heritage-mild-cheddar-cheese-226g-qatar-071505018814"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5129,7 +5129,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5242,7 +5242,7 @@
       "source_product_url": "https://www.ansargallery.com/en/nv-oats-chocolate-21gm-qatar-8410076801289"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5291,7 +5291,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5299,7 +5299,7 @@
       "source_product_url": "https://www.ansargallery.com/en/brahmins-coriander-powder-200g-qatar-8906014084833"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5348,7 +5348,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5391,7 +5391,7 @@
         "Koka Noodles Bowl"
       ],
       "next_pages": {
-        "Dry Food": 35
+        "Dry Food": 36
       },
       "source_product_url": "https://www.ansargallery.com/en/koka-noodles-bowl-chicken-flavor-90g-qatar-8888056803606"
     },
@@ -5410,12 +5410,12 @@
         "Al Mudhish Potato Chips Ready"
       ],
       "next_pages": {
-        "Snacks & Candy": 35
+        "Snacks & Candy": 36
       },
       "source_product_url": "https://www.ansargallery.com/en/al-mudhish-potato-chips-ready-salted-15g-qatar-9501033112056"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5464,7 +5464,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5514,7 +5514,7 @@
       "source_product_url": "https://www.ansargallery.com/en/ice-queen-jumbo-sandwich-strawberry-100ml-qatar-6253334605500"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5563,7 +5563,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5571,7 +5571,7 @@
       "source_product_url": "https://www.ansargallery.com/en/mr-muscle-liquid-toilet-cleaner-750ml-qatar-5000204965346"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5620,7 +5620,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5628,7 +5628,7 @@
       "source_product_url": "https://www.ansargallery.com/en/clorox-bleach-liquid-2x3-78l-qatar-3855000117893"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5677,7 +5677,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5706,7 +5706,7 @@
       "source_product_url": "https://www.ansargallery.com/en/qbake-croissant-sweet-cheese-60g-qatar-6253808660882"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5755,7 +5755,7 @@
         "Frozen Food": 2,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5805,7 +5805,7 @@
       "source_product_url": "https://www.ansargallery.com/en/deemah-cupcakes-chocolate-27g-qatar-6285602000649"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5854,7 +5854,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5883,7 +5883,7 @@
       "source_product_url": "https://www.ansargallery.com/en/halwani-bros-finest-halwa-with-chocolate-500g-qatar-6281041013417"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5932,7 +5932,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -5940,7 +5940,7 @@
       "source_product_url": "https://www.ansargallery.com/en/cardamom-45gm-tea-bags-box-qatar-815096000359"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -5989,7 +5989,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -6018,7 +6018,7 @@
       "source_product_url": "https://www.ansargallery.com/en/lov-peanut-roasted-salted-13g-qatar-6297000802107"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6067,7 +6067,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -6089,7 +6089,7 @@
         "Kambly Matterhone Swiss Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 34
+        "Snacks & Candy": 35
       },
       "source_product_url": "https://www.ansargallery.com/en/kambly-matterhone-swiss-milk-chocolate-100g-qatar-7614800141004"
     },
@@ -6129,12 +6129,12 @@
         "Lindit Excellence Sea Salt Dark"
       ],
       "next_pages": {
-        "Snacks & Candy": 35
+        "Snacks & Candy": 36
       },
       "source_product_url": "https://www.ansargallery.com/en/lindit-excellence-sea-salt-dark-chocolate-100g-qatar-3046920029674"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6183,7 +6183,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -6205,12 +6205,12 @@
         "Al Mudhish Natural Potato Sticks"
       ],
       "next_pages": {
-        "Snacks & Candy": 35
+        "Snacks & Candy": 36
       },
       "source_product_url": "https://www.ansargallery.com/en/al-mudhish-natural-potato-sticks-salted-20g-qatar-9501033112599"
     },
     {
-      "category_cursor": 14,
+      "category_cursor": 15,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -6259,7 +6259,7 @@
         "Frozen Food": 3,
         "Grab & Go": 2,
         "Healthy & Organic Foods": 3,
-        "Ice Cream": 2,
+        "Ice Cream": 3,
         "International Food": 3,
         "Produce": 2,
         "Snacks & Candy": 3
@@ -6281,7 +6281,7 @@
         "Batatos Stix Lightly"
       ],
       "next_pages": {
-        "Snacks & Candy": 35
+        "Snacks & Candy": 36
       },
       "source_product_url": "https://www.ansargallery.com/en/kitco-stix-lightly-salted-potato-snacks-55g-qatar-6271101190691"
     },
@@ -11536,7 +11536,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "ea6cfaac-f866-4dfa-824e-54ea90780f48",
+  "last_completed_run_id": "52aa95b4-29ba-4138-bc85-6e96cb365b4c",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -15170,6 +15170,6 @@
     "https://www.ansargallery.com/en/gourmet-chicken-olives-mortedlla-500g-qatar-9624350000000",
     "https://www.ansargallery.com/en/gourmet-chicken-plain-mortadella-500g-qatar-9624340000000"
   ],
-  "updated_at": "2026-11-27T12:38:41.471896Z",
+  "updated_at": "2026-11-27T22:03:39.013121Z",
   "version": 2
 }

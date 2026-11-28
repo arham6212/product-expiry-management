@@ -122,7 +122,7 @@
     }
   ],
   "category_cursor": 1,
-  "coverage_cursor": 174,
+  "coverage_cursor": 212,
   "coverage_jobs": [
     {
       "category_cursor": 19,
@@ -7388,7 +7388,9 @@
       ],
       "created_at": "2026-09-05T05:50:04.524292Z",
       "display_name": "Barebells Milkshake",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Dairy - Egg & Cheese"
+      ],
       "key": "product_family:barebells-milkshake",
       "kind": "product_family",
       "last_error": null,
@@ -7415,7 +7417,7 @@
         "Vochelle Almonds Coated Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/vochelle-almonds-coated-milk-chocolate-380g-qatar-9556049003225"
     },
@@ -7434,7 +7436,7 @@
         "Amul I Love You Fruit'n Nut"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/amul-i-love-you-fruitn-nut-chocolate-150g-qatar-8901262071543"
     },
@@ -7453,7 +7455,7 @@
         "Coca-Cola"
       ],
       "next_pages": {
-        "Beverages": 33
+        "Beverages": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/coca-cola-original-6x250ml-qatar-5449000031815"
     },
@@ -7479,7 +7481,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-kanater-halawa-with-chocolate-450g-qatar-5285000870395"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7527,7 +7529,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -7578,7 +7580,7 @@
       "source_product_url": "https://www.ansargallery.com/en/deemah-marmo-chocolate-12x40g-qatar-6285602012741"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7626,7 +7628,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -7635,7 +7637,7 @@
       "source_product_url": "https://www.ansargallery.com/en/barilla-arrabbiata-with-chilli-peppers-400g-qatar-8076809513388"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7683,7 +7685,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -7692,7 +7694,7 @@
       "source_product_url": "https://www.ansargallery.com/en/al-taghziah-chicken-luncheon-meat-3x200g-qatar-5283002851169"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7740,7 +7742,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -7763,7 +7765,7 @@
         "Baker Cracker Salted Biscuits Cheddar"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/baker-cheddar-cheese-salted-biscuits-250g-qatar-6251934003054"
     },
@@ -7782,7 +7784,7 @@
         "Kellogg's Instant Noodles Chicken"
       ],
       "next_pages": {
-        "Dry Food": 33
+        "Dry Food": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/kellogg-nodles-chkn-curry-350g-qatar-6223006710177"
     },
@@ -7913,7 +7915,7 @@
       "source_product_url": "https://www.ansargallery.com/en/fex-pop-kunafa-mango-chocolate-195g-qatar-0762497766004"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -7961,7 +7963,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -7970,7 +7972,7 @@
       "source_product_url": "https://www.ansargallery.com/en/time-slim-gofrette-wafer-with-chocolate-cream-20g-qatar-8691066501031"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8018,7 +8020,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -8033,7 +8035,9 @@
       ],
       "created_at": "2026-09-05T21:19:30.791239Z",
       "display_name": "Jewan Drinkable Yogurt",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Dairy - Egg & Cheese"
+      ],
       "key": "product_family:jewan-drinkable-yogurt",
       "kind": "product_family",
       "last_error": null,
@@ -8060,7 +8064,7 @@
         "Elit Umbrella Milk"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/elit-umbrella-milk-chocolate-30g-qatar-8698701009105"
     },
@@ -8100,12 +8104,12 @@
         "Dunkin Premium Iced Coffee"
       ],
       "next_pages": {
-        "Beverages": 33
+        "Beverages": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/dunkin-premium-iced-coffee-original-300ml-qatar-6281022174014"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8153,7 +8157,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -8176,7 +8180,7 @@
         "Ulker Napoliten"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/ulker-napoliten-chocolate-33g-qatar-8690504023135"
     },
@@ -8187,7 +8191,9 @@
       ],
       "created_at": "2026-09-05T21:20:14.057655Z",
       "display_name": "Jewan Greek Yogurt",
-      "exhausted_categories": [],
+      "exhausted_categories": [
+        "Dairy - Egg & Cheese"
+      ],
       "key": "product_family:jewan-greek-yogurt",
       "kind": "product_family",
       "last_error": null,
@@ -8200,7 +8206,7 @@
       "source_product_url": "https://www.ansargallery.com/en/jewan-greek-yogurt-strawberry-170g-qatar-5051153828824"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8248,7 +8254,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -8257,7 +8263,7 @@
       "source_product_url": "https://www.ansargallery.com/en/tilda-basmati-rice-2kg-30-off-qatar-8901144900060"
     },
     {
-      "category_cursor": 12,
+      "category_cursor": 13,
       "category_names": [
         "Beverages",
         "Dairy - Egg & Cheese",
@@ -8305,7 +8311,7 @@
         "Dry Food": 3,
         "Frozen Food": 3,
         "Grab & Go": 2,
-        "Healthy & Organic Foods": 2,
+        "Healthy & Organic Foods": 3,
         "Ice Cream": 2,
         "International Food": 3,
         "Produce": 2,
@@ -8349,7 +8355,7 @@
         "Kracklite Toasted Chips Biscuits"
       ],
       "next_pages": {
-        "Snacks & Candy": 33
+        "Snacks & Candy": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/kracklite-toasted-chips-biscuits-salted-26g-qatar-9501025182111"
     },
@@ -8368,7 +8374,7 @@
         "Frutos Instant Fruit Drink Powder Mix"
       ],
       "next_pages": {
-        "Beverages": 33
+        "Beverages": 34
       },
       "source_product_url": "https://www.ansargallery.com/en/frutos-instant-fruit-drink-powder-mix-lemon-750g-qatar-682568001769"
     },
@@ -8429,7 +8435,7 @@
         "Biscolata Starz Milky"
       ],
       "next_pages": {
-        "Snacks & Candy": 32
+        "Snacks & Candy": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/biscolata-starz-milky-chocolate-37-5g-qatar-8699141013004"
     },
@@ -8448,7 +8454,7 @@
         "Karikku Tender Coconut Water"
       ],
       "next_pages": {
-        "Beverages": 32
+        "Beverages": 33
       },
       "source_product_url": "https://www.ansargallery.com/en/karikku-tender-coconut-water-zero-sugar-200ml-qatar-8908025684057"
     },
@@ -11544,7 +11550,7 @@
       "last_error": "HTTPError: HTTP Error 404: Not Found"
     }
   },
-  "last_completed_run_id": "9ffe5b64-e6d9-4de6-ae8c-f3f4d4dc6159",
+  "last_completed_run_id": "f2cf70b6-2edf-422b-8373-7c154d75b4cf",
   "product_urls_inspected": [
     "https://www.ansargallery.com/en/aqua-gulf-bottled-drinking-water-24x200ml-qatar-6080401324206",
     "https://www.ansargallery.com/en/blue-diamond-long-life-chocolate-flavoured-almond-milk-1l-qatar-0041570120682",
@@ -15178,6 +15184,6 @@
     "https://www.ansargallery.com/en/gourmet-chicken-olives-mortedlla-500g-qatar-9624350000000",
     "https://www.ansargallery.com/en/gourmet-chicken-plain-mortadella-500g-qatar-9624340000000"
   ],
-  "updated_at": "2026-11-28T03:58:27.904095Z",
+  "updated_at": "2026-11-28T13:10:21.736166Z",
   "version": 2
 }
